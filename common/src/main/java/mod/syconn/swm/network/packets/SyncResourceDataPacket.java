@@ -2,11 +2,9 @@ package mod.syconn.swm.network.packets;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.codec.StreamCodecs;
 import mod.syconn.swm.util.server.SyncedResourceManager;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;

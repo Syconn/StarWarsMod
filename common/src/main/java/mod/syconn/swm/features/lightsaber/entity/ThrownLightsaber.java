@@ -45,7 +45,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
 
     public ThrownLightsaber(Level level, LivingEntity shooter, InteractionHand hand) {
         super(ModEntities.THROWN_LIGHTSABER.get(), shooter, level);
-        this.entityData.set(LIGHTSABER, shooter.getItemInHand(hand));
+        this.entityData.set(LIGHTSABER, shooter.getItemInHand(hand).copy());
         this.hand = hand;
     }
 

@@ -1,7 +1,6 @@
 package mod.syconn.swm.util.json;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -19,7 +18,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends SimpleJsonResourceReloadListener implements SyncedResourceManager.ISyncedData {
 

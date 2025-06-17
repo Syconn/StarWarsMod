@@ -7,7 +7,6 @@ import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.ModComponents;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
 import mod.syconn.swm.util.server.SyncedResourceManager;
 

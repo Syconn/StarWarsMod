@@ -4,11 +4,9 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.syconn.swm.addons.LightsaberContent;
 import mod.syconn.swm.core.ModComponents;
-import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.codec.StreamCodecs;
 import mod.syconn.swm.util.math.Ease;
-import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -16,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.function.UnaryOperator;
 
 public record LightsaberComponent(int model, boolean stable, boolean active, byte transition, double lengthScalar, double radius, int color, List<Vec3> emitterPositions) {
@@ -92,6 +89,6 @@ public record LightsaberComponent(int model, boolean stable, boolean active, byt
     }
 
     public LightsaberComponent activation() {
-        return new LightsaberComponent(model, stable, !active, transition, lengthScalar, radius, color, emitterPositions);
+        return new LightsaberComponent(model, stable, true, transition, lengthScalar, radius, color, emitterPositions);
     }
 }

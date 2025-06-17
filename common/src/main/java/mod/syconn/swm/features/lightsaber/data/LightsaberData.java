@@ -12,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
-import java.util.UUID;
 
 public record LightsaberData(int model, boolean stable, double radius, int color, List<Vec3> emitterPositions) implements ISerializable<CompoundTag> {
 
