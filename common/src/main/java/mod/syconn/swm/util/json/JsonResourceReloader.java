@@ -73,13 +73,8 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
     public boolean readData(CompoundTag tag) {
         int size = tag.getInt("size");
         if (size > 0) {
-//            Map<ResourceLocation, D> map = tag.getList("list", 9).stream()
-//                    .map(t -> (CompoundTag) t).collect(Collectors.toUnmodifiableMap(t -> ResourceLocation.parse(t.getString("id")), t -> tagReader.apply(t.getCompound("data"))));
             var map = new ImmutableMap.Builder<ResourceLocation, D>();
-            for (int i = 0; i < size; i++) {
-                CompoundTag innerTag = tag.getList("list", 9).getCompound(i);
-                map.put(ResourceLocation.parse(innerTag.getString("id")), tagReader.apply(innerTag.getCompound("data")));
-            }
+            tag.getList("list", 10).stream().map(CompoundTag.class::cast).forEach(t -> map.put(ResourceLocation.parse(t.getString("id")), tagReader.apply(t.getCompound("data"))));
             reload(map.build());
             return true;
         }

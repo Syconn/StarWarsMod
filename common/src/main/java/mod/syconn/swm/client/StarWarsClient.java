@@ -36,7 +36,8 @@ public class StarWarsClient {
 
         TickEvent.PLAYER_PRE.register(StarWarsClient::onClientTick);
 
-        Network.register();
+        Network.registerS2C();
+        Network.registerC2S();
     }
 
     public static void setup() {
