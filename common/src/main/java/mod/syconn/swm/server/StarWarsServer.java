@@ -10,8 +10,7 @@ public class StarWarsServer {
     public static void init() {
         PlayerEvent.PLAYER_JOIN.register(StarWarsServer::playerJoinedServer);
 
-        Network.registerS2C();
-        Network.registerC2S();
+        Network.registerServerPackets();
     }
 
     public static void playerJoinedServer(ServerPlayer player) {

@@ -77,7 +77,7 @@ rawMouseInput:true
 glDebugVerbosity:1
 skipMultiplayerWarning:true
 hideMatchedNames:true
-joinedFirstServer:false
+joinedFirstServer:true
 hideBundleTutorial:false
 syncChunkWrites:true
 showAutosaveIndicator:true
@@ -110,7 +110,7 @@ key_key.fullscreen:key.keyboard.f11
 key_key.spectatorOutlines:key.keyboard.unknown
 key_key.swapOffhand:key.keyboard.f
 key_key.saveToolbarActivator:key.keyboard.c
-key_key.loadToolbarActivator:key.keyboard.x
+key_key.loadToolbarActivator:key.keyboard.apostrophe
 key_key.advancements:key.keyboard.l
 key_key.hotbar.1:key.keyboard.1
 key_key.hotbar.2:key.keyboard.2
