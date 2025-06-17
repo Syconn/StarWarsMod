@@ -1,51 +1,51 @@
-[22:43:17] [main/INFO] (Launcher) ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.172, --assetIndex, 1.21.1-17, --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --gameDir, ., --fml.fmlVersion, 4.0.39, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.172, --fml.neoFormVersion, 20240808.144430]
-[22:43:17] [main/INFO] (Launcher) JVM identified as Oracle Corporation OpenJDK 64-Bit Server VM 22.0.2+9-70
-[22:43:17] [main/INFO] (Launcher) ModLauncher 11.0.4+main.d2e20e43 starting: java version 22.0.2 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
-[22:43:18] [main/INFO] (ImmediateWindowHandler) Loading ImmediateWindowProvider fmlearlywindow
-[22:43:18] [main/INFO] (EARLYDISPLAY) Trying GL version 4.6
-[22:43:18] [main/INFO] (EARLYDISPLAY) Requested GL version 4.6 got version 4.6
-[22:43:18] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23125!/ Service=ModLauncher Env=CLIENT
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: neoforge devenv provider ([C:\Users\Aidan\IdeaProjects\StarWarsMod\.gradle\loom-cache\minecraftMaven\net\minecraft\neoforge-21.1.172-minecraft-merged-c8bcd81ab4\1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172\neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar])]
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: neoforge devenv provider ([C:\Users\Aidan\IdeaProjects\StarWarsMod\.gradle\loom-cache\minecraftMaven\net\minecraft\neoforge-21.1.172-minecraft-merged-c8bcd81ab4\1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172\neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar])]
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: userdev mods and services, reader: mod manifest]
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "architectury-neoforge-13.0.8.jar" [locator: userdev mods and services, reader: mod manifest]
-[22:43:18] [main/INFO] (ModDiscoverer) Found mod file "11103949977345438368.jar" [locator: userdev mods and services, reader: mod manifest]
-[22:43:18] [main/INFO] (ModDiscoverer) Found gamelibrary file "mixinextras-neoforge-0.4.1.jar" [locator: userdev mods and services, reader: mod manifest]
-[22:43:18] [pool-5-thread-1/INFO] (EARLYDISPLAY) GL info: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 566.36, NVIDIA Corporation
-[22:43:18] [main/WARN] (JarSelector) Attempted to select a dependency jar for JarJar which was passed in as source: library:mixinextras.neoforge. Using Mod File: C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.4.1\eff97772ecd0dcf8e52cdbafd3b3ccec425f8314\mixinextras-neoforge-0.4.1.jar
-[22:43:18] [main/INFO] (JarInJarDependencyLocator) Found 1 dependencies adding them to mods collection
-[22:43:18] [main/INFO] (ModDiscoverer) Found library file "net.neoforged.neoforge-coremods-21.1.172.jar" [parent: neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar, locator: jarinjar, reader: mod manifest]
-[22:43:18] [main/INFO] (ModDiscoverer) 
+[22:19:36] [main/INFO] (Launcher) ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.172, --assetIndex, 1.21.1-17, --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --gameDir, ., --fml.fmlVersion, 4.0.39, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.172, --fml.neoFormVersion, 20240808.144430]
+[22:19:36] [main/INFO] (Launcher) JVM identified as Oracle Corporation OpenJDK 64-Bit Server VM 22.0.2+9-70
+[22:19:36] [main/INFO] (Launcher) ModLauncher 11.0.4+main.d2e20e43 starting: java version 22.0.2 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[22:19:37] [main/INFO] (ImmediateWindowHandler) Loading ImmediateWindowProvider fmlearlywindow
+[22:19:37] [main/INFO] (EARLYDISPLAY) Trying GL version 4.6
+[22:19:37] [main/INFO] (EARLYDISPLAY) Requested GL version 4.6 got version 4.6
+[22:19:37] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23125!/ Service=ModLauncher Env=CLIENT
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: neoforge devenv provider ([C:\Users\Aidan\IdeaProjects\StarWarsMod\.gradle\loom-cache\minecraftMaven\net\minecraft\neoforge-21.1.172-minecraft-merged-c8bcd81ab4\1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172\neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar])]
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: neoforge devenv provider ([C:\Users\Aidan\IdeaProjects\StarWarsMod\.gradle\loom-cache\minecraftMaven\net\minecraft\neoforge-21.1.172-minecraft-merged-c8bcd81ab4\1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172\neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar])]
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar" [locator: userdev mods and services, reader: mod manifest]
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "architectury-neoforge-13.0.8.jar" [locator: userdev mods and services, reader: mod manifest]
+[22:19:37] [main/INFO] (ModDiscoverer) Found mod file "4690048150374670269.jar" [locator: userdev mods and services, reader: mod manifest]
+[22:19:37] [main/INFO] (ModDiscoverer) Found gamelibrary file "mixinextras-neoforge-0.4.1.jar" [locator: userdev mods and services, reader: mod manifest]
+[22:19:37] [pool-5-thread-1/INFO] (EARLYDISPLAY) GL info: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 566.36, NVIDIA Corporation
+[22:19:37] [main/WARN] (JarSelector) Attempted to select a dependency jar for JarJar which was passed in as source: library:mixinextras.neoforge. Using Mod File: C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.4.1\eff97772ecd0dcf8e52cdbafd3b3ccec425f8314\mixinextras-neoforge-0.4.1.jar
+[22:19:37] [main/INFO] (JarInJarDependencyLocator) Found 1 dependencies adding them to mods collection
+[22:19:37] [main/INFO] (ModDiscoverer) Found library file "net.neoforged.neoforge-coremods-21.1.172.jar" [parent: neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar, locator: jarinjar, reader: mod manifest]
+[22:19:37] [main/INFO] (ModDiscoverer) 
      Mod List:
 		Name Version (Mod Id)
 
 		Architectury 13.0.8 (architectury)
-		generated_160a22d 1 (generated_160a22d)
+		generated_8b1b8a7 1 (generated_8b1b8a7)
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.172 (neoforge)
 		Star Wars Mod 2.0.1 (swm)
-[22:43:19] [main/INFO] (mixin) Compatibility level set to JAVA_21
-[22:43:19] [main/INFO] (LaunchServiceHandler) Launching target 'forgeclientdev' with arguments [--version, 21.1.172, --gameDir, ., --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --assetIndex, 1.21.1-17]
-[22:43:19] [main/INFO] (unprotect) Found 8254 Minecraft classes
-[22:43:19] [main/INFO] (MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[12Jun2025 22:43:20.656] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 320 milliseconds
-[12Jun2025 22:43:24.700] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2025 22:43:24.700] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2025 22:43:24.700] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[12Jun2025 22:43:24.700] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[12Jun2025 22:43:24.700] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2025 22:43:24.808] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/neoforge-21.1.172-minecraft-merged-c8bcd81ab4/1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172/neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/assets/.mcassetsroot' uses unexpected schema
-[12Jun2025 22:43:24.808] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/neoforge-21.1.172-minecraft-merged-c8bcd81ab4/1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172/neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/data/.mcassetsroot' uses unexpected schema
-[12Jun2025 22:43:24.827] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[12Jun2025 22:43:24.835] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[12Jun2025 22:43:24.906] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
-[12Jun2025 22:43:25.069] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.172, for MC 1.21.1
-[12Jun2025 22:43:25.811] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
-[12Jun2025 22:43:25.993] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/architectury, mod/swm, mod/generated_160a22d, mod/neoforge
-[12Jun2025 22:43:26.064] [Worker-Main-5/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
-[12Jun2025 22:43:26.238] [Worker-Main-8/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
-[12Jun2025 22:43:26.242] [Worker-Main-4/ERROR] [net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader/]: Using missing texture, unable to load swm:item/red
+[22:19:38] [main/INFO] (mixin) Compatibility level set to JAVA_21
+[22:19:38] [main/INFO] (LaunchServiceHandler) Launching target 'forgeclientdev' with arguments [--version, 21.1.172, --gameDir, ., --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --assetIndex, 1.21.1-17]
+[22:19:38] [main/INFO] (unprotect) Found 8254 Minecraft classes
+[22:19:38] [main/INFO] (MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[16Jun2025 22:19:40.539] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 589 milliseconds
+[16Jun2025 22:19:46.489] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[16Jun2025 22:19:46.491] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[16Jun2025 22:19:46.493] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[16Jun2025 22:19:46.495] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[16Jun2025 22:19:46.495] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[16Jun2025 22:19:46.630] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/neoforge-21.1.172-minecraft-merged-c8bcd81ab4/1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172/neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/assets/.mcassetsroot' uses unexpected schema
+[16Jun2025 22:19:46.630] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/neoforge-21.1.172-minecraft-merged-c8bcd81ab4/1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172/neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/data/.mcassetsroot' uses unexpected schema
+[16Jun2025 22:19:46.657] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[16Jun2025 22:19:46.667] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[16Jun2025 22:19:46.765] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
+[16Jun2025 22:19:46.998] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.172, for MC 1.21.1
+[16Jun2025 22:19:48.212] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[16Jun2025 22:19:48.462] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/generated_8b1b8a7, mod/architectury, mod/swm, mod/neoforge
+[16Jun2025 22:19:48.647] [Worker-Main-1/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
+[16Jun2025 22:19:48.729] [Worker-Main-4/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
+[16Jun2025 22:19:48.780] [Worker-Main-9/ERROR] [net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader/]: Using missing texture, unable to load swm:item/red
 java.io.IOException: Bad PNG Signature
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.PngInfo.validateHeader(PngInfo.java:44) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
 	at TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.platform.NativeImage.read(NativeImage.java:139) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
@@ -64,43 +64,166 @@ java.io.IOException: Bad PNG Signature
 	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2071) [?:?]
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2033) [?:?]
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) [?:?]
-[12Jun2025 22:43:26.373] [Worker-Main-11/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture swm:item/metal with size 65x65 limits mip level from 4 to 0
-[12Jun2025 22:43:27.092] [Worker-Main-7/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model swm:lightsaber#inventory:
+[16Jun2025 22:19:48.898] [Worker-Main-5/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture swm:item/metal with size 65x65 limits mip level from 4 to 0
+[16Jun2025 22:19:50.320] [Worker-Main-3/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model swm:lightsaber#inventory:
     minecraft:textures/atlas/blocks.png:swm:item/blades/white
-[12Jun2025 22:43:27.243] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[12Jun2025 22:43:27.244] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[12Jun2025 22:43:27.292] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
-[12Jun2025 22:43:27.292] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[12Jun2025 22:43:27.368] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
-[12Jun2025 22:43:27.378] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[12Jun2025 22:43:27.378] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[12Jun2025 22:43:27.379] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[12Jun2025 22:43:27.379] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[12Jun2025 22:43:27.381] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[12Jun2025 22:43:27.381] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[12Jun2025 22:43:27.382] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[12Jun2025 22:43:27.382] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[12Jun2025 22:43:27.451] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[12Jun2025 22:43:27.452] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[12Jun2025 22:43:27.452] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[12Jun2025 22:43:27.452] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[12Jun2025 22:43:27.453] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[12Jun2025 22:43:27.470] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[12Jun2025 22:43:27.513] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
-[12Jun2025 22:43:34.318] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1290 recipes
-[12Jun2025 22:43:34.439] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
-[12Jun2025 22:43:34.841] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21.1
-[12Jun2025 22:43:34.841] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[12Jun2025 22:43:35.745] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[12Jun2025 22:43:35.933] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2025 22:43:36.006] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
-[12Jun2025 22:43:36.012] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 260 ms
-[12Jun2025 22:43:36.081] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
-[12Jun2025 22:43:36.081] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[12Jun2025 22:43:36.622] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:571c849b] logged in with entity id 19 at (-112.34692685096, 121.0, 33.15848641852881)
-[12Jun2025 22:43:36.661] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[12Jun2025 22:43:36.931] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
-[12Jun2025 22:43:50.059] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[12Jun2025 22:43:50.075] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[12Jun2025 22:43:50.096] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[12Jun2025 22:43:50.096] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[16Jun2025 22:19:50.572] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[16Jun2025 22:19:50.572] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[16Jun2025 22:19:50.624] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
+[16Jun2025 22:19:50.625] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[16Jun2025 22:19:50.795] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[16Jun2025 22:19:50.812] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[16Jun2025 22:19:50.812] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[16Jun2025 22:19:50.813] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[16Jun2025 22:19:50.814] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[16Jun2025 22:19:50.818] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[16Jun2025 22:19:50.819] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[16Jun2025 22:19:50.819] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[16Jun2025 22:19:50.819] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[16Jun2025 22:19:50.913] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[16Jun2025 22:19:50.914] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[16Jun2025 22:19:50.915] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[16Jun2025 22:19:50.915] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[16Jun2025 22:19:50.915] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[16Jun2025 22:19:50.945] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[16Jun2025 22:19:51.015] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
+[16Jun2025 22:21:24.278] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1290 recipes
+[16Jun2025 22:21:24.406] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
+[16Jun2025 22:21:24.780] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21.1
+[16Jun2025 22:21:24.781] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[16Jun2025 22:21:25.695] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[16Jun2025 22:21:25.902] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[16Jun2025 22:21:25.968] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[16Jun2025 22:21:25.978] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 276 ms
+[16Jun2025 22:21:26.046] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[16Jun2025 22:21:26.046] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[16Jun2025 22:21:26.545] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:c9f7d749] logged in with entity id 24 at (-118.09854627964609, 123.0, 25.305797837843173)
+[16Jun2025 22:21:26.614] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[16Jun2025 22:21:26.713] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
+[16Jun2025 22:21:29.723] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[16Jun2025 22:21:29.749] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[16Jun2025 22:21:29.767] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[16Jun2025 22:21:29.767] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[16Jun2025 22:21:30.264] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[16Jun2025 22:21:30.264] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[16Jun2025 22:21:30.277] [Server thread/INFO] [net.minecraft.server.network.ServerCommonPacketListenerImpl/]: Stopping singleplayer server as player logged out
+[16Jun2025 22:21:30.304] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[16Jun2025 22:21:30.304] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[16Jun2025 22:21:30.304] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[16Jun2025 22:21:30.702] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[16Jun2025 22:21:31.071] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[16Jun2025 22:21:31.073] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[16Jun2025 22:21:31.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[16Jun2025 22:21:31.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16Jun2025 22:21:31.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16Jun2025 22:21:31.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[16Jun2025 22:21:33.641] [Render thread/INFO] [net.minecraft.client.gui.screens.ConnectScreen/]: Connecting to 192.168.1.238, 25565
+[16Jun2025 22:21:42.825] [Render thread/ERROR] [net.minecraft.util.thread.BlockableEventLoop/FATAL]: Error executing task on Client
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Multiple entries with same key: minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]] and minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]]
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run$$$capture(CompletableFuture.java:1770) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java) ~[?:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:148) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:122) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:111) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1155) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23116!/:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) [dev-launch-injector-0.2.1+build.8.jar:?]
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220) [architectury-transformer-5.2.87-runtime.jar:5.2.87]
+Caused by: java.lang.IllegalArgumentException: Multiple entries with same key: minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]] and minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap.conflictException(ImmutableMap.java:378) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap.checkNoConflict(Imm[16Jun2025 22:23:26.012] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Husk]
+[16Jun2025 22:23:50.617] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[16Jun2025 22:23:50.617] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+rflow(RegularImmutableMap.java:133) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.RegularImmutableMap.fromEntryArray(RegularImmutableMap.java:95) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.build(ImmutableMap.java:572) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.buildOrThrow(ImmutableMap.java:600) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.build(ImmutableMap.java:587) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.util.json.JsonResourceReloader.readData(JsonResourceReloader.java:83) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.network.packets.SyncResourceDataPacket.lambda$handle$0(SyncResourceDataPacket.java:31) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/neoforge@21.1.172/net.neoforged.neoforge.network.handling.ClientPayloadContext.enqueueWork(ClientPayloadContext.java:31) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23199!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.forge.NetworkManagerImpl$1$1.queue(NetworkManagerImpl.java:104) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.network.packets.SyncResourceDataPacket.handle(SyncResourceDataPacket.java:28) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.impl.NetworkAggregator.lambda$registerS2CReceiver$5(NetworkAggregator.java:127) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.transformers.PacketTransformer$1.inbound(PacketTransformer.java:47) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.impl.NetworkAggregator.lambda$registerS2CReceiver$6(NetworkAggregator.java:121) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.forge.NetworkManagerImpl$1.lambda$registerS2C$3(NetworkManagerImpl.java:73) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/neoforge@21.1.172/net.neoforged.neoforge.network.handling.MainThreadPayloadHandler.lambda$handle$0(MainThreadPayloadHandler.java:16) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23199!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.method_5386(BlockableEventLoop.java:60) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run$$$capture(CompletableFuture.java:1768) ~[?:?]
+	... 25 more
+[16Jun2025 22:21:42.834] [Render thread/ERROR] [net.neoforged.neoforge.network.registration.NetworkRegistry/]: Failed to process a synchronized task of the payload: swm:sync_resource_data
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Multiple entries with same key: minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]] and minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]]
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run$$$capture(CompletableFuture.java:1770) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java) ~[?:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:148) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:122) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:111) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1155) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.39.jar%23111!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23116!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23116!/:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) [dev-launch-injector-0.2.1+build.8.jar:?]
+	at dev.architectury.transformer.TransformerRuntime.main(TransformerRuntime.java:220) [architectury-transformer-5.2.87-runtime.jar:5.2.87]
+Caused by: java.lang.IllegalArgumentException: Multiple entries with same key: minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]] and minecraft:=LightsaberData[model=0, stable=false, radius=0.0, color=0, emitterPositions=[]]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap.conflictException(ImmutableMap.java:378) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap.checkNoConflict(ImmutableMap.java:372) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.RegularImmutableMap.checkNoConflictInKeyBucket(RegularImmutableMap.java:246) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.RegularImmutableMap.fromEntryArrayCheckingBucketOverflow(RegularImmutableMap.java:133) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.RegularImmutableMap.fromEntryArray(RegularImmutableMap.java:95) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.build(ImmutableMap.java:572) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.buildOrThrow(ImmutableMap.java:600) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at MC-BOOTSTRAP/com.google.common@32.1.2-jre/com.google.common.collect.ImmutableMap$Builder.build(ImmutableMap.java:587) ~[guava-32.1.2-jre.jar%23142!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.util.json.JsonResourceReloader.readData(JsonResourceReloader.java:83) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.network.packets.SyncResourceDataPacket.lambda$handle$0(SyncResourceDataPacket.java:31) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/neoforge@21.1.172/net.neoforged.neoforge.network.handling.ClientPayloadContext.enqueueWork(ClientPayloadContext.java:31) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23199!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.forge.NetworkManagerImpl$1$1.queue(NetworkManagerImpl.java:104) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/generated_8b1b8a7@1/mod.syconn.swm.network.packets.SyncResourceDataPacket.handle(SyncResourceDataPacket.java:28) ~[4690048150374670269.jar%23203!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.impl.NetworkAggregator.lambda$registerS2CReceiver$5(NetworkAggregator.java:127) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.transformers.PacketTransformer$1.inbound(PacketTransformer.java:47) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.impl.NetworkAggregator.lambda$registerS2CReceiver$6(NetworkAggregator.java:121) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/architectury@13.0.8/dev.architectury.networking.forge.NetworkManagerImpl$1.lambda$registerS2C$3(NetworkManagerImpl.java:73) ~[architectury-neoforge-13.0.8.jar%23202!/:?]
+	at TRANSFORMER/neoforge@21.1.172/net.neoforged.neoforge.network.handling.MainThreadPayloadHandler.lambda$handle$0(MainThreadPayloadHandler.java:16) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23199!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.util.thread.BlockableEventLoop.method_5386(BlockableEventLoop.java:60) ~[neoforge-21.1.172-minecraft-merged-c8bcd81ab4-1.21.1-loom.mappings.1_21_1.layered+hash.729439609-v2-neoforge-21.1.172.jar%23198!/:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run$$$capture(CompletableFuture.java:1768) ~[?:?]
+	... 25 more
+[16Jun2025 22:21:42.837] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
+[16Jun2025 22:23:26.036] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Summoned new Husk
+[16Jun2025 22:23:45.650] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Husk has the following entity data: 12.128f
+[16Jun2025 22:23:49.315] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Husk has the following entity data: 11.188001f

@@ -1,13 +1,14 @@
 package mod.syconn.swm.util.json;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import mod.syconn.swm.util.nbt.ISerializable;
 import mod.syconn.swm.util.server.SyncedResourceManager;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends SimpleJsonResourceReloadListener implements SyncedResourceManager.ISyncedData {
 
@@ -54,22 +56,33 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
         return this.id;
     }
 
-    public FriendlyByteBuf writeData(FriendlyByteBuf buffer) {
-        buffer.writeVarInt(this.resources.size());
+    public CompoundTag writeData() {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("size", this.resources.size());
+        ListTag list = new ListTag();
         this.resources.forEach((id, resource) -> {
-            buffer.writeResourceLocation(id);
-            buffer.writeNbt(resource.writeTag());
+            CompoundTag innerTag = new CompoundTag();
+            innerTag.putString("id", id.toString());
+            innerTag.put("data", resource.writeTag());
+            list.add(innerTag);
         });
-        return buffer;
+        tag.put("list", list);
+        return tag;
     }
 
-    public boolean readData(FriendlyByteBuf buffer) {
-        int size = buffer.readVarInt();
-        if(size > 0) {
-            ImmutableMap.Builder<ResourceLocation, D> builder = ImmutableMap.builder();
-            for(int i = 0; i < size; i++) builder.put(buffer.readResourceLocation(), tagReader.apply(buffer.readNbt()));
-            reload(builder.build());
+    public boolean readData(CompoundTag tag) {
+        int size = tag.getInt("size");
+        if (size > 0) {
+//            Map<ResourceLocation, D> map = tag.getList("list", 9).stream()
+//                    .map(t -> (CompoundTag) t).collect(Collectors.toUnmodifiableMap(t -> ResourceLocation.parse(t.getString("id")), t -> tagReader.apply(t.getCompound("data"))));
+            var map = new ImmutableMap.Builder<ResourceLocation, D>();
+            for (int i = 0; i < size; i++) {
+                CompoundTag innerTag = tag.getList("list", 9).getCompound(i);
+                map.put(ResourceLocation.parse(innerTag.getString("id")), tagReader.apply(innerTag.getCompound("data")));
+            }
+            reload(map.build());
+            return true;
         }
-        return true;
+        return false;
     }
 }

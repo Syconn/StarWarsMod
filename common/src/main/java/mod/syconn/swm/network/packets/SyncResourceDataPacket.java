@@ -5,18 +5,20 @@ import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.codec.StreamCodecs;
 import mod.syconn.swm.util.server.SyncedResourceManager;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
-public record SyncResourceDataPacket(ResourceLocation id, FriendlyByteBuf data) implements CustomPacketPayload {
+public record SyncResourceDataPacket(ResourceLocation id, CompoundTag data) implements CustomPacketPayload {
 
     public static final CustomPacketPayload.Type<SyncResourceDataPacket> TYPE = new CustomPacketPayload.Type<>(Constants.withId("sync_resource_data"));
     public static final StreamCodec<RegistryFriendlyByteBuf, SyncResourceDataPacket> STREAM_CODEC = StreamCodec.composite(
-            ResourceLocation.STREAM_CODEC, SyncResourceDataPacket::id, StreamCodecs.FRIENDLY_BYTE_BUF, SyncResourceDataPacket::data, SyncResourceDataPacket::new);
+            ResourceLocation.STREAM_CODEC, SyncResourceDataPacket::id, ByteBufCodecs.COMPOUND_TAG, SyncResourceDataPacket::data, SyncResourceDataPacket::new);
 
     public CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
         return TYPE;

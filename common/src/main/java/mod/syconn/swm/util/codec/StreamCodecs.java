@@ -25,17 +25,17 @@ public class StreamCodecs {
         };
     }
 
-    public static final StreamCodec<ByteBuf, FriendlyByteBuf> FRIENDLY_BYTE_BUF = new StreamCodec<>() {
-        @Override
-        public FriendlyByteBuf decode(ByteBuf buf) {
-            var readableBytes = buf.readInt();
-            return new FriendlyByteBuf(Unpooled.wrappedBuffer(buf.readBytes(readableBytes)));
-        }
-
-        @Override
-        public void encode(ByteBuf buf, FriendlyByteBuf friendlyBuf) {
-            buf.writeInt(friendlyBuf.readableBytes());
-            buf.writeBytes(friendlyBuf);
-        }
-    };
+//    public static final StreamCodec<ByteBuf, FriendlyByteBuf> FRIENDLY_BYTE_BUF = new StreamCodec<>() { Appears not to work
+//        @Override
+//        public FriendlyByteBuf decode(ByteBuf buf) {
+//            var readableBytes = buf.readInt();
+//            return new FriendlyByteBuf(Unpooled.wrappedBuffer(buf.readBytes(readableBytes)));
+//        }
+//
+//        @Override
+//        public void encode(ByteBuf buf, FriendlyByteBuf friendlyBuf) {
+//            buf.writeInt(friendlyBuf.readableBytes());
+//            buf.writeBytes(friendlyBuf);
+//        }
+//    };
 }

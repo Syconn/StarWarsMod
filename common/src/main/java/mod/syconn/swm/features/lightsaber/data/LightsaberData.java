@@ -14,10 +14,10 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 import java.util.UUID;
 
-public record LightsaberData(int model, boolean stable, double length, double radius, int color, List<Vec3> emitterPositions) implements ISerializable<CompoundTag> {
+public record LightsaberData(int model, boolean stable, double radius, int color, List<Vec3> emitterPositions) implements ISerializable<CompoundTag> {
 
     public LightsaberComponent component() {
-        return new LightsaberComponent(UUID.randomUUID(), model, stable, true, (byte) 0, length, 1, radius, color, emitterPositions);
+        return new LightsaberComponent(model, stable, true, (byte) 0, 1, radius, color, emitterPositions);
     }
 
     public ItemStack toItem(String name) {
@@ -27,7 +27,7 @@ public record LightsaberData(int model, boolean stable, double length, double ra
     }
 
     public static LightsaberData fromJson(JsonObject json) {
-        return new LightsaberData(json.get("model").getAsInt(), json.get("stable").getAsBoolean(), json.get("length").getAsDouble(), json.get("radius").getAsDouble(), json.get("color").getAsInt(),
+        return new LightsaberData(json.get("model").getAsInt(), json.get("stable").getAsBoolean(), json.get("radius").getAsDouble(), json.get("color").getAsInt(),
                 JsonUtils.getArray(json.getAsJsonObject("emitterPositions"), JsonUtils::getVec3));
     }
 
@@ -35,7 +35,6 @@ public record LightsaberData(int model, boolean stable, double length, double ra
         JsonObject json = new JsonObject();
         json.addProperty("model", model);
         json.addProperty("stable", stable);
-        json.addProperty("length", length);
         json.addProperty("radius", radius);
         json.addProperty("color", color);
         json.add("emitterPositions", JsonUtils.addArray(emitterPositions, JsonUtils::addVec3));
@@ -43,7 +42,7 @@ public record LightsaberData(int model, boolean stable, double length, double ra
     }
 
     public static LightsaberData readTag(CompoundTag tag) {
-        return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getDouble("length"), tag.getDouble("radius"), tag.getInt("color"),
+        return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getDouble("radius"), tag.getInt("color"),
                 NbtTools.getArray(tag.getCompound("vectors"), NbtTools::getVec3));
     }
 
@@ -51,7 +50,6 @@ public record LightsaberData(int model, boolean stable, double length, double ra
         var tag = new CompoundTag();
         tag.putInt("model", this.model);
         tag.putBoolean("stable", this.stable);
-        tag.putDouble("length", this.length);
         tag.putDouble("radius", this.radius);
         tag.putInt("color", this.color);
         tag.put("vectors", NbtTools.putArray(this.emitterPositions, NbtTools::putVec3));
