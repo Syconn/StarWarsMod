@@ -26,7 +26,6 @@
 /.gradle/loom-cache/remapped_mods/loom_mappings_1_21_1_layered_hash_729439609_v2_neoforge_21_1_172_forge/dev/architectury/architectury-neoforge/13.0.8/architectury-neoforge-13.0.8-sources.jar
 /.gradle/architectury/architectury-transformer-agent.jar
 /common/.gradle/loom-cache/source_mappings/ba9c3185875c2b0975ecd761c6f9f15c29711cad.tiny
-/neoforge/build.gradle
 /.gradle/buildOutputCleanup/buildOutputCleanup.lock
 /neoforge/.gradle/loom-cache/source_mappings/c8bcd81ab408112e1368d8e2b9061b7b502d3b6b.tiny
 /.gradle/buildOutputCleanup/cache.properties
@@ -35,6 +34,8 @@
 /.gradle/8.14/executionHistory/executionHistory.bin
 /.gradle/8.14/executionHistory/executionHistory.lock
 /fabric/build/resources/main/fabric.mod.json
+/neoforge/run
+/fabric/run
 /.gradle/loom-cache/remapped_mods/loom_mappings_1_21_1_layered_hash_477322616_v2/net/fabricmc/fabric-api/fabric-api/0.116.1+1.21.1/fabric-api-0.116.1+1.21.1.jar
 /.gradle/loom-cache/remapped_mods/loom_mappings_1_21_1_layered_hash_729439609_v2/net/fabricmc/fabric-api/fabric-api/0.116.1+1.21.1/fabric-api-0.116.1+1.21.1.jar
 /.gradle/loom-cache/remapped_mods/loom_mappings_1_21_1_layered_hash_477322616_v2/net/fabricmc/fabric-api/fabric-api/0.116.1+1.21.1/fabric-api-0.116.1+1.21.1.pom
@@ -832,3 +833,4 @@
 /.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-97d76d2812/1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2/minecraft-merged-97d76d2812-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2.pom
 /.gradle/8.12.1/checksums/sha1-checksums.bin
 /neoforge/build/tmp/compileJava/compileTransaction/stash-dir/StarWarsNeoForgeClient.class.uniqueId0
+/fabric/run/
