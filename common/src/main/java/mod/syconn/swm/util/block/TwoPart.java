@@ -2,14 +2,18 @@ package mod.syconn.swm.util.block;
 
 import net.minecraft.util.StringRepresentable;
 
-public enum TwoPartBlock implements StringRepresentable {
+public enum TwoPart implements StringRepresentable {
     LEFT("left"),
     RIGHT("right");
 
     private final String name;
 
-    private TwoPartBlock(String name) {
+    TwoPart(String name) {
         this.name = name;
+    }
+
+    public boolean right() {
+        return this == RIGHT;
     }
 
     public String toString() {

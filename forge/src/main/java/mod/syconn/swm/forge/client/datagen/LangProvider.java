@@ -1,5 +1,6 @@
 package mod.syconn.swm.forge.client.datagen;
 
+import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModKeys;
 import mod.syconn.swm.util.Constants;
@@ -22,5 +23,7 @@ public class LangProvider extends LanguageProvider {
         add("key.swm.power_1", "Use Force Power 1");
 
         addItem(ModItems.LIGHTSABER, "Lightsaber");
+
+        addBlock(ModBlocks.LIGHTSABER_WORKSTATION, "Lightsaber Workstation");
     }
 }

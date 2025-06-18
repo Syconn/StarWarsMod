@@ -17,6 +17,7 @@ public class DataGeneration {
         DataGenerator generator = event.getGenerator();
         generator.addProvider(event.includeClient(), new LangProvider(generator.getPackOutput(), "en_us"));
         generator.addProvider(event.includeClient(), new ItemModelProvider(generator.getPackOutput(), event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new BlockModelProvider(generator.getPackOutput(), event.getExistingFileHelper()));
         generator.addProvider(event.includeClient(), new DatapackBuiltinEntriesProvider(generator.getPackOutput(), event.getLookupProvider(), DatapackProvider.BUILDER, Set.of(Constants.MOD)));
         generator.addProvider(event.includeClient(), new LightsaberDataProvider(generator.getPackOutput()));
     }
