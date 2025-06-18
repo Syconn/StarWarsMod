@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=east,two_part=left": {
-      "model": "swm:block/lightsaber_workstation_left"
+      "model": "swm:block/lightsaber_workbench_left"
     },
     "facing=east,two_part=right": {
-      "model": "swm:block/lightsaber_workstation_right"
+      "model": "swm:block/lightsaber_workbench_right"
     },
     "facing=north,two_part=left": {
-      "model": "swm:block/lightsaber_workstation_left",
+      "model": "swm:block/lightsaber_workbench_left",
       "y": -90
     },
     "facing=north,two_part=right": {
-      "model": "swm:block/lightsaber_workstation_right",
+      "model": "swm:block/lightsaber_workbench_right",
       "y": -90
     },
     "facing=south,two_part=left": {
-      "model": "swm:block/lightsaber_workstation_left",
+      "model": "swm:block/lightsaber_workbench_left",
       "y": 90
     },
     "facing=south,two_part=right": {
-      "model": "swm:block/lightsaber_workstation_right",
+      "model": "swm:block/lightsaber_workbench_right",
       "y": 90
     },
     "facing=west,two_part=left": {
-      "model": "swm:block/lightsaber_workstation_left",
+      "model": "swm:block/lightsaber_workbench_left",
       "y": 180
     },
     "facing=west,two_part=right": {
-      "model": "swm:block/lightsaber_workstation_right",
+      "model": "swm:block/lightsaber_workbench_right",
       "y": 180
     }
   }
