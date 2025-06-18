@@ -2,10 +2,10 @@ package mod.syconn.swm.features.lightsaber.server.container;
 
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.core.ModMenus;
-import mod.syconn.swm.core.ModTags;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.server.containers.slot.SpecificSlot;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -15,16 +15,20 @@ import net.minecraft.world.item.ItemStack;
 
 public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
-    private final LightsaberWorkbenchBlockEntity be;
+    private final LightsaberWorkbenchBlockEntity blockEntity;
 
     public LightsaberWorkbenchMenu(int containerId, Inventory inventory, FriendlyByteBuf data) {
-        super(ModMenus.LIGHTSABER_WORKBENCH.get(), containerId);
-        this.be = inventory.player.level().getBlockEntity(data.readBlockPos(), ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
+        this(containerId, inventory, data.readBlockPos());
+    }
 
-        this.addSlot(new SpecificSlot(be.getContainer(), 2, 72, 9, LightsaberItem.class));
+    public LightsaberWorkbenchMenu(int containerId, Inventory inventory, BlockPos pos){
+        super(ModMenus.LIGHTSABER_WORKBENCH.get(), containerId);
+
+        this.blockEntity = inventory.player.level().getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
+
+        this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 14, 63, LightsaberItem.class));
 
         for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 48 + j1 * 18, 159 + l * 18));
-
         for(int i1 = 0; i1 < 9; ++i1) this.addSlot(new Slot(inventory, i1, 48 + i1 * 18, 217));
     }
 
@@ -67,6 +71,6 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
     }
 
     public LightsaberWorkbenchBlockEntity getBlockEntity() {
-        return be;
+        return blockEntity;
     }
 }

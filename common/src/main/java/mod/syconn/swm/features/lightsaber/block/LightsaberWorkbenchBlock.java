@@ -5,6 +5,7 @@ import dev.architectury.registry.menu.MenuRegistry;
 import mod.syconn.swm.block.TwoPartBlock;
 import mod.syconn.swm.core.ModMenus;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
+import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -36,14 +38,13 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
-        if (player instanceof ServerPlayer serverPlayer) {
-            var be = level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity ? level.getBlockEntity(pos) : level.getBlockEntity(pos.relative(getOtherPart(state)));
+        if (player instanceof ServerPlayer sp) {
+            var newPos = level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity ? pos : pos.relative(getOtherPart(state));
 
-            if (be instanceof LightsaberWorkbenchBlockEntity) {
-                MenuRegistry.openExtendedMenu(serverPlayer, new ExtendedMenuProvider() {
+            if (level.getBlockEntity(newPos) instanceof LightsaberWorkbenchBlockEntity) {
+                MenuRegistry.openExtendedMenu(sp, new ExtendedMenuProvider() {
                     public void saveExtraData(FriendlyByteBuf buf) {
-                        System.out.println("WRITING POSITION");
-                        buf.writeBlockPos(pos);
+                        buf.writeBlockPos(newPos);
                     }
 
                     public Component getDisplayName() {
@@ -51,7 +52,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
                     }
 
                     public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                        return ModMenus.LIGHTSABER_WORKBENCH.get().create(i, inventory);
+                        return new LightsaberWorkbenchMenu(i, inventory, newPos);
                     }
                 });
             }
@@ -61,6 +62,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
         return InteractionResult.PASS;
     }
 
+    @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         if (state.getValue(ModBlockStateProperties.TWO_PART).right()) return new LightsaberWorkbenchBlockEntity(pos, state);
         return null;
