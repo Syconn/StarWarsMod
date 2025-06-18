@@ -21,8 +21,8 @@ public class BlockModelProvider extends BlockStateProvider {
     }
 
     protected void registerStatesAndModels() {
-        getVariantBuilder(ModBlocks.LIGHTSABER_WORKSTATION.get()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(generated(getItemId(ModBlocks.LIGHTSABER_WORKSTATION.get()).getPath() + (state.getValue(ModBlockStateProperties.TWO_PART).right() ? "_right" : "_left")))
+        getVariantBuilder(ModBlocks.LIGHTSABER_WORKBENCH.get()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(generated(getItemId(ModBlocks.LIGHTSABER_WORKBENCH.get()).getPath() + (state.getValue(ModBlockStateProperties.TWO_PART).right() ? "_right" : "_left")))
                 .rotationY(state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.NORTH ? -90 : state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.WEST ? 180
                         : state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.EAST ? 0 : 90)
                 .uvLock(false)

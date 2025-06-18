@@ -1,7 +1,7 @@
 package mod.syconn.swm.server;
 
 import dev.architectury.event.events.common.PlayerEvent;
-import mod.syconn.swm.addons.LightsaberContent;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.util.server.SyncedResourceManager;
 import net.minecraft.server.level.ServerPlayer;
 

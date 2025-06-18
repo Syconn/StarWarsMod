@@ -8,8 +8,6 @@ public final class StarWarsFabricClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        StarWarsClient.setup();
-
         ClientTickEvents.END_CLIENT_TICK.register(client -> StarWarsClient.onClientTick(client.player));
     }
 }

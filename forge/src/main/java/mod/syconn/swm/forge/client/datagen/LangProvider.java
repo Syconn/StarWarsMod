@@ -24,6 +24,6 @@ public class LangProvider extends LanguageProvider {
 
         addItem(ModItems.LIGHTSABER, "Lightsaber");
 
-        addBlock(ModBlocks.LIGHTSABER_WORKSTATION, "Lightsaber Workstation");
+        addBlock(ModBlocks.LIGHTSABER_WORKBENCH, "Lightsaber Workbench");
     }
 }

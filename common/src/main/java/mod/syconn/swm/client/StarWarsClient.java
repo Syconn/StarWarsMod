@@ -7,6 +7,7 @@ import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModKeys;
+import mod.syconn.swm.core.ModMenus;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.ThrownLightsaberRenderer;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
@@ -33,9 +34,11 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
     }
 
-    public static void setup() {
+    public static void setupEvent(Minecraft minecraft) {
         ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
                 ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
+
+        ModMenus.registerScreens();
     }
 
     public static void onClientTick(Player player) {

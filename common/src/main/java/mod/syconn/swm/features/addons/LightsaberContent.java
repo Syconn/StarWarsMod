@@ -1,4 +1,4 @@
-package mod.syconn.swm.addons;
+package mod.syconn.swm.features.addons;
 
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;

@@ -1,6 +1,6 @@
 package mod.syconn.swm.features.lightsaber.data;
 
-import mod.syconn.swm.addons.LightsaberContent;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.math.Ease;

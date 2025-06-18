@@ -2,8 +2,8 @@ package mod.syconn.swm.network;
 
 import dev.architectury.networking.NetworkChannel;
 import mod.syconn.swm.network.packets.SyncResourceDataPacket;
-import mod.syconn.swm.network.packets.ThrowLightsaberPacket;
-import mod.syconn.swm.network.packets.ToggleLightsaberPacket;
+import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
+import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.util.Constants;
 
 public class Network {

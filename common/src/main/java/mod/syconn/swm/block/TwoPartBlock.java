@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -31,13 +30,13 @@ public abstract class TwoPartBlock extends HorizontalDirectionalBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(PART, TwoPart.RIGHT));
     }
 
-    private static Direction getNeighbourDirection(TwoPart part, Direction direction) {
-        return part == TwoPart.RIGHT ? direction : direction.getOpposite();
+    protected static Direction getOtherPart(BlockState state) {
+        return state.getValue(PART) == TwoPart.RIGHT ? state.getValue(FACING) : state.getValue(FACING).getOpposite();
     }
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if (direction == getNeighbourDirection(state.getValue(PART), state.getValue(FACING))) return neighborState.is(this)
+        if (direction == getOtherPart(state)) return neighborState.is(this)
                 && neighborState.getValue(PART) != state.getValue(PART)
                 ? super.updateShape(state, direction, neighborState, level, pos, neighborPos) : Blocks.AIR.defaultBlockState();
         return super.updateShape(state, direction, neighborState, level, pos, neighborPos);

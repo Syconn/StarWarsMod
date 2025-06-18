@@ -1,4 +1,4 @@
-package mod.syconn.swm.network.packets;
+package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
