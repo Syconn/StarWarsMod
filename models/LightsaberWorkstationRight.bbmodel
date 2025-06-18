@@ -6,7 +6,7 @@
 	},
 	"name": "LightsaberWorkstationRight",
 	"parent": "",
-	"java_block_version": "1.21.6",
+	"java_block_version": "1.9.0",
 	"ambientocclusion": true,
 	"front_gui_light": false,
 	"visible_box": [1, 1, 0],
@@ -155,7 +155,7 @@
 			"to": [4.8, 14.8, 6],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -198,7 +198,7 @@
 			"to": [4.9, 14.9, 4.5],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -241,7 +241,7 @@
 			"to": [5, 15, 6.25],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -284,7 +284,7 @@
 			"to": [4.65, 14.65, 8.8],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -327,7 +327,7 @@
 			"to": [4.75, 14.75, 11.3],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -370,7 +370,7 @@
 			"to": [4.85, 14.85, 12.05],
 			"autouv": 0,
 			"color": 8,
-			"rotation": [0, -30, 0],
+			"rotation": [0, -22.5, 0],
 			"origin": [4.4, 14.4, 7.9625],
 			"faces": {
 				"north": {
@@ -851,7 +851,7 @@
 			"to": [11, 16.5, 9.5],
 			"autouv": 0,
 			"color": 2,
-			"rotation": [17.5, 0, 0],
+			"rotation": [22.5, 0, 0],
 			"origin": [10, 15.5, 9],
 			"faces": {
 				"north": {
@@ -894,7 +894,7 @@
 			"to": [11, 16.5, 7.5],
 			"autouv": 0,
 			"color": 2,
-			"rotation": [-17.5, 0, 0],
+			"rotation": [-22.5, 0, 0],
 			"origin": [10, 15.5, 7],
 			"faces": {
 				"north": {
@@ -934,7 +934,7 @@
 			"uuid": "ab50d0ce-dd5c-5560-0c10-a2c03772a175",
 			"export": true,
 			"mirror_uv": false,
-			"isOpen": false,
+			"isOpen": true,
 			"locked": false,
 			"visibility": true,
 			"autouv": 0,
@@ -947,11 +947,11 @@
 					"uuid": "b68b8054-2078-dc65-d283-441cb58cacdf",
 					"export": true,
 					"mirror_uv": false,
-					"isOpen": false,
+					"isOpen": true,
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,
-					"selected": false,
+					"selected": true,
 					"children": ["f8d42e1a-3709-9504-7262-8c739779c319", "37f25bc8-6518-b80d-edc6-068d153fc19a", "22bbb810-abba-1fbe-6cc2-2e99c02a0c44"]
 				},
 				{
@@ -1006,7 +1006,7 @@
 					"uuid": "1f8a37e2-3687-e30d-d342-03f2939968ac",
 					"export": true,
 					"mirror_uv": false,
-					"isOpen": true,
+					"isOpen": false,
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,

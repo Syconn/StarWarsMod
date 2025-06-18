@@ -9,12 +9,17 @@ import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import static mod.syconn.swm.util.Constants.MOD;
 
@@ -23,6 +28,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(MOD, Registries.ITEM);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(MOD, Registries.CREATIVE_MODE_TAB);
 
+    public static final List<RegistrySupplier<Item>> BLOCK_ITEMS = new ArrayList<>();
+
     public static final RegistrySupplier<Item> LIGHTSABER = registerItem("lightsaber", LightsaberItem::new);
 
     public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(
@@ -30,6 +37,7 @@ public class ModItems {
 
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
         output.acceptAll(LightsaberContent.getLightsabers());
+        output.acceptAll(BLOCK_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
     }
 
     @SuppressWarnings("unchecked")

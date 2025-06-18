@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class LightsaberDataGenerator implements DataProvider {
+public class LightsaberDataProvider implements DataProvider {
 
     private final PackOutput output;
     public final Map<String, LightsaberData> lightsaberData = new HashMap<>();
 
-    public LightsaberDataGenerator(PackOutput output) {
+    public LightsaberDataProvider(PackOutput output) {
         this.output = output;
     }
 
