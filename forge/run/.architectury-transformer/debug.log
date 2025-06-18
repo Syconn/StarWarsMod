@@ -104,9 +104,9 @@
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_1900676243_v2_forge_1_20_1_47_4_1_forge\dev\architectury\architectury-forge\9.2.14\architectury-forge-9.2.14.jar
-[Architectury Transformer] Read classpath in 1.195 s
+[Architectury Transformer] Read classpath in 1.148 s
 [Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar
-[Architectury Transformer DEBUG] Transforming 8 transformer(s) from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\9948685143935252348.jar: 
+[Architectury Transformer DEBUG] Transforming 8 transformer(s) from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar: 
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@3ce820c4
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@7d075ecf
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@44411fba
@@ -115,9 +115,9 @@
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@3578461a
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeForgeMod@790833c0
 [Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@1d352d3c
-[Architectury Transformer DEBUG] Transforming from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\9948685143935252348.jar with 8 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Transforming from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar with 8 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
@@ -134,8 +134,8 @@
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlocks with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModTags with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModEntities with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/addons/LightsaberContent with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 with maxs=true frames=true
@@ -151,9 +151,9 @@
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemStackMixin with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemInHandRendererMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemRendererMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/LevelRendererMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemInHandRendererMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/HumanoidModelMixin with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/Network with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/SyncResourceDataPacket with maxs=true frames=true
@@ -175,9 +175,9 @@
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Transform$State with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/ColorUtil with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Ease with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Transform with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/MathUtil$1 with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/ColorUtil$TintMode with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/MathUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Transform with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/NbtTools with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/ISerializable with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData with maxs=true frames=true
@@ -189,14 +189,14 @@
 [Architectury Transformer DEBUG] Found mixin config(s): swm.mixins.json
 [Architectury Transformer DEBUG] Appended Launch Argument: [--mixin.config, swm.mixins.json]
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\AppData\Local\Temp\9948685143935252348.jar
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar
 [Architectury Transformer] Listening at C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\Aidan\AppData\Local\Temp\9948685143935252348.jar] contains packages: mod.syconn.swm.util.client.model, mod.syconn.swm.features.lightsaber.blockentity, mod.syconn.swm.features.lightsaber.data, mod.syconn.swm.util.client, mod.syconn.swm.util, mod.syconn.swm.util.server, mod.syconn.swm.util.client.render, mod.syconn.swm.features.lightsaber.network, mod.syconn.swm, mod.syconn.swm.network, mod.syconn.swm.features.addons, mod.syconn.swm.util.nbt, mod.syconn.swm.util.block, mod.syconn.swm.block, mod.syconn.swm.util.math, mod.syconn.swm.server.containers.slot, mod.syconn.swm.features.lightsaber.entity, mod.syconn.swm.core, mod.syconn.swm.mixin, mod.syconn.swm.server, mod.syconn.swm.features.lightsaber.block, mod.syconn.swm.client.keys, mod.syconn.swm.features.lightsaber.server.container, mod.syconn.swm.features.lightsaber.item, mod.syconn.swm.features.lightsaber.client, mod.syconn.swm.blockentity, mod.syconn.swm.client, mod.syconn.swm.network.packets, mod.syconn.swm.client.render.entity, mod.syconn.swm.util.json, mod.syconn.swm.features.lightsaber.client.screen
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar] contains packages: mod.syconn.swm.util.client.model, mod.syconn.swm.features.lightsaber.blockentity, mod.syconn.swm.features.lightsaber.data, mod.syconn.swm.util.client, mod.syconn.swm.util, mod.syconn.swm.util.server, mod.syconn.swm.util.client.render, mod.syconn.swm.features.lightsaber.network, mod.syconn.swm, mod.syconn.swm.network, mod.syconn.swm.features.addons, mod.syconn.swm.util.nbt, mod.syconn.swm.util.block, mod.syconn.swm.block, mod.syconn.swm.util.math, mod.syconn.swm.server.containers.slot, mod.syconn.swm.features.lightsaber.entity, mod.syconn.swm.core, mod.syconn.swm.mixin, mod.syconn.swm.server, mod.syconn.swm.features.lightsaber.block, mod.syconn.swm.client.keys, mod.syconn.swm.features.lightsaber.server.container, mod.syconn.swm.features.lightsaber.item, mod.syconn.swm.features.lightsaber.client, mod.syconn.swm.blockentity, mod.syconn.swm.client, mod.syconn.swm.network.packets, mod.syconn.swm.client.render.entity, mod.syconn.swm.util.json, mod.syconn.swm.features.lightsaber.client.screen
 [Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar
 [Architectury Transformer DEBUG] Classpath entry [C:\Users\Aidan\IdeaProjects\StarWarsMod\forge\build\resources\main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/StarWars.class to mod/syconn/swm/StarWars.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping with Dirty Mappings...
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
@@ -204,414 +204,945 @@
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/StarWars with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/StarWars in 103.8 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/StarWars in 89.67 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlocks.class to mod/syconn/swm/core/ModBlocks.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlocks with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlocks in 16.69 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlocks in 18.24 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/block/TwoPartBlock.class to mod/syconn/swm/block/TwoPartBlock.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/block/TwoPartBlock with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/TwoPartBlock in 16.37 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/TwoPartBlock in 20.68 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock in 6.600 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock in 19.61 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/blockentity/SyncedBlockEntity.class to mod/syconn/swm/blockentity/SyncedBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/SyncedBlockEntity with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 8.322 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 22.21 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class to mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 4.446 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 17.62 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModItems.class to mod/syconn/swm/core/ModItems.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModItems with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModItems in 5.135 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModItems in 14.43 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/item/LightsaberItem.class to mod/syconn/swm/features/lightsaber/item/LightsaberItem.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/item/LightsaberItem with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/item/LightsaberItem in 3.718 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/item/LightsaberItem in 5.774 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/IItemExtensions.class to mod/syconn/swm/util/client/IItemExtensions.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/IItemExtensions with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/IItemExtensions in 3.515 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/IItemExtensions in 4.652 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlockEntities.class to mod/syconn/swm/core/ModBlockEntities.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlockEntities with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlockEntities in 4.203 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlockEntities in 6.732 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModEntities.class to mod/syconn/swm/core/ModEntities.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModEntities with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModEntities in 2.487 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModEntities in 5.284 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class to mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber in 3.408 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber in 5.020 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModMenus.class to mod/syconn/swm/core/ModMenus.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModMenus in 3.809 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModMenus in 7.295 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/Network.class to mod/syconn/swm/network/Network.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/Network with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/Network in 4.914 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/Network in 4.344 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/Constants.class to mod/syconn/swm/util/Constants.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/Constants with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/Constants in 3.497 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/Constants in 4.401 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket in 4.773 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket in 5.794 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket in 2.981 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket in 5.219 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/SyncResourceDataPacket.class to mod/syconn/swm/network/packets/SyncResourceDataPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/SyncResourceDataPacket with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/SyncResourceDataPacket in 2.915 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/SyncResourceDataPacket in 4.533 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/addons/LightsaberContent.class to mod/syconn/swm/features/addons/LightsaberContent.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/addons/LightsaberContent with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/addons/LightsaberContent in 4.060 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/addons/LightsaberContent in 4.597 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/json/JsonResourceReloader.class to mod/syconn/swm/util/json/JsonResourceReloader.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonResourceReloader with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonResourceReloader in 4.481 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonResourceReloader in 4.470 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData.class to mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData in 3.698 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData in 2.533 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberData.class to mod/syconn/swm/features/lightsaber/data/LightsaberData.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberData with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberData in 6.545 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberData in 3.365 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/nbt/ISerializable.class to mod/syconn/swm/util/nbt/ISerializable.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/ISerializable with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/ISerializable in 6.549 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/ISerializable in 2.401 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/StarWarsClient.class to mod/syconn/swm/client/StarWarsClient.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/StarWarsClient with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/StarWarsClient in 5.098 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/StarWarsClient in 3.000 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/render/IModifiedItemRenderer.class to mod/syconn/swm/util/client/render/IModifiedItemRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedItemRenderer with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedItemRenderer in 3.780 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedItemRenderer in 2.557 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/render/IModifiedPoseRenderer.class to mod/syconn/swm/util/client/render/IModifiedPoseRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedPoseRenderer with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedPoseRenderer in 3.674 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedPoseRenderer in 2.124 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class to mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/LightsaberItemRender with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/LightsaberItemRender in 2.208 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/LightsaberItemRender in 2.438 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModKeys.class to mod/syconn/swm/core/ModKeys.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModKeys with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModKeys in 2.720 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModKeys in 2.404 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer.class to mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer in 3.163 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer in 3.221 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/StarWarsServer.class to mod/syconn/swm/server/StarWarsServer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/StarWarsServer with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/StarWarsServer in 4.053 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/StarWarsServer in 3.408 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/block/ModBlockStateProperties.class to mod/syconn/swm/util/block/ModBlockStateProperties.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/ModBlockStateProperties with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/ModBlockStateProperties in 4.814 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/ModBlockStateProperties in 3.410 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/block/TwoPart.class to mod/syconn/swm/util/block/TwoPart.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/TwoPart with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/TwoPart in 2.787 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/TwoPart in 3.349 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class to mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu in 4.586 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu in 4.815 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/containers/slot/SpecificSlot.class to mod/syconn/swm/server/containers/slot/SpecificSlot.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/containers/slot/SpecificSlot with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/containers/slot/SpecificSlot in 4.998 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/containers/slot/SpecificSlot in 3.929 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/server/SyncedResourceManager.class to mod/syconn/swm/util/server/SyncedResourceManager.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager in 30.07 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager in 44.19 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class to mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen in 22.60 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen in 26.68 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/json/JsonUtils.class to mod/syconn/swm/util/json/JsonUtils.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonUtils with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonUtils in 3.019 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonUtils in 3.965 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/nbt/NbtTools.class to mod/syconn/swm/util/nbt/NbtTools.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/NbtTools with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/NbtTools in 9.934 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/NbtTools in 10.06 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/entity/PlasmaRenderer.class to mod/syconn/swm/client/render/entity/PlasmaRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/PlasmaRenderer with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/PlasmaRenderer in 12.02 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/keys/KeyHandler.class to mod/syconn/swm/client/keys/KeyHandler.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/keys/KeyHandler with maxs=true frames=true
-[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/keys/KeyHandler in 10.21 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
-[Architectury Transformer DEBUG] Remapping Classes:
-[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
-[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 in 58.98 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/PlasmaRenderer in 10.76 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberTag.class to mod/syconn/swm/features/lightsaber/data/LightsaberTag.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000002770709ebf8@1d855f
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
 [Architectury Transformer DEBUG] Remapping Classes:
 [Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
 [Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberTag with maxs=true frames=true
 [Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberTag in 13.20 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberTag in 11.24 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/keys/KeyHandler.class to mod/syconn/swm/client/keys/KeyHandler.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/keys/KeyHandler with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/keys/KeyHandler in 12.09 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 in 19.13 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/entity/PlasmaRenderer.class to mod/syconn/swm/client/render/entity/PlasmaRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/PlasmaRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/PlasmaRenderer in 7.792 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/StarWarsClient.class to mod/syconn/swm/client/StarWarsClient.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/StarWarsClient with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/StarWarsClient in 3.967 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/render/IModifiedItemRenderer.class to mod/syconn/swm/util/client/render/IModifiedItemRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedItemRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedItemRenderer in 3.687 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/render/IModifiedPoseRenderer.class to mod/syconn/swm/util/client/render/IModifiedPoseRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedPoseRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/render/IModifiedPoseRenderer in 2.573 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/nbt/NbtTools.class to mod/syconn/swm/util/nbt/NbtTools.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/NbtTools with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/NbtTools in 3.340 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class to mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/LightsaberItemRender with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/LightsaberItemRender in 3.459 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModKeys.class to mod/syconn/swm/core/ModKeys.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModKeys with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModKeys in 3.354 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/keys/KeyHandler.class to mod/syconn/swm/client/keys/KeyHandler.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/keys/KeyHandler with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/keys/KeyHandler in 2.685 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer.class to mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer in 2.299 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlocks.class to mod/syconn/swm/core/ModBlocks.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlocks with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlocks in 2.361 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/server/SyncedResourceManager.class to mod/syconn/swm/util/server/SyncedResourceManager.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager in 2.292 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/block/TwoPartBlock.class to mod/syconn/swm/block/TwoPartBlock.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/block/TwoPartBlock with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/TwoPartBlock in 2.618 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlockEntities.class to mod/syconn/swm/core/ModBlockEntities.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlockEntities with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlockEntities in 2.208 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModEntities.class to mod/syconn/swm/core/ModEntities.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModEntities with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModEntities in 2.004 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class to mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber in 2.335 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModMenus.class to mod/syconn/swm/core/ModMenus.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModMenus in 2.051 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/Network.class to mod/syconn/swm/network/Network.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/network/Network with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/Network in 1.894 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/StarWarsServer.class to mod/syconn/swm/server/StarWarsServer.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/StarWarsServer with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/StarWarsServer in 1.829 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/Constants.class to mod/syconn/swm/util/Constants.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/Constants with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/Constants in 1.724 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/block/ModBlockStateProperties.class to mod/syconn/swm/util/block/ModBlockStateProperties.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/ModBlockStateProperties with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/ModBlockStateProperties in 1.803 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/block/TwoPart.class to mod/syconn/swm/util/block/TwoPart.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/TwoPart with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/block/TwoPart in 2.170 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket in 1.965 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/json/JsonUtils.class to mod/syconn/swm/util/json/JsonUtils.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonUtils with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonUtils in 2.608 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/blockentity/SyncedBlockEntity.class to mod/syconn/swm/blockentity/SyncedBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/SyncedBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 4.061 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberTag.class to mod/syconn/swm/features/lightsaber/data/LightsaberTag.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberTag with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberTag in 3.014 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class to mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 2.727 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class to mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen in 2.139 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class to mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu in 2.407 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket in 2.705 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/SyncResourceDataPacket.class to mod/syconn/swm/network/packets/SyncResourceDataPacket.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/SyncResourceDataPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/SyncResourceDataPacket in 2.056 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock in 1.987 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 in 1.917 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/addons/LightsaberContent.class to mod/syconn/swm/features/addons/LightsaberContent.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/addons/LightsaberContent with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/addons/LightsaberContent in 2.307 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData.class to mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData in 1.758 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModItems.class to mod/syconn/swm/core/ModItems.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModItems with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModItems in 2.316 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/json/JsonResourceReloader.class to mod/syconn/swm/util/json/JsonResourceReloader.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonResourceReloader with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/json/JsonResourceReloader in 2.504 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/containers/slot/SpecificSlot.class to mod/syconn/swm/server/containers/slot/SpecificSlot.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/containers/slot/SpecificSlot with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/containers/slot/SpecificSlot in 1.885 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/client/IItemExtensions.class to mod/syconn/swm/util/client/IItemExtensions.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/IItemExtensions with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/client/IItemExtensions in 1.870 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/item/LightsaberItem.class to mod/syconn/swm/features/lightsaber/item/LightsaberItem.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/item/LightsaberItem with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/item/LightsaberItem in 2.269 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/util/nbt/ISerializable.class to mod/syconn/swm/util/nbt/ISerializable.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/ISerializable with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/util/nbt/ISerializable in 1.886 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/StarWars.class to mod/syconn/swm/StarWars.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/StarWars with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/StarWars in 2.220 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberData.class to mod/syconn/swm/features/lightsaber/data/LightsaberData.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberData with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberData in 2.881 ms
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar
+[Architectury Transformer] Detected File Modification at swm-common-2.0.1-dev.jar
+[Architectury Transformer DEBUG] Transforming 8 transformer(s) from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@3ce820c4
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@7d075ecf
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@44411fba
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@fdd7085
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeAnnotations@724e8fba
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment@3578461a
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeForgeMod@790833c0
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.FixForgeMixin@1d352d3c
+[Architectury Transformer DEBUG] Transforming from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar to C:\Users\Aidan\AppData\Local\Temp\16723481070653468114.jar with 8 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing generatedgenerated_22789e9/generated_22789e9 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing architectury_inject_StarWarsMod_forge_8046608bfac74e7791e9074d1388629b_f87a8ac0bf81f2677a09dfc5d21a42c1227dbc5f741777f651bf95c42c16aca8swmcommon201devjar/PlatformMethods with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/StarWars with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/block/TwoPartBlock with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/SyncedBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/StarWarsClient with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/keys/KeyHandler with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/PlasmaRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModItems with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlockEntities with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModDamageSources with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlocks with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModKeys with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModTags with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModEntities with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/addons/LightsaberContent with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/ThrownLightsaberRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/LightsaberItemRender with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberTag with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberData with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/item/LightsaberItem with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemRendererMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemInHandRendererMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/ItemStackMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/LevelRendererMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/mixin/HumanoidModelMixin with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/network/Network with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/SyncResourceDataPacket with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/StarWarsServer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/containers/slot/SpecificSlot with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/Constants with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/TwoPart with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/block/ModBlockStateProperties with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/PlasmaBuffer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/IItemExtensions with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/model/ModelUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedItemRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/IModifiedPoseRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/client/render/RenderUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonResourceReloader with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/json/JsonUtils with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/MathUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/ColorUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/ColorUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Transform$State with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Ease with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/MathUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/ColorUtil$TintMode with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/math/Transform with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/NbtTools with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/nbt/ISerializable with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager$ISyncedData with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/util/server/SyncedResourceManager with maxs=true frames=true
+[Architectury Transformer DEBUG] Checking whether /swm-common-common-refmap.json is a mixin config.
+[Architectury Transformer DEBUG] Checking whether /swm.mixins.json is a mixin config.
+[Architectury Transformer DEBUG] Checking whether /swm-common-common-refmap.json is a mixin config.
+[Architectury Transformer DEBUG] Checking whether /swm.mixins.json is a mixin config.
+[Architectury Transformer DEBUG] Found mixin config(s): swm.mixins.json
+[Architectury Transformer DEBUG] Injecting MixinConfigs into /META-INF/MANIFEST.MF
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Redefining mod.syconn.swm.blockentity.SyncedBlockEntity
+[Architectury Transformer DEBUG] Redefining mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/blockentity/SyncedBlockEntity.class to mod/syconn/swm/blockentity/SyncedBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/SyncedBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 4.077 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class to mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class with 8 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Remapping with 1 mapping provider(s):
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformForgeEnvironment$$Lambda$142/0x000001ba0109ebf8@1d855f
+[Architectury Transformer DEBUG] Remapping Classes:
+[Architectury Transformer DEBUG] net/fabricmc/api/EnvType -> net/minecraftforge/api/distmarker/Dist
+[Architectury Transformer DEBUG] net/fabricmc/api/Environment -> net/minecraftforge/api/distmarker/OnlyIn
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity with maxs=true frames=true
+[Architectury Transformer DEBUG] Remapping refmap from intermediary to srg: swm-forge-forge-refmap.json
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 2.358 ms
+[Architectury Transformer] Redefined 2 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar in 72.11 ms
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\common\build\devlibs\swm-common-2.0.1-dev.jar

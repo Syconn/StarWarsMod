@@ -13,6 +13,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     public LightsaberWorkbenchBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
+        this.container.addListener(listener -> markDirty());
     }
 
     @Override
