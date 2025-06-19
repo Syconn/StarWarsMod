@@ -1,4 +1,4 @@
-package mod.syconn.swm.forge.client.datagen;
+package mod.syconn.swm.forge.datagen;
 
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
 import mod.syconn.swm.forge.client.data.LightsaberDefaults;
