@@ -83,7 +83,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
     }
 
     public ItemStack getItem() {
-        return LightsaberTag.update(new LightsaberTag(this.entityData.get(LIGHTSABER_DATA)).change(new ItemStack(ModItems.LIGHTSABER.get())), tag -> tag.active = true);
+        return LightsaberTag.getTemporary(new LightsaberTag(entityData.get(LIGHTSABER_DATA)), true);
     }
 
     public boolean isNoGravity() {

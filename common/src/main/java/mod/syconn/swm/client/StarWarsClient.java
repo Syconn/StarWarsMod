@@ -2,13 +2,12 @@ package mod.syconn.swm.client;
 
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import mod.syconn.swm.client.keys.KeyHandler;
-import mod.syconn.swm.core.ModEntities;
-import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.core.ModKeys;
-import mod.syconn.swm.core.ModMenus;
+import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
+import mod.syconn.swm.features.lightsaber.client.LightsaberWorkbenchRenderer;
 import mod.syconn.swm.features.lightsaber.client.ThrownLightsaberRenderer;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -37,6 +36,8 @@ public class StarWarsClient {
     public static void setupEvent(Minecraft minecraft) {
         ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
                 ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
+
+        BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
 
         ModMenus.registerScreens();
     }

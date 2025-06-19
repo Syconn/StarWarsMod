@@ -38,7 +38,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
-        if (player instanceof ServerPlayer sp) {
+        if (player instanceof ServerPlayer sp && !player.isCrouching()) {
             var newPos = level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity ? pos : pos.relative(getOtherPart(state));
 
             if (level.getBlockEntity(newPos) instanceof LightsaberWorkbenchBlockEntity) {
@@ -55,10 +55,10 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
                         return new LightsaberWorkbenchMenu(i, inventory, newPos);
                     }
                 });
+                // player.awardStat(this.getOpenChestStat()); TODO MAYBE
             }
             return InteractionResult.SUCCESS;
         }
-// player.awardStat(this.getOpenChestStat()); TODO MAYBE
         return InteractionResult.PASS;
     }
 

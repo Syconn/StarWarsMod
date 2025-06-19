@@ -45,7 +45,8 @@
 					"texture": 0
 				},
 				"west": {
-					"uv": [0, 0, 16, 2]
+					"uv": [0, 0, 16, 2],
+					"texture": 0
 				},
 				"up": {
 					"uv": [0, 0, 16, 16],
@@ -604,11 +605,11 @@
 			"light_emission": 0,
 			"render_order": "default",
 			"allow_mirror_modeling": true,
-			"from": [5, 14, 7],
-			"to": [7, 15, 9],
+			"from": [2, 14, 7],
+			"to": [4, 15, 9],
 			"autouv": 0,
 			"color": 2,
-			"origin": [5, 14, 7],
+			"origin": [2, 14, 7],
 			"faces": {
 				"north": {
 					"uv": [0, 0, 2, 2],
@@ -646,12 +647,12 @@
 			"light_emission": 0,
 			"render_order": "default",
 			"allow_mirror_modeling": true,
-			"from": [5, 14, 8.5],
-			"to": [7, 16.5, 9.5],
+			"from": [2, 14, 8.5],
+			"to": [4, 16.5, 9.5],
 			"autouv": 0,
 			"color": 2,
 			"rotation": [17.5, 0, 0],
-			"origin": [6, 15.5, 9],
+			"origin": [3, 15.5, 9],
 			"faces": {
 				"north": {
 					"uv": [0, 0, 1, 2.5],
@@ -689,12 +690,12 @@
 			"light_emission": 0,
 			"render_order": "default",
 			"allow_mirror_modeling": true,
-			"from": [5, 14, 6.5],
-			"to": [7, 16.5, 7.5],
+			"from": [2, 14, 6.5],
+			"to": [4, 16.5, 7.5],
 			"autouv": 0,
 			"color": 2,
 			"rotation": [-17.5, 0, 0],
-			"origin": [6, 15.5, 7],
+			"origin": [3, 15.5, 7],
 			"faces": {
 				"north": {
 					"uv": [0, 0, 1, 2.5],
@@ -800,7 +801,7 @@
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,
-					"selected": false,
+					"selected": true,
 					"children": ["23456ad9-5f86-b57a-5f90-b7bcbe1b5a99", "7a70b1df-ae20-cd2d-55f6-1ce785efe8ad", "c9ec3069-4870-c6bd-e16e-acc21d55330a"]
 				}
 			]

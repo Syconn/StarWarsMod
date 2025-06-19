@@ -19,7 +19,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
-public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer { // TODO FIX LIGHTSABER RENDER WITH NON LIGHSTABER OFFHAND
+public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
     @Override
     public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {

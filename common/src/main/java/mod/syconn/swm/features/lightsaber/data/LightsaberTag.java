@@ -1,5 +1,6 @@
 package mod.syconn.swm.features.lightsaber.data;
 
+import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
@@ -87,6 +88,20 @@ public class LightsaberTag {
         var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("mace")).toTag(2);
         lT.change(stack);
         return lT;
+    }
+
+    public ItemStack getTemporary(boolean active) {
+        return getTemporary(this, active);
+    }
+
+    public static ItemStack getTemporary(ItemStack original, boolean active) {
+        return getTemporary(LightsaberTag.getOrCreate(original), active);
+    }
+
+    public static ItemStack getTemporary(LightsaberTag original, boolean active) {
+        original.active = active;
+        var stack = new ItemStack(ModItems.LIGHTSABER.get());
+        return original.change(stack);
     }
 
     public CompoundTag save() {
