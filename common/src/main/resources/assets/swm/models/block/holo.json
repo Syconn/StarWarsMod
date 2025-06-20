@@ -2,12 +2,12 @@
 	"__comment": "Made in Blockbench by Syconn",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "stf:block/holo/outer_ring",
-		"1": "stf:block/holo/center_ring",
-		"2": "stf:block/holo/middle_ring",
-		"3": "stf:block/holo/projector",
-		"4": "stf:block/holo/arm",
-		"particle": "stf:block/holo/outer_ring"
+		"0": "swm:block/holo/outer_ring",
+		"1": "swm:block/holo/center_ring",
+		"2": "swm:block/holo/middle_ring",
+		"3": "swm:block/holo/projector",
+		"4": "swm:block/holo/arm",
+		"particle": "swm:block/holo/outer_ring"
 	},
 	"render_type": "minecraft:translucent",
 	"elements": [

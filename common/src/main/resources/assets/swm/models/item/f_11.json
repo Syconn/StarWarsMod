@@ -1,9 +1,9 @@
 {
 	"__comment": "Designed by Kondzikk01 with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"blaster1_texture": "stf:item/blaster1_texture",
-		"red_light": "stf:item/red_light",
-		"black": "stf:item/black"
+		"blaster1_texture": "swm:item/blaster1_texture",
+		"red_light": "swm:item/red_light",
+		"black": "swm:item/black"
 	},
 	"elements": [ 	 
 		{

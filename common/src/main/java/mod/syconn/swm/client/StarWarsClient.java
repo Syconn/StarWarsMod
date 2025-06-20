@@ -6,6 +6,8 @@ import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.core.*;
+import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
+import mod.syconn.swm.features.blaster.item.BlasterItem;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.LightsaberWorkbenchRenderer;
 import mod.syconn.swm.features.lightsaber.client.ThrownLightsaberRenderer;
@@ -24,8 +26,10 @@ public class StarWarsClient {
 
     public static void init() {
         IModifiedItemRenderer.register(LightsaberItem.class, new LightsaberItemRender());
+        IModifiedItemRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
+        IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
         KeyMappingRegistry.register(ModKeys.TOGGLE_ITEM);
         KeyMappingRegistry.register(ModKeys.POWER_1);

@@ -5,6 +5,7 @@ import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import mod.syconn.swm.features.addons.LightsaberContent;
+import mod.syconn.swm.features.blaster.item.BlasterItem;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -28,6 +29,7 @@ public class ModItems {
     public static final List<RegistrySupplier<Item>> BLOCK_ITEMS = new ArrayList<>();
 
     public static final RegistrySupplier<Item> LIGHTSABER = registerItem("lightsaber", LightsaberItem::new);
+    public static final RegistrySupplier<Item> F_11 = registerItem("f_11", BlasterItem::new);
 
     public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup." + MOD + ".star_wars"), () -> new ItemStack(LIGHTSABER.get())));
@@ -35,6 +37,7 @@ public class ModItems {
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
         output.acceptAll(LightsaberContent.getLightsabers());
         output.acceptAll(BLOCK_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
+        output.accept(F_11.get());
     }
 
     @SuppressWarnings("unchecked")
