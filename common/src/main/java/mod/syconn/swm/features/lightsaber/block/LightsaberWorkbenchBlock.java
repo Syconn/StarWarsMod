@@ -96,7 +96,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
     }
 
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick) : null;
+        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick) : null;
     }
 
     private BlockPos getBlockEntityPos(Level level, BlockPos pos, BlockState state) {

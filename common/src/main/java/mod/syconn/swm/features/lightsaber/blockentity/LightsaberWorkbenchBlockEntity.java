@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     private final SimpleContainer container = new SimpleContainer(1);
+    private int ticks = 1;
 
     public LightsaberWorkbenchBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
@@ -40,13 +41,13 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public ItemStack removeItem() {
-        return LightsaberTag.getTemporary(container.removeItem(0, 1), true);
+        return LightsaberTag.update(container.removeItem(0, 1), tag -> { if (!tag.active) tag.toggle(); });
     }
 
     public void addItem(Player player, InteractionHand hand) {
         container.addItem(player.getItemInHand(hand).copyWithCount(1));
         player.getItemInHand(hand).shrink(1);
-        LightsaberTag.update(container.getItem(0), LightsaberTag::toggle);
+        if (LightsaberTag.getOrCreate(container.getItem(0)).active) LightsaberTag.update(container.getItem(0), LightsaberTag::toggle);
     }
 
     public SimpleContainer getContainer() {
@@ -54,6 +55,11 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, LightsaberWorkbenchBlockEntity blockEntity) {
-        if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem) LightsaberTag.update(blockEntity.getContainer().getItem(0), LightsaberTag::tick);
+        if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem && blockEntity.ticks <= 0) {
+            LightsaberTag.update(blockEntity.getContainer().getItem(0), LightsaberTag::tick);
+            blockEntity.ticks = 1;
+            blockEntity.markDirty();
+        }
+        blockEntity.ticks--;
     }
 }
