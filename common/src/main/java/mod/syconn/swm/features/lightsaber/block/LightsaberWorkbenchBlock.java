@@ -1,32 +1,37 @@
 package mod.syconn.swm.features.lightsaber.block;
 
+import dev.architectury.hooks.item.ItemStackHooks;
 import dev.architectury.registry.menu.ExtendedMenuProvider;
 import dev.architectury.registry.menu.MenuRegistry;
 import mod.syconn.swm.block.TwoPartBlock;
+import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
+import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
+import mod.syconn.swm.util.block.EntityBlockExtended;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlock {
+public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended {
 
     public LightsaberWorkbenchBlock() {
         super(Properties.copy(Blocks.IRON_BLOCK).noOcclusion());
@@ -38,22 +43,32 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
-        if (player instanceof ServerPlayer sp && !player.isCrouching() && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity) {
-            MenuRegistry.openExtendedMenu(sp, new ExtendedMenuProvider() {
-                public void saveExtraData(FriendlyByteBuf buf) {
-                    buf.writeBlockPos(getBlockEntityPos(level, pos, state));
-                }
 
-                public Component getDisplayName() {
-                    return Component.literal("Lightsaber Workbench");
-                }
+        var useHand = player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof LightsaberItem ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        if (player instanceof ServerPlayer sp && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
+            if (!player.isCrouching() && blockEntity.hasItem()) {
+                MenuRegistry.openExtendedMenu(sp, new ExtendedMenuProvider() {
+                    public void saveExtraData(FriendlyByteBuf buf) {
+                        buf.writeBlockPos(getBlockEntityPos(level, pos, state));
+                    }
 
-                public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                    return new LightsaberWorkbenchMenu(i, inventory, getBlockEntityPos(level, pos, state));
-                }
-            });
-            // player.awardStat(this.getOpenChestStat()); TODO MAYBE
-            return InteractionResult.SUCCESS;
+                    public Component getDisplayName() {
+                        return Component.literal("Lightsaber Workbench");
+                    }
+
+                    public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+                        return new LightsaberWorkbenchMenu(i, inventory, getBlockEntityPos(level, pos, state));
+                    }
+                });
+                return InteractionResult.SUCCESS;
+            } else if (player.isCrouching() && blockEntity.hasItem()){
+                if (player.getItemInHand(useHand).isEmpty()) player.setItemSlot(useHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, blockEntity.removeItem());
+                else ItemStackHooks.giveItem(sp, blockEntity.removeItem());
+                return InteractionResult.SUCCESS;
+            } else if (player.getItemInHand(useHand).getItem() instanceof LightsaberItem && !blockEntity.hasItem()) {
+                blockEntity.addItem(player, useHand);
+                return InteractionResult.SUCCESS;
+            }
         }
         return InteractionResult.PASS;
     }
@@ -78,6 +93,10 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
         super.triggerEvent(state, level, pos, id, param);
         BlockEntity blockEntity = level.getBlockEntity(pos);
         return blockEntity != null && blockEntity.triggerEvent(id, param);
+    }
+
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick) : null;
     }
 
     private BlockPos getBlockEntityPos(Level level, BlockPos pos, BlockState state) {

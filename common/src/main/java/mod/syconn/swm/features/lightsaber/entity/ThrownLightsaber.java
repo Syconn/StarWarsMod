@@ -27,7 +27,7 @@ import net.minecraft.world.phys.EntityHitResult;
 public class ThrownLightsaber extends ThrowableProjectile {
 
     private static final EntityDataAccessor<CompoundTag> LIGHTSABER_DATA = SynchedEntityData.defineId(ThrownLightsaber.class, EntityDataSerializers.COMPOUND_TAG);
-    private InteractionHand hand = InteractionHand.MAIN_HAND;
+    private InteractionHand hand;
     private boolean returning = false;
 
     public ThrownLightsaber(EntityType<? extends ThrownLightsaber> entityType, Level level) {
@@ -60,7 +60,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
 
             if (this.distanceTo(getOwner()) <= 2.5f && !this.level().isClientSide && returning) {
                 if (this.getOwner() instanceof Player player && !player.isCreative()) {
-                    if (hand == InteractionHand.OFF_HAND && player.getItemInHand(hand).isEmpty()) player.setItemSlot(EquipmentSlot.OFFHAND, this.getItem());
+                    if (player.getItemInHand(hand).isEmpty()) player.setItemSlot(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, this.getItem());
                     else if (player instanceof ServerPlayer sp) ItemStackHooks.giveItem(sp, this.getItem());
                 }
                 this.discard();
