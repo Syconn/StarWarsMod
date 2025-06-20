@@ -9,7 +9,6 @@
     "ItemRendererMixin",
     "LevelRendererMixin"
   ],
-  "refmap": "swm.mixins.refmap.json",
   "mixins": [
     "ItemStackMixin"
   ],
