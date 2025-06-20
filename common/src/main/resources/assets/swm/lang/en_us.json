@@ -1,6 +1,8 @@
 {
+  "block.swm.lightsaber_workbench": "Lightsaber Workbench",
   "item.swm.lightsaber": "Lightsaber",
   "itemGroup.swm.star_wars": "Star Wars",
   "key.categories.swm": "Star Wars Controls",
-  "swm.key.toggle": "Toggle Held Item"
+  "key.swm.power_1": "Use Force Power 1",
+  "key.swm.toggle_item": "Toggle Held Item"
 }

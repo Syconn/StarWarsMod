@@ -8,10 +8,11 @@
     "Syconn"
   ],
   "contact": {
-    "homepage": ""
+    "homepage": "https://modrinth.com/mod/syconns-star-wars-mod",
+    "issues": "https://github.com/Syconn/StarWarsMod/issues/new"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/swm/icon.png",
+  "icon": "StarWarsMod.png",
   "environment": "*",
   "entrypoints": {
     "main": [

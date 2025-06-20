@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.test.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/StarWarsMod.forge.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/mod.syconn.swm.StarWarsMod.forge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/mod.syconn.swm.StarWarsMod.forge.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/forge/mod.syconn.swm.StarWarsMod.forge.test.iml" filepath="$PROJECT_DIR$/.idea/modules/forge/mod.syconn.swm.StarWarsMod.forge.test.iml" />
     </modules>
   </component>
 </project>
