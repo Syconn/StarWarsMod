@@ -13,6 +13,9 @@ loom {
 
     forge {
         mixinConfig "swm.mixins.json"
+        mixin {
+            add sourceSets.main, "swm.mixins.refmap.json"
+        }
     }
 
     runs {
