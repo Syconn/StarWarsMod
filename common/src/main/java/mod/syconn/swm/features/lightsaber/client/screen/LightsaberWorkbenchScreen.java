@@ -1,6 +1,7 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
 import com.mojang.blaze3d.platform.Lighting;
+import com.mojang.math.Axis;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.Constants;
@@ -36,29 +37,28 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        int i = (this.width - this.imageWidth) / 2;
-        int j = (this.height - this.imageHeight) / 2;
-
         this.renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        renderLightsaber(guiGraphics, i + 51, j + 75);
+        renderLightsaber(guiGraphics);
     }
 
-    public void renderLightsaber(GuiGraphics guiGraphics, int x, int y) {
+    public void renderLightsaber(GuiGraphics guiGraphics) {
+        var i = (this.width - this.imageWidth) / 2;
+        var j = (this.height - this.imageHeight) / 2;
         var level = this.minecraft.level;
         var stack = LightsaberTag.getTemporary(getMenu().getBlockEntity().getContainer().getItem(0).copy(), false);
         var lT = LightsaberTag.getOrCreate(stack);
-        var emitter = lT.emitterPositions.get(0);
 
         guiGraphics.pose().pushPose();
-//        guiGraphics.pose().translate(pos.get(0), 0, pos.get(1));
-        guiGraphics.pose().translate(x, y, 50.0);
+        guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
+        guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
+//        guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
         guiGraphics.pose().scale(100, 100, 100);
         Lighting.setupFor3DItems();
 
-        if (!stack.isEmpty()) {
+        if (!getMenu().getBlockEntity().getContainer().getItem(0).isEmpty()) {
             var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
             if (!model.usesBlockLight()) Lighting.setupForFlatItems();
             Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);

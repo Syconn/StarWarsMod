@@ -1,4 +1,4 @@
-package mod.syconn.swm.features.lightsaber.client;
+package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -33,9 +33,9 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
 
             poseStack.pushPose();
             poseStack.translate(pos.get(0), 1, pos.get(1));
-            poseStack.translate(emitter.x, 0, emitter.z);
+//            poseStack.translate(emitter.x, 0, emitter.z);
             poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
-//            lT.getTemporary(false)
+
             itemRenderer.renderStatic(blockEntity.getContainer().getItem(0), ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
 
             poseStack.popPose();

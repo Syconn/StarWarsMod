@@ -32,7 +32,7 @@ public class PlasmaRenderer {
         final VertexConsumer vc = bufferSource.getBuffer(PLASMA);
 
         var totalLength = length * lengthScalar * 1.3f;
-        var shake = (1.1f - lengthScalar) * 0.004f;
+        var shake = (0.2f) * 0.004f;
 
         if (unstable) shake *= 2;
 
@@ -71,15 +71,16 @@ public class PlasmaRenderer {
         PlasmaBuffer.RENDER.invertCull(false);
     }
 
-    public static void renderDarksaber(ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, float baseLength, float lengthCoefficient, int glowHsv) {
+    public static void renderDarksaber(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, float length, float lengthScalar, int glowHsv) {
         final VertexConsumer vc = bufferSource.getBuffer(PLASMA);
 
-        var totalLength = baseLength * lengthCoefficient;
-        var shake = (1.1f - lengthCoefficient) * 0.004f;
+        var totalLength = length * lengthScalar;
+        var shake = (1.1f - lengthScalar) * 0.004f;
 
         double dX = (float) Constants.RANDOM.nextGaussian() * shake;
         double dY = (float) Constants.RANDOM.nextGaussian() * shake;
         poseStack.translate(dX, 0, dY);
+        poseStack.scale(3, 3, 3);
 
         PlasmaBuffer.RENDER.init(vc, poseStack.last(), 1, 1, 1, 1, overlay, light);
         renderDarkSaberGlow(totalLength, ColorUtil.hsvGetH(glowHsv), ColorUtil.hsvGetS(glowHsv), ColorUtil.hsvGetV(glowHsv));
@@ -139,7 +140,7 @@ public class PlasmaRenderer {
         PlasmaBuffer.RENDER.vertex(-size, -size, 0, nx, ny, nz, 0, 0);
     }
 
-    public static void renderGlow(float length, float radius, float glowHue, float glowSat, float glowVal, boolean unstable, boolean cap) {
+    private static void renderGlow(float length, float radius, float glowHue, float glowSat, float glowVal, boolean unstable, boolean cap) {
         if (length == 0) return;
 
         var thicknessBottom = radius * 0.018f;
@@ -156,7 +157,7 @@ public class PlasmaRenderer {
             var time = ((System.currentTimeMillis() - layer * 10) % Integer.MAX_VALUE) / 200f;
             var noise = (float) Constants.SIMPLEX.getValue(0, time);
 
-            var hueOffset = unstable ? (noise * 0.05f) : 0;
+            var hueOffset = unstable ? (noise * 0.025f) : 0;
 
             var x = MathUtil.remap(layer, mL, xL, minOutputLayer, 60);
             var alpha = getAlpha(x);
@@ -193,7 +194,7 @@ public class PlasmaRenderer {
         }
     }
 
-    public static void renderDarkSaberGlow(float bladeLength, float glowHue, float glowSat, float glowVal) {
+    private static void renderDarkSaberGlow(float bladeLength, float glowHue, float glowSat, float glowVal) {
         if (bladeLength == 0) return;
 
         var thicknessBottom = 0.02f;

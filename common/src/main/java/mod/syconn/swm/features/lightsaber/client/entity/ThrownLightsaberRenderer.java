@@ -1,4 +1,4 @@
-package mod.syconn.swm.features.lightsaber.client;
+package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
