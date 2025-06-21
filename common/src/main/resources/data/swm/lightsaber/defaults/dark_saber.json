@@ -2,12 +2,17 @@
   "color": -1,
   "emitterPositions": {
     "0": {
-      "x": -0.025,
-      "y": -0.15,
-      "z": 0.03
+      "qw": 0.0,
+      "qx": 0.0,
+      "qy": -1.0,
+      "qz": 0.0,
+      "scalar": 1.0,
+      "x": 0.0,
+      "y": -0.6,
+      "z": 0.0
     }
   },
-  "length": 1.2,
+  "length": 1.0,
   "model": 6,
   "radius": 1.0,
   "stable": true
