@@ -24,9 +24,8 @@ public class LightsaberTag {
     private final String STABLE = "stable";
     private final String ACTIVE = "active";
     private final String TRANSITION = "transition";
-    private final String LENGTH = "length";
-    private final String LENGTH_SCALAR = "length_scalar";
     private final String RADIUS = "radius";
+    private final String LENGTH_SCALAR = "lengthScalar";
     private final String COLOR = "color";
     private final String EMITTER_POSITIONS = "emitter_pos";
 
@@ -34,9 +33,8 @@ public class LightsaberTag {
     public int model;
     public boolean stable;
     public boolean active;
+    public float lengthScalar;
     public byte transition;
-    public double length;
-    public double lengthScalar;
     public double radius;
     public int color;
     public List<Vec3> emitterPositions;
@@ -47,21 +45,18 @@ public class LightsaberTag {
         this.stable = tag.getBoolean(STABLE);
         this.active = tag.getBoolean(ACTIVE);
         this.transition = tag.getByte(TRANSITION);
-        this.length = tag.getDouble(LENGTH);
-        this.lengthScalar = tag.getDouble(LENGTH_SCALAR);
+        this.lengthScalar = tag.getFloat(LENGTH_SCALAR);
         this.radius = tag.getDouble(RADIUS);
         this.color = tag.getInt(COLOR);
         this.emitterPositions = NbtTools.getArray(tag.getCompound(EMITTER_POSITIONS), NbtTools::getVec3);
     }
 
-    public LightsaberTag(UUID uuid, int model, boolean stable, boolean active, byte transition, double length, double lengthScalar, double radius,
-                         int color, List<Vec3> emitterPositions) {
+    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, List<Vec3> emitterPositions) {
         this.uuid = uuid;
         this.model = model;
         this.stable = stable;
         this.active = active;
         this.transition = transition;
-        this.length = length;
         this.lengthScalar = lengthScalar;
         this.radius = radius;
         this.color = color;
@@ -85,7 +80,7 @@ public class LightsaberTag {
     }
 
     private static LightsaberTag create(ItemStack stack) {
-        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("mace")).toTag(2);
+        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("mace")).toTag();
         lT.change(stack);
         return lT;
     }
@@ -110,9 +105,8 @@ public class LightsaberTag {
         tag.putInt(MODEL, model);
         tag.putBoolean(STABLE, stable);
         tag.putBoolean(ACTIVE, active);
+        tag.putFloat(LENGTH_SCALAR, lengthScalar);
         tag.putByte(TRANSITION, transition);
-        tag.putDouble(LENGTH, length);
-        tag.putDouble(LENGTH_SCALAR, lengthScalar);
         tag.putDouble(RADIUS, radius);
         tag.putInt(COLOR, color);
         tag.put(EMITTER_POSITIONS, NbtTools.putArray(emitterPositions, NbtTools::putVec3));
