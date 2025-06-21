@@ -37,8 +37,8 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         var lT = LightsaberTag.getOrCreate(stack);
 
         if (renderMode != ItemDisplayContext.GUI) {
-            var handPos = !lT.emitterPositions.isEmpty() ? lT.emitterPositions.get(0) : new Vec3(0, 0, 0);
-            poseStack.translate(-handPos.x, -handPos.y, -handPos.z);
+            var bladePos = !lT.emitterPositions.isEmpty() ? lT.emitterPositions.get(0) : new Vec3(0, 0, 0);
+            poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
             PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(StarWarsClient.getTickDelta()), (float) lT.lengthScalar, (float) lT.radius, true, lT.color);
         }
     }

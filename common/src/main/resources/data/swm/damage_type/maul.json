@@ -1,0 +1,14 @@
+{
+  "color": 55423,
+  "emitterPositions": {
+    "0": {
+      "x": -0.025,
+      "y": -0.15,
+      "z": 0.03
+    }
+  },
+  "length": 1.2,
+  "model": 10,
+  "radius": 1.0,
+  "stable": true
+}
