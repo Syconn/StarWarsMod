@@ -2,13 +2,13 @@
   "color": 55423,
   "emitterPositions": {
     "0": {
-      "x": -0.025,
+      "x": 0.0,
       "y": -0.15,
-      "z": 0.03
+      "z": 0.0
     }
   },
-  "length": 1.2,
+  "length": 1.1,
   "model": 9,
   "radius": 1.0,
-  "stable": true
+  "stable": false
 }

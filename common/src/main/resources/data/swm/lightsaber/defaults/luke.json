@@ -2,12 +2,12 @@
   "color": 6029183,
   "emitterPositions": {
     "0": {
-      "x": 0.02,
-      "y": -0.025,
-      "z": 0.135
+      "x": 0.0,
+      "y": -0.05,
+      "z": 0.01
     }
   },
-  "length": 1.6,
+  "length": 1.1,
   "model": 1,
   "radius": 1.0,
   "stable": true

@@ -18,6 +18,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Quaternionf;
 
 public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
@@ -38,10 +39,10 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
 
         if (renderMode != ItemDisplayContext.GUI) {
 //            var bladePos = !lT.emitterPositions.isEmpty() ? lT.emitterPositions.get(0) : new Vec3(0, 0, 0);
-            var bladePos = new Vec3(0, -0.085, 0);
-            var lengthScalar = 1f;
+            var bladePos = new Vec3(0, 0.125, 0);
+            var lengthScalar = 1.2f;
             var stable = true;
-            poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
+            poseStack.translate(-bladePos.x, -0.125, -bladePos.z);
             PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !stable, lT.getSize(StarWarsClient.getTickDelta()), lengthScalar, (float) lT.radius, true, lT.color);
         }
     }

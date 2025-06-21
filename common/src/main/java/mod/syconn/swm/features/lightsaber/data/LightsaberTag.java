@@ -4,6 +4,7 @@ import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.client.model.NodeVec3;
 import mod.syconn.swm.util.math.Ease;
 import mod.syconn.swm.util.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
@@ -37,7 +38,7 @@ public class LightsaberTag {
     public byte transition;
     public double radius;
     public int color;
-    public List<Vec3> emitterPositions;
+    public List<NodeVec3> emitterPositions;
 
     public LightsaberTag(CompoundTag tag) {
         this.uuid = tag.hasUUID(UUID) ? tag.getUUID(UUID) : java.util.UUID.randomUUID();
@@ -48,10 +49,10 @@ public class LightsaberTag {
         this.lengthScalar = tag.getFloat(LENGTH_SCALAR);
         this.radius = tag.getDouble(RADIUS);
         this.color = tag.getInt(COLOR);
-        this.emitterPositions = NbtTools.getArray(tag.getCompound(EMITTER_POSITIONS), NbtTools::getVec3);
+        this.emitterPositions = NbtTools.getArray(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
     }
 
-    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, List<Vec3> emitterPositions) {
+    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, List<NodeVec3> emitterPositions) {
         this.uuid = uuid;
         this.model = model;
         this.stable = stable;
@@ -109,7 +110,7 @@ public class LightsaberTag {
         tag.putByte(TRANSITION, transition);
         tag.putDouble(RADIUS, radius);
         tag.putInt(COLOR, color);
-        tag.put(EMITTER_POSITIONS, NbtTools.putArray(emitterPositions, NbtTools::putVec3));
+        tag.put(EMITTER_POSITIONS, NbtTools.putArray(emitterPositions, NodeVec3::putNode));
         return tag;
     }
 

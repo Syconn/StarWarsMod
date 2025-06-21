@@ -50,10 +50,9 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         var level = this.minecraft.level;
         var stack = LightsaberTag.getTemporary(getMenu().getBlockEntity().getContainer().getItem(0).copy(), false);
         var lT = LightsaberTag.getOrCreate(stack);
-        var emitter = lT.emitterPositions.get(0);
 
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(i + 185, j + 36.5 + emitter.y, 50.0);
+        guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
         guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
 //        guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
         guiGraphics.pose().scale(100, 100, 100);

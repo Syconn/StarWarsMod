@@ -2741,12 +2741,12 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, 103, 0],
-			"translation": [0, -0.5, 0.75],
+			"translation": [0, -1.25, 0.75],
 			"scale": [0.75, 0.75, 0.74]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 103, 0],
-			"translation": [0, -0.5, 0.75],
+			"translation": [0, -1.25, 0.75],
 			"scale": [0.75, 0.75, 0.74]
 		},
 		"firstperson_righthand": {
