@@ -32,8 +32,8 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
             var pos = DirectionUtil.dataList(List.of(0.5, -0.2), List.of(0.5, 1.2), List.of(-0.2, 0.5), List.of(1.2, 0.5)).get(facing);
 
             poseStack.pushPose();
-            poseStack.translate(pos.get(0), 1.5, pos.get(1));
-            poseStack.translate(emitter.x, 0, emitter.z);
+            poseStack.translate(pos.get(0), 1, pos.get(1));
+//            poseStack.translate(emitter.x, 0, emitter.z);
             poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
 
             itemRenderer.renderStatic(blockEntity.getContainer().getItem(0), ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);

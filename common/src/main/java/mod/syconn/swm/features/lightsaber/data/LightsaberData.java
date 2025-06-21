@@ -16,7 +16,7 @@ import java.util.UUID;
 public record LightsaberData(int model, boolean stable, float lengthScalar, double radius, int color, List<Vec3> emitterPositions) implements ISerializable<CompoundTag> {
 
     public LightsaberTag toTag() {
-        return new LightsaberTag(UUID.randomUUID(), model, stable, true, (byte) 0, radius, color, emitterPositions);
+        return new LightsaberTag(UUID.randomUUID(), model, stable, lengthScalar, true, (byte) 0, radius, color, emitterPositions);
     }
 
     public ItemStack toItem() {

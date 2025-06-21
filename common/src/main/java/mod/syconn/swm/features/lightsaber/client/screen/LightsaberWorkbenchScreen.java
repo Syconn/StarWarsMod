@@ -59,7 +59,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         guiGraphics.pose().scale(100, 100, 100);
         Lighting.setupFor3DItems();
 
-        if (!stack.isEmpty()) {
+        if (!getMenu().getBlockEntity().getContainer().getItem(0).isEmpty()) {
             var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
             if (!model.usesBlockLight()) Lighting.setupForFlatItems();
             Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
