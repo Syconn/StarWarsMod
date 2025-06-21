@@ -47,7 +47,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
     }
 
     public static LightsaberData readTag(CompoundTag tag) {
-        return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getFloat("lengthScalar"), tag.getDouble("length"),tag.getInt("color"),
+        return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getFloat("lengthScalar"), tag.getDouble("radius"), tag.getInt("color"),
                 NbtTools.getArray(tag.getCompound("vectors"), NbtTools::getVec3));
     }
 
