@@ -2,6 +2,7 @@ package mod.syconn.swm.features.lightsaber.client.screen;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.math.Axis;
+import mod.syconn.swm.client.screen.components.ColoredScrollBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.Constants;
@@ -16,17 +17,28 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemDisplayContext;
 
+import java.util.Arrays;
+
 @Environment(EnvType.CLIENT)
 public class LightsaberWorkbenchScreen extends AbstractContainerScreen<LightsaberWorkbenchMenu> {
 
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
+    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
     private double deltaScroll = 0f;
 
     public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
         this.imageWidth = 256;
         this.imageHeight = 241;
+    }
+
+    protected void init() {
+        super.init();
+
+        addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, 185, false));
+        addRenderableWidget(scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, 100, false));
+        addRenderableWidget(scrollBars[2] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, 100, false));
     }
 
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
@@ -54,7 +66,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
         guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
-//        guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
+        guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
         guiGraphics.pose().scale(100, 100, 100);
         Lighting.setupFor3DItems();
 
@@ -66,6 +78,11 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         }
         guiGraphics.flush();
         guiGraphics.pose().popPose();
+    }
+
+    public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+        for (var bar : scrollBars) if (bar.isMouseOver(mouseX, mouseY)) bar.onDrag(mouseX, mouseY, dragX, dragY);
+        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
     }
 
     @Override

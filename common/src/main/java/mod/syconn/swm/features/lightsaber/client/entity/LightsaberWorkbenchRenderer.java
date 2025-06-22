@@ -18,6 +18,10 @@ import java.util.List;
 
 public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<LightsaberWorkbenchBlockEntity> {
 
+    // TODO
+    //  Purely for modifying the blades qualities and components
+    //  Not for building or constructing a lightsaber
+
     private final ItemRenderer itemRenderer;
 
     public LightsaberWorkbenchRenderer(BlockEntityRendererProvider.Context context) {
@@ -27,13 +31,10 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
     public void render(LightsaberWorkbenchBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         if (!blockEntity.getContainer().getItem(0).isEmpty() && blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem) {
             var facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-            var lT = LightsaberTag.getOrCreate(blockEntity.getContainer().getItem(0));
-            var emitter = lT.emitterPositions.get(0);
-            var pos = DirectionUtil.dataList(List.of(0.5, -0.2), List.of(0.5, 1.2), List.of(-0.2, 0.5), List.of(1.2, 0.5)).get(facing);
+            var pos = DirectionUtil.dataList(List.of(0.5f, -0.3f), List.of(0.5f, 1.3f), List.of(-0.3f, 0.5f), List.of(1.3f, 0.5f)).get(facing);
 
             poseStack.pushPose();
             poseStack.translate(pos.get(0), 1, pos.get(1));
-//            poseStack.translate(emitter.x, 0, emitter.z);
             poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
 
             itemRenderer.renderStatic(blockEntity.getContainer().getItem(0), ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
