@@ -1,5 +1,5 @@
 {
-  "color": 13434751,
+  "color": 2873471,
   "emitterPositions": {
     "0": {
       "qw": 1.0,
@@ -8,12 +8,12 @@
       "qz": 0.0,
       "scalar": 1.0,
       "x": 0.0,
-      "y": 0.085,
+      "y": 0.0,
       "z": 0.0
     }
   },
-  "length": 1.2,
-  "model": 2,
+  "length": 1.1,
+  "model": 7,
   "radius": 1.0,
   "stable": true
 }
