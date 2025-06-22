@@ -4,8 +4,10 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.math.Axis;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.math.ColorUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -17,15 +19,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemDisplayContext;
 
-import java.util.Arrays;
-
 @Environment(EnvType.CLIENT)
 public class LightsaberWorkbenchScreen extends AbstractContainerScreen<LightsaberWorkbenchMenu> {
 
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
-    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
-    private double deltaScroll = 0f;
+    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[1];
+    private double deltaScroll = 0;
+    private float hue = 0, saturation = 0, value = 0;
 
     public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -33,14 +34,16 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         this.imageHeight = 241;
     }
 
+    @Override
     protected void init() {
         super.init();
+        getLightsaberColor();
 
-        addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, 185, false));
-        addRenderableWidget(scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, 100, false));
-        addRenderableWidget(scrollBars[2] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, 100, false));
+        addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, hue * 355,
+                f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value)));
     }
 
+    @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
@@ -56,40 +59,57 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         renderLightsaber(guiGraphics);
     }
 
-    public void renderLightsaber(GuiGraphics guiGraphics) {
-        var i = (this.width - this.imageWidth) / 2;
-        var j = (this.height - this.imageHeight) / 2;
-        var level = this.minecraft.level;
-        var stack = LightsaberTag.getTemporary(getMenu().getBlockEntity().getContainer().getItem(0).copy(), false);
-        var lT = LightsaberTag.getOrCreate(stack);
-
-        guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
-        guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
-        guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
-        guiGraphics.pose().scale(100, 100, 100);
-        Lighting.setupFor3DItems();
-
-        if (!getMenu().getBlockEntity().getContainer().getItem(0).isEmpty()) {
-            var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
-            if (!model.usesBlockLight()) Lighting.setupForFlatItems();
-            Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
-            if (!model.usesBlockLight()) Lighting.setupFor3DItems();
-        }
-        guiGraphics.flush();
-        guiGraphics.pose().popPose();
-    }
-
+    @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
-        for (var bar : scrollBars) if (bar.isMouseOver(mouseX, mouseY)) bar.onDrag(mouseX, mouseY, dragX, dragY);
+        for (var bar : scrollBars) if (bar != null && bar.isMouseOver(mouseX, mouseY)) bar.onDrag(mouseX, mouseY, dragX, dragY);
         return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) { }
 
+    @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
         this.deltaScroll = delta;
         return super.mouseScrolled(mouseX, mouseY, delta);
+    }
+
+    private void getLightsaberColor() { // TODO IF BLADE CHANGES THIS WONT WORK
+        if (getMenu().getBlockEntity().getContainer().getItem(0).getItem() instanceof LightsaberItem) {
+            setColor(LightsaberTag.getOrCreate(getMenu().getBlockEntity().getContainer().getItem(0)).color);
+        }
+    }
+
+    private void setColor(int color) {
+        this.hue = ColorUtil.hsvGetH(color);
+        this.saturation = ColorUtil.hsvGetS(color);
+        this.value = ColorUtil.hsvGetV(color);
+    }
+
+    private void renderLightsaber(GuiGraphics guiGraphics) {
+        var i = (this.width - this.imageWidth) / 2;
+        var j = (this.height - this.imageHeight) / 2;
+        if (this.minecraft != null) {
+            var level = this.minecraft.level;
+            var stack = getMenu().getBlockEntity().getContainer().getItem(0).copy();
+            var lT = LightsaberTag.getOrCreate(stack);
+
+            guiGraphics.pose().pushPose();
+            guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
+            guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
+            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
+            guiGraphics.pose().scale(100, 100, 100);
+            Lighting.setupFor3DItems();
+
+            if (!getMenu().getBlockEntity().getContainer().getItem(0).isEmpty()) {
+                var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
+                if (!model.usesBlockLight()) Lighting.setupForFlatItems();
+                Minecraft.getInstance().getItemRenderer().render(lT.getTemporary(true, true), ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
+                        15728880, OverlayTexture.NO_OVERLAY, model);
+                if (!model.usesBlockLight()) Lighting.setupFor3DItems();
+            }
+            guiGraphics.flush();
+            guiGraphics.pose().popPose();
+        }
     }
 }

@@ -1,12 +1,15 @@
 package mod.syconn.swm.client.screen.components;
 
-import mod.syconn.swm.util.client.IGuiGraphics;
+import mod.syconn.swm.util.client.GraphicsUtil;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
 import java.text.DecimalFormat;
@@ -14,6 +17,8 @@ import java.text.DecimalFormat;
 public class ScrollWidget extends AbstractSliderButton {
     private static final ResourceLocation SLIDER_LOCATION = new ResourceLocation("textures/gui/slider.png");
 
+    @Nullable
+    protected final OnChange onChange;
     protected Component prefix;
     protected Component suffix;
 
@@ -26,8 +31,9 @@ public class ScrollWidget extends AbstractSliderButton {
 
     private final DecimalFormat format;
 
-    public ScrollWidget(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, double stepSize, int precision, boolean drawString) {
+    public ScrollWidget(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, double stepSize, int precision, boolean drawString, @Nullable OnChange onChange) {
         super(x, y, width, height, Component.empty(), 0D);
+        this.onChange = onChange;
         this.prefix = prefix;
         this.suffix = suffix;
         this.minValue = minValue;
@@ -54,8 +60,8 @@ public class ScrollWidget extends AbstractSliderButton {
         this.updateMessage();
     }
 
-    public ScrollWidget(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, boolean drawString) {
-        this(x, y, width, height, prefix, suffix, minValue, maxValue, currentValue, 1D, 0, drawString);
+    public ScrollWidget(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, boolean drawString, OnChange onChange) {
+        this(x, y, width, height, prefix, suffix, minValue, maxValue, currentValue, 1D, 0, drawString, onChange);
     }
 
     public double getValue() {
@@ -129,13 +135,19 @@ public class ScrollWidget extends AbstractSliderButton {
     protected void updateMessage() {
         if (this.drawString) this.setMessage(Component.literal("").append(prefix).append(this.getValueString()).append(suffix));
         else this.setMessage(Component.empty());
+        if (onChange != null) onChange.onChange(this);
     }
 
     @Override
     protected void applyValue() {}
 
+    @Environment(EnvType.CLIENT)
+    public interface OnChange {
+        void onChange(ScrollWidget widget);
+    }
+
     private int getTextureY() {
-        int i = this.isFocused() ? 1 : 0;
+        int i = this.isHovered ? 1 : 0;
         return i * 20;
     }
 
@@ -147,10 +159,14 @@ public class ScrollWidget extends AbstractSliderButton {
     @Override
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         final Minecraft mc = Minecraft.getInstance();
-        IGuiGraphics.blitWithBorder(guiGraphics, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
 
-        IGuiGraphics.blitWithBorder(guiGraphics, SLIDER_LOCATION, this.getX() + (int)(this.value * (double)(this.width - 8)), this.getY(), 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
+        renderBackground(guiGraphics);
+        GraphicsUtil.blitWithBorder(guiGraphics, SLIDER_LOCATION, this.getX() + (int)(this.value * (double)(this.width - 8)), this.getY(), 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
 
         renderScrollingString(guiGraphics, mc.font, 2, this.active ? 16777215 : 10526880 | Mth.ceil(this.alpha * 255.0F) << 24);
+    }
+
+    protected void renderBackground(GuiGraphics graphics) {
+        GraphicsUtil.blitWithBorder(graphics, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
     }
 }

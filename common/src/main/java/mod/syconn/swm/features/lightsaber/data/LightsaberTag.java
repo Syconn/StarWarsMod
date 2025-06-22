@@ -86,7 +86,8 @@ public class LightsaberTag {
         return lT;
     }
 
-    public ItemStack getTemporary(boolean active) {
+    public ItemStack getTemporary(boolean active, boolean singleBlade) {
+        if (singleBlade) this.emitterPositions = List.of(this.emitterPositions.get(0));
         return getTemporary(this, active);
     }
 

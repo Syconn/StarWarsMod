@@ -125,6 +125,10 @@ public class ColorUtil {
         return ((color & 0xFF00) >> 8) / 255f;
     }
 
+    public static float argbGetBf(int color) {
+        return (color & 0xFF) / 255f;
+    }
+
     public static float hsvGetH(int color) {
         return ((color & 0xFF0000) >> 16) / 255f;
     }
