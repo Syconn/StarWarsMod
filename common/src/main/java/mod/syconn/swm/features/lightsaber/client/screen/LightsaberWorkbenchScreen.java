@@ -2,6 +2,7 @@ package mod.syconn.swm.features.lightsaber.client.screen;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.math.Axis;
+import mod.syconn.swm.client.screen.components.ColoredButton;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -12,12 +13,15 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemDisplayContext;
+
+import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
 @Environment(EnvType.CLIENT)
 public class LightsaberWorkbenchScreen extends AbstractContainerScreen<LightsaberWorkbenchMenu> {
@@ -26,6 +30,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
     private double deltaScroll = 0;
+    private float rotation = -45f;
     private float hue = 0, saturation = 0, value = 0;
 
     public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) {
@@ -37,7 +42,6 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     @Override
     protected void init() {
         super.init();
-        getLightsaberColor();
 
         addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, hue * 355f,
                 f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value), b -> this.hue = b.getValueInt() / 355f));
@@ -45,6 +49,19 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
                 f -> ColorUtil.packHsv(this.hue, f / 161f, this.value), b -> this.saturation = b.getValueInt() / 100f));
         addRenderableWidget(scrollBars[2] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, value * 100f,
                 f -> ColorUtil.packHsv(this.hue, this.saturation, f / 161f), b -> this.value = b.getValueInt() / 100f));
+
+        getLightsaberColor();
+
+        addRenderableWidget(new ColoredButton(this.leftPos + 46, this.topPos + 122, "", BLUE, this::updateColorButton));
+        addRenderableWidget(new ColoredButton(this.leftPos + 74, this.topPos + 122, "", GREEN, this::updateColorButton));
+        addRenderableWidget(new ColoredButton(this.leftPos + 102, this.topPos + 122, "", YELLOW, this::updateColorButton));
+        addRenderableWidget(new ColoredButton(this.leftPos + 135, this.topPos + 122, "", WHITE, this::updateColorButton));
+        addRenderableWidget(new ColoredButton(this.leftPos + 163, this.topPos + 122, "", PURPLE, this::updateColorButton));
+        addRenderableWidget(new ColoredButton(this.leftPos + 191, this.topPos + 122, "", RED, this::updateColorButton));
+    }
+
+    private void updateColorButton(Button button) {
+        this.setColor(((ColoredButton) button).getHSV());
     }
 
     @Override
@@ -88,6 +105,10 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         this.hue = ColorUtil.hsvGetH(color);
         this.saturation = ColorUtil.hsvGetS(color);
         this.value = ColorUtil.hsvGetV(color);
+
+        this.scrollBars[0].setValue(hue * 355f);
+        this.scrollBars[1].setValue(saturation * 100f);
+        this.scrollBars[2].setValue(value * 100f);
     }
 
     private void renderLightsaber(GuiGraphics guiGraphics) {
@@ -98,10 +119,14 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             var stack = getMenu().getBlockEntity().getContainer().getItem(0).copy();
             var lT = LightsaberTag.getOrCreate(stack);
 
+            var rotInc = -10f;
+            rotation += (float) (rotInc * deltaScroll);
+            deltaScroll = 0;
+
             guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
+            guiGraphics.pose().translate(i + 165, j + 36.5, 50.0);
             guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
-            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-45f));
+            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(rotation));
             guiGraphics.pose().scale(100, 100, 100);
             Lighting.setupFor3DItems();
 
@@ -109,7 +134,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
                 var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
-                lT.color = ColorUtil.packHsv(hue, saturation, value);
+//                lT.color = ColorUtil.packHsv(hue, saturation, value);
                 Minecraft.getInstance().getItemRenderer().render(lT.getTemporary(true, true), ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
 
