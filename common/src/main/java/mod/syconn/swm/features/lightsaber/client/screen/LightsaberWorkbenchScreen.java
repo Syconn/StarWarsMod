@@ -41,6 +41,8 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
         addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, hue * 355,
                 f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value)));
+//        addRenderableWidget(scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, saturation * 100,
+//                f -> ColorUtil.packHsv(this.hue, (f * (100f / 161f)) / 360f, this.value)));
     }
 
     @Override
@@ -104,8 +106,11 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             if (!getMenu().getBlockEntity().getContainer().getItem(0).isEmpty()) {
                 var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
+
+                lT.color = ColorUtil.packHsv(hue, saturation, value);
                 Minecraft.getInstance().getItemRenderer().render(lT.getTemporary(true, true), ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
+
                 if (!model.usesBlockLight()) Lighting.setupFor3DItems();
             }
             guiGraphics.flush();

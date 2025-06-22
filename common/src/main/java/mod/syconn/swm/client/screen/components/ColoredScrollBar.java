@@ -17,7 +17,7 @@ public class ColoredScrollBar extends ScrollWidget {
     }
 
     protected void updateMessage() {
-        var hsv = packedHSV.apply(this.getValueInt());
+        var hsv = packedHSV != null ? packedHSV.apply((int) (getValueInt() / 355f * width)) : -1;
         var color = ColorUtil.hsvToRgbInt(ColorUtil.hsvGetH(hsv), ColorUtil.hsvGetS(hsv), ColorUtil.hsvGetV(hsv));
         if (this.drawString) this.setMessage(Component.literal(this.getValueString()).withStyle(Component.literal("").getStyle().withColor(color)));
         else this.setMessage(Component.empty());
