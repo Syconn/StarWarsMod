@@ -9,14 +9,9 @@ import org.joml.Quaternionf;
 
 import java.util.List;
 
-public class LightsaberDefaults {
+import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
-    public static final int GREEN = ColorUtil.packHsv(0.36f, 1f, 0.5f);
-    public static final int BLUE = ColorUtil.packHsv(0.6f, 0.85f, 0.5f);
-    public static final int PURPLE = ColorUtil.packHsv(0.8f, 1f, 0.5f);
-    public static final int YELLOW = ColorUtil.packHsv(0.17f, 0.85f, 0.5f);
-    public static final int RED = ColorUtil.packHsv(0f, 0.85f, 0.5f);
-    public static final int WHITE = ColorUtil.packHsv(0f, 0f, 0.85f);
+public class LightsaberDefaults {
 
     public enum LightsaberTypes {
         ANAKIN("anakin", new LightsaberData(0, true, 1.2f, 1, BLUE, List.of(new NodeVec3(0, -0.085, 0)))),

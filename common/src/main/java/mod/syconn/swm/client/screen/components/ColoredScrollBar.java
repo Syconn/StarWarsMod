@@ -11,8 +11,8 @@ public class ColoredScrollBar extends ScrollWidget {
 
     private final Function<Integer, Integer> packedHSV;
 
-    public ColoredScrollBar(int x, int y, int width, int height, String prefix, double minValue, double maxValue, double currentValue, Function<Integer, Integer> packedHSV) {
-        super(x, y, width, height, Component.literal(prefix), Component.empty(), minValue, maxValue, currentValue, true, null);
+    public ColoredScrollBar(int x, int y, int width, int height, String prefix, double minValue, double maxValue, double currentValue, Function<Integer, Integer> packedHSV, OnChange onChange) {
+        super(x, y, width, height, Component.literal(prefix), Component.empty(), minValue, maxValue, currentValue, true, onChange);
         this.packedHSV = packedHSV;
     }
 

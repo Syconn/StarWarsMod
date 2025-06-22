@@ -24,7 +24,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
-    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[1];
+    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
     private double deltaScroll = 0;
     private float hue = 0, saturation = 0, value = 0;
 
@@ -39,10 +39,12 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         super.init();
         getLightsaberColor();
 
-        addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, hue * 355,
-                f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value)));
-//        addRenderableWidget(scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, saturation * 100,
-//                f -> ColorUtil.packHsv(this.hue, (f * (100f / 161f)) / 360f, this.value)));
+        addRenderableWidget(scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, hue * 355f,
+                f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value), b -> this.hue = b.getValueInt() / 355f));
+        addRenderableWidget(scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, saturation * 100f,
+                f -> ColorUtil.packHsv(this.hue, f / 161f, this.value), b -> this.saturation = b.getValueInt() / 100f));
+        addRenderableWidget(scrollBars[2] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, value * 100f,
+                f -> ColorUtil.packHsv(this.hue, this.saturation, f / 161f), b -> this.value = b.getValueInt() / 100f));
     }
 
     @Override
