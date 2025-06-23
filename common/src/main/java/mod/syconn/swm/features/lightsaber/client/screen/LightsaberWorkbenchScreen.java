@@ -23,6 +23,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemDisplayContext;
 
+import java.util.UUID;
+
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
 @Environment(EnvType.CLIENT)
@@ -31,6 +33,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
     private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
+    private UUID itemId;
     private double deltaScroll = 0;
     private float rotation = -45f;
     private float hue = 0, saturation = 0, value = 0;
@@ -39,6 +42,10 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         super(menu, playerInventory, title);
         this.imageWidth = 256;
         this.imageHeight = 241;
+    }
+
+    protected void containerTick() {
+        super.containerTick();
     }
 
     @Override
@@ -97,9 +104,12 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         return super.mouseScrolled(mouseX, mouseY, delta);
     }
 
-    private void getLightsaberColor() { // TODO IF BLADE CHANGES THIS WONT WORK
-        if (getMenu().getBlockEntity().getContainer().getItem(0).getItem() instanceof LightsaberItem) {
-            setColor(LightsaberTag.getOrCreate(getMenu().getBlockEntity().getContainer().getItem(0)).color);
+    private void getLightsaberColor() {
+        var stack = getMenu().getBlockEntity().getContainer().getItem(0);
+        if (stack.getItem() instanceof LightsaberItem) {
+            var lT = LightsaberTag.getOrCreate(stack);
+            setColor(lT.color);
+            this.itemId = lT.uuid;
         }
     }
 
@@ -116,9 +126,10 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private void renderLightsaber(GuiGraphics guiGraphics) {
         var i = (this.width - this.imageWidth) / 2;
         var j = (this.height - this.imageHeight) / 2;
+
         if (this.minecraft != null) {
             var level = this.minecraft.level;
-            var stack = getMenu().getBlockEntity().getContainer().getItem(0).copy();
+            var stack = getMenu().getBlockEntity().getContainer().getItem(0);
             var lT = LightsaberTag.getOrCreate(stack);
 
             var rotInc = -10f;
@@ -126,7 +137,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             deltaScroll = 0;
 
             guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(i + 165, j + 36.5, 50.0);
+            guiGraphics.pose().translate(i + 185, j + 36.5, 50.0);
             guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(90f));
             guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(rotation));
             guiGraphics.pose().scale(100, 100, 100);
@@ -136,7 +147,9 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
                 var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
-                if (lT.color != ColorUtil.packHsv(hue, saturation, value)) updateLightsaberColor(lT);
+                if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
+                else if (lT.color != ColorUtil.packHsv(hue, saturation, value)) updateLightsaberColor(lT);
+
                 Minecraft.getInstance().getItemRenderer().render(lT.getTemporary(true, true), ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
 

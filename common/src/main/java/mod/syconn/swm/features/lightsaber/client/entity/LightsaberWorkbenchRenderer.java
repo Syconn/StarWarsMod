@@ -3,7 +3,6 @@ package mod.syconn.swm.features.lightsaber.client.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.math.DirectionUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,10 +17,6 @@ import java.util.List;
 
 public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<LightsaberWorkbenchBlockEntity> {
 
-    // TODO
-    //  Purely for modifying the blades qualities and components
-    //  Not for building or constructing a lightsaber
-
     private final ItemRenderer itemRenderer;
 
     public LightsaberWorkbenchRenderer(BlockEntityRendererProvider.Context context) {
@@ -31,7 +26,7 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
     public void render(LightsaberWorkbenchBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         if (!blockEntity.getContainer().getItem(0).isEmpty() && blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem) {
             var facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-            var pos = DirectionUtil.dataList(List.of(0.5f, -0.3f), List.of(0.5f, 1.3f), List.of(-0.3f, 0.5f), List.of(1.3f, 0.5f)).get(facing);
+            var pos = DirectionUtil.dataList(List.of(0.5f, -0.2f), List.of(0.5f, 1.2f), List.of(-0.2f, 0.5f), List.of(1.2f, 0.5f)).get(facing);
 
             poseStack.pushPose();
             poseStack.translate(pos.get(0), 1, pos.get(1));
