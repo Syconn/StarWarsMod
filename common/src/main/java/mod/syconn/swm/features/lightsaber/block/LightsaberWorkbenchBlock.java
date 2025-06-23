@@ -7,6 +7,7 @@ import mod.syconn.swm.block.TwoPartBlock;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.block.EntityBlockExtended;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
@@ -45,28 +46,20 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
         var useHand = player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof LightsaberItem ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        var assembler = !(level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity);
         if (player instanceof ServerPlayer sp && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
-            if (!player.isCrouching() && blockEntity.hasItem()) {
-                MenuRegistry.openExtendedMenu(sp, new ExtendedMenuProvider() {
-                    public void saveExtraData(FriendlyByteBuf buf) {
-                        buf.writeBlockPos(getBlockEntityPos(level, pos, state));
-                    }
-
-                    public Component getDisplayName() {
-                        return Component.literal("Lightsaber Workbench");
-                    }
-
-                    public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                        return new LightsaberWorkbenchMenu(i, inventory, getBlockEntityPos(level, pos, state));
-                    }
-                });
-                return InteractionResult.SUCCESS;
-            } else if (player.isCrouching() && blockEntity.hasItem()){
-                if (player.getItemInHand(useHand).isEmpty()) player.setItemSlot(useHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, blockEntity.removeItem());
-                else ItemStackHooks.giveItem(sp, blockEntity.removeItem());
+            if (assembler) {
+                MenuRegistry.openExtendedMenu(sp, LightsaberAssemblerMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
                 return InteractionResult.SUCCESS;
             } else if (player.getItemInHand(useHand).getItem() instanceof LightsaberItem && !blockEntity.hasItem()) {
                 blockEntity.addItem(player, useHand);
+                return InteractionResult.SUCCESS;
+            } else if (!player.isCrouching()) {
+                MenuRegistry.openExtendedMenu(sp, LightsaberWorkbenchMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
+                return InteractionResult.SUCCESS;
+            } else if (player.isCrouching() && blockEntity.hasItem()) {
+                if (player.getItemInHand(useHand).isEmpty()) player.setItemSlot(useHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, blockEntity.removeItem());
+                else ItemStackHooks.giveItem(sp, blockEntity.removeItem());
                 return InteractionResult.SUCCESS;
             }
         }

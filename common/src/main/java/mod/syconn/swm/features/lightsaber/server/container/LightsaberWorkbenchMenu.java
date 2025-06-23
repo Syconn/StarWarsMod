@@ -7,11 +7,14 @@ import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.server.containers.slot.SpecificSlot;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
@@ -30,6 +33,18 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
         for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 48 + j1 * 18, 159 + l * 18));
         for(int i1 = 0; i1 < 9; ++i1) this.addSlot(new Slot(inventory, i1, 48 + i1 * 18, 217));
+    }
+
+    public static MenuProvider menu(BlockPos pos) {
+        return new MenuProvider() {
+            public @NotNull Component getDisplayName() {
+                return Component.literal("Lightsaber Workbench");
+            }
+
+            public @NotNull AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+                return new LightsaberWorkbenchMenu(i, inventory, pos);
+            }
+        };
     }
 
     public ItemStack quickMoveStack(Player player, int quickMovedSlotIndex) {
