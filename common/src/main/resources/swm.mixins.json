@@ -10,7 +10,10 @@
     "LevelRendererMixin"
   ],
   "mixins": [
-    "ItemStackMixin"
+    "AbstractArrowMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

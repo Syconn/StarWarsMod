@@ -6,23 +6,16 @@ import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.util.client.IItemExtensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -48,20 +41,24 @@ public class LightsaberItem extends Item implements IItemExtensions {
         return LightsaberTag.identical(from, to);
     }
 
+    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         final var stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
         return InteractionResultHolder.fail(stack);
     }
 
+    @Override
     public int getUseDuration(ItemStack stack) {
         return 72000;
     }
 
+    @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.NONE;
     }
 
+    @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         var damage = LightsaberTag.getOrCreate(stack).active ? 7.0f : 0.0f;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
