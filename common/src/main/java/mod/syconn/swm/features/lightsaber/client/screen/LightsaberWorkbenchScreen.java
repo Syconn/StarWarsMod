@@ -2,11 +2,13 @@ package mod.syconn.swm.features.lightsaber.client.screen;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.math.Axis;
-import mod.syconn.swm.client.screen.components.ColoredButton;
+import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberColor;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
+import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.math.ColorUtil;
 import net.fabricmc.api.EnvType;
@@ -52,16 +54,16 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
         getLightsaberColor();
 
-        addRenderableWidget(new ColoredButton(this.leftPos + 46, this.topPos + 122, "", BLUE, this::updateColorButton));
-        addRenderableWidget(new ColoredButton(this.leftPos + 74, this.topPos + 122, "", GREEN, this::updateColorButton));
-        addRenderableWidget(new ColoredButton(this.leftPos + 102, this.topPos + 122, "", YELLOW, this::updateColorButton));
-        addRenderableWidget(new ColoredButton(this.leftPos + 135, this.topPos + 122, "", WHITE, this::updateColorButton));
-        addRenderableWidget(new ColoredButton(this.leftPos + 163, this.topPos + 122, "", PURPLE, this::updateColorButton));
-        addRenderableWidget(new ColoredButton(this.leftPos + 191, this.topPos + 122, "", RED, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 46, this.topPos + 122, "", BLUE, 0, 0, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 74, this.topPos + 122, "", GREEN, 1, 0, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 102, this.topPos + 122, "", YELLOW, 2, 1, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 135, this.topPos + 122, "", WHITE, 1, 1, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 163, this.topPos + 122, "", PURPLE, 2, 0, this::updateColorButton));
+        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 191, this.topPos + 122, "", RED, 0, 1, this::updateColorButton));
     }
 
     private void updateColorButton(Button button) {
-        this.setColor(((ColoredButton) button).getHSV());
+        this.setColor(((ColoredLightsaberButton) button).getHSV());
     }
 
     @Override
@@ -134,7 +136,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
                 var model = this.minecraft.getItemRenderer().getModel(stack, level, this.minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
-//                lT.color = ColorUtil.packHsv(hue, saturation, value);
+                if (lT.color != ColorUtil.packHsv(hue, saturation, value)) updateLightsaberColor(lT);
                 Minecraft.getInstance().getItemRenderer().render(lT.getTemporary(true, true), ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
 
@@ -143,5 +145,10 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             guiGraphics.flush();
             guiGraphics.pose().popPose();
         }
+    }
+
+    private void updateLightsaberColor(LightsaberTag lT) {
+        lT.color = ColorUtil.packHsv(hue, saturation, value);
+        Network.CHANNEL.sendToServer(new ChangeLightsaberColor(menu.getBlockEntity().getBlockPos(), lT.color));
     }
 }
