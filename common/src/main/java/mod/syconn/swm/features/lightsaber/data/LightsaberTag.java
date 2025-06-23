@@ -9,7 +9,6 @@ import mod.syconn.swm.util.math.Ease;
 import mod.syconn.swm.util.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 import java.util.UUID;

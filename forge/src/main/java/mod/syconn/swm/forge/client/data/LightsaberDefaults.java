@@ -3,9 +3,6 @@ package mod.syconn.swm.forge.client.data;
 import com.mojang.math.Axis;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
 import mod.syconn.swm.util.client.model.NodeVec3;
-import mod.syconn.swm.util.math.ColorUtil;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Quaternionf;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package mod.syconn.swm.util.client.model;
 
-import mod.syconn.swm.util.math.MathUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;

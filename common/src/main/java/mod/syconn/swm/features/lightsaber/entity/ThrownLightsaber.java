@@ -3,7 +3,6 @@ package mod.syconn.swm.features.lightsaber.entity;
 import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
-import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.util.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;

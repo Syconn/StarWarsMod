@@ -1,7 +1,7 @@
 package mod.syconn.swm.forge.datagen;
 
-import mod.syconn.swm.forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

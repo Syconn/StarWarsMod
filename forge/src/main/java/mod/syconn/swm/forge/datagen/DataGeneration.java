@@ -3,7 +3,6 @@ package mod.syconn.swm.forge.datagen;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.data.event.GatherDataEvent;

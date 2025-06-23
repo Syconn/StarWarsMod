@@ -1,6 +1,5 @@
 package mod.syconn.swm.server.containers.slot;
 
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;

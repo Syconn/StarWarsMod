@@ -2,9 +2,9 @@ package mod.syconn.swm.client.keys;
 
 import mod.syconn.swm.core.ModKeys;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.network.Network;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
+import mod.syconn.swm.network.Network;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 
