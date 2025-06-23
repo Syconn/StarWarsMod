@@ -19,6 +19,7 @@ public class DataGeneration {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
+        generator.addProvider(event.includeClient(), new RecipeProvider(generator.getPackOutput()));
         generator.addProvider(event.includeClient(), new LangProvider(generator.getPackOutput(), "en_us"));
         generator.addProvider(event.includeClient(), new LootTableProvider(generator.getPackOutput(), Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(BlockLootTables::new, LootContextParamSets.BLOCK))));

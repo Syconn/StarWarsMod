@@ -1,3 +1,7 @@
 accessWidener v2 named
 
 accessible field net/minecraft/client/renderer/entity/ItemRenderer itemColors Lnet/minecraft/client/color/item/ItemColors;
+accessible class net/minecraft/world/item/crafting/Ingredient$Value
+
+extendable class net/minecraft/world/item/crafting/Ingredient
+accessible method net/minecraft/world/item/crafting/Ingredient <init> (Ljava/util/stream/Stream;)V

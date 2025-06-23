@@ -20,6 +20,8 @@ public final class StarWars {
         ModBlockEntities.BLOCK_ENTITIES.register();
         ModEntities.ENTITIES.register();
         ModMenus.MENUS.register();
+        ModRecipes.RECIPES.register();
+        ModRecipes.SERIALIZER.register();
 
         Network.init();
 
