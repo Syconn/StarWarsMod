@@ -4,7 +4,7 @@ import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberColor;
+import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
@@ -126,6 +126,6 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     private void updateLightsaberColor(LightsaberTag lT) {
         lT.color = ColorUtil.packHsv(this.hue, this.saturation, this.value);
-        Network.CHANNEL.sendToServer(new ChangeLightsaberColor(this.menu.getBlockEntity().getBlockPos(), lT.color));
+        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), lT.color));
     }
 }

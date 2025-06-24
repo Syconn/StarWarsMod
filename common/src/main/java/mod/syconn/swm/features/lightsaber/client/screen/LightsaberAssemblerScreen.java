@@ -2,7 +2,9 @@ package mod.syconn.swm.features.lightsaber.client.screen;
 
 import mod.syconn.swm.client.screen.components.ExpandedButton;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
+import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import mod.syconn.swm.util.client.render.IngredientRenderer;
@@ -49,8 +51,8 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
             createRenderers();
         }));
 
-        addRenderableWidget(this.craftButton = new ExpandedButton(this.leftPos + 155, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
-//            Network.getPlayChannel().sendToServer(new MessageCraftHilt(inv.selectedRecipe.id()));
+        addRenderableWidget(this.craftButton = new ExpandedButton(this.leftPos + 131, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
+            Network.CHANNEL.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).getId()));
         }));
     }
 
@@ -60,11 +62,15 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
         var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item());
         this.rotation += (float) (-10f * this.deltaScroll);
-        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, true), this.leftPos + 60, this.topPos + 36.5, this.rotation);
+        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
         this.deltaScroll = 0f;
+    }
 
-        renderTooltip(guiGraphics, mouseX, mouseY);
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.craftButton.visible = renderSlots(guiGraphics, mouseX, mouseY);
+        renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
@@ -98,9 +104,9 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
             if (this.minecraft != null) {
                 var x = this.leftPos + 11 + (27 * i);
-                var y = this.topPos + 76;
-                graphics.blit(WORKSTATION_BACKGROUND, x, y, 198, 38, 18, 18);
-                ingredient.display(graphics, amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 76, mouseX, mouseY);
+                var y = this.topPos + 78;
+                graphics.blit(WORKSTATION_BACKGROUND, x, y, 198, amountNeeded <= 0 ? 20 : 38, 18, 18);
+                ingredient.display(graphics, amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 79, mouseX, mouseY);
             }
         }
 
