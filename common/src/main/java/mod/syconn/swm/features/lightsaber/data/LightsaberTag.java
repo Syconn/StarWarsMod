@@ -1,5 +1,6 @@
 package mod.syconn.swm.features.lightsaber.data;
 
+import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -27,7 +28,8 @@ public class LightsaberTag {
     private final String RADIUS = "radius";
     private final String LENGTH_SCALAR = "lengthScalar";
     private final String COLOR = "color";
-    private final String EMITTER_POSITIONS = "emitter_pos";
+    private final String BLADE_TYPE = "bladeType";
+    private final String EMITTER_POSITIONS = "vectors";
 
     public UUID uuid;
     public int model;
@@ -37,6 +39,7 @@ public class LightsaberTag {
     public byte transition;
     public double radius;
     public int color;
+    public String bladeType;
     public List<NodeVec3> emitterPositions;
 
     public LightsaberTag(CompoundTag tag) {
@@ -48,10 +51,11 @@ public class LightsaberTag {
         this.lengthScalar = tag.getFloat(LENGTH_SCALAR);
         this.radius = tag.getDouble(RADIUS);
         this.color = tag.getInt(COLOR);
+        this.bladeType = tag.contains(BLADE_TYPE) ? tag.getString(BLADE_TYPE) : "plasma";
         this.emitterPositions = NbtTools.getArray(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
     }
 
-    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, List<NodeVec3> emitterPositions) {
+    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) {
         this.uuid = uuid;
         this.model = model;
         this.stable = stable;
@@ -60,6 +64,7 @@ public class LightsaberTag {
         this.lengthScalar = lengthScalar;
         this.radius = radius;
         this.color = color;
+        this.bladeType = bladeType;
         this.emitterPositions = emitterPositions;
     }
 
@@ -102,15 +107,16 @@ public class LightsaberTag {
 
     public CompoundTag save() {
         var tag = new CompoundTag();
-        tag.putUUID(UUID, uuid);
-        tag.putInt(MODEL, model);
-        tag.putBoolean(STABLE, stable);
-        tag.putBoolean(ACTIVE, active);
-        tag.putFloat(LENGTH_SCALAR, lengthScalar);
-        tag.putByte(TRANSITION, transition);
-        tag.putDouble(RADIUS, radius);
-        tag.putInt(COLOR, color);
-        tag.put(EMITTER_POSITIONS, NbtTools.putArray(emitterPositions, NodeVec3::putNode));
+        tag.putUUID(UUID, this.uuid);
+        tag.putInt(MODEL, this.model);
+        tag.putBoolean(STABLE, this.stable);
+        tag.putBoolean(ACTIVE, this.active);
+        tag.putFloat(LENGTH_SCALAR, this.lengthScalar);
+        tag.putByte(TRANSITION, this.transition);
+        tag.putDouble(RADIUS, this.radius);
+        tag.putInt(COLOR, this.color);
+        tag.putString(BLADE_TYPE, this.bladeType);
+        tag.put(EMITTER_POSITIONS, NbtTools.putArray(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }
 
@@ -120,19 +126,20 @@ public class LightsaberTag {
     }
 
     public void toggle() {
-        if (transition != 0) return;
-        transition = active ? -TRANSITION_TICKS : TRANSITION_TICKS;
-        active = !active;
+        if (this.transition != 0) return;
+        this.transition = this.active ? -TRANSITION_TICKS : TRANSITION_TICKS;
+        this.active = !this.active;
     }
 
     public void tick() {
-        if (transition > 0) transition--;
-        if (transition < 0) transition++;
+        if (this.transition > 0) this.transition--;
+        if (this.transition < 0) this.transition++;
     }
 
-    public float getSize(float partialTicks) {
-        if (transition == 0) return active ? 1 : 0;
-        if (transition > 0) return Ease.outCubic(1 - (transition - partialTicks) / TRANSITION_TICKS);
-        return Ease.inCubic(-(transition + partialTicks) / TRANSITION_TICKS);
+    public float getSize() {
+        var partialTicks = StarWarsClient.getTickDelta();
+        if (this.transition == 0) return this.active ? 1 : 0;
+        if (this.transition > 0) return Ease.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
+        return Ease.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
     }
 }

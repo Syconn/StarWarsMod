@@ -80,13 +80,13 @@ public class PlasmaRenderer {
         double dX = (float) Constants.RANDOM.nextGaussian() * shake;
         double dY = (float) Constants.RANDOM.nextGaussian() * shake;
         poseStack.translate(dX, 0, dY);
-        poseStack.scale(3, 3, 3);
+        poseStack.scale(1, 1.5f, 1);
 
         PlasmaBuffer.RENDER.init(vc, poseStack.last(), 1, 1, 1, 1, overlay, light);
         renderDarkSaberGlow(totalLength, ColorUtil.hsvGetH(glowHsv), ColorUtil.hsvGetS(glowHsv), ColorUtil.hsvGetV(glowHsv));
     }
 
-    public static void renderStunEnergy(ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, float size, Vec3 normal, float glowHue) {
+    public static void renderStunEnergy(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, float size) {
         final VertexConsumer vc = bufferSource.getBuffer(PLASMA_ADDITIVE);
 
         PlasmaBuffer.RENDER.init(vc, poseStack.last(), 0.1f, 0.2f, 1, 1.0f, overlay, light);

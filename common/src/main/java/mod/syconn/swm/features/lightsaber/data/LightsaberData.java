@@ -13,10 +13,10 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 import java.util.UUID;
 
-public record LightsaberData(int model, boolean stable, float lengthScalar, double radius, int color, List<NodeVec3> emitterPositions) implements ISerializable<CompoundTag> {
+public record LightsaberData(int model, boolean stable, float lengthScalar, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) implements ISerializable<CompoundTag> {
 
     public LightsaberTag toTag() {
-        return new LightsaberTag(UUID.randomUUID(), model, stable, lengthScalar, true, (byte) 0, radius, color, emitterPositions);
+        return new LightsaberTag(UUID.randomUUID(), this.model, this.stable, this.lengthScalar, true, (byte) 0, this.radius, this.color, this.bladeType, this.emitterPositions);
     }
 
     public ItemStack toItem() {
@@ -32,23 +32,24 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
 
     public static LightsaberData fromJson(JsonObject json) {
         return new LightsaberData(json.get("model").getAsInt(), json.get("stable").getAsBoolean(), json.get("length").getAsFloat(), json.get("radius").getAsDouble(), json.get("color").getAsInt(),
-                JsonUtils.getArray(json.getAsJsonObject("emitterPositions"), NodeVec3::getNode));
+                json.get("bladeType").getAsString(), JsonUtils.getArray(json.getAsJsonObject("vectors"), NodeVec3::getNode));
     }
 
     public JsonObject toJson() {
         JsonObject json = new JsonObject();
-        json.addProperty("model", model);
-        json.addProperty("stable", stable);
-        json.addProperty("length", lengthScalar);
-        json.addProperty("radius", radius);
-        json.addProperty("color", color);
-        json.add("emitterPositions", JsonUtils.addArray(emitterPositions, NodeVec3::addNode));
+        json.addProperty("model", this.model);
+        json.addProperty("stable", this.stable);
+        json.addProperty("length", this.lengthScalar);
+        json.addProperty("radius", this.radius);
+        json.addProperty("color", this.color);
+        json.addProperty("bladeType", this.bladeType);
+        json.add("vectors", JsonUtils.addArray(this.emitterPositions, NodeVec3::addNode));
         return json;
     }
 
     public static LightsaberData readTag(CompoundTag tag) {
         return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getFloat("lengthScalar"), tag.getDouble("radius"), tag.getInt("color"),
-                NbtTools.getArray(tag.getCompound("vectors"), NodeVec3::getNode));
+                tag.getString("bladeType"), NbtTools.getArray(tag.getCompound("vectors"), NodeVec3::getNode));
     }
 
     public CompoundTag writeTag() {
@@ -58,6 +59,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
         tag.putFloat("lengthScalar", this.lengthScalar);
         tag.putDouble("radius", this.radius);
         tag.putInt("color", this.color);
+        tag.putString("bladeType", this.bladeType);
         tag.put("vectors", NbtTools.putArray(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }

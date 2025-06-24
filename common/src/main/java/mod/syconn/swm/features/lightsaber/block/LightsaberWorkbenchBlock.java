@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended {
@@ -33,11 +34,13 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
         super(Properties.copy(Blocks.IRON_BLOCK).noOcclusion());
     }
 
-    public RenderShape getRenderShape(BlockState state) {
+    @Override
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @Override
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
         var useHand = player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof LightsaberItem ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
@@ -83,11 +86,12 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
         return blockEntity != null && blockEntity.triggerEvent(id, param);
     }
 
+    @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick) : null;
     }
 
-    private BlockPos getBlockEntityPos(Level level, BlockPos pos, BlockState state) {
+    private BlockPos getBlockEntityPos(@NotNull Level level, BlockPos pos, BlockState state) {
         return level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity ? pos : pos.relative(getOtherPart(state));
     }
 }

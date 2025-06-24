@@ -4,20 +4,24 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.client.model.ModelUtil;
 import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
 import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
-import mod.syconn.swm.util.math.ColorUtil;
+import mod.syconn.swm.util.client.render.RenderUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderBuffers;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+
+import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
 public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
@@ -42,11 +46,18 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
                 var bladePos = lT.emitterPositions.get(i);
                 poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
                 poseStack.mulPose(bladePos.q);
-                if (lT.color != -1) PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(StarWarsClient.getTickDelta()), lT.lengthScalar * bladePos.scalar,
-                        (float) lT.radius, true, lT.color);
-                else PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(StarWarsClient.getTickDelta()), lT.lengthScalar, ColorUtil.packHsv(0f, 0f, 0.65f));
+                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
+                renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
                 poseStack.popPose();
             }
+        }
+    }
+
+    private void renderBlade(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, LightsaberTag lT, float bladeScalar) {
+        switch (lT.bladeType) {
+            case DARK_SABER -> PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
+            case PLASMA -> PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(), lT.lengthScalar * bladeScalar, (float) lT.radius, true, lT.color);
+            case BRICK -> PlasmaRenderer.renderBrick(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
         }
     }
 

@@ -1,6 +1,11 @@
 {
+  "bladeType": "plasma",
   "color": 55423,
-  "emitterPositions": {
+  "length": 1.1,
+  "model": 9,
+  "radius": 1.0,
+  "stable": false,
+  "vectors": {
     "0": {
       "qw": 1.0,
       "qx": 0.0,
@@ -31,9 +36,5 @@
       "y": 0.075,
       "z": 0.0
     }
-  },
-  "length": 1.1,
-  "model": 9,
-  "radius": 1.0,
-  "stable": false
+  }
 }

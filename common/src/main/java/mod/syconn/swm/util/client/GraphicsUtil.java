@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.math.ColorUtil;
 import net.minecraft.client.Minecraft;
@@ -91,6 +92,7 @@ public class GraphicsUtil {
                 var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
+                LightsaberContent.renderFixes(ItemDisplayContext.NONE, guiGraphics.pose(), stack);
                 Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
 
