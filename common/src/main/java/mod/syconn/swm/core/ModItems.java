@@ -32,6 +32,7 @@ public class ModItems {
     public static final RegistrySupplier<Item> DRILL = registerItem("drill", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> MONITOR = registerItem("monitor", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> DRIVER = registerItem("driver", new Item.Properties().stacksTo(1));
+    public static final RegistrySupplier<Item> SCREEN = registerItem("screen", new Item.Properties().stacksTo(1));
 
     public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup." + MOD + ".star_wars"), () -> new ItemStack(LIGHTSABER.get())));

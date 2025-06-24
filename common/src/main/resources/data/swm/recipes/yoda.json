@@ -16,6 +16,6 @@
   ],
   "result": {
     "item": "swm:lightsaber",
-    "nbt": "{lightsaberData:{active:1b,bladeType:\"plasma\",color:6029183,lengthScalar:1.4f,model:4,radius:0.85d,stable:1b,transition:0b,uuid:[I;1916615482,186337636,-1656095142,1721471756],vectors:{0:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,scalar:1.0f,x:0.0d,y:0.125d,z:0.0d},len:1}}}"
+    "nbt": "{lightsaberData:{active:1b,bladeType:\"plasma\",color:6029183,lengthScalar:1.4f,model:4,radius:0.85d,stable:1b,transition:0b,uuid:[I;174948383,1757367911,-1811010405,1083102653],vectors:{0:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,scalar:1.0f,x:0.0d,y:0.125d,z:0.0d},len:1}}}"
   }
 }

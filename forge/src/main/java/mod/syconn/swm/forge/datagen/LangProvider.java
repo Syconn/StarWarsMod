@@ -26,6 +26,7 @@ public class LangProvider extends LanguageProvider {
         addItem(ModItems.MONITOR, "Monitor");
         addItem(ModItems.DRIVER, "Screw Driver");
         addItem(ModItems.DRILL, "Drill");
+        addItem(ModItems.SCREEN, "Screen");
 
         addBlock(ModBlocks.LIGHTSABER_WORKBENCH, "Lightsaber Workbench");
     }

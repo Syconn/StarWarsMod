@@ -19,8 +19,9 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
 
     @Override
     protected void registerModels() {
-        ItemModelBuilder builder = getBuilder(getItemId(ModItems.LIGHTSABER.get()).toString()).parent(generated("lightsaber/yoda"));
+        basicItem(ModItems.SCREEN.get());
 
+        ItemModelBuilder builder = getBuilder(getItemId(ModItems.LIGHTSABER.get()).toString()).parent(generated("lightsaber/yoda"));
         for (var lightsaber : LightsaberDefaults.LightsaberTypes.values())
             builder.override().predicate(Constants.withId("model"), lightsaber.getData().model() * 0.1f).model(generated("lightsaber/" + lightsaber.getId())).end();
     }
