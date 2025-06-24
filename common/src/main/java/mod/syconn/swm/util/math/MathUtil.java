@@ -76,4 +76,10 @@ public class MathUtil {
         var reflection = normal.multiply(2 * normal.distManhattan(incident)).subtract(incident);
         return reflection.multiply(-1);
     }
+
+    public static int wrap(int value, int max) {
+        if (value < 0) return max;
+        if (value > max) return 0;
+        return value;
+    }
 }

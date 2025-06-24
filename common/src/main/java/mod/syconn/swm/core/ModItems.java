@@ -25,21 +25,27 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(MOD, Registries.ITEM);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(MOD, Registries.CREATIVE_MODE_TAB);
 
-    public static final List<RegistrySupplier<Item>> BLOCK_ITEMS = new ArrayList<>();
+    public static final List<RegistrySupplier<Item>> DEFAULT_ITEMS = new ArrayList<>();
 
     public static final RegistrySupplier<Item> LIGHTSABER = registerItem("lightsaber", LightsaberItem::new);
+
+    public static final RegistrySupplier<Item> DRILL = registerItem("drill", new Item.Properties().stacksTo(1));
+    public static final RegistrySupplier<Item> MONITOR = registerItem("monitor", new Item.Properties().stacksTo(1));
+    public static final RegistrySupplier<Item> DRIVER = registerItem("driver", new Item.Properties().stacksTo(1));
 
     public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup." + MOD + ".star_wars"), () -> new ItemStack(LIGHTSABER.get())));
 
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
         output.acceptAll(LightsaberContent.getLightsabers());
-        output.acceptAll(BLOCK_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
+        output.acceptAll(DEFAULT_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
     }
 
     @SuppressWarnings("unchecked")
     private static <T extends Item> RegistrySupplier<T> registerItem(String id, Item.Properties properties) {
-        return (RegistrySupplier<T>) registerItem(id, Item::new, properties);
+        RegistrySupplier<Item> item = registerItem(id, Item::new, properties);
+        DEFAULT_ITEMS.add(item);
+        return (RegistrySupplier<T>)  item;
     }
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String id, Function<Item.Properties, T> factory) {

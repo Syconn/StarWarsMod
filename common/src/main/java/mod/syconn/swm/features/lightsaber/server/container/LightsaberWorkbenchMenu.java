@@ -26,11 +26,9 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
     public LightsaberWorkbenchMenu(int containerId, Inventory inventory, BlockPos pos){
         super(ModMenus.LIGHTSABER_WORKBENCH.get(), containerId);
-
         this.blockEntity = inventory.player.level().getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
 
         this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 14, 63, LightsaberItem.class));
-
         for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 48 + j1 * 18, 159 + l * 18));
         for(int i1 = 0; i1 < 9; ++i1) this.addSlot(new Slot(inventory, i1, 48 + i1 * 18, 217));
     }
@@ -47,7 +45,8 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
         };
     }
 
-    public ItemStack quickMoveStack(Player player, int quickMovedSlotIndex) {
+    @Override
+    public @NotNull ItemStack quickMoveStack(Player player, int quickMovedSlotIndex) {
         ItemStack quickMovedStack = ItemStack.EMPTY;
         Slot quickMovedSlot = this.slots.get(quickMovedSlotIndex);
         if (quickMovedSlot.hasItem()) {
@@ -81,6 +80,7 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
         return quickMovedStack;
     }
 
+    @Override
     public boolean stillValid(Player p_38874_) {
         return true;
     }

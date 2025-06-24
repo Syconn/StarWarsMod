@@ -2,11 +2,8 @@ package mod.syconn.swm.forge.datagen;
 
 import mod.syconn.swm.forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.forge.client.data.recipes.LightsaberRecipeBuilder;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
