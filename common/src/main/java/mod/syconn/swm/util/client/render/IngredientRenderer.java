@@ -1,20 +1,21 @@
 package mod.syconn.swm.util.client.render;
 
 import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.util.server.StackedIngredient;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
-public class IngredientRenderer<T extends Ingredient> {
+public class IngredientRenderer<T extends StackedIngredient> {
     private final List<ItemStack> displayStacks;
     private final T ingredient;
     private int selectedStack = 0;
     private long lastTime = System.currentTimeMillis();
 
     public IngredientRenderer(T ingredient) {
-        this.displayStacks = List.of(ingredient.getItems());
+        this.displayStacks = List.of(ingredient.ingredient().getItems());
         this.ingredient = ingredient;
     }
 

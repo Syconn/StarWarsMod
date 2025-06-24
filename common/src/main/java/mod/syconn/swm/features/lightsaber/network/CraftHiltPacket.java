@@ -37,9 +37,9 @@ public class CraftHiltPacket {
 
                 if (recipe.isPresent()) {
                     for (StackedIngredient ingredient : recipe.get().ingredients()) {
-                        int count = ingredient.getCount();
+                        int count = ingredient.count();
                         for (int j = 0; j < sp.getInventory().getContainerSize(); j++) {
-                            if (ingredient.test(sp.getInventory().getItem(j))){
+                            if (ingredient.ingredient().test(sp.getInventory().getItem(j))){
                                 int num = sp.getInventory().getItem(j).getCount();
                                 if (num >= count){
                                     sp.getInventory().removeItem(j, count);

@@ -12,7 +12,7 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
 import net.minecraft.server.packs.PackType;
 
-public final class StarWars {
+public final class StarWars { // TODO BETTER COMBAT AND JEI INTEGRATION
     public static void init() {
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();

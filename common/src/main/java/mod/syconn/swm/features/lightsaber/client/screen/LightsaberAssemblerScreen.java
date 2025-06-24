@@ -92,11 +92,11 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
         for (int i = 0; i < this.ingredientRenderers.size(); i++){
             var ingredient = this.ingredientRenderers.get(i);
-            var amountNeeded = ingredient.getIngredient().getCount();
+            var amountNeeded = ingredient.getIngredient().count();
             var playerAmount = 0;
 
             for (int pI = 0; pI < this.playerInventory.items.size(); pI++)
-                if (ingredient.getIngredient().test(this.playerInventory.items.get(pI)))
+                if (ingredient.getIngredient().ingredient().test(this.playerInventory.items.get(pI)))
                     playerAmount += this.playerInventory.items.get(pI).getCount();
 
             amountNeeded -= playerAmount;
