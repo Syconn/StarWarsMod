@@ -26,15 +26,17 @@ public class IngredientRenderer<T extends StackedIngredient> {
     public void tick() {
         var currentTime = System.currentTimeMillis();
         if (currentTime - this.lastTime >= 1000) {
-            this.selectedStack = (this.selectedStack + 1) % this.displayStacks.size();
+            if (!this.displayStacks.isEmpty()) this.selectedStack = (this.selectedStack + 1) % this.displayStacks.size();
             this.lastTime = currentTime;
         }
     }
 
     public void display(GuiGraphics guiGraphics, int count, int x, int y, int mouseX, int mouseY) {
-        guiGraphics.renderItem(displayStacks.get(selectedStack), x, y);
-        if (count > 0) guiGraphics.renderItemDecorations(GameInstance.getClient().font, new ItemStack(displayStacks.get(selectedStack).getItem(), count), x, y);
-        if (inBounds(x, y, mouseX, mouseY)) guiGraphics.renderTooltip(GameInstance.getClient().font, new ItemStack(displayStacks.get(selectedStack).getItem()), mouseX, mouseY);
+        if (this.displayStacks.size() > this.selectedStack) {
+            guiGraphics.renderItem(this.displayStacks.get(this.selectedStack), x, y);
+            if (count > 0) guiGraphics.renderItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
+            if (inBounds(x, y, mouseX, mouseY)) guiGraphics.renderTooltip(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem()), mouseX, mouseY);
+        }
     }
 
     private boolean inBounds(int x, int y, int mouseX, int mouseY) {

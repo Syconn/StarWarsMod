@@ -1,60 +1,60 @@
-[02:12:20] [main/INFO] (Launcher) ModLauncher running: args [-mixin.config, swm.mixins.json, --launchTarget, forgedatauserdev, --assetIndex, 1.20.1-5, --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --gameDir, ., --fml.forgeVersion, 47.4.1, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --all, --mod, swm, --output, C:\Users\Aidan\IdeaProjects\StarWarsMod\forge\src\generated\resources, --existing, C:\Users\Aidan\IdeaProjects\StarWarsMod\common\src\main\resources, --mixin.config, swm.mixins.json]
-[02:12:20] [main/INFO] (Launcher) ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 22.0.2 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
-[02:12:20] [main/INFO] (ImmediateWindowHandler) ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[02:12:20] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/dev.architectury/mixin-patched/0.8.5.12/cf1f787f58d3b08b0cb53ecbba7928c09a1893c8/mixin-patched-0.8.5.12.jar%23127!/ Service=ModLauncher Env=CLIENT
-[02:12:20] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.1\97b774cead20444ed9d0c2de762881a15d872397\javafmllanguage-1.20.1-47.4.1.jar is missing mods.toml file
-[02:12:20] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.1\da4a2af4a4ebbbb33e35b292a16fe3f7122b236\lowcodelanguage-1.20.1-47.4.1.jar is missing mods.toml file
-[02:12:20] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.1\75a8f0757adad78cbd8108dff9e0d39cbdb3d787\mclanguage-1.20.1-47.4.1.jar is missing mods.toml file
-[02:12:20] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.1\3061e70b85c05f936d9fa24477be4d4205d8f6b8\fmlcore-1.20.1-47.4.1.jar is missing mods.toml file
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file javafmllanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file lowcodelanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file mclanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file fmlcore-1.20.1-47.4.1.jar of type LIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file main of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file  of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@71f9f8ba
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.2.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@22a9fa23
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file 10560292634897453440.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@22a9fa23
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.2.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@22a9fa23
-[02:12:20] [main/INFO] (ModDiscoverer) Found mod file 10560292634897453440.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@22a9fa23
-[02:12:20] [main/INFO] (JarInJarDependencyLocator) No dependencies to load found. Skipping!
-[02:12:21] [main/INFO] (mixin) Compatibility level set to JAVA_17
-[02:12:21] [main/INFO] (LaunchServiceHandler) Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --assetIndex, 1.20.1-5, --all, --mod, swm, --output, C:\Users\Aidan\IdeaProjects\StarWarsMod\forge\src\generated\resources, --existing, C:\Users\Aidan\IdeaProjects\StarWarsMod\common\src\main\resources]
-[02:12:21] [main/INFO] (unprotect) Found 7423 Minecraft classes
-[02:12:21] [main/INFO] (mixin) Remapping refMap architectury-forge-refmap.json using RemapperChain (Architectury Patched)
-[02:12:21] [main/INFO] (mixin) Remapping refMap architectury-common-refmap.json using RemapperChain (Architectury Patched)
-[24Jun2025 02:12:22.045] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [swm]
-[24Jun2025 02:12:24.882] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.1, for MC 1.20.1 with MCP 20230612.114412
-[24Jun2025 02:12:24.882] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.1 Initialized
-[24Jun2025 02:12:24.977] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id architectury:sync_ids
-[24Jun2025 02:12:24.977] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id architectury:sync_ids
-[24Jun2025 02:12:25.024] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[24Jun2025 02:12:25.024] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[24Jun2025 02:12:25.036] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[24Jun2025 02:12:25.036] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[24Jun2025 02:12:25.042] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/39a4591f6c3b30728ba347de61b8b938
-[24Jun2025 02:12:25.042] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/39a4591f6c3b30728ba347de61b8b938
-[24Jun2025 02:12:25.046] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[24Jun2025 02:12:25.046] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[24Jun2025 02:12:25.046] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[24Jun2025 02:12:25.046] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[24Jun2025 02:12:25.452] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b/1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar%23199!/assets/.mcassetsroot' uses unexpected schema
-[24Jun2025 02:12:25.452] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b/1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar%23199!/data/.mcassetsroot' uses unexpected schema
-[24Jun2025 02:12:25.554] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[24Jun2025 02:12:25.613] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 52 ms
-[24Jun2025 02:12:25.613] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: en_us
-[24Jun2025 02:12:25.613] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: en_us finished after 1 ms
-[24Jun2025 02:12:25.613] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[24Jun2025 02:12:25.633] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 25 ms
-[24Jun2025 02:12:25.633] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id swm
-[24Jun2025 02:12:25.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id swm finished after 16 ms
-[24Jun2025 02:12:25.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: swm
-[24Jun2025 02:12:25.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: swm finished after 5 ms
-[24Jun2025 02:12:25.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: swm
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: swm finished after 62 ms
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 3 ms
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Lightsabers
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: Lightsabers finished after 4 ms
-[24Jun2025 02:12:25.720] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 174 ms
-[24Jun2025 02:12:25.739] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 51, old count: 40, new count: 52, removed stale: 0, written: 23
+[23:32:48] [main/INFO] (Launcher) ModLauncher running: args [-mixin.config, swm.mixins.json, --launchTarget, forgedatauserdev, --assetIndex, 1.20.1-5, --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --gameDir, ., --fml.forgeVersion, 47.4.1, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --all, --mod, swm, --output, C:\Users\Aidan\IdeaProjects\StarWarsMod\forge\src\generated\resources, --existing, C:\Users\Aidan\IdeaProjects\StarWarsMod\common\src\main\resources, --mixin.config, swm.mixins.json]
+[23:32:48] [main/INFO] (Launcher) ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 22.0.2 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[23:32:48] [main/INFO] (ImmediateWindowHandler) ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[23:32:48] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/dev.architectury/mixin-patched/0.8.5.12/cf1f787f58d3b08b0cb53ecbba7928c09a1893c8/mixin-patched-0.8.5.12.jar%23127!/ Service=ModLauncher Env=CLIENT
+[23:32:48] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.1\97b774cead20444ed9d0c2de762881a15d872397\javafmllanguage-1.20.1-47.4.1.jar is missing mods.toml file
+[23:32:48] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.1\da4a2af4a4ebbbb33e35b292a16fe3f7122b236\lowcodelanguage-1.20.1-47.4.1.jar is missing mods.toml file
+[23:32:48] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.1\75a8f0757adad78cbd8108dff9e0d39cbdb3d787\mclanguage-1.20.1-47.4.1.jar is missing mods.toml file
+[23:32:48] [main/WARN] (ModFileParser) Mod file C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.1\3061e70b85c05f936d9fa24477be4d4205d8f6b8\fmlcore-1.20.1-47.4.1.jar is missing mods.toml file
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file javafmllanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file lowcodelanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file mclanguage-1.20.1-47.4.1.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file fmlcore-1.20.1-47.4.1.jar of type LIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file main of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file  of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@1f9ec3e7
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.2.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@375376d5
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file 12652847449256271791.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@375376d5
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.2.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@375376d5
+[23:32:48] [main/INFO] (ModDiscoverer) Found mod file 12652847449256271791.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@375376d5
+[23:32:48] [main/INFO] (JarInJarDependencyLocator) No dependencies to load found. Skipping!
+[23:32:49] [main/INFO] (mixin) Compatibility level set to JAVA_17
+[23:32:49] [main/INFO] (LaunchServiceHandler) Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Aidan\.gradle\caches\fabric-loom\assets, --assetIndex, 1.20.1-5, --all, --mod, swm, --output, C:\Users\Aidan\IdeaProjects\StarWarsMod\forge\src\generated\resources, --existing, C:\Users\Aidan\IdeaProjects\StarWarsMod\common\src\main\resources]
+[23:32:49] [main/INFO] (unprotect) Found 7423 Minecraft classes
+[23:32:49] [main/INFO] (mixin) Remapping refMap architectury-forge-refmap.json using RemapperChain (Architectury Patched)
+[23:32:49] [main/INFO] (mixin) Remapping refMap architectury-common-refmap.json using RemapperChain (Architectury Patched)
+[24Jun2025 23:32:50.319] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [swm]
+[24Jun2025 23:32:53.166] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.1, for MC 1.20.1 with MCP 20230612.114412
+[24Jun2025 23:32:53.166] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.1 Initialized
+[24Jun2025 23:32:53.259] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id architectury:sync_ids
+[24Jun2025 23:32:53.259] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id architectury:sync_ids
+[24Jun2025 23:32:53.312] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[24Jun2025 23:32:53.312] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[24Jun2025 23:32:53.314] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[24Jun2025 23:32:53.314] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[24Jun2025 23:32:53.314] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/39a4591f6c3b30728ba347de61b8b938
+[24Jun2025 23:32:53.314] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/39a4591f6c3b30728ba347de61b8b938
+[24Jun2025 23:32:53.322] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[24Jun2025 23:32:53.322] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[24Jun2025 23:32:53.330] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[24Jun2025 23:32:53.330] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[24Jun2025 23:32:53.736] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b/1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar%23199!/assets/.mcassetsroot' uses unexpected schema
+[24Jun2025 23:32:53.736] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Aidan/IdeaProjects/StarWarsMod/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b/1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1/forge-1.20.1-47.4.1-minecraft-merged-a26cc7d01b-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2-forge-1.20.1-47.4.1.jar%23199!/data/.mcassetsroot' uses unexpected schema
+[24Jun2025 23:32:53.823] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[24Jun2025 23:32:53.880] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 55 ms
+[24Jun2025 23:32:53.880] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: en_us
+[24Jun2025 23:32:53.895] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: en_us finished after 12 ms
+[24Jun2025 23:32:53.895] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[24Jun2025 23:32:53.913] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 25 ms
+[24Jun2025 23:32:53.913] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id swm
+[24Jun2025 23:32:53.943] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id swm finished after 23 ms
+[24Jun2025 23:32:53.943] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: swm
+[24Jun2025 23:32:53.949] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: swm finished after 5 ms
+[24Jun2025 23:32:53.949] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: swm
+[24Jun2025 23:32:54.007] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: swm finished after 62 ms
+[24Jun2025 23:32:54.007] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[24Jun2025 23:32:54.007] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 4 ms
+[24Jun2025 23:32:54.007] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Lightsabers
+[24Jun2025 23:32:54.022] [main/INFO] [net.minecraft.data.DataGenerator/]: Lightsabers finished after 10 ms
+[24Jun2025 23:32:54.022] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 201 ms
+[24Jun2025 23:32:54.040] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 51, old count: 0, new count: 52, removed stale: 0, written: 51

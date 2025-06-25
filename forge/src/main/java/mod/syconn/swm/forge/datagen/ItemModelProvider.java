@@ -21,7 +21,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
     protected void registerModels() {
         basicItem(ModItems.SCREEN.get());
 
-        ItemModelBuilder builder = getBuilder(getItemId(ModItems.LIGHTSABER.get()).toString()).parent(generated("lightsaber/yoda"));
+        var builder = getBuilder(getId(ModItems.LIGHTSABER.get()).toString()).parent(generated("lightsaber/yoda"));
         for (var lightsaber : LightsaberDefaults.LightsaberTypes.values())
             builder.override().predicate(Constants.withId("model"), lightsaber.getData().model() * 0.1f).model(generated("lightsaber/" + lightsaber.getId())).end();
     }
@@ -30,7 +30,7 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         return new ModelFile.UncheckedModelFile(modLoc("item/" + loc));
     }
 
-    private ResourceLocation getItemId(Item item) {
+    private ResourceLocation getId(Item item) {
         return ForgeRegistries.ITEMS.getKey(item);
     }
 }
