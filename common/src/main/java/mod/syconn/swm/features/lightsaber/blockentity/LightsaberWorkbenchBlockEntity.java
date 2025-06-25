@@ -20,7 +20,11 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     public LightsaberWorkbenchBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
-        this.container.addListener(listener -> markDirty());
+        this.container.addListener(listener -> {
+            var stack = container.getItem(0);
+            if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) LightsaberTag.update(stack, LightsaberTag::toggle);
+            markDirty();
+        });
     }
 
     @Override
@@ -46,7 +50,6 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     public void addItem(Player player, InteractionHand hand) {
         container.addItem(player.getItemInHand(hand).copyWithCount(1));
         player.getItemInHand(hand).shrink(1);
-        if (LightsaberTag.getOrCreate(container.getItem(0)).active) LightsaberTag.update(container.getItem(0), LightsaberTag::toggle);
     }
 
     public SimpleContainer getContainer() {
