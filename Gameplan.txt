@@ -1,8 +1,4 @@
-Recipes for blocks - jei integration
-
 Port to Furniture Mod versions
-
-Better Combat
 
 Lightsaber Crystal Structures
 
