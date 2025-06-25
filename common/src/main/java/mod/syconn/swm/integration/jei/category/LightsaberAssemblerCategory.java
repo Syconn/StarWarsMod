@@ -78,7 +78,7 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
 
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, LightsaberRecipe recipe, @NotNull IFocusGroup focuses) {
-        ItemStack output = recipe.item();
+        ItemStack output = recipe.item().copy();
         for(int i = 0; i < recipe.ingredients().size(); i++) {
             List<ItemStack> stacks = new ArrayList<>();
             for (ItemStack mat : recipe.ingredients().get(i).ingredient().getItems()) stacks.add(new ItemStack(mat.getItem(), recipe.ingredients().get(i).count()));
