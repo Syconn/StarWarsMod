@@ -6,6 +6,7 @@ import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.StringUtil;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import mod.syconn.swm.util.client.render.IngredientRenderer;
 import mod.syconn.swm.util.math.MathUtil;
@@ -62,8 +63,8 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
         var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
-        System.out.println(this.menu.getRecipes().get(selectedRecipe).item().getOrCreateTag());
-//        guiGraphics.drawString(this.font, this.menu.getRecipes().get(selectedRecipe).)
+        System.out.println(this.menu.getRecipes().get(selectedRecipe));
+        guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).id().getPath()), this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
         this.deltaScroll = 0f;
     }
