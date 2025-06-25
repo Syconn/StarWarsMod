@@ -1,6 +1,12 @@
 package mod.syconn.swm.util.json;
 
-import com.google.gson.JsonObject;
+import com.google.gson.*;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagParser;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
@@ -8,6 +14,8 @@ import java.util.List;
 import java.util.function.Function;
 
 public class JsonUtils {
+
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public static <T> List<T> getArray(JsonObject json, Function<JsonObject, T> function) {
         var list = new ArrayList<T>();
@@ -34,5 +42,31 @@ public class JsonUtils {
         var y = json.get("y").getAsDouble();
         var z = json.get("z").getAsDouble();
         return new Vec3(x, y, z);
+    }
+
+    public static ItemStack getItemStack(JsonObject json, boolean readNBT) {
+        var itemName = GsonHelper.getAsString(json, "item");
+        var item = ShapedRecipe.itemFromJson(json);
+        if (readNBT && json.has("nbt")) {
+            var nbt = getNBT(json.get("nbt"));
+            var tmp = new CompoundTag();
+            tmp.put("tag", nbt);
+            tmp.putString("id", itemName);
+            var stack = new ItemStack(item);
+            stack.setTag(nbt);
+            return stack;
+        }
+
+        return new ItemStack(item, GsonHelper.getAsInt(json, "count", 1));
+    }
+
+    public static CompoundTag getNBT(JsonElement element) {
+        try {
+            if (element.isJsonObject()) return TagParser.parseTag(GSON.toJson(element));
+            else return TagParser.parseTag(GsonHelper.convertToString(element, "nbt"));
+        }
+        catch (CommandSyntaxException e) {
+            throw new JsonSyntaxException("Invalid NBT Entry: " + e);
+        }
     }
 }

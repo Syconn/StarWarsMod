@@ -20,6 +20,12 @@
     ],
     "client": [
       "mod.syconn.swm.fabric.client.StarWarsFabricClient"
+    ],
+    "fabric-datagen": [
+      "mod.syconn.swm.fabric.datagen.DataGeneration"
+    ],
+    "jei_mod_plugin": [
+      "mod.syconn.swm.integration.jei.Plugin"
     ]
   },
   "mixins": [

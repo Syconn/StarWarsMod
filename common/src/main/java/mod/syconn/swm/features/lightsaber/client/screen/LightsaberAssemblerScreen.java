@@ -6,6 +6,7 @@ import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.StringUtil;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import mod.syconn.swm.util.client.render.IngredientRenderer;
 import mod.syconn.swm.util.math.MathUtil;
@@ -38,7 +39,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     }
 
     @Override
-    protected void init() { // TODO RENDER TEXT OF BLADE NAME, ROTATE OTHER WAYS WITH MOUSE, ZOOM MAYBE
+    protected void init() {
         createRenderers();
         super.init();
         addRenderableWidget(new ExpandedButton(this.leftPos + 8, this.topPos + 53, 20, 20, Component.literal("<"), pButton -> {
@@ -60,14 +61,16 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         guiGraphics.blit(WORKSTATION_BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
-        var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item());
+        var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
+        guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).id().getPath()), this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
         this.deltaScroll = 0f;
     }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.craftButton.visible = renderSlots(guiGraphics, mouseX, mouseY);
         renderTooltip(guiGraphics, mouseX, mouseY);

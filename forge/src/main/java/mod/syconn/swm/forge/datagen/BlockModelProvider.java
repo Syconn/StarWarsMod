@@ -22,20 +22,18 @@ public class BlockModelProvider extends BlockStateProvider {
 
     protected void registerStatesAndModels() {
         getVariantBuilder(ModBlocks.LIGHTSABER_WORKBENCH.get()).forAllStates(state -> ConfiguredModel.builder()
-                .modelFile(generated(getItemId(ModBlocks.LIGHTSABER_WORKBENCH.get()).getPath() + (state.getValue(ModBlockStateProperties.TWO_PART).right() ? "_right" : "_left")))
+                .modelFile(generated(getId(ModBlocks.LIGHTSABER_WORKBENCH.get()).getPath() + (state.getValue(ModBlockStateProperties.TWO_PART).right() ? "_right" : "_left")))
                 .rotationY(state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.NORTH ? -90 : state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.WEST ? 180
                         : state.getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.EAST ? 0 : 90)
                 .uvLock(false)
                 .build());
-
-//        itemModels().withExistingParent(BuiltInRegistries.BLOCK.getKey(Registration.FLUID_TANK.get()).getPath(), modLoc("block/fluid_tank"));
     }
 
     private ModelFile generated(String loc) {
         return new ModelFile.UncheckedModelFile(modLoc("block/" + loc));
     }
 
-    private ResourceLocation getItemId(Block block) {
+    private ResourceLocation getId(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
     }
 }

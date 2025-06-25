@@ -11,6 +11,7 @@ sourceSets {
 loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
 
+
     forge {
         mixinConfig "swm.mixins.json"
     }
@@ -20,7 +21,7 @@ loom {
             data()
             programArgs "--all", "--mod", "swm"
             programArgs "--output", file("src/generated/resources").absolutePath
-            programArgs "--existing", project(":common").file("src/main/resources").absolutePath
+            programArgs "--existing", file("src/main/resources").absolutePath
         }
     }
 }
@@ -49,6 +50,9 @@ dependencies {
     forge "net.minecraftforge:forge:$rootProject.forge_version"
 
     modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version"
+
+    compileOnly "mezz.jei:jei-${rootProject.minecraft_version}-forge-api:${rootProject.jei_version}"
+    // at runtime, use the full JEI jar for Forge
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
