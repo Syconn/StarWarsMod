@@ -1,6 +1,5 @@
 package mod.syconn.swm.integration.jei.category;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -13,8 +12,10 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mod.syconn.swm.core.ModBlocks;
+import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.StringUtil;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;
@@ -85,23 +86,9 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
         this.inventory.draw(guiGraphics, 0, this.window.getHeight() + 2 + 11 + 2);
 
         guiGraphics.drawString(GameInstance.getClient().font, I18n.get(MATERIALS_KEY), 0, 78, 0x7E7E7E);
-        ItemStack output = recipe.item();
-        int titleX = this.window.getWidth() / 2;
-        guiGraphics.drawCenteredString(GameInstance.getClient().font, output.getHoverName().getString(), titleX, 5, 0xFFFFFFFF);
-        PoseStack poseStack = guiGraphics.pose();
-        poseStack.pushPose();
-
-        poseStack.mulPoseMatrix(poseStack.last().pose());
-//        poseStack.translate(81, 40, 0);
-//        poseStack.scale(40F, 40F, 40F);
-//        poseStack.mulPose(Axis.XP.rotationDegrees(-5F));
-//        if (GameInstance.getClient().player != null) poseStack.mulPose(Axis.YP.rotationDegrees(GameInstance.getClient().player.tickCount + partialTicks));
-//        poseStack.scale(-1, -1, -1);
-//        RenderSystem.applyModelViewMatrix();
-
-        GraphicsUtil.renderLightsaber(guiGraphics, output, 81, 40, -45f);
-
-        poseStack.popPose();
-//        RenderSystem.applyModelViewMatrix();
+        var lT = LightsaberTag.getOrCreate(recipe.item());
+        var titleX = this.window.getWidth() / 2;
+        guiGraphics.drawCenteredString(GameInstance.getClient().font, StringUtil.makeLightsaberName(recipe.id().getPath()) + "'s Lightsaber", titleX, 5, 0xFFFFFFFF);
+        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
     }
 }
