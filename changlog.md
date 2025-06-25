@@ -14,3 +14,4 @@ Changelog
   * Drill
   * Screwdriver
   * Monitor
+  * Screen
