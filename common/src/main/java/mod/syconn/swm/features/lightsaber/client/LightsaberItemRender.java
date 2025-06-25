@@ -2,7 +2,6 @@ package mod.syconn.swm.features.lightsaber.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
@@ -10,10 +9,8 @@ import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.client.model.ModelUtil;
 import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
 import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
-import mod.syconn.swm.util.client.render.RenderUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderBuffers;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;

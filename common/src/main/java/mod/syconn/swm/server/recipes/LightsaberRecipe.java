@@ -1,10 +1,10 @@
 package mod.syconn.swm.server.recipes;
 
 import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import mod.syconn.swm.core.ModRecipes;
+import mod.syconn.swm.util.json.JsonUtils;
 import mod.syconn.swm.util.server.StackedIngredient;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,7 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -65,26 +67,24 @@ public record LightsaberRecipe(ResourceLocation id, ItemStack item, ImmutableLis
 
         @Override
         public @NotNull LightsaberRecipe fromJson(ResourceLocation pRecipeId, JsonObject parent) {
-            ImmutableList.Builder<StackedIngredient> builder = ImmutableList.builder();
-            JsonArray input = GsonHelper.getAsJsonArray(parent, "materials");
+            var builder = ImmutableList.<StackedIngredient>builder();
+            var input = GsonHelper.getAsJsonArray(parent, "materials");
             for (int i = 0; i < input.size(); i++) {
                 JsonObject object = input.get(i).getAsJsonObject();
                 builder.add(StackedIngredient.fromJson(object));
             }
             if (!parent.has("result")) throw new JsonSyntaxException("Missing result item entry");
-            JsonObject resultObject = GsonHelper.getAsJsonObject(parent, "result");
-            ItemStack resultItem = ShapedRecipe.itemStackFromJson(resultObject);
+            var resultObject = GsonHelper.getAsJsonObject(parent, "result");
+            var resultItem = JsonUtils.getItemStack(resultObject, true);
             return new LightsaberRecipe(pRecipeId, resultItem, builder.build());
         }
 
         @Override
         public @NotNull LightsaberRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
-            ItemStack result = buffer.readItem();
-            ImmutableList.Builder<StackedIngredient> builder = ImmutableList.builder();
+            var result = buffer.readItem();
+            var builder = ImmutableList.<StackedIngredient>builder();
             int size = buffer.readVarInt();
-            for (int i = 0; i < size; i++) {
-                builder.add((StackedIngredient) StackedIngredient.fromNetwork(buffer));
-            }
+            for (int i = 0; i < size; i++) builder.add(StackedIngredient.fromNetwork(buffer));
             return new LightsaberRecipe(recipeId, result, builder.build());
         }
 

@@ -14,8 +14,6 @@ import net.minecraft.client.renderer.RenderBuffers;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.phys.Vec3;
 
 import static mod.syconn.swm.util.math.ColorUtil.*;
 

@@ -2,7 +2,6 @@ package mod.syconn.swm.fabric.datagen;
 
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.core.ModKeys;
 import mod.syconn.swm.util.Constants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;

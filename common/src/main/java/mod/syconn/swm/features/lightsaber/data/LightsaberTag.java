@@ -85,7 +85,7 @@ public class LightsaberTag {
     }
 
     private static LightsaberTag create(ItemStack stack) {
-        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("mace")).toTag();
+        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("yoda")).toTag();
         lT.change(stack);
         return lT;
     }

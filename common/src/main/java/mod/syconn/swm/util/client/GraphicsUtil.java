@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.math.ColorUtil;
 import net.minecraft.client.Minecraft;

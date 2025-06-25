@@ -4,7 +4,6 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.util.server.StackedIngredient;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
