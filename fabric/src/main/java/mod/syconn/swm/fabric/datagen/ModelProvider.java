@@ -33,9 +33,11 @@ public class ModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockModelGenerators generator) {
         var gen = generator.blockStateOutput;
 
-        gen.accept(MultiVariantGenerator.multiVariant(ModBlocks.LIGHTSABER_WORKBENCH.get(), Variant.variant().with(VariantProperties.UV_LOCK, false)).with(
+        generator.skipAutoItemBlock(ModBlocks.LIGHTSABER_WORKBENCH.get());
+
+        gen.accept(MultiVariantGenerator.multiVariant(ModBlocks.LIGHTSABER_WORKBENCH.get()).with(
                 PropertyDispatch.property(ModBlockStateProperties.TWO_PART)
-                        .generate(f -> Variant.variant().with(VariantProperties.MODEL, Constants.withId(getId(ModBlocks.LIGHTSABER_WORKBENCH.get()).getPath() + (f.right() ? "_right" : "_left"))))
+                        .generate(f -> Variant.variant().with(VariantProperties.MODEL, Constants.withId(getId(ModBlocks.LIGHTSABER_WORKBENCH.get()) + (f.right() ? "_right" : "_left"))))
                 ).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
                         .generate(f -> Variant.variant().with(VariantProperties.Y_ROT, f == Direction.NORTH ? VariantProperties.Rotation.R270 : f == Direction.WEST ? VariantProperties.Rotation.R180
                                 : f == Direction.EAST ? VariantProperties.Rotation.R0 : VariantProperties.Rotation.R90))
@@ -51,7 +53,7 @@ public class ModelProvider extends FabricModelProvider {
 
         var builder = parent("lightsaber/yoda");
         for (var lightsaber : LightsaberDefaults.LightsaberTypes.values())
-            override(builder, Constants.withId("item/lightsaber/" + lightsaber.getId()), Constants.withId("model"), lightsaber.getData().model() * 0.1f);
+            override(builder, Constants.withId("item/lightsaber/" + lightsaber.getId()), Constants.withId("model"), lightsaber.getData().model() / 10.0);
         gen.accept(ModelLocationUtils.getModelLocation(ModItems.LIGHTSABER.get()), () -> builder);
     }
 
@@ -61,7 +63,7 @@ public class ModelProvider extends FabricModelProvider {
         return json;
     }
 
-    private static void override(JsonObject parent, ResourceLocation model, ResourceLocation id, float index) {
+    private static void override(JsonObject parent, ResourceLocation model, ResourceLocation id, double index) {
         var array = parent.has("overrides") ? parent.get("overrides").getAsJsonArray() : new JsonArray();
 
         var override = new JsonObject();
@@ -74,7 +76,7 @@ public class ModelProvider extends FabricModelProvider {
         parent.add("overrides", array);
     }
 
-    private ResourceLocation getId(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block);
+    private String getId(Block block) {
+        return "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
 }

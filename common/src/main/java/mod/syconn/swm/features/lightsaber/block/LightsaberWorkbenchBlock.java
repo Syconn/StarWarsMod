@@ -28,7 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended {
+public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended { // TODO BLADE RENDERS WHEN IN ASSEMBLER
 
     public LightsaberWorkbenchBlock() {
         super(Properties.copy(Blocks.IRON_BLOCK).noOcclusion());
@@ -65,12 +65,12 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) { // TODO LIGHTSABER ASSEMBLER DROPS ITEM WHEN BROKE IN CREATIVE
         if (!state.is(newState.getBlock()) && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
             Containers.dropContents(level, pos, blockEntity.getContainer());
             level.updateNeighbourForOutputSignal(pos, this);
         }
-        else super.onRemove(state, level, pos, newState, movedByPiston);
+        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Override

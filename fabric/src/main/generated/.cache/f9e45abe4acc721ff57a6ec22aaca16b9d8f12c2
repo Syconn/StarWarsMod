@@ -1,5 +1,4 @@
-// 1.20.1	2025-06-24T23:32:33.8376157	Star Wars Mod/Model Definitions
-61dbc23719ca384561b57f0232894d10687626f0 assets\swm\blockstates\lightsaber_workbench.json
-f62868784d07a1cbf4900d5bb81956eff0359a59 assets\swm\models\item\lightsaber.json
-e569b68cb32b26aaaafe2092d9c8eb6322739719 assets\swm\models\item\lightsaber_workbench.json
+// 1.20.1	2025-06-25T00:25:15.1100468	Star Wars Mod/Model Definitions
+107092309fb71b3f7d6bf1b56d7b1a286d247943 assets\swm\blockstates\lightsaber_workbench.json
+e357c3fe2fbefb6a96cdec16a916de008287ec27 assets\swm\models\item\lightsaber.json
 cf205d97d91e6c8e08a81d296c29e1979b6d8a11 assets\swm\models\item\screen.json
