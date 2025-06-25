@@ -28,7 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended { // TODO BLADE RENDERS WHEN IN ASSEMBLER
+public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended {
 
     public LightsaberWorkbenchBlock() {
         super(Properties.copy(Blocks.IRON_BLOCK).noOcclusion());

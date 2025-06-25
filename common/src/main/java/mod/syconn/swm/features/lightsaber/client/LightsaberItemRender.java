@@ -32,7 +32,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         poseStack.popPose();
     }
 
-    public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) { // TODO MAKE THE UNSTABLE BETTER
+    public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
         if (!(stack.getItem() instanceof LightsaberItem)) return;
 
         var lT = LightsaberTag.getOrCreate(stack);

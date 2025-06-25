@@ -149,7 +149,7 @@ public class PlasmaRenderer {
 
         var deltaThickness = radius * 0.0028f;
         var minOutputLayer = mL * thicknessBottom / deltaThickness;
-        var globalTime = StarWarsClient.getTickDelta();
+        var globalTime = ((System.currentTimeMillis()) % Integer.MAX_VALUE) / 5f;
 
         for (var layer = mL; layer <= xL; layer++) {
             var time = ((System.currentTimeMillis() - layer * 10) % Integer.MAX_VALUE) / 200f;
@@ -180,8 +180,8 @@ public class PlasmaRenderer {
                     var topThicknessLerp = Mth.lerp(dSegments * (i + 1), thicknessBottom, thicknessTop);
                     var bottomThicknessLerp = Mth.lerp(dSegments * i, thicknessBottom, thicknessTop);
 
-                    var dTTop = unstable ? (float) Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * (i + 1)) * 0.0075f : 0;
-                    var dTBottom = unstable ? (float)Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * i) * 0.0075f : 0;
+                    var dTTop = unstable ? (float) Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * (i + 1)) * 0.0085f : 0;
+                    var dTBottom = unstable ? (float)Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * i) * 0.0085f : 0;
 
                     noise = (float) Constants.SIMPLEX.getValue(globalTime, 3 * dLength * i);
                     color = ColorUtil.hsvToRgbInt(0, (unstable ? (0.07f - noise * 0.07f) : 0) * glowSat, getValue(x, glowVal) - 0.12f);
