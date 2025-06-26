@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "swm:drill"
+    },
+    "m": {
+      "item": "swm:monitor"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "r": {
+      "item": "swm:driver"
+    }
+  },
+  "pattern": [
+    "mdr",
+    "nnn",
+    "n n"
+  ],
+  "result": {
+    "item": "swm:lightsaber_workbench"
+  }
+}

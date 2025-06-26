@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "minecraft:black_concrete"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " i ",
+    " i ",
+    " c "
+  ],
+  "result": {
+    "item": "swm:driver"
+  }
+}
