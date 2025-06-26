@@ -1,5 +1,6 @@
 package mod.syconn.swm.util.client.model;
 
+import com.mojang.math.Vector3f;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
@@ -8,7 +9,6 @@ import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -61,13 +61,13 @@ public class ModelUtil {
         var max = new Vector3f(Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE);
 
         for (var v : vectors) {
-            if (v.x < min.x) min.set(v.x, min.y, min.z);
-            if (v.y < min.y) min.set(min.x, v.y, min.z);
-            if (v.z < min.z) min.set(min.x, min.y, v.z);
+            if (v.x() < min.x()) min.set(v.x(), min.y(), min.z());
+            if (v.y() < min.y()) min.set(min.x(), v.y(), min.z());
+            if (v.z() < min.z()) min.set(min.x(), min.y(), v.z());
 
-            if (v.x > max.x) max.set(v.x, max.y, max.z);
-            if (v.y > max.y) max.set(max.x, v.y, max.z);
-            if (v.z > max.z) max.set(max.x, max.y, v.z);
+            if (v.x() > max.x()) max.set(v.x(), max.y(), max.z());
+            if (v.y() > max.y()) max.set(max.x(), v.y(), max.z());
+            if (v.z() > max.z()) max.set(max.x(), max.y(), v.z());
         }
 
         return new AABB(new Vec3(min), new Vec3(max));

@@ -18,8 +18,8 @@ public class JsonUtils {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public static <T> List<T> getArray(JsonObject json, Function<JsonObject, T> function) {
-        var list = new ArrayList<T>();
-        json.asMap().forEach((key, value) -> list.add(function.apply(value.getAsJsonObject())));
+        List<T> list = new ArrayList<>();
+        json.entrySet().forEach(e -> list.add(function.apply(e.getValue().getAsJsonObject())));
         return list;
     }
 

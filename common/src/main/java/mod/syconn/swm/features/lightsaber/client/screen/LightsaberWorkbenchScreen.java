@@ -1,5 +1,6 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
@@ -13,7 +14,6 @@ import mod.syconn.swm.util.client.GraphicsUtil;
 import mod.syconn.swm.util.math.ColorUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -67,23 +67,25 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
+        RenderSystem.setShaderTexture(0, WORKSTATION_BACKGROUND);
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        guiGraphics.blit(WORKSTATION_BACKGROUND, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        this.blit(poseStack, i, j, 0, 0, this.imageWidth, this.imageHeight);
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(poseStack);
+        super.render(poseStack, mouseX, mouseY, partialTick);
+        this.renderTooltip(poseStack, mouseX, mouseY);
 
         var stack = this.menu.getBlockEntity().getContainer().getItem(0);
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
             var lT = LightsaberTag.getOrCreate(stack);
             this.rotation += (float) (-10f * this.deltaScroll);
-            GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(true, true), this.leftPos + 185, this.topPos + 36.5, this.rotation);
+            GraphicsUtil.renderLightsaber(poseStack, lT.getTemporary(true, true), this.leftPos + 185, this.topPos + 36.5, this.rotation);
             this.deltaScroll = 0f;
 
             if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
@@ -98,7 +100,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     }
 
     @Override
-    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) { }
+    protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) { }
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {

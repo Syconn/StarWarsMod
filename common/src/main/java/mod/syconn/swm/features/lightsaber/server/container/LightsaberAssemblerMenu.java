@@ -32,8 +32,8 @@ public class LightsaberAssemblerMenu extends AbstractContainerMenu {
     public LightsaberAssemblerMenu(int containerId, Inventory inventory, BlockPos pos){
         super(ModMenus.LIGHTSABER_ASSEMBLER.get(), containerId);
 
-        this.blockEntity = inventory.player.level().getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
-        this.recipes = inventory.player.level().getRecipeManager().getAllRecipesFor(ModRecipes.LIGHTSABER.get());
+        this.blockEntity = inventory.player.level.getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
+        this.recipes = inventory.player.level.getRecipeManager().getAllRecipesFor(ModRecipes.LIGHTSABER.get());
 
         this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 174, 37, LightsaberItem.class));
         for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 8 + j1 * 18, 102 + l * 18));

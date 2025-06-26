@@ -32,8 +32,8 @@ public class CraftHiltPacket {
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
-            if (context.get().getPlayer().level().getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity && context.get().getPlayer() instanceof ServerPlayer sp && !blockEntity.hasItem()) {
-                var recipe = ModRecipes.getRecipeFromId(ModRecipes.LIGHTSABER.get(), sp.level(), this.id);
+            if (context.get().getPlayer().level.getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity && context.get().getPlayer() instanceof ServerPlayer sp && !blockEntity.hasItem()) {
+                var recipe = ModRecipes.getRecipeFromId(ModRecipes.LIGHTSABER.get(), sp.level, this.id);
 
                 if (recipe.isPresent()) {
                     for (StackedIngredient ingredient : recipe.get().ingredients()) {

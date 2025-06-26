@@ -2,10 +2,10 @@ package mod.syconn.swm.util.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import com.mojang.math.Vector4f;
 import mod.syconn.swm.util.math.MathUtil;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 public enum PlasmaBuffer {
     RENDER;
@@ -27,7 +27,6 @@ public enum PlasmaBuffer {
     private static final int[] _clockwiseVertIndices = new int[] { 3, 2, 1, 0 };
 
     static {
-        // cube
         cubeVertices[0][0] = cubeVertices[1][0] = cubeVertices[2][0] = cubeVertices[3][0] = -0.5f;
         cubeVertices[4][0] = cubeVertices[5][0] = cubeVertices[6][0] = cubeVertices[7][0] = 0.5f;
         cubeVertices[0][1] = cubeVertices[1][1] = cubeVertices[4][1] = cubeVertices[5][1] = -0.5f;
@@ -107,13 +106,13 @@ public enum PlasmaBuffer {
     }
 
     public void vertex(Vector3f pos, Vector3f normal, float u, float v) {
-        var pos4 = new Vector4f(pos.x, pos.y, pos.z, 1);
-        normal = new Vector3f(normal);
+        var pos4 = new Vector4f(pos.x(), pos.y(), pos.z(), 1);
+        normal = normal.copy();
 
-        pos4.mul(pose.pose());
-        normal.mul(pose.normal());
+        pos4.transform(pose.pose());
+        normal.transform(pose.normal());
 
-        vertexConsumer.vertex(pos4.x, pos4.y, pos4.z, r, g, b, a, u, v, overlay, light, normal.x, normal.y, normal.z);
+        vertexConsumer.vertex(pos4.x(), pos4.y(), pos4.z(), r, g, b, a, u, v, overlay, light, normal.x(), normal.y(), normal.z());
     }
 
     public void vertex(float x, float y, float z, float nx, float ny, float nz, float u, float v) {

@@ -1,14 +1,12 @@
 package mod.syconn.swm.util.math;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3d;
-import org.joml.Vector3f;
 
 public class MathUtil {
 
@@ -51,24 +49,19 @@ public class MathUtil {
         return degrees * Mth.RAD_TO_DEG;
     }
 
-    public static Vec3 transform(Vec3 v, Matrix4f transform) {
-        var vec3d = new Vector3d(v.x, v.y, v.z).mulPosition(transform);
-        return new Vec3(vec3d.x, vec3d.y, vec3d.z);
-    }
-
     public static void scalePos(PoseStack stack, float x, float y, float z) {
         var entry = stack.last();
-        entry.pose().scale(x, y, z);
+        entry.pose().multiplyWithTranslation(x, y, z);
     }
 
-    public static Quaternionf getRotation(Direction direction) {
+    public static Quaternion getRotation(Direction direction) {
         return switch (direction) {
-            case DOWN -> new Quaternionf().rotationXYZ(0, 0, (float)(Math.PI / -2));
-            case UP -> new Quaternionf().rotationXYZ(0, 0, (float)(Math.PI / 2));
-            case NORTH -> new Quaternionf().rotationXYZ(0, (float)(Math.PI / 2), 0);
-            case SOUTH -> new Quaternionf().rotationXYZ(0, (float)(Math.PI / -2), 0);
-            case WEST -> new Quaternionf().rotationXYZ(0, (float)Math.PI, 0);
-            case EAST -> new Quaternionf().rotationXYZ(0, 0, 0);
+            case DOWN -> Quaternion.fromXYZ(0, 0, (float)(Math.PI / -2));
+            case UP -> Quaternion.fromXYZ(0, 0, (float)(Math.PI / 2));
+            case NORTH -> Quaternion.fromXYZ(0, (float)(Math.PI / 2), 0);
+            case SOUTH -> Quaternion.fromXYZ(0, (float)(Math.PI / -2), 0);
+            case WEST -> Quaternion.fromXYZ(0, (float)Math.PI, 0);
+            case EAST -> Quaternion.fromXYZ(0, 0, 0);
         };
     }
 

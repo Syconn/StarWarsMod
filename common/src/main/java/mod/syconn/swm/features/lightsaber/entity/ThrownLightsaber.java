@@ -57,7 +57,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
         if (this.getOwner() != null) {
             if (this.distanceTo(getOwner()) >= 8) this.returning = true;
 
-            if (this.distanceTo(getOwner()) <= 2.5f && !this.level().isClientSide && returning) {
+            if (this.distanceTo(getOwner()) <= 2.5f && !this.level.isClientSide && returning) {
                 if (this.getOwner() instanceof Player player && !player.isCreative()) {
                     if (player.getItemInHand(hand).isEmpty()) player.setItemSlot(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, this.getItem());
                     else if (player instanceof ServerPlayer sp) ItemStackHooks.giveItem(sp, this.getItem());
@@ -72,7 +72,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
             var vec3 = entity.getEyePosition().subtract(0, 0.25d, 0).subtract(this.position());
             var returnLevel = 2;
             this.setPosRaw(this.getX(), this.getY() + vec3.y * 0.015 * returnLevel, this.getZ());
-            if (this.level().isClientSide) this.yOld = this.getY();
+            if (this.level.isClientSide) this.yOld = this.getY();
 
             var d = 0.05 * returnLevel;
             this.setDeltaMovement(this.getDeltaMovement().scale(0.95).add(vec3.normalize().scale(d)));
@@ -95,7 +95,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
         var f = 8.0F;
 
         var entity2 = this.getOwner();
-        var damageSource = ModDamageSources.lightsaber(level());
+        var damageSource = ModDamageSources.lightsaber(this, this.getOwner());
         var soundEvent = SoundEvents.TRIDENT_HIT; // TODO CHANGE THIS TOO
         if (entity2 != entity && entity.hurt(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) return;

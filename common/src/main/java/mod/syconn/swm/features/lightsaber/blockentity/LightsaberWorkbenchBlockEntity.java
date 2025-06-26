@@ -48,7 +48,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public void addItem(Player player, InteractionHand hand) {
-        container.addItem(player.getItemInHand(hand).copyWithCount(1));
+        container.addItem(new ItemStack(player.getItemInHand(hand).copy().getItem(), 1));
         player.getItemInHand(hand).shrink(1);
     }
 

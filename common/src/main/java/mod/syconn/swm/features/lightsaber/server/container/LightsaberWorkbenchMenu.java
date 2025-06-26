@@ -26,7 +26,7 @@ public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
     public LightsaberWorkbenchMenu(int containerId, Inventory inventory, BlockPos pos){
         super(ModMenus.LIGHTSABER_WORKBENCH.get(), containerId);
-        this.blockEntity = inventory.player.level().getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
+        this.blockEntity = inventory.player.level.getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
 
         this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 14, 63, LightsaberItem.class));
         for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 48 + j1 * 18, 159 + l * 18));

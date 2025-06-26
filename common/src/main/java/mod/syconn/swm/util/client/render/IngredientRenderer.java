@@ -1,13 +1,17 @@
 package mod.syconn.swm.util.client.render;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.util.server.StackedIngredient;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
 public class IngredientRenderer<T extends StackedIngredient> {
+
+    private final ItemRenderer itemRenderer = GameInstance.getClient().getItemRenderer();
     private final List<ItemStack> displayStacks;
     private final T ingredient;
     private int selectedStack = 0;
@@ -30,11 +34,12 @@ public class IngredientRenderer<T extends StackedIngredient> {
         }
     }
 
-    public void display(GuiGraphics guiGraphics, int count, int x, int y, int mouseX, int mouseY) {
+    public void display(Screen screen, PoseStack poseStack, int count, int x, int y, int mouseX, int mouseY) {
+        var stack = new ItemStack(this.displayStacks.get(this.selectedStack).getItem());
         if (this.displayStacks.size() > this.selectedStack) {
-            guiGraphics.renderItem(this.displayStacks.get(this.selectedStack), x, y);
-            if (count > 0) guiGraphics.renderItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
-            if (inBounds(x, y, mouseX, mouseY)) guiGraphics.renderTooltip(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem()), mouseX, mouseY);
+            this.itemRenderer.renderGuiItem(this.displayStacks.get(this.selectedStack), x, y);
+            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
+            if (inBounds(x, y, mouseX, mouseY)) screen.renderTooltip(poseStack, screen.getTooltipFromItem(stack), stack.getTooltipImage(), mouseX, mouseY);
         }
     }
 

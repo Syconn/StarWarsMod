@@ -1,16 +1,16 @@
 package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Quaternion;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
 import mod.syconn.swm.util.math.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemDisplayContext;
-import org.joml.Quaternionf;
 
 public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaber> {
 
@@ -34,11 +34,13 @@ public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaber> {
         var bYaw = (float) Math.atan2(velocity.x, velocity.z);
         var bPitch = (float) Math.asin(velocity.y);
 
-        poseStack.mulPose(new Quaternionf().rotationY(bYaw));
-        poseStack.mulPose(new Quaternionf().rotationX((float)(Math.PI / 2) - bPitch));
-        poseStack.mulPose(new Quaternionf().rotationZ(MathUtil.toRadians(-(entity.tickCount + partialTick) * 31)));
+        poseStack.mulPose(Quaternion.fromXYZ((float)(Math.PI / 2) - bPitch, bYaw, MathUtil.toRadians(-(entity.tickCount + partialTick) * 31)));
 
-        this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.NONE, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
+//        poseStack.mulPose(new Quaternionf().rotationY(bYaw)); TODO HAS TO BE TESTED
+//        poseStack.mulPose(new Quaternionf().rotationX((float)(Math.PI / 2) - bPitch));
+//        poseStack.mulPose(new Quaternionf().rotationZ(MathUtil.toRadians(-(entity.tickCount + partialTick) * 31)));
+
+        this.itemRenderer.renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getId());
 
         poseStack.popPose();
     }

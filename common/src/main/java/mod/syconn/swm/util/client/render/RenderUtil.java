@@ -34,33 +34,4 @@ public class RenderUtil {
         }
         return true;
     }
-
-    public static void renderModelLists(BakedModel model, ItemStack stack, int combinedLight, int combinedOverlay, PoseStack poseStack, VertexConsumer buffer) {
-        RandomSource randomSource = RandomSource.create();
-
-        for (Direction direction : Direction.values()) {
-            randomSource.setSeed(42L);
-            renderQuadList(poseStack, buffer, model.getQuads(null, direction, randomSource), stack, combinedLight, combinedOverlay);
-        }
-
-        randomSource.setSeed(42L);
-        renderQuadList(poseStack, buffer, model.getQuads(null, null, randomSource), stack, combinedLight, combinedOverlay);
-    }
-
-    private static void renderQuadList(PoseStack poseStack, VertexConsumer buffer, List<BakedQuad> quads, ItemStack itemStack, int combinedLight, int combinedOverlay) {
-        boolean bl = !itemStack.isEmpty();
-        PoseStack.Pose pose = poseStack.last();
-
-        for (BakedQuad bakedQuad : quads) {
-            int i = -1;
-            if (bl && bakedQuad.isTinted()) {
-                i = Minecraft.getInstance().getItemRenderer().itemColors.getColor(itemStack, bakedQuad.getTintIndex());
-            }
-
-            float f = (i >> 16 & 0xFF) / 255.0F;
-            float g = (i >> 8 & 0xFF) / 255.0F;
-            float h = (i & 0xFF) / 255.0F;
-            buffer.putBulkData(pose, bakedQuad, f, g, h, combinedLight, combinedOverlay);
-        }
-    }
 }
