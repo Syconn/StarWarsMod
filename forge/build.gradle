@@ -15,15 +15,6 @@ loom {
     forge {
         mixinConfig "swm.mixins.json"
     }
-
-    runs {
-        data {
-            data()
-            programArgs "--all", "--mod", "swm"
-            programArgs "--output", file("src/generated/resources").absolutePath
-            programArgs "--existing", file("src/main/resources").absolutePath
-        }
-    }
 }
 
 architectury {
@@ -52,7 +43,6 @@ dependencies {
     modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version"
 
     compileOnly "mezz.jei:jei-${rootProject.minecraft_version}-forge-api:${rootProject.jei_version}"
-    // at runtime, use the full JEI jar for Forge
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')

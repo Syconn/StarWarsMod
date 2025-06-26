@@ -6,7 +6,6 @@ import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
 import mod.syconn.swm.fabric.client.data.recipes.LightsaberRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -71,39 +70,39 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .save(writer);
 
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.ANAKIN)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 24)
+                .addIngredient(Items.IRON_INGOT, 24)
                 .addIngredient(Items.COAL, 22)
                 .addIngredient(Items.REDSTONE, 12)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.AHSOKA)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 30)
+                .addIngredient(Items.IRON_INGOT, 30)
                 .addIngredient(Items.COAL, 26)
                 .addIngredient(Items.REDSTONE, 12)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.DARK_SABER)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 14)
+                .addIngredient(Items.IRON_INGOT, 14)
                 .addIngredient(Items.COAL, 42)
                 .addIngredient(Items.REDSTONE, 18)
                 .addIngredient(Items.NETHERITE_INGOT, 2)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.MACE)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 14)
+                .addIngredient(Items.IRON_INGOT, 14)
                 .addIngredient(Items.COAL, 36)
                 .addIngredient(Items.REDSTONE, 23)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.KYLO)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 28)
+                .addIngredient(Items.IRON_INGOT, 28)
                 .addIngredient(Items.REDSTONE, 18)
                 .addIngredient(Items.COAL, 42)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.TEMPLE_GUARD)
@@ -112,24 +111,24 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .addCriterion("has_quartz_ingot", has(Items.QUARTZ))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.KAL)
-                .addIngredient(ConventionalItemTags.COPPER_INGOTS, 28)
+                .addIngredient(Items.COPPER_INGOT, 28)
                 .addIngredient(Items.REDSTONE, 18)
                 .addIngredient(Items.COAL, 42)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.COPPER_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.COPPER_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.LUKE)
-                .addIngredient(ConventionalItemTags.IRON_INGOTS, 37)
-                .addIngredient(ConventionalItemTags.COPPER_INGOTS, 16)
+                .addIngredient(Items.IRON_INGOT, 37)
+                .addIngredient(Items.COPPER_INGOT, 16)
                 .addIngredient(Items.REDSTONE_BLOCK, 5)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_redstone_block", has(Items.REDSTONE_BLOCK))
                 .build(writer);
         new LightsaberRecipeBuilder(LightsaberDefaults.LightsaberTypes.MAUL)
                 .addIngredient(Items.IRON_INGOT, 52)
                 .addIngredient(Items.COAL, 38)
                 .addIngredient(Items.REDSTONE_BLOCK, 12)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .addCriterion("has_redstone_block", has(Items.REDSTONE_BLOCK))
                 .build(writer);
@@ -137,9 +136,9 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .addIngredient(Items.IRON_INGOT, 12)
                 .addIngredient(Items.COAL, 12)
                 .addIngredient(Items.IRON_NUGGET, 24)
-                .addIngredient(ConventionalItemTags.NETHERITE_INGOTS, 1)
+                .addIngredient(Items.NETHERITE_INGOT, 1)
                 .addIngredient(Items.REDSTONE_LAMP, 1)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .addCriterion("has_redstone_block", has(Items.REDSTONE_BLOCK))
                 .build(writer);
@@ -147,7 +146,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .addIngredient(Items.IRON_INGOT, 16)
                 .addIngredient(Items.COAL, 12)
                 .addIngredient(Items.REDSTONE_TORCH, 4)
-                .addCriterion("has_iron_ingot", has(ConventionalItemTags.IRON_INGOTS))
+                .addCriterion("has_iron_ingot", has(Items.IRON_INGOT))
                 .addCriterion("has_coal_ingot", has(Items.COAL))
                 .build(writer);
     }
