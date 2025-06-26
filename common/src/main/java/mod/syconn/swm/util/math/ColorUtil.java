@@ -1,22 +1,22 @@
 package mod.syconn.swm.util.math;
 
+import com.mojang.math.Vector3f;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
-import org.joml.Vector3f;
 
 public class ColorUtil {
 
     public static int tint(int src, int tint, TintMode tintMode) {
-        var srcA = FastColor.ABGR32.alpha(src);
-        var srcR = FastColor.ABGR32.red(src);
-        var srcG = FastColor.ABGR32.green(src);
-        var srcB = FastColor.ABGR32.blue(src);
+        var srcA = FastColor.ARGB32.alpha(src);
+        var srcR = FastColor.ARGB32.red(src);
+        var srcG = FastColor.ARGB32.green(src);
+        var srcB = FastColor.ARGB32.blue(src);
 
-        var tintA = FastColor.ABGR32.alpha(tint);
+        var tintA = FastColor.ARGB32.alpha(tint);
         if (tintA == 0) tintA = 255;
-        var tintR = FastColor.ABGR32.red(tint);
-        var tintG = FastColor.ABGR32.green(tint);
-        var tintB = FastColor.ABGR32.blue(tint);
+        var tintR = FastColor.ARGB32.red(tint);
+        var tintG = FastColor.ARGB32.green(tint);
+        var tintB = FastColor.ARGB32.blue(tint);
 
         switch (tintMode) {
             case Multiply -> {
@@ -45,7 +45,7 @@ public class ColorUtil {
             }
         }
 
-        return FastColor.ABGR32.color(srcA, srcB, srcG, srcR);
+        return FastColor.ARGB32.color(srcA, srcB, srcG, srcR);
     }
 
     public static int packRgb(int r, int g, int b) {

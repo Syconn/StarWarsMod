@@ -1,7 +1,8 @@
 package mod.syconn.swm.client.screen.components;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.util.Constants;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -23,13 +24,15 @@ public class ColoredLightsaberButton extends ExpandedButton {
         this.v = v;
     }
 
-    public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        guiGraphics.pose().pushPose();
+    public void render(PoseStack poseStack, int i, int j, float f) {
+        poseStack.pushPose();
 
-        guiGraphics.pose().scale(0.25f, 0.25f, 0.25f);
-        guiGraphics.blit(COMPONENTS, getX() * 4, getY() * 4, 71 * u, 24 + 71 * v, 71, 71);
+        RenderSystem.setShaderTexture(0, COMPONENTS);
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+        poseStack.scale(0.25f, 0.25f, 0.25f);
+        blit(poseStack, this.x * 4, this.y * 4, 71 * u, 24 + 71 * v, 71, 71);
 
-        guiGraphics.pose().popPose();
+        poseStack.popPose();
     }
 
     public int getHSV() {

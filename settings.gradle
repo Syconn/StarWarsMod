@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'StarWarsMod'
+rootProject.name = 'swm'
 
 include 'common'
 include 'fabric'

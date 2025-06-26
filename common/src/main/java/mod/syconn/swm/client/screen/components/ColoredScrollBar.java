@@ -1,7 +1,7 @@
 package mod.syconn.swm.client.screen.components;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.util.client.GraphicsUtil;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 import java.util.function.Function;
@@ -19,7 +19,7 @@ public class ColoredScrollBar extends ScrollWidget {
         if (onChange != null) onChange.onChange(this);
     }
 
-    protected void renderBackground(GuiGraphics graphics) {
-        GraphicsUtil.renderHSVSquare(graphics, this.getX(), this.getY(), this.width, this.height, packedHSV);
+    protected void renderBackground(PoseStack poseStack) {
+        GraphicsUtil.renderHSVSquare(poseStack, this.x, this.y, this.width, this.height, packedHSV);
     }
 }

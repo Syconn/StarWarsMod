@@ -1,10 +1,10 @@
 package mod.syconn.swm.client.screen.components;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -109,7 +109,7 @@ public class ScrollWidget extends AbstractSliderButton {
     }
 
     private void setValueFromMouse(double mouseX) {
-        this.setSliderValue((mouseX - (this.getX() + 4)) / (this.width - 8));
+        this.setSliderValue((mouseX - (x + 4)) / (this.width - 8));
     }
 
     private void setSliderValue(double value) {
@@ -156,17 +156,12 @@ public class ScrollWidget extends AbstractSliderButton {
         return i * 20;
     }
 
-    @Override
-    public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        final Minecraft mc = Minecraft.getInstance();
-
-        renderBackground(guiGraphics);
-        GraphicsUtil.blitWithBorder(guiGraphics, SLIDER_LOCATION, this.getX() + (int)(this.value * (double)(this.width - 8)), this.getY(), 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
-
-        renderScrollingString(guiGraphics, mc.font, 2, this.active ? 16777215 : 10526880 | Mth.ceil(this.alpha * 255.0F) << 24);
+    public void render(PoseStack poseStack, int i, int j, float f) {
+        renderBackground(poseStack);
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x + (int)(this.value * (double)(this.width - 8)), this.y, 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
     }
 
-    protected void renderBackground(GuiGraphics graphics) {
-        GraphicsUtil.blitWithBorder(graphics, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
+    protected void renderBackground(PoseStack poseStack) {
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x, this.y, 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
     }
 }

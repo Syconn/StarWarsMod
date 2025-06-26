@@ -1,9 +1,9 @@
 package mod.syconn.swm.client.screen.components;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.util.client.FontUtil;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
@@ -12,21 +12,20 @@ import net.minecraft.network.chat.FormattedText;
 public class ExpandedButton extends Button {
 
     public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler) {
-        this(xPos, yPos, width, height, displayString, handler, DEFAULT_NARRATION);
+        this(xPos, yPos, width, height, displayString, handler, NO_TOOLTIP);
     }
 
-    public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler, CreateNarration createNarration) {
-        super(xPos, yPos, width, height, displayString, handler, createNarration);
+    public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler, OnTooltip createTooltip) {
+        super(xPos, yPos, width, height, displayString, handler, createTooltip);
     }
 
-    @Override
-    public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(PoseStack poseStack, int i, int j, float f) {
         Minecraft mc = Minecraft.getInstance();
         int k = !this.active ? 0 : (this.isHovered ? 2 : 1);
-        GraphicsUtil.blitWithBorder(guiGraphics, WIDGETS_LOCATION, this.getX(), this.getY(), 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
+        GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.x, this.y, 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
 
         final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
-        guiGraphics.drawCenteredString(mc.font, Language.getInstance().getVisualOrder(buttonText), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, getFGColor());
+        drawCenteredString(poseStack, mc.font, Language.getInstance().getVisualOrder(buttonText), this.x + this.width / 2, this.y + (this.height - 8) / 2, getFGColor());
     }
 
     protected int getFGColor() {

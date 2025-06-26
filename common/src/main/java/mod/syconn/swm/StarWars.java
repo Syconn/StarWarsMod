@@ -12,11 +12,10 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
 import net.minecraft.server.packs.PackType;
 
-public final class StarWars { // TODO BETTER COMBAT
+public final class StarWars {
     public static void init() {
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
-        ModItems.TABS.register();
         ModBlockEntities.BLOCK_ENTITIES.register();
         ModEntities.ENTITIES.register();
         ModMenus.MENUS.register();
@@ -24,8 +23,6 @@ public final class StarWars { // TODO BETTER COMBAT
         ModRecipes.SERIALIZER.register();
 
         Network.init();
-
-        CreativeTabRegistry.modify(ModItems.TAB, ModItems::addCreative);
 
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA);
 
