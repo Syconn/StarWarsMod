@@ -1,0 +1,20 @@
+{
+  "bladeType": "plasma",
+  "color": 10082431,
+  "length": 1.4,
+  "model": 3,
+  "radius": 1.0,
+  "stable": true,
+  "vectors": {
+    "0": {
+      "qw": 1.0,
+      "qx": 0.0,
+      "qy": 0.0,
+      "qz": 0.0,
+      "scalar": 1.0,
+      "x": 0.0,
+      "y": -0.205,
+      "z": 0.0
+    }
+  }
+}
