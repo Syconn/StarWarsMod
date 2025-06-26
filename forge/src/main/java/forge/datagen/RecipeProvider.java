@@ -1,27 +1,27 @@
 package forge.datagen;
 
+import forge.client.data.LightsaberDefaults;
+import forge.client.data.recipes.LightsaberRecipeBuilder;
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.forge.client.data.LightsaberDefaults;
-import mod.syconn.swm.forge.client.data.recipes.LightsaberRecipeBuilder;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 
-    public RecipeProvider(PackOutput output) {
-        super(output);
+    public RecipeProvider(DataGenerator generator) {
+        super(generator);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> writer) {
+    protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> writer) {
 //        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.F_11D.get())
 //                .pattern("d b")
 //                .pattern("iii")
@@ -41,7 +41,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 //                .define('g', Items.GOLD_INGOT)
 //                .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.IRON_INGOT).build()))
 //                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.LIGHTSABER_WORKBENCH.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.LIGHTSABER_WORKBENCH.get())
                 .pattern("mdr")
                 .pattern("nnn")
                 .pattern("n n")
@@ -51,7 +51,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .define('n', Items.NETHERITE_INGOT)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.NETHERITE_INGOT).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DRIVER.get())
+        ShapedRecipeBuilder.shaped(ModItems.DRIVER.get())
                 .pattern(" i ")
                 .pattern(" i ")
                 .pattern(" c ")
@@ -59,7 +59,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .define('c', Items.BLACK_CONCRETE)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.BLACK_CONCRETE).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DRILL.get())
+        ShapedRecipeBuilder.shaped(ModItems.DRILL.get())
                 .pattern(" bd")
                 .pattern("ri ")
                 .pattern(" b ")
@@ -69,7 +69,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .define('r', Items.REDSTONE)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.BLACK_CONCRETE).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SCREEN.get())
+        ShapedRecipeBuilder.shaped(ModItems.SCREEN.get())
                 .pattern("iri")
                 .pattern("rlr")
                 .pattern("iri")
@@ -78,7 +78,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .define('l', Items.REDSTONE_LAMP)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.IRON_INGOT).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MONITOR.get())
+        ShapedRecipeBuilder.shaped(ModItems.MONITOR.get())
                 .pattern("idi")
                 .pattern("isi")
                 .pattern("iii")

@@ -4,7 +4,7 @@ import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
 import net.minecraft.core.Direction;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -16,8 +16,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockModelProvider extends BlockStateProvider {
 
-    public BlockModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, Constants.MOD, existingFileHelper);
+    public BlockModelProvider(DataGenerator dataGenerator, ExistingFileHelper existingFileHelper) {
+        super(dataGenerator, Constants.MOD, existingFileHelper);
     }
 
     protected void registerStatesAndModels() {

@@ -4,22 +4,17 @@ import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
 import mod.syconn.swm.util.block.TwoPart;
-import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BlockLootTables extends BlockLootSubProvider {
+public class BlockLootTables extends BlockLoot {
 
-    public BlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
-    }
-
-    protected void generate() {
-        this.add(ModBlocks.LIGHTSABER_WORKBENCH.get(), arg -> this.createSinglePropConditionTable(arg, ModBlockStateProperties.TWO_PART, TwoPart.RIGHT));
+    @Override
+    protected void addTables() {
+        this.add(ModBlocks.LIGHTSABER_WORKBENCH.get(), arg -> createSinglePropConditionTable(arg, ModBlockStateProperties.TWO_PART, TwoPart.RIGHT));
     }
 
     protected Iterable<Block> getKnownBlocks() {

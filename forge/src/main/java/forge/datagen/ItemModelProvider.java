@@ -1,9 +1,9 @@
 package forge.datagen;
 
+import forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.util.Constants;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -12,8 +12,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemModelProvider extends net.minecraftforge.client.model.generators.ItemModelProvider {
 
-    public ItemModelProvider(PackOutput packOutput, ExistingFileHelper existingFileHelper) {
-        super(packOutput, Constants.MOD, existingFileHelper);
+    public ItemModelProvider(DataGenerator dataGenerator, ExistingFileHelper existingFileHelper) {
+        super(dataGenerator, Constants.MOD, existingFileHelper);
     }
 
     @Override

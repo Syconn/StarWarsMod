@@ -2,8 +2,8 @@ package forge.client.data.recipes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.core.ModRecipes;
-import mod.syconn.swm.forge.client.data.LightsaberDefaults;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.server.StackedIngredient;
 import net.minecraft.advancements.Advancement;
@@ -12,7 +12,6 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
