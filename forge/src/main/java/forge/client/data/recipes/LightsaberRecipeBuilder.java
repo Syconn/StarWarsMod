@@ -14,6 +14,7 @@ import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
@@ -63,7 +64,7 @@ public class LightsaberRecipeBuilder {
         this.advancementBuilder.parent(ResourceLocation.withDefaultNamespace("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id)).requirements(RequirementsStrategy.OR);
         consumer.accept(new Result(id, this.type, this.ingredients, this.conditions, this.advancementBuilder,
-                ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "recipes/" + RecipeCategory.COMBAT.getFolderName() + "/" + id.getPath())));
+                ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "recipes/" + CreativeModeTab.TAB_COMBAT.getRecipeFolderName() + "/" + id.getPath())));
     }
 
     private void validate(ResourceLocation id) {
