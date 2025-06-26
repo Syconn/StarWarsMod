@@ -4,12 +4,11 @@ import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
 import mod.syconn.swm.fabric.client.data.recipes.LightsaberRecipeBuilder;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 
@@ -17,13 +16,13 @@ import java.util.function.Consumer;
 
 public class RecipeProvider extends FabricRecipeProvider {
 
-    public RecipeProvider(FabricDataOutput output) {
-        super(output);
+    public RecipeProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.LIGHTSABER_WORKBENCH.get())
+    protected void generateRecipes(Consumer<FinishedRecipe> writer) {
+        ShapedRecipeBuilder.shaped(ModBlocks.LIGHTSABER_WORKBENCH.get())
                 .pattern("mdr")
                 .pattern("nnn")
                 .pattern("n n")
@@ -33,7 +32,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .define('n', Items.NETHERITE_INGOT)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.NETHERITE_INGOT).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DRIVER.get())
+        ShapedRecipeBuilder.shaped(ModItems.DRIVER.get())
                 .pattern(" i ")
                 .pattern(" i ")
                 .pattern(" c ")
@@ -41,7 +40,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .define('c', Items.BLACK_CONCRETE)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.BLACK_CONCRETE).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.DRILL.get())
+        ShapedRecipeBuilder.shaped(ModItems.DRILL.get())
                 .pattern(" bd")
                 .pattern("ri ")
                 .pattern(" b ")
@@ -51,7 +50,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .define('r', Items.REDSTONE)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.BLACK_CONCRETE).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SCREEN.get())
+        ShapedRecipeBuilder.shaped(ModItems.SCREEN.get())
                 .pattern("iri")
                 .pattern("rlr")
                 .pattern("iri")
@@ -60,7 +59,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .define('l', Items.REDSTONE_LAMP)
                 .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.IRON_INGOT).build()))
                 .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.MONITOR.get())
+        ShapedRecipeBuilder.shaped(ModItems.MONITOR.get())
                 .pattern("idi")
                 .pattern("isi")
                 .pattern("iii")

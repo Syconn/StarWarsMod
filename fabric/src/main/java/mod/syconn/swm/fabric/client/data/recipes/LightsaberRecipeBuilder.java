@@ -11,11 +11,12 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.client.RecipeBookCategories;
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
@@ -61,7 +62,7 @@ public class LightsaberRecipeBuilder {
         this.advancementBuilder.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id)).requirements(RequirementsStrategy.OR);
         consumer.accept(new Result(id, this.type, this.ingredients, this.advancementBuilder,
-                new ResourceLocation(id.getNamespace(), "recipes/" + RecipeCategory.COMBAT.getFolderName() + "/" + id.getPath())));
+                new ResourceLocation(id.getNamespace(), "recipes/" + CreativeModeTab.TAB_COMBAT.getRecipeFolderName() + "/" + id.getPath())));
     }
 
     private void validate(ResourceLocation id) {
@@ -90,7 +91,7 @@ public class LightsaberRecipeBuilder {
             json.add("materials", materials);
 
             JsonObject resultObject = new JsonObject();
-            resultObject.addProperty("item", Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(this.type.getData().toItem().getItem())).toString());
+            resultObject.addProperty("item", Objects.requireNonNull(Registry.ITEM.getKey(this.type.getData().toItem().getItem())).toString());
             resultObject.addProperty("nbt", Objects.requireNonNull(this.type.getData().toItem().getTag()).getAsString());
             json.add("result", resultObject);
         }

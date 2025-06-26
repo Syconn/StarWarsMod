@@ -3,15 +3,15 @@ package mod.syconn.swm.fabric.datagen;
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.util.Constants;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
 import static mod.syconn.swm.util.Constants.MOD;
 
 public class LangProvider extends FabricLanguageProvider {
 
-    public LangProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public LangProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override

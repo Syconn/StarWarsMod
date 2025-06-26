@@ -7,13 +7,11 @@ public class DataGeneration implements DataGeneratorEntrypoint {
 
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
-        var pack = generator.createPack();
-        pack.addProvider(BlockLootTables::new);
-        pack.addProvider(ModelProvider::new);
-        pack.addProvider(BlockTagProvider::new);
-        pack.addProvider(LangProvider::new);
-        pack.addProvider(DatapackProvider::new);
-        pack.addProvider(LightsaberDataProvider::new);
-        pack.addProvider(RecipeProvider::new);
+        generator.addProvider(BlockLootTables::new);
+        generator.addProvider(ModelProvider::new);
+        generator.addProvider(BlockTagProvider::new);
+        generator.addProvider(LangProvider::new);
+        generator.addProvider(LightsaberDataProvider::new);
+        generator.addProvider(RecipeProvider::new);
     }
 }

@@ -7,10 +7,10 @@ import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
@@ -25,8 +25,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ModelProvider extends FabricModelProvider {
 
-    public ModelProvider(FabricDataOutput output) {
-        super(output);
+    public ModelProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override
@@ -77,6 +77,6 @@ public class ModelProvider extends FabricModelProvider {
     }
 
     private String getId(Block block) {
-        return "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath();
+        return "block/" + Registry.BLOCK.getKey(block).getPath();
     }
 }

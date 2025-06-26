@@ -3,23 +3,23 @@ package mod.syconn.swm.fabric.datagen;
 import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
 import mod.syconn.swm.util.Constants;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class LightsaberDataProvider implements DataProvider {
 
-    private final FabricDataOutput output;
+    private final FabricDataGenerator output;
     public final Map<String, LightsaberData> lightsaberData = new HashMap<>();
 
-    public LightsaberDataProvider(FabricDataOutput output) {
+    public LightsaberDataProvider(FabricDataGenerator output) {
         this.output = output;
     }
 
@@ -27,26 +27,17 @@ public class LightsaberDataProvider implements DataProvider {
         for (var type : LightsaberDefaults.LightsaberTypes.values()) lightsaberData.put(type.getId(), type.getData());
     }
 
-    public @NotNull CompletableFuture<?> run(@NotNull CachedOutput output) {
+    public void run(@NotNull CachedOutput output) throws IOException {
         lightsaberData.clear();
         generateData();
-        return generateAll(output);
-    }
-
-    protected CompletableFuture<?> generateAll(CachedOutput cache) {
-        CompletableFuture<?>[] futures = new CompletableFuture<?>[this.lightsaberData.size()];
-
-        var i = 0;
         for (var data : this.lightsaberData.entrySet()) {
             var path = getPath(data.getKey());
-            futures[i++] = DataProvider.saveStable(cache, data.getValue().toJson(), path);
+            DataProvider.saveStable(output, data.getValue().toJson(), path);
         }
-
-        return CompletableFuture.allOf(futures);
     }
 
     private Path getPath(String id) {
-        return this.output.getOutputFolder(PackOutput.Target.DATA_PACK).resolve(Constants.MOD).resolve("lightsaber/defaults").resolve(id + ".json");
+        return this.output.getOutputFolder(DataGenerator.Target.DATA_PACK).resolve(Constants.MOD).resolve("lightsaber/defaults").resolve(id + ".json");
     }
 
     public @NotNull String getName() {
