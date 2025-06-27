@@ -66,7 +66,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, LightsaberWorkbenchBlockEntity blockEntity) {
         var stack = blockEntity.getContainer().getItem(0);
-        if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) {
+        if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).getSize() > 0) {
             if (blockEntity.ticks <= 0) {
                 LightsaberTag.update(stack, LightsaberTag::tick);
                 blockEntity.ticks = 1;
