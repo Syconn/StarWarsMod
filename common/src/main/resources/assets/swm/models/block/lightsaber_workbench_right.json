@@ -6,7 +6,7 @@
 		"5": "swm:item/gold",
 		"6": "swm:block/workstation_top_left",
 		"10": "swm:block/steel",
-		"12": "swm:item/red",
+		"12": "swm:item/red_metal",
 		"16": "swm:item/silver",
 		"particle": "swm:item/black"
 	},

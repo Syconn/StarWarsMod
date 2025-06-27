@@ -27,6 +27,38 @@
     }
   ],
   "result": {
-    "item": "swm:lightsaber"
+    "Count": 1,
+    "id": "swm:lightsaber",
+    "tag": {
+      "lightsaberData": {
+        "active": 1,
+        "bladeType": "dark_saber",
+        "color": 216,
+        "lengthScalar": 1.2,
+        "model": 6,
+        "radius": 1.0,
+        "stable": 1,
+        "transition": 0,
+        "uuid": [
+          -1437897493,
+          -1010020517,
+          -1590478203,
+          1262294293
+        ],
+        "vectors": {
+          "0": {
+            "qw": 0.0,
+            "qx": 0.0,
+            "qy": -1.0,
+            "qz": 0.0,
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": -0.6,
+            "z": 0.0
+          },
+          "len": 1
+        }
+      }
+    }
   }
 }

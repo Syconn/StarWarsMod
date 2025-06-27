@@ -63,7 +63,8 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
         var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).value().result().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
-        guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).id().getPath()), this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
+        guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).value().result().getHoverName().getString()),
+                this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
         this.deltaScroll = 0f;
     }

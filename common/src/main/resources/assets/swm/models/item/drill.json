@@ -4,7 +4,7 @@
 	"textures": {
 		"0": "swm:item/black",
 		"10": "swm:block/steel",
-		"12": "swm:item/red",
+		"12": "swm:item/red_metal",
 		"16": "swm:item/silver",
 		"particle": "swm:item/black"
 	},

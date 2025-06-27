@@ -4,7 +4,7 @@
 	"textures": {
 		"black": "swm:item/black",
 		"metal": "swm:item/metal",
-		"red": "swm:item/red"
+		"red": "swm:item/red_metal"
 	},
 	"elements": [
 		{

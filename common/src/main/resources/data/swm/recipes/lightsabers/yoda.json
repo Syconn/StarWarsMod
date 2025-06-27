@@ -21,6 +21,38 @@
     }
   ],
   "result": {
-    "item": "swm:lightsaber"
+    "Count": 1,
+    "id": "swm:lightsaber",
+    "tag": {
+      "lightsaberData": {
+        "active": 1,
+        "bladeType": "plasma",
+        "color": 6029183,
+        "lengthScalar": 1.4,
+        "model": 4,
+        "radius": 0.85,
+        "stable": 1,
+        "transition": 0,
+        "uuid": [
+          -1030141496,
+          -1818344454,
+          -1539107980,
+          1905217287
+        ],
+        "vectors": {
+          "0": {
+            "qw": 1.0,
+            "qx": 0.0,
+            "qy": 0.0,
+            "qz": 0.0,
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": 0.125,
+            "z": 0.0
+          },
+          "len": 1
+        }
+      }
+    }
   }
 }

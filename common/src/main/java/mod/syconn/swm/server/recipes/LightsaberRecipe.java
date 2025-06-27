@@ -72,10 +72,11 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
     }
 
     public static class Serializer implements RecipeSerializer<LightsaberRecipe> {
-        public static final Codec<LightsaberRecipe> CODEC = RecordCodecBuilder.create(builder -> builder.group(StackedIngredient.CODEC.listOf().fieldOf("materials").flatXmap(materials -> {
-            var inputs = materials.stream().filter((ingredient) -> !ingredient.ingredient().isEmpty() || ingredient.count() <= 0).toArray(StackedIngredient[]::new);
-            return DataResult.success(NonNullList.of(StackedIngredient.EMPTY, inputs));
-        }, DataResult::success).forGetter(o -> o.materials), ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("result").
+        public static final Codec<LightsaberRecipe> CODEC = RecordCodecBuilder.create(builder -> builder.group(StackedIngredient.CODEC.listOf().fieldOf("materials")
+                .flatXmap(materials -> {
+                    var inputs = materials.stream().filter((ingredient) -> !ingredient.ingredient().isEmpty() || ingredient.count() <= 0).toArray(StackedIngredient[]::new);
+                    return DataResult.success(NonNullList.of(StackedIngredient.EMPTY, inputs));
+        }, DataResult::success).forGetter(o -> o.materials), ItemStack.CODEC.fieldOf("result").
                 forGetter(recipe -> recipe.result)).apply(builder, LightsaberRecipe::new));
 
         @Override
