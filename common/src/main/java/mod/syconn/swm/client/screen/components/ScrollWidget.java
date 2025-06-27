@@ -1,10 +1,10 @@
 package mod.syconn.swm.client.screen.components;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -15,9 +15,9 @@ import org.lwjgl.glfw.GLFW;
 import java.text.DecimalFormat;
 
 public class ScrollWidget extends AbstractSliderButton {
-    private static final ResourceLocation SLIDER_LOCATION = new ResourceLocation("textures/gui/slider.png");
 
-    @Nullable
+    protected static final ResourceLocation SLIDER_LOCATION = Constants.withId("textures/gui/slider.png");
+
     protected final OnChange onChange;
     protected Component prefix;
     protected Component suffix;
@@ -146,22 +146,24 @@ public class ScrollWidget extends AbstractSliderButton {
         void onChange(ScrollWidget widget);
     }
 
-    private int getTextureY() {
-        int i = this.isHovered ? 1 : 0;
+    private int getTextureY(boolean hovered) {
+        int i = hovered ? 1 : 0;
         return i * 20;
     }
 
-    private int getHandleTextureY() {
-        int i = !this.isHovered ? 2 : 3;
+    private int getHandleTextureY(boolean hovered) {
+        int i = !hovered ? 2 : 3;
         return i * 20;
     }
 
-    public void render(PoseStack poseStack, int i, int j, float f) {
-        renderBackground(poseStack);
-        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x + (int)(this.value * (double)(this.width - 8)), this.y, 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
+    @Override
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+        var hovered = isMouseOver(mouseX, mouseY);
+        renderBackground(poseStack, hovered);
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x + (int)(this.value * (double)(this.width - 8)), this.y, 0, getHandleTextureY(hovered), 8, this.height, 200, 20 , 2, 3, 2, 2);
     }
 
-    protected void renderBackground(PoseStack poseStack) {
-        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x, this.y, 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
+    protected void renderBackground(PoseStack poseStack, boolean hovered) {
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x, this.y, 0, getTextureY(hovered), this.width, this.height, 200, 20, 2, 3, 2, 2);
     }
 }

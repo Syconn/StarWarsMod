@@ -3,6 +3,7 @@ package mod.syconn.swm.core;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.Registry;
@@ -30,11 +31,6 @@ public class ModItems {
     public static final RegistrySupplier<Item> SCREEN = registerItem("screen", new Item.Properties().stacksTo(1));
 
     public static final CreativeModeTab TAB = CreativeTabRegistry.create(Constants.withId("star_wars"), () -> new ItemStack(LIGHTSABER.get()));
-
-//    public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) { TODO NEED TO BE DONE
-//        output.acceptAll(LightsaberContent.getLightsabers());
-//        output.acceptAll(DEFAULT_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
-//    }
 
     @SuppressWarnings("unchecked")
     private static <T extends Item> RegistrySupplier<T> registerItem(String id, Item.Properties properties) {

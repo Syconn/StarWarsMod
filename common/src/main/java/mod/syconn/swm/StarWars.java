@@ -1,7 +1,6 @@
 package mod.syconn.swm;
 
 import dev.architectury.event.events.common.LifecycleEvent;
-import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.utils.Env;
 import dev.architectury.utils.EnvExecutor;

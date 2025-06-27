@@ -34,13 +34,17 @@ public class IngredientRenderer<T extends StackedIngredient> {
         }
     }
 
-    public void display(Screen screen, PoseStack poseStack, int count, int x, int y, int mouseX, int mouseY) {
-        var stack = new ItemStack(this.displayStacks.get(this.selectedStack).getItem());
+    public void display(int count, int x, int y) {
+        var stack = new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count);
         if (this.displayStacks.size() > this.selectedStack) {
-            this.itemRenderer.renderGuiItem(this.displayStacks.get(this.selectedStack), x, y);
-            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
-            if (inBounds(x, y, mouseX, mouseY)) screen.renderTooltip(poseStack, screen.getTooltipFromItem(stack), stack.getTooltipImage(), mouseX, mouseY);
+            this.itemRenderer.renderGuiItem(stack, x, y);
+            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, stack, x, y);
         }
+    }
+
+    public void renderTooltip(Screen screen, PoseStack poseStack, int x, int y, int mouseX, int mouseY) {
+        var stack = new ItemStack(this.displayStacks.get(this.selectedStack).getItem());
+        if (inBounds(x, y, mouseX, mouseY)) screen.renderTooltip(poseStack, screen.getTooltipFromItem(stack), stack.getTooltipImage(), mouseX, mouseY);
     }
 
     private boolean inBounds(int x, int y, int mouseX, int mouseY) {

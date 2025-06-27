@@ -75,7 +75,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
         renderBackground(poseStack);
         super.render(poseStack, mouseX, mouseY, partialTick);
-        this.craftButton.visible = renderSlots(poseStack, mouseX, mouseY);
+        this.craftButton.visible = renderSlots(poseStack);
         renderTooltip(poseStack, mouseX, mouseY);
     }
 
@@ -94,11 +94,24 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
         return super.mouseScrolled(mouseX, mouseY, delta);
     }
 
-    private boolean renderSlots(PoseStack poseStack, int mouseX, int mouseY){
+    @Override
+    protected void renderTooltip(PoseStack poseStack, int mouseX, int mouseY) {
+        super.renderTooltip(poseStack, mouseX, mouseY);
+
+        for (int i = 0; i < this.ingredientRenderers.size(); i++){
+            if (this.minecraft != null) {
+                RenderSystem.setShaderTexture(0, WORKSTATION_BACKGROUND);
+                RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+                var x = this.leftPos + 11 + (27 * i);
+                var y = this.topPos + 78;
+                this.ingredientRenderers.get(i).renderTooltip(this, poseStack, x, y, mouseX, mouseY);
+            }
+        }
+    }
+
+    private boolean renderSlots(PoseStack poseStack){
         var canCraft = true;
 
-        RenderSystem.setShaderTexture(0, WORKSTATION_BACKGROUND);
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         for (int i = 0; i < this.ingredientRenderers.size(); i++){
             var ingredient = this.ingredientRenderers.get(i);
             var amountNeeded = ingredient.getIngredient().count();
@@ -111,12 +124,12 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
             amountNeeded -= playerAmount;
             if (amountNeeded > 0) canCraft = false;
 
-            if (this.minecraft != null) {
-                var x = this.leftPos + 11 + (27 * i);
-                var y = this.topPos + 78;
-                this.blit(poseStack, x, y, 198, amountNeeded <= 0 ? 20 : 38, 18, 18);
-                ingredient.display(this, poseStack, amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 79, mouseX, mouseY);
-            }
+            RenderSystem.setShaderTexture(0, WORKSTATION_BACKGROUND);
+            RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+            var x = this.leftPos + 11 + (27 * i);
+            var y = this.topPos + 78;
+            this.blit(poseStack, x, y, 198, amountNeeded <= 0 ? 20 : 38, 18, 18);
+            ingredient.display(amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 79);
         }
 
         return canCraft;
