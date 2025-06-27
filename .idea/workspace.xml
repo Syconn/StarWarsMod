@@ -234,6 +234,14 @@
       <recent name="C:\Users\Aidan\IdeaProjects\StarWarsMod\1.19.4\forge\src\main\resources\assets" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.Minecraft Client (:fabric)">
+    <list>
+      <item itemvalue="Application.Minecraft Client (:fabric)" />
+      <item itemvalue="Application.Minecraft Client (:forge)" />
+      <item itemvalue="Application.Minecraft Server (:fabric)" />
+      <item itemvalue="Application.Minecraft Server (:forge)" />
+    </list>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b547977d-c755-4871-98ec-cc1ecc929ec9" name="Changes" comment="" />
