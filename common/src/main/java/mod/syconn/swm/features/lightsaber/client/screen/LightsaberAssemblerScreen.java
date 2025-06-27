@@ -53,7 +53,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
         }));
 
         addRenderableWidget(this.craftButton = new ExpandedButton(this.leftPos + 131, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
-            Network.CHANNEL.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).getId()));
+            Network.CHANNEL.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).id()));
         }));
     }
 
@@ -61,7 +61,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         guiGraphics.blit(WORKSTATION_BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
-        var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item().copy());
+        var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).value().result().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
         guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).id().getPath()), this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
@@ -70,7 +70,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics, mouseX, mouseY, partialTick);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.craftButton.visible = renderSlots(guiGraphics, mouseX, mouseY);
         renderTooltip(guiGraphics, mouseX, mouseY);
@@ -84,10 +84,9 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {}
 
-    @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        this.deltaScroll = delta;
-        return super.mouseScrolled(mouseX, mouseY, delta);
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
+        this.deltaScroll = scrollY;
+        return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }
 
     private boolean renderSlots(GuiGraphics graphics, int mouseX, int mouseY){
@@ -118,6 +117,6 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
 
     public void createRenderers() {
         this.ingredientRenderers.clear();
-        this.menu.getRecipes().get(this.selectedRecipe).ingredients().forEach(s -> this.ingredientRenderers.add(new IngredientRenderer<>(s)));
+        this.menu.getRecipes().get(this.selectedRecipe).value().materials().forEach(s -> this.ingredientRenderers.add(new IngredientRenderer<>(s)));
     }
 }

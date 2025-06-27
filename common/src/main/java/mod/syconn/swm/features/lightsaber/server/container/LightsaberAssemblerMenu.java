@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 public class LightsaberAssemblerMenu extends AbstractContainerMenu {
 
     private final LightsaberWorkbenchBlockEntity blockEntity;
-    private final List<LightsaberRecipe> recipes;
+    private final List<RecipeHolder<LightsaberRecipe>> recipes;
 
     public LightsaberAssemblerMenu(int containerId, Inventory inventory, FriendlyByteBuf data) {
         this(containerId, inventory, data.readBlockPos());
@@ -96,7 +97,7 @@ public class LightsaberAssemblerMenu extends AbstractContainerMenu {
         return blockEntity;
     }
 
-    public List<LightsaberRecipe> getRecipes() {
+    public List<RecipeHolder<LightsaberRecipe>> getRecipes() {
         return recipes;
     }
 }

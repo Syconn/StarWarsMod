@@ -74,7 +74,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
@@ -100,13 +100,8 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) { }
 
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
+        this.deltaScroll = scrollY; // TODO TEST
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
-    }
-
-    @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        this.deltaScroll = delta;
-        return super.mouseScrolled(mouseX, mouseY, delta);
     }
 
     private void getLightsaberColor() {
