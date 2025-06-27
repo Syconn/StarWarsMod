@@ -10,6 +10,7 @@ import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMe
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.block.EntityBlockExtended;
 import mod.syconn.swm.util.block.ModBlockStateProperties;
+import mod.syconn.swm.util.nbt.ItemStackHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -41,23 +42,23 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide) return InteractionResult.SUCCESS;
-
         var useHand = player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof LightsaberItem ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
         var assembler = !(level.getBlockEntity(pos) instanceof LightsaberWorkbenchBlockEntity);
-        if (player instanceof ServerPlayer sp && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
+        if (level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
             if (player.isCrouching() && blockEntity.hasItem()) {
                 if (player.getItemInHand(useHand).isEmpty()) player.setItemSlot(useHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, blockEntity.removeItem());
-                else ItemStackHooks.giveItem(sp, blockEntity.removeItem());
+                else ItemStackHelper.giveItem(player, blockEntity.removeItem());
                 return InteractionResult.SUCCESS;
             } else if (player.getItemInHand(useHand).getItem() instanceof LightsaberItem && !blockEntity.hasItem()) {
                 blockEntity.addItem(player, useHand);
                 return InteractionResult.SUCCESS;
             } else if (assembler) {
-                MenuRegistry.openExtendedMenu(sp, LightsaberAssemblerMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
+                if (player.level.isClientSide) return InteractionResult.SUCCESS;
+                MenuRegistry.openExtendedMenu((ServerPlayer) player, LightsaberAssemblerMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
                 return InteractionResult.SUCCESS;
             } else if (!player.isCrouching()) {
-                MenuRegistry.openExtendedMenu(sp, LightsaberWorkbenchMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
+                if (player.level.isClientSide) return InteractionResult.SUCCESS;
+                MenuRegistry.openExtendedMenu((ServerPlayer) player, LightsaberWorkbenchMenu.menu(getBlockEntityPos(level, pos, state)), buf -> buf.writeBlockPos(getBlockEntityPos(level, pos, state)));
                 return InteractionResult.SUCCESS;
             }
         }
@@ -88,7 +89,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBloc
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick) : null;
+        return createTickerHelper(blockEntityType, ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchBlockEntity::tick);
     }
 
     private BlockPos getBlockEntityPos(@NotNull Level level, BlockPos pos, BlockState state) {

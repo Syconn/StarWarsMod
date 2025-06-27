@@ -27,8 +27,8 @@ public abstract class SyncedBlockEntity extends BlockEntity {
 
     public void markDirty() {
         if (this.level != null) {
-            setChanged();
             this.level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 2);
+            setChanged();
         }
     }
 }

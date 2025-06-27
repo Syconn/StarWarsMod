@@ -1,5 +1,6 @@
 package mod.syconn.swm.features.lightsaber.blockentity;
 
+import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.blockentity.SyncedBlockEntity;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
@@ -11,6 +12,9 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BarrelBlock;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
@@ -44,11 +48,15 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public ItemStack removeItem() {
-        return LightsaberTag.update(container.removeItem(0, 1), tag -> { if (!tag.active) tag.toggle(); });
+        var stack = container.removeItemNoUpdate(0);
+        LightsaberTag.update(stack, tag -> {
+            if (!tag.active) tag.toggle();
+        });
+        return stack;
     }
 
     public void addItem(Player player, InteractionHand hand) {
-        container.addItem(new ItemStack(player.getItemInHand(hand).copy().getItem(), 1));
+        container.addItem(ItemStackHooks.copyWithCount(player.getItemInHand(hand), 1));
         player.getItemInHand(hand).shrink(1);
     }
 
@@ -57,11 +65,14 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, LightsaberWorkbenchBlockEntity blockEntity) {
-        if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem && blockEntity.ticks <= 0) {
-            LightsaberTag.update(blockEntity.getContainer().getItem(0), LightsaberTag::tick);
-            blockEntity.ticks = 1;
-            blockEntity.markDirty();
+        var stack = blockEntity.getContainer().getItem(0);
+        if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) {
+            if (blockEntity.ticks <= 0) {
+                LightsaberTag.update(stack, LightsaberTag::tick);
+                blockEntity.ticks = 1;
+                blockEntity.markDirty();
+            }
+            blockEntity.ticks--;
         }
-        blockEntity.ticks--;
     }
 }

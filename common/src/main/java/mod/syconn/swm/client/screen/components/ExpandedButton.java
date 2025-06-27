@@ -19,10 +19,10 @@ public class ExpandedButton extends Button {
         super(xPos, yPos, width, height, displayString, handler, createTooltip);
     }
 
-    public void render(PoseStack poseStack, int i, int j, float f) {
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
         if (this.visible) {
             Minecraft mc = Minecraft.getInstance();
-            int k = !this.active ? 0 : (this.isHovered ? 2 : 1);
+            int k = !this.active ? 0 : (isMouseOver(mouseX, mouseY) ? 2 : 1);
             GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.x, this.y, 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
 
             final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
