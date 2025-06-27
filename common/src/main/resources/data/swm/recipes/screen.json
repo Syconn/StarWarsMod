@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_bars"
+    },
+    "l": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "iri",
+    "rlr",
+    "iri"
+  ],
+  "result": {
+    "item": "swm:screen"
+  }
+}

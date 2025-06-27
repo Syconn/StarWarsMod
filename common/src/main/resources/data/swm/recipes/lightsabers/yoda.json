@@ -1,0 +1,26 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 16,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:redstone_torch"
+      }
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber"
+  }
+}

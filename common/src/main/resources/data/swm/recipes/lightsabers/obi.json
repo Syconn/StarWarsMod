@@ -1,0 +1,38 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 24,
+      "ingredient": {
+        "item": "minecraft:iron_nugget"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:redstone_lamp"
+      }
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber"
+  }
+}

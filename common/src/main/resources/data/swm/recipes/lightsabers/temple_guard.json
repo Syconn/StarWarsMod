@@ -1,0 +1,20 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 42,
+      "ingredient": {
+        "item": "minecraft:quartz"
+      }
+    },
+    {
+      "count": 18,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber"
+  }
+}
