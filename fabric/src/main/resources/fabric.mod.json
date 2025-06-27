@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "swm",
+  "version": "${version}",
+  "name": "Star Wars Mod",
+  "description": "A long time ago in a Galaxy Far Far Away",
+  "authors": [
+    "Syconn"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/syconns-star-wars-mod",
+    "issues": "https://github.com/Syconn/StarWarsMod/issues/new"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "StarWarsMod.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "mod.syconn.swm.fabric.StarWarsFabric"
+    ],
+    "client": [
+      "mod.syconn.swm.fabric.client.StarWarsFabricClient"
+    ],
+    "jei_mod_plugin": [
+      "mod.syconn.swm.integration.jei.Plugin"
+    ]
+  },
+  "mixins": [
+    "swm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.19.2",
+    "java": ">=17",
+    "architectury": ">=6.6.92",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

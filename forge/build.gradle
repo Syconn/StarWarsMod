@@ -8,15 +8,6 @@ loom {
     forge {
         mixinConfig "swm.mixins.json"
     }
-
-    runs {
-        data {
-            data()
-            programArgs "--all", "--mod", "swm"
-            programArgs "--output", file("src/generated/resources").absolutePath
-            programArgs "--existing", file("src/main/resources").absolutePath
-        }
-    }
 }
 
 architectury {
