@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.client.PlasmaBuffer;
 import mod.syconn.swm.util.math.ColorUtil;

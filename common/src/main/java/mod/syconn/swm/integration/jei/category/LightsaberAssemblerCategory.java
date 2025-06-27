@@ -71,10 +71,10 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
 
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, LightsaberRecipe recipe, @NotNull IFocusGroup focuses) {
-        ItemStack output = recipe.item().copy();
-        for(int i = 0; i < recipe.ingredients().size(); i++) {
+        ItemStack output = recipe.result().copy();
+        for(int i = 0; i < recipe.materials().size(); i++) {
             List<ItemStack> stacks = new ArrayList<>();
-            for (ItemStack mat : recipe.ingredients().get(i).ingredient().getItems()) stacks.add(new ItemStack(mat.getItem(), recipe.ingredients().get(i).count()));
+            for (ItemStack mat : recipe.materials().get(i).ingredient().getItems()) stacks.add(new ItemStack(mat.getItem(), recipe.materials().get(i).count()));
             builder.addSlot(RecipeIngredientRole.INPUT, (i % 8) * 18 + 1, 88 + (i / 8) * 18).addItemStacks(stacks);
         }
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(output);
@@ -86,9 +86,9 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
         this.inventory.draw(guiGraphics, 0, this.window.getHeight() + 2 + 11 + 2);
 
         guiGraphics.drawString(GameInstance.getClient().font, I18n.get(MATERIALS_KEY), 0, 78, 0x7E7E7E);
-        var lT = LightsaberTag.getOrCreate(recipe.item());
+        var lT = LightsaberTag.getOrCreate(recipe.result());
         var titleX = this.window.getWidth() / 2;
-        guiGraphics.drawCenteredString(GameInstance.getClient().font, StringUtil.makeLightsaberName(recipe.id().getPath()) + "'s Lightsaber", titleX, 5, 0xFFFFFFFF);
+        guiGraphics.drawCenteredString(GameInstance.getClient().font, recipe.result().getDisplayName().getString(), titleX, 5, 0xFFFFFFFF); // TODO TEST THIS
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
     }
 }

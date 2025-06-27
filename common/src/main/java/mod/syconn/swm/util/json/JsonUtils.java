@@ -43,30 +43,4 @@ public class JsonUtils {
         var z = json.get("z").getAsDouble();
         return new Vec3(x, y, z);
     }
-
-    public static ItemStack getItemStack(JsonObject json, boolean readNBT) {
-        var itemName = GsonHelper.getAsString(json, "item");
-        var item = ShapedRecipe.itemFromJson(json);
-        if (readNBT && json.has("nbt")) {
-            var nbt = getNBT(json.get("nbt"));
-            var tmp = new CompoundTag();
-            tmp.put("tag", nbt);
-            tmp.putString("id", itemName);
-            var stack = new ItemStack(item);
-            stack.setTag(nbt);
-            return stack;
-        }
-
-        return new ItemStack(item, GsonHelper.getAsInt(json, "count", 1));
-    }
-
-    public static CompoundTag getNBT(JsonElement element) {
-        try {
-            if (element.isJsonObject()) return TagParser.parseTag(GSON.toJson(element));
-            else return TagParser.parseTag(GsonHelper.convertToString(element, "nbt"));
-        }
-        catch (CommandSyntaxException e) {
-            throw new JsonSyntaxException("Invalid NBT Entry: " + e);
-        }
-    }
 }

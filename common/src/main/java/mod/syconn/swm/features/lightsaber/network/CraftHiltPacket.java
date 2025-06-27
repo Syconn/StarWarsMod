@@ -36,7 +36,7 @@ public class CraftHiltPacket {
                 var recipe = ModRecipes.getRecipeFromId(ModRecipes.LIGHTSABER.get(), sp.level(), this.id);
 
                 if (recipe.isPresent()) {
-                    for (StackedIngredient ingredient : recipe.get().ingredients()) {
+                    for (StackedIngredient ingredient : recipe.get().value().materials()) {
                         int count = ingredient.count();
                         for (int j = 0; j < sp.getInventory().getContainerSize(); j++) {
                             if (ingredient.ingredient().test(sp.getInventory().getItem(j))){
@@ -51,7 +51,7 @@ public class CraftHiltPacket {
                             }
                         }
                     }
-                    blockEntity.getContainer().setItem(0, recipe.get().item().copy());
+                    blockEntity.getContainer().setItem(0, recipe.get().value().result().copy());
                 }
             }
         });

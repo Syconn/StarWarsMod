@@ -15,10 +15,17 @@ import mod.syconn.swm.integration.jei.category.LightsaberAssemblerCategory;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Objects;
 
 @JeiPlugin
@@ -43,11 +50,20 @@ public class Plugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         ClientLevel world = Objects.requireNonNull(Minecraft.getInstance().level);
-        registration.addRecipes(LightsaberAssemblerCategory.LIGHTSABER, world.getRecipeManager().getAllRecipesFor(ModRecipes.LIGHTSABER.get()));
+        registration.addRecipes(LightsaberAssemblerCategory.LIGHTSABER, getRecipes(ModRecipes.LIGHTSABER.get()));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.LIGHTSABER_WORKBENCH.get()), LightsaberAssemblerCategory.LIGHTSABER);
+    }
+
+    private <C extends Container, T extends Recipe<C>> List<T> getRecipes(RecipeType<T> type) {
+        return getRecipeManager().getAllRecipesFor(type).stream().map(RecipeHolder::value).toList();
+    }
+
+    public static RecipeManager getRecipeManager() {
+        ClientPacketListener listener = Objects.requireNonNull(Minecraft.getInstance().getConnection());
+        return listener.getRecipeManager();
     }
 }

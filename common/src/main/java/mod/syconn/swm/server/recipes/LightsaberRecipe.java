@@ -1,98 +1,164 @@
 package mod.syconn.swm.server.recipes;
 
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.syconn.swm.core.ModRecipes;
-import mod.syconn.swm.util.json.JsonUtils;
+import mod.syconn.swm.util.server.Material;
 import mod.syconn.swm.util.server.StackedIngredient;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public record LightsaberRecipe(ResourceLocation id, ItemStack item, ImmutableList<StackedIngredient> ingredients) implements Recipe<Container> {
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+
+public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemStack result) implements Recipe<Container> {
 
     @Override
-    public boolean matches(Container pContainer, Level pLevel) {
-        return false;
+    public RecipeType<?> getType() {
+        return ModRecipes.LIGHTSABER.get();
     }
 
     @Override
-    public @NotNull ItemStack assemble(Container pContainer, RegistryAccess pRegistryAccess) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
-        return true;
-    }
-
-    @Override
-    public @NotNull ItemStack getResultItem(RegistryAccess pRegistryAccess) {
-        return item.copy();
-    }
-
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return id;
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
         return ModRecipes.LIGHTSABER_SERIALIZER.get();
     }
 
     @Override
-    public @NotNull RecipeType<?> getType() {
-        return ModRecipes.LIGHTSABER.get();
+    public boolean matches(Container container, Level level) {
+        return true;
     }
 
-    public static LightsaberRecipe getRecipe(Level level, ResourceLocation id) {
-        return level.getRecipeManager().getRecipes().stream()
-                .filter(recipe -> recipe.getType() == ModRecipes.LIGHTSABER.get())
-                .map(recipe -> (LightsaberRecipe) recipe)
-                .filter(recipe -> recipe.getId().equals(id))
-                .findFirst().orElse(null);
+    @Override
+    public ItemStack assemble(Container container, RegistryAccess access) {
+        return this.result.copy();
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess access) {
+        return this.result;
+    }
+
+    public int getResultId() {
+        return Item.getId(this.result.getItem());
+    }
+
+    public static Builder builder(ItemLike result, int count, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
+        return new Builder(result.asItem(), count, hasItem, hasTag);
     }
 
     public static class Serializer implements RecipeSerializer<LightsaberRecipe> {
+        public static final Codec<LightsaberRecipe> CODEC = RecordCodecBuilder.create(builder -> builder.group(StackedIngredient.CODEC.listOf().fieldOf("materials").flatXmap(materials -> {
+            var inputs = materials.stream().filter((ingredient) -> !ingredient.ingredient().isEmpty() || ingredient.count() <= 0).toArray(StackedIngredient[]::new);
+            return DataResult.success(NonNullList.of(StackedIngredient.EMPTY, inputs));
+        }, DataResult::success).forGetter(o -> o.materials), ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("result").
+                forGetter(recipe -> recipe.result)).apply(builder, LightsaberRecipe::new));
 
         @Override
-        public @NotNull LightsaberRecipe fromJson(ResourceLocation pRecipeId, JsonObject parent) {
-            var builder = ImmutableList.<StackedIngredient>builder();
-            var input = GsonHelper.getAsJsonArray(parent, "materials");
-            for (int i = 0; i < input.size(); i++) {
-                JsonObject object = input.get(i).getAsJsonObject();
-                builder.add(StackedIngredient.fromJson(object));
-            }
-            if (!parent.has("result")) throw new JsonSyntaxException("Missing result item entry");
-            var resultObject = GsonHelper.getAsJsonObject(parent, "result");
-            var resultItem = JsonUtils.getItemStack(resultObject, true);
-            return new LightsaberRecipe(pRecipeId, resultItem, builder.build());
+        public @NotNull Codec<LightsaberRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public @NotNull LightsaberRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+        public @NotNull LightsaberRecipe fromNetwork(FriendlyByteBuf buffer) {
+            var materialCount = buffer.readInt();
+            var materials = NonNullList.withSize(materialCount, StackedIngredient.EMPTY);
+            IntStream.range(0, materialCount).forEach(i -> materials.set(i, StackedIngredient.fromNetwork(buffer)));
             var result = buffer.readItem();
-            var builder = ImmutableList.<StackedIngredient>builder();
-            int size = buffer.readVarInt();
-            for (int i = 0; i < size; i++) builder.add(StackedIngredient.fromNetwork(buffer));
-            return new LightsaberRecipe(recipeId, result, builder.build());
+            return new LightsaberRecipe(materials, result);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buffer, LightsaberRecipe recipe) {
-            buffer.writeItem(recipe.item());
-            buffer.writeVarInt(recipe.ingredients.size());
-            for (StackedIngredient ingredient : recipe.ingredients) ingredient.toNetwork(buffer);
+            buffer.writeInt(recipe.materials.size());
+            recipe.materials.forEach(ingredient -> ingredient.toNetwork(buffer));
+            buffer.writeItem(recipe.result);
+        }
+    }
+
+    public static class Builder implements RecipeBuilder {
+        private final Item result;
+        private final int count;
+        private final Function<ItemLike, Criterion<?>> hasItem;
+        private final Function<TagKey<Item>, Criterion<?>> hasTag;
+        private final NonNullList<StackedIngredient> materials = NonNullList.create();
+        private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
+        private RecipeCategory category = RecipeCategory.MISC;
+
+        private Builder(Item result, int count, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
+            this.result = result;
+            this.count = count;
+            this.hasItem = hasItem;
+            this.hasTag = hasTag;
+        }
+
+//        public Builder requiresMaterial(Material<?> material) {
+//            this.materials.add(material.asStackedIngredient());
+//            return this.unlockedBy("has_" + material.getName(), material.createTrigger(this.hasItem, this.hasTag));
+//        }
+
+        @Override
+        public @NotNull Builder unlockedBy(String name, Criterion<?> trigger) {
+            this.criteria.put(name, trigger);
+            return this;
+        }
+
+        @Override
+        public @NotNull Builder group(@Nullable String group) {
+            return this;
+        }
+
+        public Builder category(RecipeCategory category) {
+            this.category = category;
+            return this;
+        }
+
+        @Override
+        public @NotNull Item getResult() {
+            return this.result;
+        }
+
+        @Override
+        public void save(RecipeOutput output, ResourceLocation id) {
+            this.validate(id);
+            var builder = output.advancement()
+                    .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                    .rewards(AdvancementRewards.Builder.recipe(id))
+                    .requirements(AdvancementRequirements.Strategy.OR);
+            this.criteria.forEach(builder::addCriterion);
+            output.accept(id, new LightsaberRecipe(this.materials, new ItemStack(this.result)), builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+        }
+
+        private void validate(ResourceLocation id) {
+            if(this.materials.isEmpty()) throw new IllegalArgumentException("There must be at least one material for workbench crafting recipe %s".formatted(id));
+            if(this.criteria.isEmpty()) throw new IllegalStateException("No way of obtaining recipe " + id);
         }
     }
 }

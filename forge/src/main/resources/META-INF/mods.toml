@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[49,)"
 issueTrackerURL = "https://github.com/Syconn/StarWarsMod/issues/new"
 license = "All Rights Reserved"
 
@@ -17,22 +17,22 @@ license = "All Rights Reserved"
     displayTest="MATCH_VERSION"
 
 [[dependencies.swm]]
-    modId = "forge"
-    mandatory = true
-    versionRange = "[47,)"
-    ordering = "NONE"
-    side = "BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[49,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.swm]]
-    modId = "minecraft"
-    mandatory = true
-    versionRange = "[1.20,1.20.1]"
-    ordering = "NONE"
-    side = "BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.4,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.swm]]
-    modId = "architectury"
-    mandatory = true
-    versionRange = "[9.2.14,)"
-    ordering = "AFTER"
-    side = "BOTH"
+modId = "architectury"
+mandatory = true
+versionRange = "[11.1.17,)"
+ordering = "AFTER"
+side = "BOTH"

@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow'
+    id 'com.gradleup.shadow'
 }
 
 architectury {
@@ -9,17 +9,6 @@ architectury {
 
 loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
-
-    runs {
-        datagen {
-            inherit server
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=$project.archives_name"
-            runDir "build/datagen"
-        }
-    }
 }
 
 configurations {
@@ -63,5 +52,5 @@ shadowJar {
 }
 
 remapJar {
-    input.set shadowJar.archiveFile
+    inputFile.set shadowJar.archiveFile
 }
