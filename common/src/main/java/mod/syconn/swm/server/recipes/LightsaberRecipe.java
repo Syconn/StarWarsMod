@@ -10,6 +10,7 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.recipes.RecipeBuilder;
@@ -37,12 +38,12 @@ import java.util.stream.IntStream;
 public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemStack result) implements Recipe<Container> {
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return ModRecipes.LIGHTSABER.get();
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return ModRecipes.LIGHTSABER_SERIALIZER.get();
     }
 
@@ -52,7 +53,7 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess access) {
+    public @NotNull ItemStack assemble(Container container, RegistryAccess access) {
         return this.result.copy();
     }
 
@@ -62,16 +63,12 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
+    public @NotNull ItemStack getResultItem(RegistryAccess access) {
         return this.result;
     }
 
-    public int getResultId() {
-        return Item.getId(this.result.getItem());
-    }
-
-    public static Builder builder(ItemLike result, int count, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
-        return new Builder(result.asItem(), count, hasItem, hasTag);
+    public static Builder builder(ItemStack result, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
+        return new Builder(result, hasItem, hasTag);
     }
 
     public static class Serializer implements RecipeSerializer<LightsaberRecipe> {
@@ -104,25 +101,23 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
     }
 
     public static class Builder implements RecipeBuilder {
-        private final Item result;
-        private final int count;
+        private final ItemStack result;
         private final Function<ItemLike, Criterion<?>> hasItem;
         private final Function<TagKey<Item>, Criterion<?>> hasTag;
         private final NonNullList<StackedIngredient> materials = NonNullList.create();
         private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
         private RecipeCategory category = RecipeCategory.MISC;
 
-        private Builder(Item result, int count, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
+        private Builder(ItemStack result, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
             this.result = result;
-            this.count = count;
             this.hasItem = hasItem;
             this.hasTag = hasTag;
         }
 
-//        public Builder requiresMaterial(Material<?> material) {
-//            this.materials.add(material.asStackedIngredient());
-//            return this.unlockedBy("has_" + material.getName(), material.createTrigger(this.hasItem, this.hasTag));
-//        }
+        public void requiresMaterial(Material<?> material) {
+            this.materials.add(material.asStackedIngredient());
+            this.unlockedBy("has_" + material.getName(), material.createTrigger(this.hasItem, this.hasTag));
+        }
 
         @Override
         public @NotNull Builder unlockedBy(String name, Criterion<?> trigger) {
@@ -142,7 +137,7 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
 
         @Override
         public @NotNull Item getResult() {
-            return this.result;
+            return this.result.getItem();
         }
 
         @Override
@@ -153,7 +148,7 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
                     .rewards(AdvancementRewards.Builder.recipe(id))
                     .requirements(AdvancementRequirements.Strategy.OR);
             this.criteria.forEach(builder::addCriterion);
-            output.accept(id, new LightsaberRecipe(this.materials, new ItemStack(this.result)), builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+            output.accept(id, new LightsaberRecipe(this.materials, this.result), builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
         }
 
         private void validate(ResourceLocation id) {
