@@ -20,12 +20,14 @@ public class ExpandedButton extends Button {
     }
 
     public void render(PoseStack poseStack, int i, int j, float f) {
-        Minecraft mc = Minecraft.getInstance();
-        int k = !this.active ? 0 : (this.isHovered ? 2 : 1);
-        GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.x, this.y, 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
+        if (this.visible) {
+            Minecraft mc = Minecraft.getInstance();
+            int k = !this.active ? 0 : (this.isHovered ? 2 : 1);
+            GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.x, this.y, 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
 
-        final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
-        drawCenteredString(poseStack, mc.font, Language.getInstance().getVisualOrder(buttonText), this.x + this.width / 2, this.y + (this.height - 8) / 2, getFGColor());
+            final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
+            drawCenteredString(poseStack, mc.font, Language.getInstance().getVisualOrder(buttonText), this.x + this.width / 2, this.y + (this.height - 8) / 2, getFGColor());
+        }
     }
 
     protected int getFGColor() {

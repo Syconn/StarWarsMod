@@ -35,10 +35,9 @@ public class IngredientRenderer<T extends StackedIngredient> {
     }
 
     public void display(int count, int x, int y) {
-        var stack = new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count);
         if (this.displayStacks.size() > this.selectedStack) {
-            this.itemRenderer.renderGuiItem(stack, x, y);
-            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, stack, x, y);
+            this.itemRenderer.renderGuiItem(new ItemStack(this.displayStacks.get(this.selectedStack).getItem()), x, y);
+            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
         }
     }
 
