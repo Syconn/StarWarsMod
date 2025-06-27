@@ -1,7 +1,7 @@
 {
   "pack": {
-    "description": "Star Wars Mod",
-    "forge:data_pack_format": 10,
-    "pack_format": 9
+    "description": "Example Mod",
+    "forge:server_data_pack_format": 11,
+    "pack_format": 13
   }
 }

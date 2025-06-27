@@ -12,21 +12,21 @@ import net.minecraft.network.chat.FormattedText;
 public class ExpandedButton extends Button {
 
     public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler) {
-        this(xPos, yPos, width, height, displayString, handler, NO_TOOLTIP);
+        this(xPos, yPos, width, height, displayString, handler, DEFAULT_NARRATION);
     }
 
-    public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler, OnTooltip createTooltip) {
-        super(xPos, yPos, width, height, displayString, handler, createTooltip);
+    public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler, CreateNarration createNarration) {
+        super(xPos, yPos, width, height, displayString, handler, createNarration);
     }
 
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
         if (this.visible) {
             Minecraft mc = Minecraft.getInstance();
             int k = !this.active ? 0 : (isMouseOver(mouseX, mouseY) ? 2 : 1);
-            GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.x, this.y, 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
+            GraphicsUtil.blitWithBorder(this, poseStack, WIDGETS_LOCATION, this.getX(), this.getY(), 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
 
             final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
-            drawCenteredString(poseStack, mc.font, Language.getInstance().getVisualOrder(buttonText), this.x + this.width / 2, this.y + (this.height - 8) / 2, getFGColor());
+            drawCenteredString(poseStack, mc.font, Language.getInstance().getVisualOrder(buttonText), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, getFGColor());
         }
     }
 

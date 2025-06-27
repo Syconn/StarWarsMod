@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import mod.syconn.swm.core.ModRecipes;
 import mod.syconn.swm.util.json.JsonUtils;
 import mod.syconn.swm.util.server.StackedIngredient;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -24,8 +25,7 @@ public record LightsaberRecipe(ResourceLocation id, ItemStack item, ImmutableLis
         return false;
     }
 
-    @Override
-    public @NotNull ItemStack assemble(Container pContainer) {
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
@@ -34,8 +34,7 @@ public record LightsaberRecipe(ResourceLocation id, ItemStack item, ImmutableLis
         return true;
     }
 
-    @Override
-    public @NotNull ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return item.copy();
     }
 

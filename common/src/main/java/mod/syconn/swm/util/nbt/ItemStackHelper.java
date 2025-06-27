@@ -22,7 +22,7 @@ public class ItemStackHelper {
             var entity = player.drop(stack, false);
             if (entity != null) {
                 entity.setNoPickUpDelay();
-                entity.setOwner(player.getUUID());
+                entity.setTarget(player.getUUID());
             }
         }
     }

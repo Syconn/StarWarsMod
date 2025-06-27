@@ -31,11 +31,6 @@ public class LightsaberItem extends Item implements IItemExtensions {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
-        if (category == ModItems.TAB) items.addAll(LightsaberContent.getLightsabers());
-    }
-
-    @Override
     public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
         return !player.isCreative();
     }

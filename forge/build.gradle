@@ -2,12 +2,6 @@ plugins {
     id 'com.gradleup.shadow'
 }
 
-sourceSets {
-    main {
-        resources.srcDir file("src/generated/resources")
-    }
-}
-
 loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
 

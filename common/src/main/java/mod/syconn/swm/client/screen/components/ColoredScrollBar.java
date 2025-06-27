@@ -20,6 +20,6 @@ public class ColoredScrollBar extends ScrollWidget {
     }
 
     protected void renderBackground(PoseStack poseStack, boolean hovered) {
-        GraphicsUtil.renderHSVSquare(poseStack, this.x, this.y, this.width, this.height, packedHSV);
+        GraphicsUtil.renderHSVSquare(poseStack, this.getX(), this.getY(), this.width, this.height, packedHSV);
     }
 }

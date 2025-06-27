@@ -109,7 +109,7 @@ public class ScrollWidget extends AbstractSliderButton {
     }
 
     private void setValueFromMouse(double mouseX) {
-        this.setSliderValue((mouseX - (x + 4)) / (this.width - 8));
+        this.setSliderValue((mouseX - (this.getX() + 4)) / (this.width - 8));
     }
 
     private void setSliderValue(double value) {
@@ -160,10 +160,10 @@ public class ScrollWidget extends AbstractSliderButton {
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
         var hovered = isMouseOver(mouseX, mouseY);
         renderBackground(poseStack, hovered);
-        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x + (int)(this.value * (double)(this.width - 8)), this.y, 0, getHandleTextureY(hovered), 8, this.height, 200, 20 , 2, 3, 2, 2);
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.getX() + (int)(this.value * (double)(this.width - 8)), this.getY(), 0, getHandleTextureY(hovered), 8, this.height, 200, 20 , 2, 3, 2, 2);
     }
 
     protected void renderBackground(PoseStack poseStack, boolean hovered) {
-        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.x, this.y, 0, getTextureY(hovered), this.width, this.height, 200, 20, 2, 3, 2, 2);
+        GraphicsUtil.blitWithBorder(this, poseStack, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(hovered), this.width, this.height, 200, 20, 2, 3, 2, 2);
     }
 }

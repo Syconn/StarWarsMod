@@ -95,7 +95,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
         var f = 8.0F;
 
         var entity2 = this.getOwner();
-        var damageSource = ModDamageSources.lightsaber(this, this.getOwner());
+        var damageSource = ModDamageSources.lightsaber(this.level);
         var soundEvent = SoundEvents.TRIDENT_HIT; // TODO CHANGE THIS TOO
         if (entity2 != entity && entity.hurt(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) return;

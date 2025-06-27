@@ -13,6 +13,7 @@ import mod.syconn.swm.util.client.GraphicsUtil;
 import mod.syconn.swm.util.client.render.IngredientRenderer;
 import mod.syconn.swm.util.math.MathUtil;
 import mod.syconn.swm.util.server.StackedIngredient;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -128,8 +129,8 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
             var x = this.leftPos + 11 + (27 * i);
             var y = this.topPos + 78;
-            this.blit(poseStack, x, y, 198, amountNeeded <= 0 ? 20 : 38, 18, 18);
-            ingredient.display(amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 79);
+            blit(poseStack, x, y, 198, amountNeeded <= 0 ? 20 : 38, 18, 18);
+            ingredient.display(poseStack, amountNeeded,this.leftPos + 12 + (27 * i), this.topPos + 79);
         }
 
         return canCraft;

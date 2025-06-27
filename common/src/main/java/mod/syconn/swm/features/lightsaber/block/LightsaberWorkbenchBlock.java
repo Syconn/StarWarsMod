@@ -1,6 +1,5 @@
 package mod.syconn.swm.features.lightsaber.block;
 
-import dev.architectury.hooks.item.ItemStackHooks;
 import dev.architectury.registry.menu.MenuRegistry;
 import mod.syconn.swm.block.TwoPartBlock;
 import mod.syconn.swm.core.ModBlockEntities;

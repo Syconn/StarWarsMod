@@ -34,10 +34,10 @@ public class IngredientRenderer<T extends StackedIngredient> {
         }
     }
 
-    public void display(int count, int x, int y) {
+    public void display(PoseStack poseStack, int count, int x, int y) {
         if (this.displayStacks.size() > this.selectedStack) {
-            this.itemRenderer.renderGuiItem(new ItemStack(this.displayStacks.get(this.selectedStack).getItem()), x, y);
-            if (count > 0) this.itemRenderer.renderGuiItemDecorations(GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
+            this.itemRenderer.renderGuiItem(poseStack, new ItemStack(this.displayStacks.get(this.selectedStack).getItem()), x, y);
+            if (count > 0) this.itemRenderer.renderGuiItemDecorations(poseStack, GameInstance.getClient().font, new ItemStack(this.displayStacks.get(this.selectedStack).getItem(), count), x, y);
         }
     }
 

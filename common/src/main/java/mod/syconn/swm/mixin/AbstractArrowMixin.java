@@ -17,9 +17,9 @@ public class AbstractArrowMixin {
         var arrow = (AbstractArrow) (Object) this;
         var entity2 = arrow.getOwner();
         var entity = result.getEntity();
-        var damageSource = DamageSource.arrow(arrow, arrow);
+        var damageSource = arrow.damageSources().arrow(arrow, arrow);
         if (entity2 != null) {
-            damageSource = DamageSource.arrow(arrow, entity2);
+            damageSource = arrow.damageSources().arrow(arrow, entity2);
             if (entity2 instanceof LivingEntity) ((LivingEntity) entity2).setLastHurtMob(entity);
         }
 

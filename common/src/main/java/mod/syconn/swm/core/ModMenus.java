@@ -9,11 +9,12 @@ import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMe
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 
 public class ModMenus {
 
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Constants.MOD, Registry.MENU_REGISTRY);
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Constants.MOD, Registries.MENU);
 
     public static final RegistrySupplier<MenuType<LightsaberWorkbenchMenu>> LIGHTSABER_WORKBENCH = MENUS.register("lightsaber_workbench", () -> MenuRegistry.ofExtended(LightsaberWorkbenchMenu::new));
     public static final RegistrySupplier<MenuType<LightsaberAssemblerMenu>> LIGHTSABER_ASSEMBLER = MENUS.register("lightsaber_assembler", () -> MenuRegistry.ofExtended(LightsaberAssemblerMenu::new));

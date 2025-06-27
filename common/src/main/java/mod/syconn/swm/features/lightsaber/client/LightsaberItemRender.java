@@ -16,6 +16,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
@@ -23,7 +24,7 @@ import static mod.syconn.swm.features.addons.LightsaberContent.*;
 public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
     @Override
-    public void render(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
+    public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
         poseStack.pushPose();
 
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
@@ -32,18 +33,18 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         poseStack.popPose();
     }
 
-    public void renderDirect(ItemStack stack, ItemTransforms.TransformType renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
+    public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
         if (!(stack.getItem() instanceof LightsaberItem)) return;
 
         var lT = LightsaberTag.getOrCreate(stack);
 
-        if (renderMode != ItemTransforms.TransformType.GUI) {
+        if (renderMode != ItemDisplayContext.GUI) {
             for (int i = 0; i < lT.emitterPositions.size(); i++) {
                 poseStack.pushPose();
                 var bladePos = lT.emitterPositions.get(i);
                 poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
                 poseStack.mulPose(bladePos.q);
-                LightsaberContent.renderFixes(ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND, poseStack, stack);
+                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
                 renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
                 poseStack.popPose();
             }

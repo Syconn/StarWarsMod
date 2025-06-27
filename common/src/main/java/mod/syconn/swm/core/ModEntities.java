@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Constants.MOD, Registry.ENTITY_TYPE_REGISTRY);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Constants.MOD, Registries.ENTITY_TYPE);
 
     public static final Supplier<EntityType<ThrownLightsaber>> THROWN_LIGHTSABER = registerProjectile("throw_lightsaber", ThrownLightsaber::new);
 

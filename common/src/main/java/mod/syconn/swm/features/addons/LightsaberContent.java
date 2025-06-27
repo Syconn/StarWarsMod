@@ -10,6 +10,7 @@ import mod.syconn.swm.util.StringUtil;
 import mod.syconn.swm.util.json.JsonResourceReloader;
 import mod.syconn.swm.util.math.ColorUtil;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -44,11 +45,11 @@ public class LightsaberContent {
         return tag.change(stack);
     }
 
-    public static void renderFixes(ItemTransforms.TransformType renderMode, PoseStack poseStack, ItemStack stack) {
+    public static void renderFixes(ItemDisplayContext renderMode, PoseStack poseStack, ItemStack stack) {
         if (stack.getItem() instanceof LightsaberItem) {
             var lt = LightsaberTag.getOrCreate(stack);
             if (lt.model == MODEL_FIXER) {
-                if (renderMode == ItemTransforms.TransformType.NONE) poseStack.scale(0.5f, 0.5f, 0.5f);
+                if (renderMode == ItemDisplayContext.NONE) poseStack.scale(0.5f, 0.5f, 0.5f);
                 else poseStack.scale(3f, 1.5f, 3f);
             }
         }

@@ -2,6 +2,7 @@ package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
@@ -17,7 +18,7 @@ public class LivingEntityMixin {
     public void isDamageSourceBlocked(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
         var livingEntity = (LivingEntity) (Object) this;
 
-        if (!damageSource.isBypassArmor() && livingEntity.getUseItem().getItem() instanceof LightsaberItem) {
+        if (!damageSource.is(DamageTypeTags.BYPASSES_SHIELD) && livingEntity.getUseItem().getItem() instanceof LightsaberItem) {
             var lT = LightsaberTag.getOrCreate(livingEntity.getUseItem());
             Vec3 vec3 = damageSource.getSourcePosition();
             if (vec3 != null) {

@@ -30,7 +30,7 @@ public class ColoredLightsaberButton extends ExpandedButton {
         RenderSystem.setShaderTexture(0, COMPONENTS);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         poseStack.scale(0.25f, 0.25f, 0.25f);
-        blit(poseStack, this.x * 4, this.y * 4, 71 * u, 24 + 71 * v, 71, 71);
+        blit(poseStack, this.getX() * 4, this.getY() * 4, 71 * u, 24 + 71 * v, 71, 71);
 
         poseStack.popPose();
     }

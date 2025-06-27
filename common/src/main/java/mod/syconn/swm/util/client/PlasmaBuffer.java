@@ -2,10 +2,10 @@ package mod.syconn.swm.util.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
-import com.mojang.math.Vector4f;
 import mod.syconn.swm.util.math.MathUtil;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public enum PlasmaBuffer {
     RENDER;
@@ -107,10 +107,10 @@ public enum PlasmaBuffer {
 
     public void vertex(Vector3f pos, Vector3f normal, float u, float v) {
         var pos4 = new Vector4f(pos.x(), pos.y(), pos.z(), 1);
-        normal = normal.copy();
+        normal = new Vector3f(normal);
 
-        pos4.transform(pose.pose());
-        normal.transform(pose.normal());
+        pos4.mul(pose.pose());
+        normal.mul(pose.normal());
 
         vertexConsumer.vertex(pos4.x(), pos4.y(), pos4.z(), r, g, b, a, u, v, overlay, light, normal.x(), normal.y(), normal.z());
     }

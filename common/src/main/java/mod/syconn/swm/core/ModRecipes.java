@@ -5,6 +5,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
@@ -16,8 +17,8 @@ import java.util.Optional;
 
 public class ModRecipes {
 
-    public static final DeferredRegister<RecipeType<?>> RECIPES = DeferredRegister.create(Constants.MOD, Registry.RECIPE_TYPE_REGISTRY);
-    public static final DeferredRegister<RecipeSerializer<?>> SERIALIZER = DeferredRegister.create(Constants.MOD, Registry.RECIPE_SERIALIZER_REGISTRY);
+    public static final DeferredRegister<RecipeType<?>> RECIPES = DeferredRegister.create(Constants.MOD, Registries.RECIPE_TYPE);
+    public static final DeferredRegister<RecipeSerializer<?>> SERIALIZER = DeferredRegister.create(Constants.MOD, Registries.RECIPE_SERIALIZER);
 
     public static final RegistrySupplier<RecipeType<LightsaberRecipe>> LIGHTSABER = registerRecipe("lightsaber");
 

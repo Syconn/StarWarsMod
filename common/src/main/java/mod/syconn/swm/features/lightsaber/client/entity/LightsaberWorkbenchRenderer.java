@@ -1,7 +1,7 @@
 package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.List;
@@ -33,10 +34,10 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
 
             poseStack.pushPose();
             poseStack.translate(pos.get(0), 1, pos.get(1));
-            poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Vector3f.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Vector3f.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
+            poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
 
-            LightsaberContent.renderFixes(ItemTransforms.TransformType.NONE, poseStack, stack);
-            itemRenderer.renderStatic(stack, ItemTransforms.TransformType.NONE, packedLight, packedOverlay, poseStack, buffer, 0);
+            LightsaberContent.renderFixes(ItemDisplayContext.NONE, poseStack, stack);
+            itemRenderer.renderStatic(stack, ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
 
             poseStack.popPose();
         }

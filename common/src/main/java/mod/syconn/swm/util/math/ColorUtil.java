@@ -1,8 +1,8 @@
 package mod.syconn.swm.util.math;
 
-import com.mojang.math.Vector3f;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
+import org.joml.Vector3f;
 
 public class ColorUtil {
 

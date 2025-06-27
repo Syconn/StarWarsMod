@@ -1,6 +1,7 @@
 package mod.syconn.swm;
 
 import dev.architectury.event.events.common.LifecycleEvent;
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.utils.Env;
 import dev.architectury.utils.EnvExecutor;
@@ -22,6 +23,8 @@ public final class StarWars {
         ModRecipes.SERIALIZER.register();
 
         Network.init();
+
+        CreativeTabRegistry.modify(ModItems.TAB, ModItems::addCreative);
 
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA);
 

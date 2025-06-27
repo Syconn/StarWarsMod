@@ -3,8 +3,7 @@ package mod.syconn.swm.util.client;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -16,7 +15,9 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import org.joml.Matrix4f;
 
 import java.util.function.Function;
 
@@ -87,8 +88,8 @@ public class GraphicsUtil {
 
             poseStack.pushPose();
             poseStack.translate(x, y, 50.0);
-            poseStack.mulPose(Vector3f.ZP.rotationDegrees(-90f));
-            poseStack.mulPose(Vector3f.YP.rotationDegrees(-rotation));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(-90f));
+            poseStack.mulPose(Axis.YP.rotationDegrees(-rotation));
             poseStack.scale(100, 100, 100);
             poseStack.scale(1.0F, -1.0F, 1.0F);
 
@@ -96,8 +97,8 @@ public class GraphicsUtil {
                 var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
-                LightsaberContent.renderFixes(ItemTransforms.TransformType.NONE, poseStack, stack);
-                Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, bufferSource, 15728880, OverlayTexture.NO_OVERLAY, model);
+                LightsaberContent.renderFixes(ItemDisplayContext.NONE, poseStack, stack);
+                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, poseStack, bufferSource, 15728880, OverlayTexture.NO_OVERLAY, model);
 
                 if (!model.usesBlockLight()) Lighting.setupFor3DItems();
             }
