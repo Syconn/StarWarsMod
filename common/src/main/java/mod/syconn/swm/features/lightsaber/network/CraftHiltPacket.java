@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 public record CraftHiltPacket(BlockPos pos, ResourceLocation id) implements CustomPacketPayload {
 
-    public static final CustomPacketPayload.Type<CraftHiltPacket> TYPE = new CustomPacketPayload.Type<>(Constants.withId("change_lightsaber_hsv"));
+    public static final CustomPacketPayload.Type<CraftHiltPacket> TYPE = new CustomPacketPayload.Type<>(Constants.withId("craft_hilt"));
     public static final StreamCodec<RegistryFriendlyByteBuf, CraftHiltPacket> STREAM_CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, CraftHiltPacket::pos,
             ResourceLocation.STREAM_CODEC, CraftHiltPacket::id, CraftHiltPacket::new);
 

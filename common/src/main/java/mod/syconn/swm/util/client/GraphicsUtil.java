@@ -11,6 +11,7 @@ import mod.syconn.swm.util.math.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -25,23 +26,8 @@ public class GraphicsUtil {
         for (int k = 0; k < width; k++) {
             var hsv = hsvColor.apply(k);
             var color = ColorUtil.hsvToRgbInt(ColorUtil.hsvGetH(hsv), ColorUtil.hsvGetS(hsv), ColorUtil.hsvGetV(hsv));
-            fillRect(graphics, x + k, y, 1, height, FastColor.ARGB32.red(color), FastColor.ARGB32.green(color), FastColor.ARGB32.blue(color), 255);
+            graphics.fill(x + k, y, x + k + 1, y + height, FastColor.ARGB32.color(255, color));
         }
-    }
-
-    public static void fillRect(GuiGraphics graphics, int pMinX, int pMinY, int pWidth, int pHeight, int pRed, int pGreen, int pBlue, int pAlpha) {
-        int pMaxX = pMinX + pWidth;
-        int pMaxY = pMinY + pHeight;
-        var matrix4f = graphics.pose().last().pose();
-        var bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        RenderSystem.enableBlend();
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        bufferBuilder.addVertex(matrix4f, (float) pMinX, (float) pMinY, (float) 0).setColor(pRed, pGreen, pBlue, pAlpha);
-        bufferBuilder.addVertex(matrix4f, (float)pMinX, (float)pMaxY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
-        bufferBuilder.addVertex(matrix4f, (float)pMaxX, (float)pMaxY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
-        bufferBuilder.addVertex(matrix4f, (float)pMaxX, (float)pMinY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
-        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
-        RenderSystem.disableBlend();
     }
 
     public static void renderLightsaber(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float rotation) {

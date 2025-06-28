@@ -11,8 +11,9 @@ import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.server.StarWarsServer;
 import net.minecraft.server.packs.PackType;
 
-public final class StarWars { // TODO BETTER COMBAT
+public final class StarWars {
     public static void init() {
+        ModComponents.DATA_COMPONENTS.register();
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
         ModItems.TABS.register();
@@ -27,6 +28,6 @@ public final class StarWars { // TODO BETTER COMBAT
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA);
 
         EnvExecutor.runInEnv(Env.CLIENT, () -> StarWarsClient::init);
-        LifecycleEvent.SETUP.register(StarWarsServer::init);
+        EnvExecutor.runInEnv(Env.SERVER, () -> StarWarsServer::init);
     }
 }

@@ -1,5 +1,6 @@
 package mod.syconn.swm.client.screen.components;
 
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -20,6 +21,7 @@ public class ColoredScrollBar extends ScrollWidget {
     }
 
     protected void renderBackground(GuiGraphics graphics) {
+//        graphics.fill(this.getX(), this.height - 14, this.getX() + this.width, this.height - 2, GameInstance.getClient().options.getBackgroundColor(Integer.MIN_VALUE));
         GraphicsUtil.renderHSVSquare(graphics, this.getX(), this.getY(), this.width, this.height, packedHSV);
     }
 }
