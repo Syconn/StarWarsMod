@@ -4,14 +4,14 @@ import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.util.Constants;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@Mod.EventBusSubscriber(modid = Constants.MOD, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Constants.MOD, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class StarWarsForgeClient {
 
     @SubscribeEvent
-    public static void clientTickEvent(TickEvent.PlayerTickEvent event) {
-        if (event.side.isClient()) StarWarsClient.onClientTick(event.player);
+    public static void clientTickEvent(PlayerTickEvent event) {
+        if (event.getEntity().level().isClientSide) StarWarsClient.onClientTick(event.getEntity());
     }
 }
