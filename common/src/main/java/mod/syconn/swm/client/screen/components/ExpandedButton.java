@@ -29,7 +29,7 @@ public class ExpandedButton extends Button {
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         Minecraft mc = Minecraft.getInstance();
         int k = !this.active ? 0 : (this.isHovered ? 2 : 1);
-        GraphicsUtil.blitWithBorder(guiGraphics, SPRITES.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), 0, 46 + k * 20, this.width, this.height, 200, 20, 2, 3, 2, 2);
+        guiGraphics.blitSprite(SPRITES.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
         final FormattedText buttonText = FontUtil.ellipsize(mc.font, this.getMessage(), this.width - 6);
         guiGraphics.drawCenteredString(mc.font, Language.getInstance().getVisualOrder(buttonText), this.getX() + this.width / 2, this.getY() + (this.height - 8) / 2, getFGColor());

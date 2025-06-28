@@ -15,7 +15,8 @@ import org.lwjgl.glfw.GLFW;
 import java.text.DecimalFormat;
 
 public class ScrollWidget extends AbstractSliderButton {
-    private static final ResourceLocation SLIDER_LOCATION = new ResourceLocation("textures/gui/slider.png");
+    private static final ResourceLocation SLIDER_HANDLE_SPRITE = new ResourceLocation("widget/slider_handle");
+    private static final ResourceLocation SLIDER_HANDLE_HIGHLIGHTED_SPRITE = new ResourceLocation("widget/slider_handle_highlighted");
 
     @Nullable
     protected final OnChange onChange;
@@ -156,17 +157,22 @@ public class ScrollWidget extends AbstractSliderButton {
         return i * 20;
     }
 
+    private ResourceLocation getHandleSprite() {
+        return !this.isHovered ? SLIDER_HANDLE_SPRITE : SLIDER_HANDLE_HIGHLIGHTED_SPRITE;
+    }
+
+
     @Override
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         final Minecraft mc = Minecraft.getInstance();
 
         renderBackground(guiGraphics);
-        GraphicsUtil.blitWithBorder(guiGraphics, SLIDER_LOCATION, this.getX() + (int)(this.value * (double)(this.width - 8)), this.getY(), 0, getHandleTextureY(), 8, this.height, 200, 20 , 2, 3, 2, 2);
+        guiGraphics.blitSprite(this.getHandleSprite(), this.getX() + (int)(this.value * (this.width - 8)), this.getY(), 8, this.getHeight());
 
         renderScrollingString(guiGraphics, mc.font, 2, this.active ? 16777215 : 10526880 | Mth.ceil(this.alpha * 255.0F) << 24);
     }
 
     protected void renderBackground(GuiGraphics graphics) {
-        GraphicsUtil.blitWithBorder(graphics, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
+//        GraphicsUtil.blitWithBorder(graphics, SLIDER_LOCATION, this.getX(), this.getY(), 0, getTextureY(), this.width, this.height, 200, 20, 2, 3, 2, 2);
     }
 }
