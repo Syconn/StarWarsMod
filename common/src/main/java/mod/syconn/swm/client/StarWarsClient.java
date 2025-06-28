@@ -31,24 +31,21 @@ public class StarWarsClient {
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
 
+        ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
+                ((stack, level, holder, seed) -> (float) LightsaberComponent.getOrCreate(stack).model() * 0.1f));
+
         KeyMappingRegistry.register(ModKeys.TOGGLE_ITEM);
         KeyMappingRegistry.register(ModKeys.POWER_1);
 
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
 
-        ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
-        TickEvent.PLAYER_PRE.register(StarWarsClient::onClientTick);
-
-        Network.registerReceivers();
-    }
-
-    public static void setupEvent(Minecraft minecraft) {
-        ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
-                ((stack, level, holder, seed) -> (float) LightsaberComponent.getOrCreate(stack).model() * 0.1f));
-
         BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
 
+        TickEvent.PLAYER_PRE.register(StarWarsClient::onClientTick);
+
         ModMenus.registerScreens();
+
+        Network.registerReceivers();
     }
 
     public static void onClientTick(Player player) {

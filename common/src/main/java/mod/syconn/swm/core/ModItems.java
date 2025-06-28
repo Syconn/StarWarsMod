@@ -1,6 +1,5 @@
 package mod.syconn.swm.core;
 
-import dev.architectury.registry.CreativeTabOutput;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -8,13 +7,9 @@ import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -25,28 +20,23 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(MOD, Registries.ITEM);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(MOD, Registries.CREATIVE_MODE_TAB);
 
-    public static final List<RegistrySupplier<Item>> DEFAULT_ITEMS = new ArrayList<>();
-
     public static final RegistrySupplier<Item> LIGHTSABER = registerItem("lightsaber", LightsaberItem::new);
-
     public static final RegistrySupplier<Item> DRILL = registerItem("drill", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> MONITOR = registerItem("monitor", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> DRIVER = registerItem("driver", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> SCREEN = registerItem("screen", new Item.Properties().stacksTo(1));
 
-    public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(
-            Component.translatable("itemGroup." + MOD + ".star_wars"), () -> new ItemStack(LIGHTSABER.get())));
+    public static final RegistrySupplier<CreativeModeTab> TAB = TABS.register("star_wars", () -> CreativeTabRegistry.create(builder ->
+            builder.title(Component.translatable("itemGroup." + MOD + ".star_wars")).icon(() -> LightsaberContent.getLightsabers().get(0))
+                    .displayItems(ModItems::addCreative).build()));
 
-    public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
+    public static void addCreative(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
         output.acceptAll(LightsaberContent.getLightsabers());
-        output.acceptAll(DEFAULT_ITEMS.stream().map(v -> new ItemStack(v.get())).toList());
     }
 
     @SuppressWarnings("unchecked")
     private static <T extends Item> RegistrySupplier<T> registerItem(String id, Item.Properties properties) {
-        RegistrySupplier<Item> item = registerItem(id, Item::new, properties);
-        DEFAULT_ITEMS.add(item);
-        return (RegistrySupplier<T>)  item;
+        return (RegistrySupplier<T>) registerItem(id, Item::new, properties);
     }
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String id, Function<Item.Properties, T> factory) {

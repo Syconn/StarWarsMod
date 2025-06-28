@@ -1,15 +1,14 @@
 package mod.syconn.swm;
 
-import dev.architectury.event.events.common.LifecycleEvent;
+import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.ReloadListenerRegistry;
-import dev.architectury.utils.Env;
-import dev.architectury.utils.EnvExecutor;
-import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.server.StarWarsServer;
+import mod.syconn.swm.util.server.SyncedResourceManager;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.ItemStack;
 
 public final class StarWars {
     public static void init() {
@@ -23,11 +22,10 @@ public final class StarWars {
         ModRecipes.RECIPES.register();
         ModRecipes.SERIALIZER.register();
 
-        CreativeTabRegistry.modify(ModItems.TAB, ModItems::addCreative);
+        SyncedResourceManager.register(LightsaberContent.LIGHTSABER_DATA);
+
+        PlayerEvent.PLAYER_JOIN.register(StarWarsServer::playerJoinedServer);
 
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA);
-
-        EnvExecutor.runInEnv(Env.CLIENT, () -> StarWarsClient::init);
-        EnvExecutor.runInEnv(Env.SERVER, () -> StarWarsServer::init);
     }
 }

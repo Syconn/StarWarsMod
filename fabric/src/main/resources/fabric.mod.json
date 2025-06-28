@@ -19,7 +19,10 @@
       "mod.syconn.swm.fabric.StarWarsFabric"
     ],
     "client": [
-      "mod.syconn.swm.fabric.client.StarWarsFabricClient"
+      "mod.syconn.swm.fabric.StarWarsFabric\$StarWarsClientFabric"
+    ],
+    "server": [
+      "mod.syconn.swm.fabric.StarWarsFabric\$StarWarsServerFabric"
     ],
     "fabric-datagen": [
       "mod.syconn.swm.fabric.datagen.DataGeneration"

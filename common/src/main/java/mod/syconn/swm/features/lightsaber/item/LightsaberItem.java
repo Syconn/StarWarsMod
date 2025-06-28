@@ -41,7 +41,7 @@ public class LightsaberItem extends Item implements IItemExtended {
 
     @Override
     public boolean allowUpdateAnimation(@NotNull ItemStack from, @NotNull ItemStack to, boolean changed) {
-        return !LightsaberComponent.identical(from, to);
+        return false;
     }
 
     @Override

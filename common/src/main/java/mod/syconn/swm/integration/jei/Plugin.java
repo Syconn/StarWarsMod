@@ -17,16 +17,11 @@ import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.integration.jei.category.LightsaberAssemblerCategory;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.*;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,7 +39,7 @@ public class Plugin implements IModPlugin {
         registration.registerSubtypeInterpreter(ModItems.LIGHTSABER.get(), new ISubtypeInterpreter<>() {
             @Override
             public @NotNull Object getSubtypeData(@NotNull ItemStack ingredient, @NotNull UidContext context) {
-                return LightsaberComponent.getOrCreate(ingredient);
+                return Objects.requireNonNull(ingredient.get(ModComponents.LIGHTSABER.get()));
             }
 
             @Override

@@ -11,6 +11,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 public record SyncResourceDataPacket(ResourceLocation id, CompoundTag data) implements CustomPacketPayload {
 
@@ -18,7 +19,7 @@ public record SyncResourceDataPacket(ResourceLocation id, CompoundTag data) impl
     public static final StreamCodec<RegistryFriendlyByteBuf, SyncResourceDataPacket> STREAM_CODEC = StreamCodec.composite(
             ResourceLocation.STREAM_CODEC, SyncResourceDataPacket::id, ByteBufCodecs.COMPOUND_TAG, SyncResourceDataPacket::data, SyncResourceDataPacket::new);
 
-    public CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
+    public CustomPacketPayload.@NotNull Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 
@@ -26,8 +27,11 @@ public record SyncResourceDataPacket(ResourceLocation id, CompoundTag data) impl
         context.queue(() -> {
             if (context.getPlayer() instanceof LocalPlayer player) {
                 var data = SyncedResourceManager.getLoginDataSupplier(packet.id);
-                var synced = data.readData(packet.data);
-                if (!synced) player.connection.getConnection().disconnect(Component.literal("Connection closed - [" + Constants.MOD + "] failed to load " + packet.id.getPath()));
+                if (data == null) {
+                    player.connection.getConnection().disconnect(Component.literal("Connection closed - [" + Constants.MOD + "] failed to load " + packet.id.getPath()));
+                    return;
+                }
+                data.readData(packet.data);
             }
         });
     }
