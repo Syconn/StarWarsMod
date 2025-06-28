@@ -1,11 +1,11 @@
 package mod.syconn.swm.client;
 
-import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.event.events.common.TickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
+import dev.architectury.registry.menu.MenuRegistry;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.core.*;
@@ -20,7 +20,6 @@ import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
 import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
 @Environment(EnvType.CLIENT)
