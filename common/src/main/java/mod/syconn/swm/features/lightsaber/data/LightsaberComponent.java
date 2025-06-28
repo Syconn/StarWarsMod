@@ -74,7 +74,6 @@ public record LightsaberComponent(UUID uuid, int model, boolean stable, float le
     }
 
     public static boolean identical(ItemStack stack1, ItemStack stack2) {
-        System.out.println(LightsaberComponent.getOrCreate(stack1).uuid + " " + LightsaberComponent.getOrCreate(stack2).uuid);
         return LightsaberComponent.getOrCreate(stack1).uuid.equals(LightsaberComponent.getOrCreate(stack2).uuid);
     }
 

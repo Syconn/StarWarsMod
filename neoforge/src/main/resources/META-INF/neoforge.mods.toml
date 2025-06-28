@@ -38,3 +38,6 @@ side = "BOTH"
 
 [[mixins]]
 config = "swm.mixins.json"
+
+[[mixins]]
+config = "swm.neoforge.mixins.json"
