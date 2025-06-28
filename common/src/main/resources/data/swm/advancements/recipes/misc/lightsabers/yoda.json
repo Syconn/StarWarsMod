@@ -1,37 +1,31 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_coal": {
+    "has_minecraft:coal": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:coal"
-            ]
+            "items": "minecraft:coal"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_iron_ingot": {
+    "has_minecraft:iron_ingot": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:iron_ingot"
-            ]
+            "items": "minecraft:iron_ingot"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_redstone_torch": {
+    "has_minecraft:redstone_torch": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:redstone_torch"
-            ]
+            "items": "minecraft:redstone_torch"
           }
         ]
       },
@@ -47,9 +41,9 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_ingot",
-      "has_coal",
-      "has_redstone_torch"
+      "has_minecraft:iron_ingot",
+      "has_minecraft:coal",
+      "has_minecraft:redstone_torch"
     ]
   ],
   "rewards": {

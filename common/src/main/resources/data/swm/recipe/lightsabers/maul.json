@@ -1,0 +1,72 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 52,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 38,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:redstone_block"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_name": "\"Maul Lightsaber\"",
+      "swm:lightsaber": {
+        "active": true,
+        "bladeType": "plasma",
+        "color": 55423,
+        "emitterPositions": [
+          {
+            "q": {
+              "w": 1.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": -0.1,
+            "z": 0.0
+          },
+          {
+            "q": {
+              "w": -0.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 1.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": 0.45,
+            "z": 0.0
+          }
+        ],
+        "lengthScalar": 0.8,
+        "model": 10,
+        "radius": 0.6499999761581421,
+        "stable": true,
+        "transition": 0,
+        "uuid": [
+          1938603174,
+          1476348542,
+          -1721524633,
+          2073167555
+        ]
+      }
+    },
+    "count": 1,
+    "id": "swm:lightsaber"
+  }
+}

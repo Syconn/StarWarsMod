@@ -1,0 +1,54 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 42,
+      "ingredient": {
+        "item": "minecraft:quartz"
+      }
+    },
+    {
+      "count": 18,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_name": "\"Temple Guard Lightsaber\"",
+      "swm:lightsaber": {
+        "active": true,
+        "bladeType": "plasma",
+        "color": 2873471,
+        "emitterPositions": [
+          {
+            "q": {
+              "w": 1.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ],
+        "lengthScalar": 1.1,
+        "model": 7,
+        "radius": 1.0,
+        "stable": true,
+        "transition": 0,
+        "uuid": [
+          490211188,
+          -33796588,
+          -1098953299,
+          1087560006
+        ]
+      }
+    },
+    "count": 1,
+    "id": "swm:lightsaber"
+  }
+}

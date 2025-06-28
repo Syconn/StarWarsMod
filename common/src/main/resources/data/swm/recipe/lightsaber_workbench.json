@@ -21,6 +21,7 @@
     "n n"
   ],
   "result": {
-    "item": "swm:lightsaber_workbench"
+    "count": 1,
+    "id": "swm:lightsaber_workbench"
   }
 }

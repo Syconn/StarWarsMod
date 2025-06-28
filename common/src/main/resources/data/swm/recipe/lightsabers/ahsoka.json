@@ -1,0 +1,60 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 30,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 26,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_name": "\"Ahsoka Lightsaber\"",
+      "swm:lightsaber": {
+        "active": true,
+        "bladeType": "plasma",
+        "color": 6029183,
+        "emitterPositions": [
+          {
+            "q": {
+              "w": 1.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": 0.05,
+            "z": 0.0
+          }
+        ],
+        "lengthScalar": 1.2,
+        "model": 5,
+        "radius": 1.0,
+        "stable": true,
+        "transition": 0,
+        "uuid": [
+          193596179,
+          -371176884,
+          -1301413010,
+          -1731511694
+        ]
+      }
+    },
+    "count": 1,
+    "id": "swm:lightsaber"
+  }
+}

@@ -2,22 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
+    "b": {
+      "item": "minecraft:black_concrete"
+    },
+    "d": {
+      "item": "minecraft:red_dye"
+    },
     "i": {
       "item": "minecraft:iron_bars"
-    },
-    "l": {
-      "item": "minecraft:redstone_lamp"
     },
     "r": {
       "item": "minecraft:redstone"
     }
   },
   "pattern": [
-    "iri",
-    "rlr",
-    "iri"
+    " bd",
+    "ri ",
+    " b "
   ],
   "result": {
-    "item": "swm:screen"
+    "count": 1,
+    "id": "swm:drill"
   }
 }

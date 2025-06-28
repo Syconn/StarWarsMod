@@ -2,19 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "c": {
-      "item": "minecraft:black_concrete"
+    "d": {
+      "item": "swm:driver"
     },
     "i": {
       "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "swm:screen"
     }
   },
   "pattern": [
-    " i ",
-    " i ",
-    " c "
+    "idi",
+    "isi",
+    "iii"
   ],
   "result": {
-    "item": "swm:driver"
+    "count": 1,
+    "id": "swm:monitor"
   }
 }

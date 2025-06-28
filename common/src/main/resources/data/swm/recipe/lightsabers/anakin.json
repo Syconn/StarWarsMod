@@ -1,0 +1,60 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 24,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 22,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
+    },
+    {
+      "count": 12,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_name": "\"Anakin Lightsaber\"",
+      "swm:lightsaber": {
+        "active": true,
+        "bladeType": "plasma",
+        "color": 10082431,
+        "emitterPositions": [
+          {
+            "q": {
+              "w": 1.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": -0.085,
+            "z": 0.0
+          }
+        ],
+        "lengthScalar": 1.2,
+        "model": 0,
+        "radius": 1.0,
+        "stable": true,
+        "transition": 0,
+        "uuid": [
+          900281551,
+          -222281056,
+          -1085823973,
+          188843131
+        ]
+      }
+    },
+    "count": 1,
+    "id": "swm:lightsaber"
+  }
+}

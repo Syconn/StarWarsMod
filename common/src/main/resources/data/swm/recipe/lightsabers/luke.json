@@ -1,0 +1,60 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 37,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 16,
+      "ingredient": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    {
+      "count": 5,
+      "ingredient": {
+        "item": "minecraft:redstone_block"
+      }
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_name": "\"Luke Lightsaber\"",
+      "swm:lightsaber": {
+        "active": true,
+        "bladeType": "plasma",
+        "color": 6029183,
+        "emitterPositions": [
+          {
+            "q": {
+              "w": 1.0,
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scalar": 1.0,
+            "x": 0.0,
+            "y": -0.05,
+            "z": 0.01
+          }
+        ],
+        "lengthScalar": 1.1,
+        "model": 1,
+        "radius": 1.0,
+        "stable": true,
+        "transition": 0,
+        "uuid": [
+          1310639925,
+          -1508161630,
+          -1592427627,
+          -1113202884
+        ]
+      }
+    },
+    "count": 1,
+    "id": "swm:lightsaber"
+  }
+}
