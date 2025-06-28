@@ -1,7 +1,6 @@
 package mod.syconn.swm.client.screen.components;
 
 import mod.syconn.swm.util.client.FontUtil;
-import mod.syconn.swm.util.client.GraphicsUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

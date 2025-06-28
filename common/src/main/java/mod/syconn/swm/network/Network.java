@@ -1,22 +1,32 @@
 package mod.syconn.swm.network;
 
-import dev.architectury.networking.NetworkChannel;
+import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.network.packets.SyncResourceDataPacket;
-import mod.syconn.swm.util.Constants;
+
+import java.util.Collections;
 
 public class Network {
 
-    public static NetworkChannel CHANNEL = NetworkChannel.create(Constants.withId("network"));
+    public static void registerReceivers() {
+        registerCommonReceivers();
 
-    public static void init() {
-        CHANNEL.register(ToggleLightsaberPacket.class, ToggleLightsaberPacket::encode, ToggleLightsaberPacket::new, ToggleLightsaberPacket::apply);
-        CHANNEL.register(ThrowLightsaberPacket.class, ThrowLightsaberPacket::encode, ThrowLightsaberPacket::new, ThrowLightsaberPacket::apply);
-        CHANNEL.register(SyncResourceDataPacket.class, SyncResourceDataPacket::encode, SyncResourceDataPacket::new, SyncResourceDataPacket::apply);
-        CHANNEL.register(ChangeLightsaberHSVPacket.class, ChangeLightsaberHSVPacket::encode, ChangeLightsaberHSVPacket::new, ChangeLightsaberHSVPacket::apply);
-        CHANNEL.register(CraftHiltPacket.class, CraftHiltPacket::encode, CraftHiltPacket::new, CraftHiltPacket::apply);
+        NetworkManager.registerReceiver(NetworkManager.Side.S2C, SyncResourceDataPacket.TYPE, SyncResourceDataPacket.STREAM_CODEC, SyncResourceDataPacket::handle);
+    }
+
+    public static void registerServerPackets() {
+        registerCommonReceivers();
+
+        NetworkManager.registerS2CPayloadType(SyncResourceDataPacket.TYPE, SyncResourceDataPacket.STREAM_CODEC, Collections.emptyList());
+    }
+
+    private static void registerCommonReceivers() {
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, ToggleLightsaberPacket.TYPE, ToggleLightsaberPacket.STREAM_CODEC, ToggleLightsaberPacket::handle);
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, ThrowLightsaberPacket.TYPE, ThrowLightsaberPacket.STREAM_CODEC, ThrowLightsaberPacket::handle);
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, ChangeLightsaberHSVPacket.TYPE, ChangeLightsaberHSVPacket.STREAM_CODEC, ChangeLightsaberHSVPacket::handle);
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, CraftHiltPacket.TYPE, CraftHiltPacket.STREAM_CODEC, CraftHiltPacket::handle);
     }
 }

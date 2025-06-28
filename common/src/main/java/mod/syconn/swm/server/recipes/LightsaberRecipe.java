@@ -1,7 +1,7 @@
 package mod.syconn.swm.server.recipes;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mod.syconn.swm.core.ModRecipes;
 import mod.syconn.swm.util.server.Material;
@@ -12,19 +12,19 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemStack result) implements Recipe<Container> {
+public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemStack result) implements Recipe<SingleRecipeInput> {
 
     @Override
     public @NotNull RecipeType<?> getType() {
@@ -48,13 +48,18 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean matches(SingleRecipeInput input, Level level) {
         return true;
     }
 
     @Override
-    public @NotNull ItemStack assemble(Container container, RegistryAccess access) {
+    public ItemStack assemble(SingleRecipeInput input, HolderLookup.Provider registries) {
         return this.result.copy();
+    }
+
+    @Override
+    public @NotNull ItemStack getResultItem(HolderLookup.Provider registries) {
+        return this.result;
     }
 
     @Override
@@ -62,42 +67,32 @@ public record LightsaberRecipe(NonNullList<StackedIngredient> materials, ItemSta
         return true;
     }
 
-    @Override
-    public @NotNull ItemStack getResultItem(RegistryAccess access) {
-        return this.result;
-    }
-
     public static Builder builder(ItemStack result, Function<ItemLike, Criterion<?>> hasItem, Function<TagKey<Item>, Criterion<?>> hasTag) {
         return new Builder(result, hasItem, hasTag);
     }
 
     public static class Serializer implements RecipeSerializer<LightsaberRecipe> {
-        public static final Codec<LightsaberRecipe> CODEC = RecordCodecBuilder.create(builder -> builder.group(StackedIngredient.CODEC.listOf().fieldOf("materials")
-                .flatXmap(materials -> {
-                    var inputs = materials.stream().filter((ingredient) -> !ingredient.ingredient().isEmpty() || ingredient.count() <= 0).toArray(StackedIngredient[]::new);
-                    return DataResult.success(NonNullList.of(StackedIngredient.EMPTY, inputs));
-        }, DataResult::success).forGetter(o -> o.materials), ItemStack.CODEC.fieldOf("result").
-                forGetter(recipe -> recipe.result)).apply(builder, LightsaberRecipe::new));
 
         @Override
-        public @NotNull Codec<LightsaberRecipe> codec() {
-            return CODEC;
+        public @NotNull MapCodec<LightsaberRecipe> codec() {
+            return RecordCodecBuilder.mapCodec(builder -> builder.group(StackedIngredient.CODEC.listOf().fieldOf("materials").flatXmap(materials -> {
+                StackedIngredient[] inputs = materials.stream().filter((ingredient) -> !ingredient.ingredient().isEmpty() || ingredient.count() <= 0).toArray(StackedIngredient[]::new);
+                return DataResult.success(NonNullList.of(StackedIngredient.EMPTY, inputs));
+            }, DataResult::success).forGetter(o -> o.materials), ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result)).apply(builder, LightsaberRecipe::new));
         }
 
         @Override
-        public @NotNull LightsaberRecipe fromNetwork(FriendlyByteBuf buffer) {
-            var materialCount = buffer.readInt();
-            var materials = NonNullList.withSize(materialCount, StackedIngredient.EMPTY);
-            IntStream.range(0, materialCount).forEach(i -> materials.set(i, StackedIngredient.fromNetwork(buffer)));
-            var result = buffer.readItem();
-            return new LightsaberRecipe(materials, result);
-        }
-
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, LightsaberRecipe recipe) {
-            buffer.writeInt(recipe.materials.size());
-            recipe.materials.forEach(ingredient -> ingredient.toNetwork(buffer));
-            buffer.writeItem(recipe.result);
+        public @NotNull StreamCodec<RegistryFriendlyByteBuf, LightsaberRecipe> streamCodec() {
+            return StreamCodec.of((buf, recipe) -> {
+                buf.writeInt(recipe.materials.size());
+                recipe.materials.forEach(ingredient -> ingredient.toNetwork(buf));
+                ItemStack.STREAM_CODEC.encode(buf, recipe.result);
+            }, buf -> {
+                var materialCount = buf.readInt();
+                var materials = NonNullList.withSize(materialCount, StackedIngredient.EMPTY);
+                IntStream.range(0, materialCount).forEach(i -> materials.set(i, StackedIngredient.fromNetwork(buf)));
+                return new LightsaberRecipe(materials, ItemStack.STREAM_CODEC.decode(buf));
+            });
         }
     }
 

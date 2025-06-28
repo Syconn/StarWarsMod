@@ -1,6 +1,7 @@
 package mod.syconn.swm.blockentity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -15,9 +16,8 @@ public abstract class SyncedBlockEntity extends BlockEntity {
     }
 
     @Override
-    @NotNull
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     @Override

@@ -2,36 +2,31 @@ package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
-import net.minecraft.network.FriendlyByteBuf;
+import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.util.codec.StreamCodecs;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.function.Supplier;
+public record ThrowLightsaberPacket(InteractionHand hand) implements CustomPacketPayload {
 
-public class ThrowLightsaberPacket {
+    public static final CustomPacketPayload.Type<ThrowLightsaberPacket> TYPE = new CustomPacketPayload.Type<>(Constants.withId("throw_lightsaber"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, ThrowLightsaberPacket> STREAM_CODEC = StreamCodec.composite(StreamCodecs.enumCodec(InteractionHand.class), ThrowLightsaberPacket::hand, ThrowLightsaberPacket::new);
 
-    private final InteractionHand hand;
-
-    public ThrowLightsaberPacket(InteractionHand hand) {
-        this.hand = hand;
+    public CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public ThrowLightsaberPacket(FriendlyByteBuf buf) {
-        this(buf.readEnum(InteractionHand.class));
-    }
-
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeEnum(this.hand) ;
-    }
-
-    public void apply(Supplier<NetworkManager.PacketContext> context) {
-        context.get().queue(() -> {
-            Player player = context.get().getPlayer();
+    public static void handle(ThrowLightsaberPacket packet, NetworkManager.PacketContext context) {
+        context.queue(() -> {
+            Player player = context.getPlayer();
 
             if (player != null) {
-                ThrownLightsaber thrownLightsaber = new ThrownLightsaber(player.level(), player, hand);
+                ThrownLightsaber thrownLightsaber = new ThrownLightsaber(player.level(), player, packet.hand);
                 thrownLightsaber.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
-                if (!player.isCreative()) player.getItemInHand(hand).shrink(1);
+                if (!player.isCreative()) player.getItemInHand(packet.hand).shrink(1);
                 player.level().addFreshEntity(thrownLightsaber);
             }
         });

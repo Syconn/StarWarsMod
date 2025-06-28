@@ -1,12 +1,8 @@
 package mod.syconn.swm.util.json;
 
-import com.google.gson.*;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;

@@ -5,6 +5,7 @@ import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
@@ -12,6 +13,7 @@ import mod.syconn.swm.features.lightsaber.client.entity.LightsaberWorkbenchRende
 import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
 import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
@@ -34,6 +36,8 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
+
+        Network.registerReceivers();
     }
 
     public static void setupEvent(Minecraft minecraft) {
@@ -50,6 +54,6 @@ public class StarWarsClient {
     }
 
     public static float getTickDelta() {
-        return Minecraft.getInstance().getDeltaFrameTime();
+        return GameInstance.getClient().getTimer().getGameTimeDeltaPartialTick(true);
     }
 }

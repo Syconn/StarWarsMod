@@ -1,7 +1,6 @@
 package mod.syconn.swm.features.lightsaber.block;
 
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.architectury.hooks.item.ItemStackHooks;
 import dev.architectury.registry.menu.MenuRegistry;
 import mod.syconn.swm.block.TwoPartBlock;
@@ -19,9 +18,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;

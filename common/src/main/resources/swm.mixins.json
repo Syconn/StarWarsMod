@@ -6,12 +6,10 @@
   "client": [
     "HumanoidModelMixin",
     "ItemInHandRendererMixin",
-    "ItemRendererMixin",
-    "LevelRendererMixin"
+    "ItemRendererMixin"
   ],
   "mixins": [
     "AbstractArrowMixin",
-    "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerMixin"
   ],

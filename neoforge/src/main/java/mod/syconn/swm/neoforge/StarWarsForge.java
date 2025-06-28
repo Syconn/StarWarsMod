@@ -1,4 +1,4 @@
-package mod.syconn.swm.forge;
+package mod.syconn.swm.neoforge;
 
 import mod.syconn.swm.StarWars;
 import mod.syconn.swm.util.Constants;

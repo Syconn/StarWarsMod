@@ -1,6 +1,6 @@
 package mod.syconn.swm.mixin;
 
-import mod.syconn.swm.util.client.IItemExtensions;
+import mod.syconn.swm.util.client.IItemExtended;
 import mod.syconn.swm.util.client.render.RenderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemInHandRenderer;
@@ -39,7 +39,7 @@ public class ItemInHandRendererMixin {
             var itemStack = localPlayer.getMainHandItem();
             var itemStack2 = localPlayer.getOffhandItem();
 
-            if (itemStack.getItem() instanceof IItemExtensions) {
+            if (itemStack.getItem() instanceof IItemExtended) {
                 this.oMainHandHeight = this.mainHandHeight;
 
                 if (ItemStack.matches(this.mainHandItem, itemStack)) this.mainHandItem = itemStack;
@@ -55,7 +55,7 @@ public class ItemInHandRendererMixin {
                 if (this.mainHandHeight < 0.1F) this.mainHandItem = itemStack;
             }
 
-            if (itemStack2.getItem() instanceof IItemExtensions) {
+            if (itemStack2.getItem() instanceof IItemExtended) {
                 this.oOffHandHeight = this.offHandHeight;
 
                 if (ItemStack.matches(this.offHandItem, itemStack2))this.offHandItem = itemStack2;

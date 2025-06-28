@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[49,)"
+loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/Syconn/StarWarsMod/issues/new"
 license = "All Rights Reserved"
 
@@ -11,28 +11,30 @@ license = "All Rights Reserved"
     displayURL="https://modrinth.com/mod/syconns-star-wars-mod"
     updateJSONURL="https://raw.githubusercontent.com/Syconn/Syconn-Mod-Updates/refs/heads/main/StarWarsMod.json"
     description = '''
-    A long time ago in a Galaxy Far Far Away
-    '''
+        A long time ago in a Galaxy Far Far Away
+        '''
     logoFile = "StarWarsMod.png"
-    displayTest="MATCH_VERSION"
 
 [[dependencies.swm]]
-modId = "forge"
-mandatory = true
-versionRange = "[49,)"
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.swm]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.4,)"
+type = "required"
+versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.swm]]
 modId = "architectury"
-mandatory = true
-versionRange = "[11.1.17,)"
+type = "required"
+versionRange = "[13.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[mixins]]
+config = "swm.mixins.json"

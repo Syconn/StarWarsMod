@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "mod.syconn.swm.neoforge.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [],
+  "mixins": [
+    "IItemExtensionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

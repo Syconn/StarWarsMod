@@ -8,7 +8,6 @@ import dev.architectury.utils.EnvExecutor;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
 import net.minecraft.server.packs.PackType;
 
@@ -22,8 +21,6 @@ public final class StarWars { // TODO BETTER COMBAT
         ModMenus.MENUS.register();
         ModRecipes.RECIPES.register();
         ModRecipes.SERIALIZER.register();
-
-        Network.init();
 
         CreativeTabRegistry.modify(ModItems.TAB, ModItems::addCreative);
 

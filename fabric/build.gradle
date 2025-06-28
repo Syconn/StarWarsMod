@@ -11,12 +11,6 @@ loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
 }
 
-fabricApi {
-    configureDataGeneration {
-        client = true
-    }
-}
-
 configurations {
     common {
         canBeResolved = true

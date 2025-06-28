@@ -2,7 +2,7 @@ package mod.syconn.swm.util.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import mod.syconn.swm.util.client.IItemExtensions;
+import mod.syconn.swm.util.client.IItemExtended;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
@@ -18,7 +18,7 @@ public class RenderUtil {
     private static int slotMainHand = 0;
 
     public static boolean handleReequipAnimation(@NotNull ItemStack from, @NotNull ItemStack to, int slot) {
-        if (from.getItem() instanceof IItemExtensions ext) {
+        if (from.getItem() instanceof IItemExtended ext) {
             boolean fromInvalid = from.isEmpty();
             boolean toInvalid = to.isEmpty();
 

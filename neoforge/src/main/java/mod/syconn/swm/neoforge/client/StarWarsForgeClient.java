@@ -1,4 +1,4 @@
-package mod.syconn.swm.forge.client;
+package mod.syconn.swm.neoforge.client;
 
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.util.Constants;

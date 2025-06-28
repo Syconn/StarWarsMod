@@ -15,7 +15,6 @@ import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.StringUtil;
 import mod.syconn.swm.util.client.GraphicsUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;

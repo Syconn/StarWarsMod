@@ -6,11 +6,7 @@ import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import java.util.Optional;
@@ -24,7 +20,7 @@ public class ModRecipes {
 
     public static final RegistrySupplier<LightsaberRecipe.Serializer> LIGHTSABER_SERIALIZER = SERIALIZER.register("lightsaber", LightsaberRecipe.Serializer::new);
 
-    public static <C extends Container, T extends Recipe<C>> Optional<RecipeHolder<T>> getRecipeFromId(RecipeType<T> type, Level level, ResourceLocation id) {
+    public static <C extends RecipeInput, T extends Recipe<C>> Optional<RecipeHolder<T>> getRecipeFromId(RecipeType<T> type, Level level, ResourceLocation id) {
         return level.getRecipeManager().getAllRecipesFor(type).stream().filter(r -> r.id().equals(id)).findFirst();
     }
     private static <T extends Recipe<?>> RegistrySupplier<RecipeType<T>> registerRecipe(String name) {
