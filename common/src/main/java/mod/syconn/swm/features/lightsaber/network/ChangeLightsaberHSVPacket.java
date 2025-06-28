@@ -2,7 +2,7 @@ package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -25,7 +25,7 @@ public record ChangeLightsaberHSVPacket(BlockPos pos, int hsv) implements Custom
     public static void handle(ChangeLightsaberHSVPacket packet, NetworkManager.PacketContext context) {
         context.queue(() -> {
             if (context.getPlayer().level().getBlockEntity(packet.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
-                LightsaberTag.update(blockEntity.getContainer().getItem(0), t -> t.color = packet.hsv);
+                LightsaberComponent.update(blockEntity.getContainer().getItem(0), t -> t.color(packet.hsv));
                 blockEntity.markDirty();
             }
         });

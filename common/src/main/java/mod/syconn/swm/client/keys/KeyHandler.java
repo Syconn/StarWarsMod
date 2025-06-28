@@ -1,5 +1,6 @@
 package mod.syconn.swm.client.keys;
 
+import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.core.ModKeys;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
@@ -13,12 +14,12 @@ public class KeyHandler {
     public static void handleKeyMappings(Player player) {
         while (ModKeys.TOGGLE_ITEM.consumeClick()) {
             InteractionHand hand = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof LightsaberItem ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) Network.CHANNEL.sendToServer(new ToggleLightsaberPacket(hand));
+            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) NetworkManager.sendToServer(new ToggleLightsaberPacket(hand));
         }
 
         while (ModKeys.POWER_1.consumeClick()) {
             InteractionHand hand = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof LightsaberItem ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) Network.CHANNEL.sendToServer(new ThrowLightsaberPacket(hand));
+            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) NetworkManager.sendToServer(new ThrowLightsaberPacket(hand));
         }
     }
 }

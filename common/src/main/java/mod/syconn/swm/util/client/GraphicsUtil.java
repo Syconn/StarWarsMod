@@ -32,16 +32,15 @@ public class GraphicsUtil {
     public static void fillRect(GuiGraphics graphics, int pMinX, int pMinY, int pWidth, int pHeight, int pRed, int pGreen, int pBlue, int pAlpha) {
         int pMaxX = pMinX + pWidth;
         int pMaxY = pMinY + pHeight;
-        Matrix4f matrix4f = graphics.pose().last().pose();
-        BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
+        var matrix4f = graphics.pose().last().pose();
+        var bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
         RenderSystem.enableBlend();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-        bufferbuilder.vertex(matrix4f, (float)pMinX, (float)pMinY, (float)0).color(pRed, pGreen, pBlue, pAlpha).endVertex();
-        bufferbuilder.vertex(matrix4f, (float)pMinX, (float)pMaxY, (float)0).color(pRed, pGreen, pBlue, pAlpha).endVertex();
-        bufferbuilder.vertex(matrix4f, (float)pMaxX, (float)pMaxY, (float)0).color(pRed, pGreen, pBlue, pAlpha).endVertex();
-        bufferbuilder.vertex(matrix4f, (float)pMaxX, (float)pMinY, (float)0).color(pRed, pGreen, pBlue, pAlpha).endVertex();
-        BufferUploader.drawWithShader(bufferbuilder.end());
+        bufferBuilder.addVertex(matrix4f, (float) pMinX, (float) pMinY, (float) 0).setColor(pRed, pGreen, pBlue, pAlpha);
+        bufferBuilder.addVertex(matrix4f, (float)pMinX, (float)pMaxY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
+        bufferBuilder.addVertex(matrix4f, (float)pMaxX, (float)pMaxY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
+        bufferBuilder.addVertex(matrix4f, (float)pMaxX, (float)pMinY, (float)0).setColor(pRed, pGreen, pBlue, pAlpha);
+        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
         RenderSystem.disableBlend();
     }
 
@@ -56,15 +55,14 @@ public class GraphicsUtil {
             guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(-90f));
             guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-rotation));
             guiGraphics.pose().scale(100, 100, 100);
-            guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
+            guiGraphics.pose().mulPose(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
             if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
                 var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
                 LightsaberContent.renderFixes(ItemDisplayContext.NONE, guiGraphics.pose(), stack);
-                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
-                        15728880, OverlayTexture.NO_OVERLAY, model);
+                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
 
                 if (!model.usesBlockLight()) Lighting.setupFor3DItems();
             }

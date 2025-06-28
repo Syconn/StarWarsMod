@@ -1,16 +1,28 @@
 package mod.syconn.swm.util.client.model;
 
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.nbt.CompoundTag;
 import org.joml.Quaternionf;
 
 public class NodeVec3 {
 
-    public final double x;
-    public final double y;
-    public final double z;
-    public final Quaternionf q;
-    public final float scalar;
+    public static final Codec<Quaternionf> QUATERNIONF_CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.FLOAT.fieldOf("x").forGetter(Quaternionf::x), Codec.FLOAT.fieldOf("y").forGetter(Quaternionf::y),
+            Codec.FLOAT.fieldOf("z").forGetter(Quaternionf::z), Codec.FLOAT.fieldOf("w").forGetter(Quaternionf::w)
+    ).apply(instance, Quaternionf::new));
+
+    public static final Codec<NodeVec3> NODE_VEC3_CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.DOUBLE.fieldOf("x").forGetter(NodeVec3::getX), Codec.DOUBLE.fieldOf("y").forGetter(NodeVec3::getY), Codec.DOUBLE.fieldOf("z").forGetter(NodeVec3::getZ),
+            QUATERNIONF_CODEC.fieldOf("q").forGetter(NodeVec3::getQuaternionf), Codec.FLOAT.fieldOf("scalar").forGetter(NodeVec3::getScalar)
+    ).apply(instance, NodeVec3::new));
+
+    private final double x;
+    private final double y;
+    private final double z;
+    private final Quaternionf q;
+    private final float scalar;
 
     public NodeVec3(double x, double y, double z) {
         this(x, y, z, new Quaternionf(0, 0, 0, 1.0f), 1.0f);
@@ -26,6 +38,26 @@ public class NodeVec3 {
         this.z = z;
         this.q = q;
         this.scalar = scalar;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
+    }
+
+    public Quaternionf getQuaternionf() {
+        return q;
+    }
+
+    public float getScalar() {
+        return scalar;
     }
 
     public static JsonObject addNode(NodeVec3 node) {

@@ -11,6 +11,6 @@ public class Constants {
     public static final SimplexNoise SIMPLEX = new SimplexNoise(RANDOM);
 
     public static ResourceLocation withId(String s) {
-        return new ResourceLocation(MOD, s);
+        return ResourceLocation.fromNamespaceAndPath(MOD, s);
     }
 }

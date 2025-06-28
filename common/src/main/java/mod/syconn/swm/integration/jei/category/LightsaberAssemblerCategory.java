@@ -12,7 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mod.syconn.swm.core.ModBlocks;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.client.GraphicsUtil;
@@ -30,7 +30,7 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
 
     public static final RecipeType<LightsaberRecipe> LIGHTSABER = RecipeType.create(Constants.MOD, "lightsaber", LightsaberRecipe.class);
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(Constants.MOD, "textures/gui/lightsaber_assembler.png");
+    private static final ResourceLocation BACKGROUND = Constants.withId("textures/gui/lightsaber_assembler.png");
     private static final String TITLE_KEY = "Lightsaber Assembler";
     private static final String MATERIALS_KEY = "Materials";
 
@@ -85,9 +85,9 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
         this.inventory.draw(guiGraphics, 0, this.window.getHeight() + 2 + 11 + 2);
 
         guiGraphics.drawString(GameInstance.getClient().font, I18n.get(MATERIALS_KEY), 0, 78, 0x7E7E7E);
-        var lT = LightsaberTag.getOrCreate(recipe.result());
+        var lT = LightsaberComponent.getOrCreate(recipe.result());
         var titleX = this.window.getWidth() / 2;
-        guiGraphics.drawCenteredString(GameInstance.getClient().font, recipe.result().getDisplayName().getString(), titleX, 5, 0xFFFFFFFF); // TODO TEST THIS
+        guiGraphics.drawCenteredString(GameInstance.getClient().font, recipe.result().getHoverName().getString(), titleX, 5, 0xFFFFFFFF);
         GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
     }
 }

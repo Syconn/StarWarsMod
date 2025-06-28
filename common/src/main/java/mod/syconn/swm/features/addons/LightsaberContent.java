@@ -2,8 +2,8 @@ package mod.syconn.swm.features.addons;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.Constants;
 import mod.syconn.swm.util.StringUtil;
@@ -39,15 +39,15 @@ public class LightsaberContent {
         return list;
     }
 
-    public static ItemStack createDefinedSaber(LightsaberTag tag) {
+    public static ItemStack createDefinedSaber(LightsaberComponent component) {
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        return tag.change(stack);
+        return LightsaberComponent.set(stack, component);
     }
 
     public static void renderFixes(ItemDisplayContext renderMode, PoseStack poseStack, ItemStack stack) {
         if (stack.getItem() instanceof LightsaberItem) {
-            var lt = LightsaberTag.getOrCreate(stack);
-            if (lt.model == MODEL_FIXER) {
+            var lt = LightsaberComponent.getOrCreate(stack);
+            if (lt.model() == MODEL_FIXER) {
                 if (renderMode == ItemDisplayContext.NONE) poseStack.scale(0.5f, 0.5f, 0.5f);
                 else poseStack.scale(3f, 1.5f, 3f);
             }

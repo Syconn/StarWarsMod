@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.util.client.model.ModelUtil;
 import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
@@ -35,26 +35,26 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
         if (!(stack.getItem() instanceof LightsaberItem)) return;
 
-        var lT = LightsaberTag.getOrCreate(stack);
+        var lT = LightsaberComponent.getOrCreate(stack);
 
         if (renderMode != ItemDisplayContext.GUI) {
-            for (int i = 0; i < lT.emitterPositions.size(); i++) {
+            for (int i = 0; i < lT.emitterPositions().size(); i++) {
                 poseStack.pushPose();
-                var bladePos = lT.emitterPositions.get(i);
-                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
-                poseStack.mulPose(bladePos.q);
+                var bladePos = lT.emitterPositions().get(i);
+                poseStack.translate(-bladePos.getX(), -bladePos.getY(), -bladePos.getZ());
+                poseStack.mulPose(bladePos.getQuaternionf());
                 LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
-                renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
+                renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.getScalar());
                 poseStack.popPose();
             }
         }
     }
 
-    private void renderBlade(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, LightsaberTag lT, float bladeScalar) {
-        switch (lT.bladeType) {
-            case DARK_SABER -> PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
-            case PLASMA -> PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(), lT.lengthScalar * bladeScalar, (float) lT.radius, true, lT.color);
-            case BRICK -> PlasmaRenderer.renderBrick(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
+    private void renderBlade(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, LightsaberComponent lT, float bladeScalar) {
+        switch (lT.bladeType()) {
+            case DARK_SABER -> PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar() * bladeScalar, lT.color());
+            case PLASMA -> PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable(), lT.getSize(), lT.lengthScalar() * bladeScalar, (float) lT.radius(), true, lT.color());
+            case BRICK -> PlasmaRenderer.renderBrick(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar() * bladeScalar, lT.color());
         }
     }
 

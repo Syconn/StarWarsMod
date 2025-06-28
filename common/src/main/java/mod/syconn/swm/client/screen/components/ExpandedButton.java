@@ -13,7 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 public class ExpandedButton extends Button {
 
     protected static final WidgetSprites SPRITES = new WidgetSprites(
-            new ResourceLocation("widget/button"), new ResourceLocation("widget/button_disabled"), new ResourceLocation("widget/button_highlighted")
+            ResourceLocation.withDefaultNamespace("widget/button"),
+            ResourceLocation.withDefaultNamespace("widget/button_disabled"),
+            ResourceLocation.withDefaultNamespace("widget/button_highlighted")
     );
 
     public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler) {

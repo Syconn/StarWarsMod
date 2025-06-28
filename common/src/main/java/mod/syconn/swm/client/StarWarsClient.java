@@ -11,7 +11,7 @@ import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.entity.LightsaberWorkbenchRenderer;
 import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.util.Constants;
@@ -42,7 +42,7 @@ public class StarWarsClient {
 
     public static void setupEvent(Minecraft minecraft) {
         ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
-                ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
+                ((stack, level, holder, seed) -> (float) LightsaberComponent.getOrCreate(stack).model() * 0.1f));
 
         BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
 

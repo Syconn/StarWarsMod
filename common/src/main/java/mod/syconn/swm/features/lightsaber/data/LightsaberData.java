@@ -6,6 +6,7 @@ import mod.syconn.swm.util.client.model.NodeVec3;
 import mod.syconn.swm.util.json.JsonUtils;
 import mod.syconn.swm.util.nbt.ISerializable;
 import mod.syconn.swm.util.nbt.NbtTools;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -15,19 +16,18 @@ import java.util.UUID;
 
 public record LightsaberData(int model, boolean stable, float lengthScalar, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) implements ISerializable<CompoundTag> {
 
-    public LightsaberTag toTag() {
-        return new LightsaberTag(UUID.randomUUID(), this.model, this.stable, this.lengthScalar, true, (byte) 0, this.radius, this.color, this.bladeType, this.emitterPositions);
+    public LightsaberComponent component() {
+        return new LightsaberComponent(UUID.randomUUID(), this.model, this.stable, this.lengthScalar, true, (byte) 0, this.radius, this.color, this.bladeType, this.emitterPositions);
     }
 
-    public ItemStack toItem() {
-        var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        return toTag().change(stack);
+    public ItemStack item() {
+        return LightsaberComponent.set(new ItemStack(ModItems.LIGHTSABER.get()), component());
     }
 
     public ItemStack toItem(String name) {
-        var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        stack.setHoverName(Component.literal(name + " Lightsaber"));
-        return toTag().change(stack);
+        var stack = item();
+        stack.set(DataComponents.CUSTOM_NAME, Component.literal(name + " Lightsaber"));
+        return stack;
     }
 
     public static LightsaberData fromJson(JsonObject json) {

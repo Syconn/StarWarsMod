@@ -1,8 +1,9 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
+import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredScrollBar;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
@@ -18,6 +19,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.UUID;
 
@@ -80,13 +82,13 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
         var stack = this.menu.getBlockEntity().getContainer().getItem(0);
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
-            var lT = LightsaberTag.getOrCreate(stack);
+            var lT = LightsaberComponent.getOrCreate(stack);
             this.rotation += (float) (-10f * this.deltaScroll);
             GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(true, true), this.leftPos + 185, this.topPos + 36.5, this.rotation);
             this.deltaScroll = 0f;
 
-            if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
-            else if (lT.color != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(lT);
+            if (!lT.uuid().equals(this.itemId)) getLightsaberColor();
+            else if (lT.color() != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(stack, lT);
         }
     }
 
@@ -107,9 +109,9 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private void getLightsaberColor() {
         var stack = getMenu().getBlockEntity().getContainer().getItem(0);
         if (stack.getItem() instanceof LightsaberItem) {
-            var lT = LightsaberTag.getOrCreate(stack);
-            setColor(lT.color);
-            this.itemId = lT.uuid;
+            var lT = LightsaberComponent.getOrCreate(stack);
+            setColor(lT.color());
+            this.itemId = lT.uuid();
         }
     }
 
@@ -123,8 +125,9 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         this.scrollBars[2].setValue(this.value * 100f);
     }
 
-    private void updateLightsaberColor(LightsaberTag lT) {
-        lT.color = ColorUtil.packHsv(this.hue, this.saturation, this.value);
-        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), lT.color));
+    private void updateLightsaberColor(ItemStack stack, LightsaberComponent lT) {
+        var color = ColorUtil.packHsv(this.hue, this.saturation, this.value);
+        LightsaberComponent.update(stack, c -> c.color(color));
+        NetworkManager.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), color));
     }
 }

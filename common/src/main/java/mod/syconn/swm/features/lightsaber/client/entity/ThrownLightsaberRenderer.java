@@ -22,7 +22,7 @@ public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaber> {
     }
 
     public ResourceLocation getTextureLocation(ThrownLightsaber entity) {
-        return new ResourceLocation("missing");
+        return ResourceLocation.withDefaultNamespace("missing");
     }
 
     public void render(ThrownLightsaber entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {

@@ -3,6 +3,7 @@ package mod.syconn.swm.util.server;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,15 +14,13 @@ public record StackedIngredient(Ingredient ingredient, int count) {
     public static final Codec<StackedIngredient> CODEC = RecordCodecBuilder.create(builder -> builder.group(Ingredient.CODEC_NONEMPTY.fieldOf("ingredient")
             .forGetter(o -> o.ingredient), Codec.INT.fieldOf("count").orElse(1).forGetter(o -> o.count)).apply(builder, StackedIngredient::new));
 
-    public static StackedIngredient fromNetwork(FriendlyByteBuf buffer) {
-        var ingredient = Ingredient.fromNetwork(buffer);
-        var count = buffer.readInt();
-        return new StackedIngredient(ingredient, count);
+    public static StackedIngredient fromNetwork(RegistryFriendlyByteBuf buf) {
+        return new StackedIngredient(Ingredient.CONTENTS_STREAM_CODEC.decode(buf), buf.readInt());
     }
 
-    public void toNetwork(FriendlyByteBuf buffer) {
-        this.ingredient.toNetwork(buffer);
-        buffer.writeInt(this.count);
+    public void toNetwork(RegistryFriendlyByteBuf buf) {
+        Ingredient.CONTENTS_STREAM_CODEC.encode(buf, this.ingredient);
+        buf.writeInt(this.count);
     }
 
     public static StackedIngredient of(TagKey<Item> tag, int count) {

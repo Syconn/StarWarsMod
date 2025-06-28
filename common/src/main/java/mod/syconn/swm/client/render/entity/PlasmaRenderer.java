@@ -230,8 +230,4 @@ public class PlasmaRenderer {
 
         PlasmaBuffer.RENDER.resetScale();
     }
-
-    public static void renderLayer(RenderBuffers buffers) {
-        buffers.outlineBufferSource().getBuffer(PLASMA).endVertex();
-    }
 }

@@ -113,7 +113,7 @@ public enum PlasmaBuffer {
         pos4.mul(pose.pose());
         normal.mul(pose.normal());
 
-        vertexConsumer.vertex(pos4.x, pos4.y, pos4.z, r, g, b, a, u, v, overlay, light, normal.x, normal.y, normal.z);
+        vertexConsumer.addVertex(pos4.x, pos4.y, pos4.z).setColor(r, g, b, a).setUv(u, v).setOverlay(overlay).setLight(light).setNormal(normal.x, normal.y, normal.z);
     }
 
     public void vertex(float x, float y, float z, float nx, float ny, float nz, float u, float v) {

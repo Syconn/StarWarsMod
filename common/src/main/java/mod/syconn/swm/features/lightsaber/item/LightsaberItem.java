@@ -2,7 +2,6 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import mod.syconn.swm.core.ModComponents;
 import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.util.client.IItemExtended;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -36,13 +35,13 @@ public class LightsaberItem extends Item implements IItemExtended {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        LightsaberTag.update(stack, LightsaberTag::tick);
+        LightsaberComponent.update(stack, LightsaberComponent::tick);
         stack.set(DataComponents.ATTRIBUTE_MODIFIERS, createAttributes(stack));
     }
 
     @Override
     public boolean allowUpdateAnimation(@NotNull ItemStack from, @NotNull ItemStack to, boolean changed) {
-        return LightsaberTag.identical(from, to);
+        return LightsaberComponent.identical(from, to);
     }
 
     @Override
@@ -63,7 +62,7 @@ public class LightsaberItem extends Item implements IItemExtended {
     }
 
     public static ItemAttributeModifiers createAttributes(@Nullable ItemStack stack) {
-        var damage = stack != null && LightsaberComponent.get(stack).active() ? 7.0F : 0.0F;
+        var damage = stack != null && LightsaberComponent.getOrCreate(stack).active() ? 7.0F : 0.0F;
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)

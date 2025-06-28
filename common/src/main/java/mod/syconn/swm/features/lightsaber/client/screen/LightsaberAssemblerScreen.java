@@ -1,7 +1,8 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
+import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.client.screen.components.ExpandedButton;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.data.LightsaberComponent;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.network.Network;
@@ -53,7 +54,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
         }));
 
         addRenderableWidget(this.craftButton = new ExpandedButton(this.leftPos + 131, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
-            Network.CHANNEL.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).id()));
+            NetworkManager.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).id()));
         }));
     }
 
@@ -61,7 +62,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         guiGraphics.blit(WORKSTATION_BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
-        var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).value().result().copy());
+        var lT = LightsaberComponent.getOrCreate(this.menu.getRecipes().get(selectedRecipe).value().result().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
         guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).value().result().getHoverName().getString()),
                 this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
