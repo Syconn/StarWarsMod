@@ -19,7 +19,7 @@ public class ModBlocks {
 
     private static <T extends Block> RegistrySupplier<T> register(String id, Supplier<T> supplier) {
         RegistrySupplier<T> registeredBlock = BLOCKS.register(id, supplier);
-        ModItems.DEFAULT_ITEMS.add(ModItems.ITEMS.register(id, () -> new BlockItem(registeredBlock.get(), new Item.Properties())));
+        ModItems.ITEMS.register(id, () -> new BlockItem(registeredBlock.get(), new Item.Properties().arch$tab(ModItems.TAB)));
         return registeredBlock;
     }
 }

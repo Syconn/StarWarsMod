@@ -137,3 +137,7 @@ fabric/run/
 /forge/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json
 /forge/src/generated/resources/data/swm/lightsaber/defaults/yoda.json
 /forge/run/saves/New World/
+/forge/run/.architectury-transformer/
+/forge/run/config/
+/forge/run/defaultconfigs/
+/forge/run/logs/
