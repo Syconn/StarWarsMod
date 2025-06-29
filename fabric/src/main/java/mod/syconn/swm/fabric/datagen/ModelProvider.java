@@ -44,7 +44,7 @@ public class ModelProvider extends FabricModelProvider {
                                 : f == Direction.EAST ? VariantProperties.Rotation.R0 : VariantProperties.Rotation.R90))
                 )
         );
-        gen.accept(MultiVariantGenerator.multiVariant(ModBlocks.HOLO_PROJECTOR.get(), Variant.variant().with(VariantProperties.MODEL, Constants.withId(getId(ModBlocks.LIGHTSABER_WORKBENCH.get())))).with(
+        gen.accept(MultiVariantGenerator.multiVariant(ModBlocks.HOLO_PROJECTOR.get(), Variant.variant().with(VariantProperties.MODEL, Constants.withId(getId(ModBlocks.HOLO_PROJECTOR.get())))).with(
                 PropertyDispatch.property(BlockStateProperties.ATTACH_FACE)
                         .generate(f -> Variant.variant().with(VariantProperties.X_ROT, f == AttachFace.WALL ? VariantProperties.Rotation.R90 : VariantProperties.Rotation.R0))
                 ).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
