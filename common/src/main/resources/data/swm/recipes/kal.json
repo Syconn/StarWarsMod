@@ -1,0 +1,21 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 28,
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "count": 18,
+      "item": "minecraft:redstone"
+    },
+    {
+      "count": 42,
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaberData:{active:1b,bladeType:\"plasma\",color:10082431,lengthScalar:1.6f,model:8,radius:1.0d,stable:1b,transition:0b,uuid:[I;1428977938,2052538709,-2087567977,531759680],vectors:{0:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,scalar:1.0f,x:0.0d,y:-0.325d,z:0.0d},len:1}}}"
+  }
+}

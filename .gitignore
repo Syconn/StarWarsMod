@@ -113,11 +113,9 @@ gradle-app.setting
 
 # Common working directory
 fabric/run/
-forge/run/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
-/forge/run/
 /forge/src/generated/.cache/c622617f6fabf890a00b9275cd5f643584a8a2c8
 /forge/src/generated/.cache/103d9f3f36b01595f1aa5172191e60eff02e6924
 /forge/src/generated/.cache/9d9b5c5f09e73c5346c89d2a586c6a9abae5464f
@@ -138,3 +136,4 @@ forge/run/
 /forge/src/generated/resources/data/swm/lightsaber/defaults/obi.json
 /forge/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json
 /forge/src/generated/resources/data/swm/lightsaber/defaults/yoda.json
+/forge/run/saves/New World/
