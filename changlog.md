@@ -15,3 +15,7 @@ Changelog
   * Screwdriver
   * Monitor
   * Screen
+
+# 2.0.5
+
+* Added Hologram Communicator

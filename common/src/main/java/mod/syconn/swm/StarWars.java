@@ -8,12 +8,24 @@ import dev.architectury.utils.EnvExecutor;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.addons.LightsaberContent;
+import mod.syconn.swm.features.updater.GithubReleaseEntry;
+import mod.syconn.swm.features.updater.UpdateChecker;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
 import net.minecraft.server.packs.PackType;
 
-public final class StarWars { // TODO BETTER COMBAT
+public final class StarWars {
+
+    private static GithubReleaseEntry REMOTE_VERSION = null;
+
     public static void init() {
+//        if (!isUpdateCheckDisabled())
+//        {
+//            REMOTE_VERSION = UpdateChecker.getRemoteVersion(MODID, "Parzivail-Modding-Team/GalaxiesParzisStarWarsMod").orElse(null);
+//        }
+
+
+
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
         ModItems.TABS.register();

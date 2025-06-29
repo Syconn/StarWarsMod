@@ -2,8 +2,10 @@ package mod.syconn.swm.features.blaster.item;
 
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -22,8 +24,9 @@ public class BlasterItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-//        player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
+        var stack = player.getItemInHand(usedHand);
+
         player.awardStat(Stats.ITEM_USED.get(this));
-        return ItemUtils.startUsingInstantly(level, player, usedHand); // TODO USE FOR LIGHTSABER?
+        return InteractionResultHolder.success(stack);
     }
 }

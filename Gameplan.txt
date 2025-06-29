@@ -1,3 +1,4 @@
+V2.0.5
 Fix Lightsabers by defining types to simplify data, size value in data file to make better render logic in recipes and stuff
 
 Lightsaber Crystal Structures
@@ -7,6 +8,9 @@ Blasters
 Storm Trooper Patrols
 
 Holoprojector new system that shows players around it in the world, maybe a hand held version 1:1 connection?
+-
+
+V 2.0.6
 
 Ships
 

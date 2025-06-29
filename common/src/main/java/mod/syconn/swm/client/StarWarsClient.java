@@ -6,6 +6,7 @@ import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import mod.syconn.swm.client.keys.KeyHandler;
+import mod.syconn.swm.client.render.block.HoloProjectorBlockEntityRenderer;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
@@ -27,7 +28,6 @@ public class StarWarsClient {
 
     public static void init() {
         IModifiedItemRenderer.register(LightsaberItem.class, new LightsaberItemRender());
-        IModifiedItemRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
         IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
@@ -45,6 +45,7 @@ public class StarWarsClient {
                 ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
 
         BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntityRenderer::new);
 
         ModMenus.registerScreens();
     }

@@ -1,7 +1,8 @@
 package mod.syconn.swm.core;
 
 import dev.architectury.registry.registries.DeferredRegister;
-import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
+import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
+import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
 import mod.syconn.swm.util.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
@@ -15,7 +16,8 @@ public class ModEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Constants.MOD, Registries.ENTITY_TYPE);
 
-    public static final Supplier<EntityType<ThrownLightsaber>> THROWN_LIGHTSABER = registerProjectile("throw_lightsaber", ThrownLightsaber::new);
+    public static final Supplier<EntityType<ThrownLightsaberEntity>> THROWN_LIGHTSABER = registerProjectile("throw_lightsaber", ThrownLightsaberEntity::new);
+    public static final Supplier<EntityType<BlasterBoltEntity>> BLASTER_BOLT = registerProjectile("blaster_bolt", BlasterBoltEntity::new);
 
     private static <T extends Mob> Supplier<EntityType<T>> registerEntity(String name, EntityType.EntityFactory<T> entity, float width, float height, MobCategory mobCategory) {
         return ENTITIES.register(name, () -> EntityType.Builder.of(entity,mobCategory).sized(width, height).build(name));

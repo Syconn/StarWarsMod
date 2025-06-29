@@ -9,4 +9,8 @@ public class ModDamageSources {
     public static DamageSource lightsaber(Level level) {
         return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ModTags.LIGHTSABER_DAMAGE));
     }
+
+    public static DamageSource blaster(Level level) {
+        return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ModTags.LIGHTSABER_DAMAGE));
+    }
 }

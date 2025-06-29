@@ -38,6 +38,7 @@ public class ModItems {
 
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
         output.acceptAll(LightsaberContent.getLightsabers());
+//        output.acceptAll(BlasterContent.getBlasters());
     }
 
     @SuppressWarnings("unchecked")

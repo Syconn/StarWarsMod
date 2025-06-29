@@ -1,31 +1,17 @@
 package mod.syconn.swm.features.blaster.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.util.client.model.ModelUtil;
-import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
 import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
 import mod.syconn.swm.util.math.MathUtil;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPoseRenderer {
-
-    public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
-        poseStack.pushPose();
-
-        model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
-//        renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
-
-        poseStack.popPose();
-    }
+public class BlasterItemRenderer implements IModifiedPoseRenderer {
 
     public void modifyPose(LivingEntity entity, InteractionHand hand, ItemStack stack, HumanoidModel<? extends LivingEntity> model, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float tickDelta) {
         var mc = GameInstance.getClient();

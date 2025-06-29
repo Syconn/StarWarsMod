@@ -26,5 +26,6 @@ public class DatapackProvider extends RegistriesDatapackGenerator {
 
     private static void bootstrapDamageType(BootstapContext<DamageType> context) {
         context.register(ModTags.LIGHTSABER_DAMAGE, new DamageType("lightsaber", 0.1F));
+        context.register(ModTags.BLASTER_DAMAGE, new DamageType("blaster", 0.1F));
     }
 }

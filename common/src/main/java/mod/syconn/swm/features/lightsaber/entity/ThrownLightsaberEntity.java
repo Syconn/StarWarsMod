@@ -23,23 +23,23 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class ThrownLightsaber extends ThrowableProjectile {
+public class ThrownLightsaberEntity extends ThrowableProjectile {
 
-    private static final EntityDataAccessor<CompoundTag> LIGHTSABER_DATA = SynchedEntityData.defineId(ThrownLightsaber.class, EntityDataSerializers.COMPOUND_TAG);
+    private static final EntityDataAccessor<CompoundTag> LIGHTSABER_DATA = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.COMPOUND_TAG);
     private InteractionHand hand;
     private boolean returning = false;
 
-    public ThrownLightsaber(EntityType<? extends ThrownLightsaber> entityType, Level level) {
+    public ThrownLightsaberEntity(EntityType<? extends ThrownLightsaberEntity> entityType, Level level) {
         super(entityType, level);
     }
 
-    public ThrownLightsaber(Level level, LivingEntity shooter, ItemStack stack, InteractionHand hand) {
+    public ThrownLightsaberEntity(Level level, LivingEntity shooter, ItemStack stack, InteractionHand hand) {
         super(ModEntities.THROWN_LIGHTSABER.get(), shooter, level);
         this.entityData.set(LIGHTSABER_DATA, LightsaberTag.getOrCreate(stack).save());
         this.hand = hand;
     }
 
-    public ThrownLightsaber(Level level, LivingEntity shooter, InteractionHand hand) {
+    public ThrownLightsaberEntity(Level level, LivingEntity shooter, InteractionHand hand) {
         super(ModEntities.THROWN_LIGHTSABER.get(), shooter, level);
         this.entityData.set(LIGHTSABER_DATA, LightsaberTag.getOrCreate(shooter.getItemInHand(hand)).save());
         this.hand = hand;
