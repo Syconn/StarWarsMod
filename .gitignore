@@ -142,4 +142,5 @@ fabric/src/main/generated
 /forge/run/config/
 /forge/run/defaultconfigs/
 /forge/run/logs/
-/fabric/src/main/generated/.cache/849e038306ef50c6c55e57f4e578e1727817f358
+/fabric/src/main/generated/.cache/
+/forge/run/crash-reports/
