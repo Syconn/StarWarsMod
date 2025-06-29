@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.util.client.IItemExtensions;
 import net.minecraft.core.BlockPos;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -45,6 +46,7 @@ public class LightsaberItem extends Item implements IItemExtensions {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         final var stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
+        player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.fail(stack);
     }
 

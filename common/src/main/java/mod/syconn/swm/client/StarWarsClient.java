@@ -9,6 +9,7 @@ import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.client.render.block.HoloProjectorBlockEntityRenderer;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
+import mod.syconn.swm.features.blaster.client.entity.BlasterBoltRenderer;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
 import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.entity.LightsaberWorkbenchRenderer;
@@ -36,6 +37,7 @@ public class StarWarsClient {
         KeyMappingRegistry.register(ModKeys.POWER_1);
 
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
     }

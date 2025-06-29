@@ -21,6 +21,7 @@ public class BlasterBoltRenderer extends EntityRenderer<BlasterBoltEntity> {
     }
 
     public void render(BlasterBoltEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        BoltRendererHelper.renderStun(entity, poseStack, buffer, packedLight, partialTick);
+//        BoltRendererHelper.renderStun(entity, poseStack, buffer, packedLight, partialTick);
+        BoltRendererHelper.renderBolt(entity, poseStack, buffer, partialTick, packedLight);
     }
 }

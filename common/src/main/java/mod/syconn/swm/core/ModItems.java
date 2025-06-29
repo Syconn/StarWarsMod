@@ -37,8 +37,8 @@ public class ModItems {
             Component.translatable("itemGroup." + MOD + ".star_wars"), () -> new ItemStack(LIGHTSABER.get())));
 
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
-        output.acceptAll(LightsaberContent.getLightsabers());
-//        output.acceptAll(BlasterContent.getBlasters());
+        output.acceptAll(LightsaberContent.getLightsabers(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+        output.accept(F11.get());
     }
 
     @SuppressWarnings("unchecked")

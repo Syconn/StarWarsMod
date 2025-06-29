@@ -42,7 +42,7 @@ public class BoltRendererHelper {
         poseStack.popPose();
     }
 
-    public static void renderBolt(BlasterBoltEntity entity, PoseStack poseStack, MultiBufferSource bufferSource, int partialTicks, int light) {
+    public static void renderBolt(BlasterBoltEntity entity, PoseStack poseStack, MultiBufferSource bufferSource, float partialTicks, int light) {
         var velocity = entity.getDeltaMovement();
         velocity = velocity.normalize();
 

@@ -27,8 +27,8 @@ public class BlasterBoltEntity extends ThrowableProjectile {
         this.entityData.set(BLASTER_DATA, tag);
     }
 
-    public BlasterBoltEntity(LivingEntity entity, Level level, CompoundTag tag) {
-        super(ModEntities.BLASTER_BOLT.get(), entity, level);
+    public BlasterBoltEntity(LivingEntity entity, CompoundTag tag) {
+        super(ModEntities.BLASTER_BOLT.get(), entity, entity.level());
         this.entityData.set(BLASTER_DATA, tag);
     }
 
