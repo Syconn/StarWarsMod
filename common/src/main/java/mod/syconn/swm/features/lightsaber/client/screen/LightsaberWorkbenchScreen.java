@@ -102,7 +102,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) { }
 
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        this.deltaScroll = scrollY; // TODO TEST
+        this.deltaScroll = scrollY;
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }
 
