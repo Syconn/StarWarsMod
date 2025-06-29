@@ -5,7 +5,6 @@ import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
-import dev.architectury.registry.menu.MenuRegistry;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.keys.KeyHandler;
 import mod.syconn.swm.core.*;
