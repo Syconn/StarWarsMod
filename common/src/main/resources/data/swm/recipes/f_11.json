@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "b": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "d": {
+      "item": "minecraft:red_dye"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "d b",
+    "iii",
+    " ri"
+  ],
+  "result": {
+    "item": "swm:f_11"
+  },
+  "show_notification": true
+}

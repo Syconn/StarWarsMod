@@ -23,11 +23,13 @@ public class LangProvider extends FabricLanguageProvider {
         translationBuilder.add("key.swm.power_1", "Use Force Power 1");
 
         translationBuilder.add(ModItems.LIGHTSABER.get(), "Lightsaber");
+        translationBuilder.add(ModItems.F11.get(), "F11D Blaster");
         translationBuilder.add(ModItems.MONITOR.get(), "Monitor");
         translationBuilder.add(ModItems.DRIVER.get(), "Screw Driver");
         translationBuilder.add(ModItems.DRILL.get(), "Drill");
         translationBuilder.add(ModItems.SCREEN.get(), "Screen");
 
         translationBuilder.add(ModBlocks.LIGHTSABER_WORKBENCH.get(), "Lightsaber Workbench");
+        translationBuilder.add(ModBlocks.HOLO_PROJECTOR.get(), "Holographic Communicator");
     }
 }

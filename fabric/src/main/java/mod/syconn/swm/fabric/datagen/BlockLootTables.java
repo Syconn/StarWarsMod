@@ -15,5 +15,6 @@ public class BlockLootTables extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         this.add(ModBlocks.LIGHTSABER_WORKBENCH.get(), arg -> this.createSinglePropConditionTable(arg, ModBlockStateProperties.TWO_PART, TwoPart.RIGHT));
+        this.dropSelf(ModBlocks.HOLO_PROJECTOR.get());
     }
 }

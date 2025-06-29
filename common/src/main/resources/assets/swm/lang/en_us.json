@@ -1,7 +1,9 @@
 {
+  "block.swm.holo_projector": "Holographic Communicator",
   "block.swm.lightsaber_workbench": "Lightsaber Workbench",
   "item.swm.drill": "Drill",
   "item.swm.driver": "Screw Driver",
+  "item.swm.f_11": "F11D Blaster",
   "item.swm.lightsaber": "Lightsaber",
   "item.swm.monitor": "Monitor",
   "item.swm.screen": "Screen",

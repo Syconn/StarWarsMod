@@ -21,6 +21,7 @@ import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.data.models.model.ModelTemplates;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class ModelProvider extends FabricModelProvider {
@@ -42,6 +43,13 @@ public class ModelProvider extends FabricModelProvider {
                         .generate(f -> Variant.variant().with(VariantProperties.Y_ROT, f == Direction.NORTH ? VariantProperties.Rotation.R270 : f == Direction.WEST ? VariantProperties.Rotation.R180
                                 : f == Direction.EAST ? VariantProperties.Rotation.R0 : VariantProperties.Rotation.R90))
                 )
+        );
+        gen.accept(MultiVariantGenerator.multiVariant(ModBlocks.HOLO_PROJECTOR.get(), Variant.variant().with(VariantProperties.MODEL, Constants.withId(getId(ModBlocks.LIGHTSABER_WORKBENCH.get())))).with(
+                PropertyDispatch.property(BlockStateProperties.ATTACH_FACE)
+                        .generate(f -> Variant.variant().with(VariantProperties.X_ROT, f == AttachFace.WALL ? VariantProperties.Rotation.R90 : VariantProperties.Rotation.R0))
+                ).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
+                        .generate(f -> Variant.variant().with(VariantProperties.Y_ROT, f == Direction.NORTH ? VariantProperties.Rotation.R0 : f == Direction.EAST ? VariantProperties.Rotation.R90 :
+                                f == Direction.SOUTH ? VariantProperties.Rotation.R180 : VariantProperties.Rotation.R270)))
         );
     }
 
