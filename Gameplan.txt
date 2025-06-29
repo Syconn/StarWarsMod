@@ -1,4 +1,4 @@
-Port to Furniture Mod versions
+Fix Lightsabers by defining types to simplify data, size value in data file to make better render logic in recipes and stuff
 
 Lightsaber Crystal Structures
 
