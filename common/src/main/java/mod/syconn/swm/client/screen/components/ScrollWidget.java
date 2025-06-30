@@ -1,6 +1,6 @@
 package mod.syconn.swm.client.screen.components;
 
-import mod.syconn.swm.util.client.GraphicsUtil;
+import mod.syconn.swm.utils.client.GraphicsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -16,8 +16,6 @@ import java.text.DecimalFormat;
 
 public class ScrollWidget extends AbstractSliderButton {
     private static final ResourceLocation SLIDER_LOCATION = new ResourceLocation("textures/gui/slider.png");
-
-    @Nullable
     protected final OnChange onChange;
     protected Component prefix;
     protected Component suffix;

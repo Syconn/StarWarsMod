@@ -2,7 +2,7 @@ package mod.syconn.swm.server;
 
 import dev.architectury.event.events.common.PlayerEvent;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.util.server.SyncedResourceManager;
+import mod.syconn.swm.utils.server.SyncedResourceManager;
 import net.minecraft.server.level.ServerPlayer;
 
 public class StarWarsServer {

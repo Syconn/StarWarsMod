@@ -4,10 +4,10 @@ import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.model.NodeVec3;
-import mod.syconn.swm.util.math.Ease;
-import mod.syconn.swm.util.nbt.NbtTools;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.model.NodeVec3;
+import mod.syconn.swm.utils.math.Ease;
+import mod.syconn.swm.utils.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 

@@ -4,18 +4,17 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import mod.syconn.swm.client.StarWarsClient;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.PlasmaBuffer;
-import mod.syconn.swm.util.math.ColorUtil;
-import mod.syconn.swm.util.math.MathUtil;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.PlasmaBuffer;
+import mod.syconn.swm.utils.math.ColorUtil;
+import mod.syconn.swm.utils.math.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderBuffers;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.Mth;
 
-import static mod.syconn.swm.util.math.ColorUtil.*;
+import static mod.syconn.swm.utils.math.ColorUtil.*;
 
 public class PlasmaRenderer {
 

@@ -2,10 +2,10 @@ package mod.syconn.swm.features.blaster.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.util.client.model.ModelUtil;
-import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
-import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
-import mod.syconn.swm.util.math.MathUtil;
+import mod.syconn.swm.utils.client.model.ModelUtil;
+import mod.syconn.swm.utils.client.render.IModifiedItemRenderer;
+import mod.syconn.swm.utils.client.render.IModifiedPoseRenderer;
+import mod.syconn.swm.utils.math.MathUtil;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.resources.model.BakedModel;

@@ -3,7 +3,7 @@ package mod.syconn.swm.features.lightsaber.network;
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.core.ModRecipes;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
-import mod.syconn.swm.util.server.StackedIngredient;
+import mod.syconn.swm.utils.server.StackedIngredient;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;

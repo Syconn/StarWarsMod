@@ -3,7 +3,7 @@ package mod.syconn.swm.fabric.client.data;
 import com.mojang.math.Axis;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
-import mod.syconn.swm.util.client.model.NodeVec3;
+import mod.syconn.swm.utils.client.model.NodeVec3;
 
 import java.util.List;
 

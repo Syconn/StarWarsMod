@@ -6,6 +6,7 @@ import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import mod.syconn.swm.client.keys.KeyHandler;
+import mod.syconn.swm.client.render.block.HoloProjectorBlockEntityRenderer;
 import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
@@ -14,9 +15,9 @@ import mod.syconn.swm.features.lightsaber.client.entity.LightsaberWorkbenchRende
 import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.render.IModifiedItemRenderer;
-import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.render.IModifiedItemRenderer;
+import mod.syconn.swm.utils.client.render.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -45,6 +46,7 @@ public class StarWarsClient {
                 ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
 
         BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntityRenderer::new);
 
         ModMenus.registerScreens();
     }

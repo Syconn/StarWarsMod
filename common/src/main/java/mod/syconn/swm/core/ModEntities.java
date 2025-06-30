@@ -2,7 +2,7 @@ package mod.syconn.swm.core;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;

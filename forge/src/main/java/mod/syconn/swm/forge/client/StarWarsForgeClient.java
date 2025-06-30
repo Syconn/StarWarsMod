@@ -1,7 +1,7 @@
 package mod.syconn.swm.forge.client;
 
 import mod.syconn.swm.client.StarWarsClient;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

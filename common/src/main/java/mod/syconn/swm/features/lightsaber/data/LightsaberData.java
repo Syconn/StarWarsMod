@@ -2,10 +2,10 @@ package mod.syconn.swm.features.lightsaber.data;
 
 import com.google.gson.JsonObject;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.util.client.model.NodeVec3;
-import mod.syconn.swm.util.json.JsonUtils;
-import mod.syconn.swm.util.nbt.ISerializable;
-import mod.syconn.swm.util.nbt.NbtTools;
+import mod.syconn.swm.utils.client.model.NodeVec3;
+import mod.syconn.swm.utils.json.JsonUtils;
+import mod.syconn.swm.utils.nbt.ISerializable;
+import mod.syconn.swm.utils.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.client.StarWarsClient;
-import mod.syconn.swm.util.client.render.IModifiedPoseRenderer;
+import mod.syconn.swm.utils.client.render.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.AgeableListModel;

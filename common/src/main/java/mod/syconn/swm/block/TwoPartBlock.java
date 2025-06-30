@@ -1,7 +1,7 @@
 package mod.syconn.swm.block;
 
-import mod.syconn.swm.util.block.ModBlockStateProperties;
-import mod.syconn.swm.util.block.TwoPart;
+import mod.syconn.swm.utils.block.ModBlockStateProperties;
+import mod.syconn.swm.utils.block.TwoPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;

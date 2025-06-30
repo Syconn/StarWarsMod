@@ -2,8 +2,8 @@ package mod.syconn.swm.network.packets;
 
 import dev.architectury.networking.NetworkManager;
 import io.netty.buffer.Unpooled;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.server.SyncedResourceManager;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.server.SyncedResourceManager;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;

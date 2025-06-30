@@ -3,7 +3,7 @@ package mod.syconn.swm.features.lightsaber.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.util.client.IItemExtensions;
+import mod.syconn.swm.utils.client.IItemExtensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

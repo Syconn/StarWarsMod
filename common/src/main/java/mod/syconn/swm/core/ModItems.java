@@ -14,12 +14,10 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static mod.syconn.swm.util.Constants.MOD;
+import static mod.syconn.swm.utils.Constants.MOD;
 
 public class ModItems {
 

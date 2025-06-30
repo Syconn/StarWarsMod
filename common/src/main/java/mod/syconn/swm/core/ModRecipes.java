@@ -3,7 +3,7 @@ package mod.syconn.swm.core;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;

@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.util.math.DirectionUtil;
+import mod.syconn.swm.utils.math.DirectionUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

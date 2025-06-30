@@ -5,10 +5,10 @@ import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.StringUtil;
-import mod.syconn.swm.util.json.JsonResourceReloader;
-import mod.syconn.swm.util.math.ColorUtil;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.StringUtil;
+import mod.syconn.swm.utils.json.JsonResourceReloader;
+import mod.syconn.swm.utils.math.ColorUtil;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 

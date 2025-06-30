@@ -7,6 +7,7 @@ Blasters
 Storm Trooper Patrols
 
 Holoprojector new system that shows players around it in the world, maybe a hand held version 1:1 connection?
+- Based on UUid, so any holo projector works not tied to specific cord
 
 Ships
 

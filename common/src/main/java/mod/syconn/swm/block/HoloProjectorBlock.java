@@ -1,8 +1,12 @@
 package mod.syconn.swm.block;
 
+import dev.architectury.utils.Env;
+import dev.architectury.utils.EnvExecutor;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
+import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.util.block.EntityBlockExtended;
+import mod.syconn.swm.utils.block.EntityBlockExtended;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -63,6 +67,7 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
     @Override
     public @NotNull InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pLevel.isClientSide) {
+            EnvExecutor.runInEnv(Env.CLIENT, () -> () -> GameInstance.getClient().setScreen(ClientHooks.createHologramScreen()));
             return InteractionResult.SUCCESS;
         }
 

@@ -12,7 +12,7 @@ import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModRecipes;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.integration.jei.category.LightsaberAssemblerCategory;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;

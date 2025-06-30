@@ -8,8 +8,8 @@ import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEn
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
-import mod.syconn.swm.util.block.EntityBlockExtended;
-import mod.syconn.swm.util.block.ModBlockStateProperties;
+import mod.syconn.swm.utils.block.EntityBlockExtended;
+import mod.syconn.swm.utils.block.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;

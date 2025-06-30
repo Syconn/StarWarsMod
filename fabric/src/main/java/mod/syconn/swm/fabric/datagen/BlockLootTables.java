@@ -1,8 +1,8 @@
 package mod.syconn.swm.fabric.datagen;
 
 import mod.syconn.swm.core.ModBlocks;
-import mod.syconn.swm.util.block.ModBlockStateProperties;
-import mod.syconn.swm.util.block.TwoPart;
+import mod.syconn.swm.utils.block.ModBlockStateProperties;
+import mod.syconn.swm.utils.block.TwoPart;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 

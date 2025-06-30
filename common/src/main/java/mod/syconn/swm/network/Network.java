@@ -6,7 +6,7 @@ import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.network.packets.SyncResourceDataPacket;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 
 public class Network {
 
