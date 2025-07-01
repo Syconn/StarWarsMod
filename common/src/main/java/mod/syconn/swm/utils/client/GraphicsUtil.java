@@ -22,6 +22,12 @@ import java.util.function.Function;
 
 public class GraphicsUtil {
 
+    public static void blitSliced(GuiGraphics graphics, ResourceLocation location, int x, int y, int height, int uWidth, int uHeight, int uX, int uY) {
+        graphics.blit(location, x, y, uX, uY, uWidth, uHeight);
+        for (int i = 0; i < height; i++) graphics.blit(location, x, y + uHeight + i, uX, uY + 1, uWidth, 1);
+        graphics.blit(location, x, y + uHeight + height, uX, uY + 2, uWidth, uHeight);
+    }
+
     public static void renderHSVSquare(GuiGraphics graphics, int x, int y, int width, int height, Function<Integer, Integer> hsvColor) {
         for (int k = 0; k < width; k++) {
             var hsv = hsvColor.apply(k);

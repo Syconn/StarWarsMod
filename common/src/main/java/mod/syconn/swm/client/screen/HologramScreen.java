@@ -58,6 +58,7 @@ public class HologramScreen extends Screen {
         this.showPage(this.page);
 
         this.callData = this.addRenderableWidget(new CallDataRenderer(leftPos + 10, 92));
+        this.callData.init(this::addRenderableWidget);
     }
 
     private void showPage(Page page) {
@@ -74,10 +75,11 @@ public class HologramScreen extends Screen {
 
     @Override
     public void renderBackground(GuiGraphics guiGraphics) {
-        var i = this.marginX() + 3;
         super.renderBackground(guiGraphics);
-        guiGraphics.blitNineSliced(HOLOGRAM_SCREEN, i, 64, 236, 132, 8, 236, 34, 1, 1);
-        guiGraphics.blit(HOLOGRAM_SCREEN, i + 10, 75, 243, 1, 12, 12);
+
+        var m = this.marginX() + 3;
+        guiGraphics.blitNineSliced(HOLOGRAM_SCREEN, m, 64, 236, 143, 8, 236, 34, 1, 1);
+        guiGraphics.blit(HOLOGRAM_SCREEN, m + 10, 75, 243, 1, 12, 12);
     }
 
     @Override
@@ -89,8 +91,6 @@ public class HologramScreen extends Screen {
 
         this.searchBox.render(guiGraphics, mouseX, mouseY, partialTick);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-
-//        callData.render(guiGraphics, mouseX, mouseY, partialTick);
     }
 
     @Override
