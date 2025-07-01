@@ -2,6 +2,7 @@ package mod.syconn.swm.client.screen.components;
 
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.GraphicsUtil;
+import mod.syconn.swm.utils.client.WidgetComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -11,7 +12,7 @@ import net.minecraft.util.Mth;
 
 import java.util.function.Function;
 
-public class ScrollWidget extends AbstractWidget {
+public class ScrollWidget extends AbstractWidget implements WidgetComponent {
 
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
     private final Function<ScrollWidget, Boolean> canScroll;

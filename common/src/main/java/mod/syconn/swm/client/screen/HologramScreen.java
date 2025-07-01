@@ -57,8 +57,7 @@ public class HologramScreen extends Screen {
         this.addWidget(this.searchBox);
         this.showPage(this.page);
 
-        this.callData = this.addRenderableWidget(new CallDataRenderer(leftPos + 10, 92));
-        this.callData.init(this::addRenderableWidget);
+        this.callData = new CallDataRenderer(leftPos + 10, 92, this::addRenderableWidget);
     }
 
     private void showPage(Page page) {
