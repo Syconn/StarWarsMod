@@ -25,7 +25,7 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
         super(x, y, 14, height + 2, Component.empty());
         this.canScroll = canScroll;
         this.scrollTo = scrollTo;
-        this.size = size;
+        this.size = Math.max(size, 0);
     }
 
     private int getTextureY() {
@@ -34,8 +34,9 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
 
     @Override
     protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        var scroll = size == 0 ? 0 : (height - 13) * this.scrollOffs;
         GraphicsUtil.blitSliced(guiGraphics, HOLOGRAM_SCREEN, this.getX(), this.getY(), height + 2, 14, 1, 84, 53);
-        guiGraphics.blit(HOLOGRAM_SCREEN, this.getX() + 1, (int) (this.getY() + 1 + (height - 13) * this.scrollOffs), this.getTextureY(), 38, 12, 15);
+        guiGraphics.blit(HOLOGRAM_SCREEN, this.getX() + 1, (int) (this.getY() + 1 + scroll), this.getTextureY(), 38, 12, 15);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
         if (!this.canScroll.apply(this)) return false;
         else {
             this.scrollOffs = this.subtractInputFromScroll(this.scrollOffs, delta);
-//            this.scrollTo.accept(getRowIndexForScroll(this.scrollOffs));
+            this.scrollTo.accept(getRowIndexForScroll(this.scrollOffs));
             return true;
         }
     }
@@ -63,15 +64,15 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
     @Override
     protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {}
 
-    protected int getRowIndexForScroll(float scrollOffs) {
+    private int getRowIndexForScroll(float scrollOffs) {
         return Math.max((int)(scrollOffs * this.size + 0.5), 0);
     }
 
-    protected float getScrollForRowIndex(int rowIndex) {
-        return Mth.clamp((float)rowIndex / this.size, 0.0F, 1.0F);
+    private float subtractInputFromScroll(float scrollOffs, double input) {
+        return Mth.clamp(scrollOffs - (float)(input / this.size), 0.0F, 1.0F);
     }
 
-    protected float subtractInputFromScroll(float scrollOffs, double input) {
-        return Mth.clamp(scrollOffs - (float)(input / this.size), 0.0F, 1.0F);
+    public float setScroll(int rowIndex) {
+        return Mth.clamp((float)rowIndex / this.size, 0.0F, 1.0F);
     }
 }
