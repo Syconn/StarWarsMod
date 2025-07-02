@@ -15,8 +15,8 @@ import java.util.UUID;
 @Environment(EnvType.CLIENT)
 public class ClientHooks {
 
-    public static Screen createHologramScreen() {
-        return new HologramScreen();
+    public static Screen createHologramScreen(boolean handheld) {
+        return new HologramScreen(handheld);
     }
 
     public static AbstractClientPlayer createMockPlayer(ClientLevel level, String name) {

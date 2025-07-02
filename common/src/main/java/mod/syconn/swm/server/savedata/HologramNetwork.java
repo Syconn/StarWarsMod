@@ -1,8 +1,6 @@
 package mod.syconn.swm.server.savedata;
 
 import mod.syconn.swm.utils.block.WorldPos;
-import net.minecraft.client.gui.screens.social.SocialInteractionsPlayerList;
-import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;

@@ -119,7 +119,11 @@ public class CallDataRenderer implements WidgetComponent {
     @Override
     public void updateNarration(NarrationElementOutput narrationElementOutput) {}
 
-    private record MenuData(PlayerInfo info, boolean added, boolean locked) {
+    public List<MenuData> getMenuData() {
+        return this.players;
+    }
+
+    public record MenuData(PlayerInfo info, boolean added, boolean locked) {
 
         public static MenuData of(PlayerInfo info, boolean isMe) {
             return new MenuData(info, isMe, isMe);

@@ -17,14 +17,16 @@ import java.util.Locale;
 public class HologramScreen extends Screen {
 
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
+    private Page page = Page.CREATE_CALL;
+    private String lastSearch = "";
     private CallDataRenderer callData;
     private EditBox searchBox;
-    private String lastSearch = "";
     private Component pageTitle;
-    private Page page = Page.CREATE_CALL;
+    private final boolean handheld;
 
-    public HologramScreen() {
+    public HologramScreen(boolean handheld) {
         super(Component.literal("Hologram Projector Screen"));
+        this.handheld = handheld;
     }
 
     private int marginX() {
