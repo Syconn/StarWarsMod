@@ -17,9 +17,14 @@ public class CallButton extends ExpandedButton {
 
     @Override
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        guiGraphics.pose().pushPose();
+
         var uX = type == Type.START ? 0 : 20;
         var uY = isHovered ? 58 : 38;
-        guiGraphics.blit(HOLOGRAM_SCREEN, this.getX(), this.getY(), uX, uY, width, height);
+        guiGraphics.pose().scale(0.75f, 0.75f, 0.75f);
+        guiGraphics.blit(HOLOGRAM_SCREEN, this.getX() * 4 / 3, this.getY() * 4 / 3, uX, uY, width, height);
+
+        guiGraphics.pose().popPose();
     }
 
     public enum Type {

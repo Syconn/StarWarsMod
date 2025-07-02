@@ -1,5 +1,6 @@
 package mod.syconn.swm.client.screen;
 
+import mod.syconn.swm.client.screen.components.CallButton;
 import mod.syconn.swm.client.screen.components.ExpandedButton;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.render.CallDataRenderer;
@@ -7,6 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -49,9 +51,12 @@ public class HologramScreen extends Screen {
         this.addRenderableWidget(new ExpandedButton(leftPos + 10, 44, buttonSize, 20, Component.literal("Create Call"), button -> this.showPage(Page.CREATE_CALL)));
         this.addRenderableWidget(new ExpandedButton(leftPos + 157, 44, buttonSize, 20, Component.literal("Join Call"), button -> this.showPage(Page.JOIN_CALL)));
 
+        var m = this.marginX() + 3;
+        this.addRenderableWidget(new CallButton(m + 210, 74, CallButton.Type.START, this::createCall));
+
         var string = this.searchBox != null ? this.searchBox.getValue() : "";
-        this.searchBox = new EditBox(this.font, this.marginX() + 29, 75, 198, 13, Component.literal(string));
-        this.searchBox.setMaxLength(16);
+        this.searchBox = new EditBox(this.font, this.marginX() + 29, 75, 178, 13, Component.literal(string));
+        this.searchBox.setMaxLength(26);
         this.searchBox.setHint(Component.literal("Encryption Code"));
         this.searchBox.setVisible(true);
         this.searchBox.setTextColor(16777215);
@@ -126,6 +131,10 @@ public class HologramScreen extends Screen {
             this.lastSearch = newText;
             this.showPage(this.page);
         }
+    }
+
+    private void createCall(Button button) {
+
     }
 
     @Environment(EnvType.CLIENT)
