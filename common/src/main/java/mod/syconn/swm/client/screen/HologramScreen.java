@@ -5,6 +5,7 @@ import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.render.CallDataRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -95,6 +96,26 @@ public class HologramScreen extends Screen {
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        return callData.mouseScrolled(mouseX, mouseY, delta) || super.mouseScrolled(mouseX, mouseY, delta);
+    }
+
+    @Override
+    public void resize(Minecraft minecraft, int width, int height) {
+//        int i = this.menu.getRowIndexForScroll(this.scrollOffs);
+//        String string = this.searchBox.getValue();
+//        this.init(minecraft, width, height);
+//        this.searchBox.setValue(string);
+//        if (!this.searchBox.getValue().isEmpty()) {
+//            this.refreshSearchResults();
+//        }
+//
+//        this.scrollOffs = this.menu.getScrollForRowIndex(i);
+//        this.menu.scrollTo(this.scrollOffs);
+        super.resize(minecraft, width, height);
     }
 
     private void checkSearchStringUpdate(String newText) {

@@ -12,3 +12,6 @@ Holoprojector new system that shows players around it in the world, maybe a hand
 Ships
 
 Planets
+
+
+Downed

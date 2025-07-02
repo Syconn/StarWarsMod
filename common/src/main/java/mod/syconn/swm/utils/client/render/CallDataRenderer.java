@@ -9,11 +9,7 @@ import mod.syconn.swm.utils.math.ColorUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.network.chat.Component;
@@ -29,24 +25,34 @@ public class CallDataRenderer implements WidgetComponent {
     private final List<MenuData> players = new ArrayList<>();
     private final ToggleButton[] toggleButtons = new ToggleButton[3];
     private final Minecraft minecraft = Minecraft.getInstance();
+    private final int color = ColorUtil.packArgb(74, 74, 74, 255);
     private final int height = 32, width = 220;
     private final int x, y;
-    private final int color = ColorUtil.packArgb(74, 74, 74, 255);
     private int scroll = 0;
+    private ScrollWidget scroller;
 
     public CallDataRenderer(int x, int y, Function<WidgetComponent, WidgetComponent> widgets) {
         this.x = x;
         this.y = y;
 
-        init(widgets);
         refreshPlayerList();
+        init(widgets);
+        updateMenu(this.scroll);
     }
 
     private void init(Function<WidgetComponent, WidgetComponent> widgets) {
         widgets.apply(this);
 
-        for (int i = 0; i < 3; i++) toggleButtons[i] = (ToggleButton) widgets.apply(new ToggleButton(x + 185, y + 21 + height * i, false, ToggleButton.Color.GREEN, b -> {}));
-        widgets.apply(new ScrollWidget(x + 207, y + 11, 91, 1, w -> false));
+        for (int i = 0; i < 3; i++) {
+            final var v = i;
+            this.toggleButtons[v] = (ToggleButton) widgets.apply(new ToggleButton(this.x + 185, this.y + 21 + this.height * v, false, ToggleButton.Color.GREEN, b -> this.toggled(b, v)));
+        }
+        this.scroller = (ScrollWidget) widgets.apply(new ScrollWidget(x + 207, y + 11, 91, this.players.size(), w -> true, this::updateMenu));
+    }
+
+    private void toggled(ToggleButton button, int i) {
+        var player = this.players.get(i);
+        this.players.set(i, new MenuData(player.info, button.isActive(), player.locked));
     }
 
     private void refreshPlayerList() {
@@ -57,8 +63,6 @@ public class CallDataRenderer implements WidgetComponent {
             var uuids = connection.getOnlinePlayerIds();
             uuids.forEach(uuid -> this.players.add(MenuData.of(connection.getPlayerInfo(uuid), isPlayerMe(connection.getPlayerInfo(uuid)))));
             for (int i = 0; i < 5; i++) this.players.add(MenuData.of(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + i)), false));
-
-            updateMenu(this.scroll);
         }
     }
 
@@ -78,19 +82,25 @@ public class CallDataRenderer implements WidgetComponent {
         graphics.drawCenteredString(this.minecraft.font, Component.literal("Add Players to Call"), x + width / 2, y, -1);
 
         var y = this.y + 11;
-        for (int i = scroll; i < Math.min(scroll + 3, this.players.size()); i++) {
+        for (int i = this.scroll; i < Math.min(this.scroll + 3, this.players.size()); i++) {
             var info = this.players.get(i).info;
-            var minY = y + this.height * i;
+            var minY = y + this.height * (i - this.scroll);
             var name = this.isPlayerMe(info) ? "You" : info.getProfile().getName();
 
-            GraphicsUtil.fillRect(graphics, x, minY, this.width, this.height, this.color);
-            PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), x + 4, minY + 4, 24);
-            graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD), x + 34, minY + 12, -1);
+            GraphicsUtil.fillRect(graphics, this.x, minY, this.width, this.height, this.color);
+            PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), this.x + 4, minY + 4, 24);
+            graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD), this.x + 34, minY + 12, -1);
         }
     }
     
     private boolean isPlayerMe(@Nullable PlayerInfo info) {
-        return info != null && info.getProfile().getId().equals(this.minecraft.player.getUUID());
+        return this.minecraft.player != null && info != null && info.getProfile().getId().equals(this.minecraft.player.getUUID());
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        this.scroller.mouseScrolled(mouseX, mouseY, delta);
+        return this.players.size() > 3;
     }
 
     @Override

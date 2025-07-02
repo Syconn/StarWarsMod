@@ -45,6 +45,10 @@ public class ToggleButton extends ExpandedButton implements WidgetComponent {
         this.active = active;
     }
 
+    public boolean active() {
+        return this.active;
+    }
+
     public enum Color {
         GREEN,
         YELLOW
