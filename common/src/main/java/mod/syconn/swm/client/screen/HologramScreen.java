@@ -112,17 +112,7 @@ public class HologramScreen extends Screen {
 
     @Override
     public void resize(Minecraft minecraft, int width, int height) {
-//        int i = this.menu.getRowIndexForScroll(this.scrollOffs);
-//        String string = this.searchBox.getValue();
-//        this.init(minecraft, width, height);
-//        this.searchBox.setValue(string);
-//        if (!this.searchBox.getValue().isEmpty()) {
-//            this.refreshSearchResults();
-//        }
-//
-//        this.scrollOffs = this.menu.getScrollForRowIndex(i);
-//        this.menu.scrollTo(this.scrollOffs);
-        super.resize(minecraft, width, height);
+        super.resize(minecraft, width, height); // TODO MAYBE ADD RESIZE SUPPORT
     }
 
     private void checkSearchStringUpdate(String newText) {

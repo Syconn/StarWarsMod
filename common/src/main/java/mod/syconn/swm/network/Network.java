@@ -5,6 +5,7 @@ import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
+import mod.syconn.swm.network.packets.CreateHoloCallPacket;
 import mod.syconn.swm.network.packets.SyncResourceDataPacket;
 import mod.syconn.swm.utils.Constants;
 
@@ -18,5 +19,6 @@ public class Network {
         CHANNEL.register(SyncResourceDataPacket.class, SyncResourceDataPacket::encode, SyncResourceDataPacket::new, SyncResourceDataPacket::apply);
         CHANNEL.register(ChangeLightsaberHSVPacket.class, ChangeLightsaberHSVPacket::encode, ChangeLightsaberHSVPacket::new, ChangeLightsaberHSVPacket::apply);
         CHANNEL.register(CraftHiltPacket.class, CraftHiltPacket::encode, CraftHiltPacket::new, CraftHiltPacket::apply);
+        CHANNEL.register(CreateHoloCallPacket.class, CreateHoloCallPacket::encode, CreateHoloCallPacket::new, CreateHoloCallPacket::apply);
     }
 }
