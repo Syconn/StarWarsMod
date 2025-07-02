@@ -15,29 +15,23 @@ public class HologramNetwork extends SavedData {
 
     private static final String tagID = "hologram_network";
 
-    private final Map<UUID, List<Call>> CALLS = new HashMap<>();
+    private final List<Call> CALLS = new ArrayList<>();
 
     public HologramNetwork() {}
 
+    public void createCall(Caller caller, List<Caller> callers) {
+        this.CALLS.add(new Call(caller, callers));
+    }
+
     @Override
     public @NotNull CompoundTag save(CompoundTag compoundTag) {
-        var map = new ListTag();
-        for (var entry : this.CALLS.entrySet()) {
-            var tag = new CompoundTag();
-            tag.putUUID("uuid", entry.getKey());
-            tag.put("calls", NbtTools.putArray(entry.getValue(), Call::save));
-            map.add(tag);
-        }
-        compoundTag.put(tagID, map);
+        compoundTag.put("calls", NbtTools.putArray(this.CALLS, Call::save));
         return compoundTag;
     }
 
     public void read(CompoundTag tag) {
         if(tag.contains(tagID, Tag.TAG_LIST)) {
-            tag.getList(tagID, Tag.TAG_COMPOUND).forEach(nbt -> {
-                var compoundTag = (CompoundTag) nbt;
-                CALLS.put(compoundTag.getUUID("uuid"), NbtTools.getArray(tag.getCompound("calls"), Call::from));
-            });
+            tag.getList(tagID, Tag.TAG_COMPOUND).forEach(nbt -> CALLS.addAll(NbtTools.getArray(tag.getCompound("calls"), Call::from)));
         }
     }
 
@@ -55,19 +49,6 @@ public class HologramNetwork extends SavedData {
         return server.getDataStorage().computeIfAbsent(HologramNetwork::load, HologramNetwork::create, tagID);
     }
 
-    public record Call(Caller owner, List<Caller> participants) {
-        public static Call from(CompoundTag tag) {
-            return new Call(Caller.from(tag.getCompound("owner")), NbtTools.getArray(tag.getCompound("participants"), Caller::from));
-        }
-
-        public CompoundTag save() {
-            var tag = new CompoundTag();
-            tag.put("owner", owner.save());
-            tag.put("participants", NbtTools.putArray(participants, Caller::save));
-            return  tag;
-        }
-    }
-
     public record Caller(UUID uuid, Optional<WorldPos> location, boolean handheld) {
         public static Caller from(CompoundTag tag) {
             return new Caller(tag.getUUID("uuid"), NbtTools.getOptional(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
@@ -79,6 +60,19 @@ public class HologramNetwork extends SavedData {
             tag.putUUID("uuid", this.uuid);
             tag.put("location", NbtTools.putOptional(location, t -> t.get().save()));
             tag.putBoolean("handheld", this.handheld);
+            return  tag;
+        }
+    }
+
+    private record Call(Caller owner, List<Caller> participants) {
+        public static Call from(CompoundTag tag) {
+            return new Call(Caller.from(tag.getCompound("owner")), NbtTools.getArray(tag.getCompound("participants"), Caller::from));
+        }
+
+        public CompoundTag save() {
+            var tag = new CompoundTag();
+            tag.put("owner", owner.save());
+            tag.put("participants", NbtTools.putArray(participants, Caller::save));
             return  tag;
         }
     }

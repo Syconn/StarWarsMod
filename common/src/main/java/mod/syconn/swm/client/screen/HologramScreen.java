@@ -2,6 +2,8 @@ package mod.syconn.swm.client.screen;
 
 import mod.syconn.swm.client.screen.components.CallButton;
 import mod.syconn.swm.client.screen.components.ExpandedButton;
+import mod.syconn.swm.network.Network;
+import mod.syconn.swm.network.packets.CreateHoloCallPacket;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.render.CallDataRenderer;
 import net.fabricmc.api.EnvType;
@@ -124,7 +126,7 @@ public class HologramScreen extends Screen {
     }
 
     private void createCall(Button button) {
-
+        Network.CHANNEL.sendToServer(new CreateHoloCallPacket());
     }
 
     @Environment(EnvType.CLIENT)
