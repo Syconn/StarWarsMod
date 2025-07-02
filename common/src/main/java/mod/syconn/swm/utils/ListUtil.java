@@ -1,5 +1,6 @@
 package mod.syconn.swm.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +11,14 @@ public class ListUtil {
     public static <T> List<T> add(T element, List<T>... lists) {
         var list = join(lists);
         list.add(element);
+        return list;
+    }
+
+    @SafeVarargs
+    public static <T> List<T> append(T element, List<T>... lists) {
+        var list = new ArrayList<T>();
+        list.add(element);
+        list.addAll(join(lists));
         return list;
     }
 

@@ -4,7 +4,10 @@ import mod.syconn.swm.client.screen.components.CallButton;
 import mod.syconn.swm.client.screen.components.ExpandedButton;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.CreateHoloCallPacket;
+import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.ListUtil;
+import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.client.render.CallDataRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -17,20 +20,23 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Locale;
+import java.util.Optional;
 
 public class HologramScreen extends Screen {
 
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
+    private final boolean handheld;
+    private final WorldPos worldPos;
     private Page page = Page.CREATE_CALL;
     private String lastSearch = "";
     private CallDataRenderer callData;
     private EditBox searchBox;
     private Component pageTitle;
-    private final boolean handheld;
 
-    public HologramScreen(boolean handheld) {
+    public HologramScreen(WorldPos worldPos, boolean handheld) {
         super(Component.literal("Hologram Projector Screen"));
         this.handheld = handheld;
+        this.worldPos = worldPos;
     }
 
     private int marginX() {
@@ -109,7 +115,7 @@ public class HologramScreen extends Screen {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        return callData.mouseScrolled(mouseX, mouseY, delta) || super.mouseScrolled(mouseX, mouseY, delta);
+        return this.callData.mouseScrolled(mouseX, mouseY, delta) || super.mouseScrolled(mouseX, mouseY, delta);
     }
 
     @Override
@@ -126,7 +132,7 @@ public class HologramScreen extends Screen {
     }
 
     private void createCall(Button button) {
-        Network.CHANNEL.sendToServer(new CreateHoloCallPacket());
+        Network.CHANNEL.sendToServer(new CreateHoloCallPacket(ListUtil.append(new HologramNetwork.Caller(this.minecraft.player.getUUID(), Optional.of(this.worldPos), this.handheld), this.callData.getCallers())));
     }
 
     @Environment(EnvType.CLIENT)

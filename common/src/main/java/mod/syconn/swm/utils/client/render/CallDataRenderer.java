@@ -3,6 +3,7 @@ package mod.syconn.swm.utils.client.render;
 import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.client.screen.components.ScrollWidget;
 import mod.syconn.swm.client.screen.components.ToggleButton;
+import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.client.GraphicsUtil;
 import mod.syconn.swm.utils.client.WidgetComponent;
 import mod.syconn.swm.utils.math.ColorUtil;
@@ -18,7 +19,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CallDataRenderer implements WidgetComponent {
 
@@ -119,8 +122,8 @@ public class CallDataRenderer implements WidgetComponent {
     @Override
     public void updateNarration(NarrationElementOutput narrationElementOutput) {}
 
-    public List<MenuData> getMenuData() {
-        return this.players;
+    public List<HologramNetwork.Caller> getCallers() {
+        return this.players.stream().map(p -> new HologramNetwork.Caller(p.info.getProfile().getId(), Optional.empty(), false)).collect(Collectors.toList());
     }
 
     public record MenuData(PlayerInfo info, boolean added, boolean locked) {
