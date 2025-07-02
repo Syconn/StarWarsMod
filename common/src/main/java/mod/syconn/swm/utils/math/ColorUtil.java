@@ -151,7 +151,7 @@ public class ColorUtil {
     }
 
     public static float getValue(double layer, double target) {
-        return (float) Mth.lerp(Ease.outCubic((float)(layer / 75)), 1, target);
+        return (float) Mth.lerp(AnimationUtil.outCubic((float)(layer / 75)), 1, target);
     }
 
     public static float getHue(double h, double x) {

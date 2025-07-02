@@ -1,6 +1,6 @@
 package mod.syconn.swm.utils.math;
 
-public class Ease {
+public class AnimationUtil {
 
     public static float inCubic(float t) {
         return t * t * t;

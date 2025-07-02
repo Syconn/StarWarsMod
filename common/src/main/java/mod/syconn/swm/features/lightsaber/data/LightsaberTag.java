@@ -6,7 +6,7 @@ import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.model.NodeVec3;
-import mod.syconn.swm.utils.math.Ease;
+import mod.syconn.swm.utils.math.AnimationUtil;
 import mod.syconn.swm.utils.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -139,7 +139,7 @@ public class LightsaberTag {
     public float getSize() {
         var partialTicks = StarWarsClient.getTickDelta();
         if (this.transition == 0) return this.active ? 1 : 0;
-        if (this.transition > 0) return Ease.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
-        return Ease.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
+        if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
+        return AnimationUtil.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
     }
 }

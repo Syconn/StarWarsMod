@@ -51,8 +51,8 @@ public class CallDataRenderer implements WidgetComponent {
     }
 
     private void toggled(ToggleButton button, int i) {
-        var player = this.players.get(i);
-        this.players.set(i, new MenuData(player.info, button.isActive(), player.locked));
+        var player = this.players.get(this.scroll + i);
+        this.players.set(this.scroll + i, new MenuData(player.info, button.isActive(), player.locked));
     }
 
     private void refreshPlayerList() {
@@ -62,7 +62,7 @@ public class CallDataRenderer implements WidgetComponent {
             var connection = this.minecraft.player.connection;
             var uuids = connection.getOnlinePlayerIds();
             uuids.forEach(uuid -> this.players.add(MenuData.of(connection.getPlayerInfo(uuid), isPlayerMe(connection.getPlayerInfo(uuid)))));
-            for (int i = 1; i < 4; i++) this.players.add(MenuData.of(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + i)), false));
+            for (int i = 1; i < 7; i++) this.players.add(MenuData.of(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + i)), false));
         }
     }
 

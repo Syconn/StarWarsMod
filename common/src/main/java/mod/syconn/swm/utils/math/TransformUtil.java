@@ -7,7 +7,7 @@ import org.joml.Quaternionf;
 
 import java.util.Deque;
 
-public class Transform {
+public class TransformUtil {
 
     public static final class State
     {
