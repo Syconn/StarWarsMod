@@ -1,6 +1,6 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
-import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
+import mod.syconn.swm.client.screen.components.buttons.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredSliderBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;

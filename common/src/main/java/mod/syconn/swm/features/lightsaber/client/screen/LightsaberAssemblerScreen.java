@@ -1,6 +1,6 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
-import mod.syconn.swm.client.screen.components.ExpandedButton;
+import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;

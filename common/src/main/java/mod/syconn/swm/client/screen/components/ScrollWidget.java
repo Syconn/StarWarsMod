@@ -18,7 +18,7 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
     private final Function<ScrollWidget, Boolean> canScroll;
     private final Consumer<Integer> scrollTo;
-    private final int size;
+    private int size;
     private float scrollOffs;
 
     public ScrollWidget(int x, int y, int height, int size, Function<ScrollWidget, Boolean> canScroll, Consumer<Integer> scrollTo) {
@@ -74,5 +74,9 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
 
     public float setScroll(int rowIndex) {
         return Mth.clamp((float)rowIndex / this.size, 0.0F, 1.0F);
+    }
+
+    public void updateSize(int size) {
+        this.size = size;
     }
 }

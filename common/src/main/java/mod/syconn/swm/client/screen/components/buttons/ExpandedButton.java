@@ -1,4 +1,4 @@
-package mod.syconn.swm.client.screen.components;
+package mod.syconn.swm.client.screen.components.buttons;
 
 import mod.syconn.swm.utils.client.FontUtil;
 import mod.syconn.swm.utils.client.GraphicsUtil;

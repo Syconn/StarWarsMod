@@ -1,7 +1,8 @@
 package mod.syconn.swm.client.screen;
 
-import mod.syconn.swm.client.screen.components.CallButton;
-import mod.syconn.swm.client.screen.components.ExpandedButton;
+import mod.syconn.swm.client.screen.components.buttons.CallButton;
+import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
+import mod.syconn.swm.client.screen.components.buttons.RefreshButton;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.CreateHoloCallPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
@@ -61,8 +62,8 @@ public class HologramScreen extends Screen {
 
         var m = this.marginX() + 3;
         this.addRenderableWidget(new CallButton(m + 210, 74, CallButton.Type.START, this::createCall));
-
         this.callData = new CallDataRenderer(leftPos + 10, 92, this.page, this::addRenderableWidget);
+        this.addRenderableWidget(new RefreshButton(m + 11, 90, this.callData::refresh));
 
         var string = this.searchBox != null ? this.searchBox.getValue() : "";
         this.searchBox = new EditBox(this.font, this.marginX() + 29, 75, 178, 13, Component.literal(string));

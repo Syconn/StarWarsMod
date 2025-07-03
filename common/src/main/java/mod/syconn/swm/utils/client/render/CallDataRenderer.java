@@ -3,7 +3,7 @@ package mod.syconn.swm.utils.client.render;
 import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.client.screen.HologramScreen;
 import mod.syconn.swm.client.screen.components.ScrollWidget;
-import mod.syconn.swm.client.screen.components.ToggleButton;
+import mod.syconn.swm.client.screen.components.buttons.ToggleButton;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.client.GraphicsUtil;
 import mod.syconn.swm.utils.client.WidgetComponent;
@@ -13,7 +13,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
@@ -79,6 +78,7 @@ public class CallDataRenderer implements WidgetComponent {
 
     private void updateMenu(int scroll) {
         this.scroll = scroll;
+        this.scroller.updateSize(this.shownPlayers.size() - 3);
 
         Arrays.stream(this.toggleButtons).forEach(b -> b.visible = false);
 
@@ -113,8 +113,9 @@ public class CallDataRenderer implements WidgetComponent {
 
     public void setPage(HologramScreen.Page page) {
         this.page = page;
+        this.lastSearch = "";
         this.refreshPlayerList();
-        this.updateMenu(this.scroll);
+        this.updateMenu(0);
     }
 
     public void search(String search) {
@@ -123,6 +124,11 @@ public class CallDataRenderer implements WidgetComponent {
         if (search == null || search.equals("")) this.shownPlayers.addAll(this.listedPlayers);
         else this.shownPlayers.addAll(this.listedPlayers.stream().filter(s -> s.info.getProfile().getName().toLowerCase().contains(search.toLowerCase())).toList());
         this.updateMenu(0);
+    }
+
+    public void refresh() {
+        this.refreshPlayerList();
+        this.search(this.lastSearch);
     }
 
     @Override
