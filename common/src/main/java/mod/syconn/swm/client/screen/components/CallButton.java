@@ -11,7 +11,7 @@ public class CallButton extends ExpandedButton {
     private final Type type;
 
     public CallButton(int xPos, int yPos, Type type, OnPress handler) {
-        super(xPos, yPos, 20, 20, Component.empty(), handler);
+        super(xPos, yPos, 18, 18, Component.empty(), handler);
         this.type = type;
     }
 
