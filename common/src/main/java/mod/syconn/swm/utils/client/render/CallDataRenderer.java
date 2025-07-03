@@ -169,7 +169,7 @@ public class CallDataRenderer implements WidgetComponent {
     public void updateNarration(NarrationElementOutput narrationElementOutput) {}
 
     public List<HologramNetwork.Caller> getCallers() {
-        return this.listedPlayers.stream().map(p -> new HologramNetwork.Caller(p.info.getProfile().getId(), Optional.empty(), false)).collect(Collectors.toList());
+        return this.listedPlayers.stream().map(p -> new HologramNetwork.Caller(p.info.getProfile().getId(), null, false)).collect(Collectors.toList());
     }
 
     public record MenuData(PlayerInfo info, boolean added, boolean locked) {

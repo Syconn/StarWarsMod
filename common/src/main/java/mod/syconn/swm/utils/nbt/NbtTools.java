@@ -24,17 +24,15 @@ public class NbtTools {
         return tag;
     }
 
-    public static <T> Optional<T> getOptional(CompoundTag tag, Function<CompoundTag, T> function) {
-        if (tag.contains("optional", CompoundTag.TAG_STRING) && tag.getString("optional").equals("optional-null")) return Optional.empty();
-        else return Optional.of(function.apply(tag.getCompound("optional")));
+    public @Nullable static <T> T getNullable(CompoundTag tag, Function<CompoundTag, T> function) {
+        if (tag.contains("nullable", CompoundTag.TAG_STRING) && tag.getString("nullable").equals("nullable-null")) return null;
+        return function.apply(tag.getCompound("nullable"));
     }
 
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
-    public static <T> CompoundTag putOptional(Optional<T> optional, Function<Optional<T>, CompoundTag> function) {
+    public static <T> CompoundTag putNullable(@Nullable T optional, Function<T, CompoundTag> function) {
         var tag = new CompoundTag();
-        System.out.println(optional);
-        if (optional.isEmpty()) tag.putString("optional", "optional-null");
-        else tag.put("optional", function.apply(optional));
+        if (optional == null) tag.putString("nullable", "optional-null");
+        else tag.put("nullable", function.apply(optional));
         return tag;
     }
 

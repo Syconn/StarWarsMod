@@ -7,6 +7,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,15 +58,15 @@ public class HologramNetwork extends SavedData {
         return server.getDataStorage().computeIfAbsent(HologramNetwork::load, HologramNetwork::create, tagID);
     }
 
-    public record Caller(UUID uuid, Optional<WorldPos> location, boolean handheld) {
+    public record Caller(UUID uuid, @Nullable WorldPos location, boolean handheld) {
         public static Caller from(CompoundTag tag) {
-            return new Caller(tag.getUUID("uuid"), NbtTools.getOptional(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
+            return new Caller(tag.getUUID("uuid"), NbtTools.getNullable(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
         }
 
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("uuid", this.uuid);
-            tag.put("location", NbtTools.putOptional(location, t -> t.get().save()));
+            tag.put("location", NbtTools.putNullable(location, WorldPos::save));
             tag.putBoolean("handheld", this.handheld);
             return  tag;
         }

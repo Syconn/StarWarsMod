@@ -143,7 +143,7 @@ public class HologramScreen extends Screen {
     }
 
     private void createCall(Button button) {
-        Network.CHANNEL.sendToServer(new CreateHoloCallPacket(ListUtil.append(new HologramNetwork.Caller(this.minecraft.player.getUUID(), Optional.of(this.worldPos), this.handheld), this.callData.getCallers())));
+        Network.CHANNEL.sendToServer(new CreateHoloCallPacket(ListUtil.append(new HologramNetwork.Caller(this.minecraft.player.getUUID(), this.worldPos, this.handheld), this.callData.getCallers())));
         Minecraft.getInstance().setScreen(null);
     }
 
