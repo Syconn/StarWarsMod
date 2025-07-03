@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 
 public class HologramNetwork extends SavedData {
 
@@ -24,6 +25,10 @@ public class HologramNetwork extends SavedData {
 
     public void createCall(Caller caller, List<Caller> callers) {
         this.CALLS.add(new Call(caller, callers));
+    }
+
+    public void modifyCall(int call, Function<Call, Call> function) {
+        this.CALLS.set(call, function.apply(this.CALLS.get(call)));
     }
 
     public List<Call> getCalls(UUID player) {
