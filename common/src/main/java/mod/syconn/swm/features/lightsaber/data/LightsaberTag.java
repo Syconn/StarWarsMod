@@ -5,9 +5,9 @@ import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.model.NodeVec3;
-import mod.syconn.swm.utils.math.AnimationUtil;
-import mod.syconn.swm.utils.nbt.NbtTools;
+import mod.syconn.swm.utils.client.NodeVec3;
+import mod.syconn.swm.utils.general.AnimationUtil;
+import mod.syconn.swm.utils.general.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
@@ -52,7 +52,7 @@ public class LightsaberTag {
         this.radius = tag.getDouble(RADIUS);
         this.color = tag.getInt(COLOR);
         this.bladeType = tag.contains(BLADE_TYPE) ? tag.getString(BLADE_TYPE) : "plasma";
-        this.emitterPositions = NbtTools.getList(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
+        this.emitterPositions = NBTUtil.getList(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
     }
 
     public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) {
@@ -116,7 +116,7 @@ public class LightsaberTag {
         tag.putDouble(RADIUS, this.radius);
         tag.putInt(COLOR, this.color);
         tag.putString(BLADE_TYPE, this.bladeType);
-        tag.put(EMITTER_POSITIONS, NbtTools.putList(this.emitterPositions, NodeVec3::putNode));
+        tag.put(EMITTER_POSITIONS, NBTUtil.putList(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }
 

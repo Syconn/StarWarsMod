@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client.render;
+package mod.syconn.swm.utils.client;
 
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.server.StackedIngredient;

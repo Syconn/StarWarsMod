@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.utils.interfaces;
 
 import com.google.common.collect.Multimap;
 import net.minecraft.world.entity.EquipmentSlot;

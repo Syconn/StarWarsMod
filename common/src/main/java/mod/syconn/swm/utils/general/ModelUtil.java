@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client.model;
+package mod.syconn.swm.utils.general;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;

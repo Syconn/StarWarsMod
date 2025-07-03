@@ -1,8 +1,8 @@
-package mod.syconn.swm.utils.client.render;
+package mod.syconn.swm.utils.general;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import mod.syconn.swm.utils.client.IItemExtensions;
+import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;

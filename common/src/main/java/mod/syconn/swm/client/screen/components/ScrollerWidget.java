@@ -1,8 +1,8 @@
 package mod.syconn.swm.client.screen.components;
 
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.GraphicsUtil;
-import mod.syconn.swm.utils.client.WidgetComponent;
+import mod.syconn.swm.utils.general.GraphicsUtil;
+import mod.syconn.swm.utils.interfaces.IWidgetComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -13,15 +13,15 @@ import net.minecraft.util.Mth;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class ScrollWidget extends AbstractWidget implements WidgetComponent {
+public class ScrollerWidget extends AbstractWidget implements IWidgetComponent {
 
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
-    private final Function<ScrollWidget, Boolean> canScroll;
+    private final Function<ScrollerWidget, Boolean> canScroll;
     private final Consumer<Integer> scrollTo;
     private int size;
     private float scrollOffs;
 
-    public ScrollWidget(int x, int y, int height, int size, Function<ScrollWidget, Boolean> canScroll, Consumer<Integer> scrollTo) {
+    public ScrollerWidget(int x, int y, int height, int size, Function<ScrollerWidget, Boolean> canScroll, Consumer<Integer> scrollTo) {
         super(x, y, 14, height + 2, Component.empty());
         this.canScroll = canScroll;
         this.scrollTo = scrollTo;

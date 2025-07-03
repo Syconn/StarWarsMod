@@ -1,7 +1,7 @@
 package mod.syconn.swm.server.savedata;
 
 import mod.syconn.swm.utils.block.WorldPos;
-import mod.syconn.swm.utils.nbt.NbtTools;
+import mod.syconn.swm.utils.general.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -42,12 +42,12 @@ public class HologramNetwork extends SavedData {
 
     @Override
     public @NotNull CompoundTag save(CompoundTag compoundTag) {
-        compoundTag.put("calls", NbtTools.putMap(this.CALLS, k -> NbtTools.convert(t -> t.putUUID("id", k)), Call::save));
+        compoundTag.put("calls", NBTUtil.putMap(this.CALLS, k -> NBTUtil.convert(t -> t.putUUID("id", k)), Call::save));
         return compoundTag;
     }
 
     public void read(CompoundTag tag) {
-        this.CALLS.putAll(NbtTools.getMap(tag.getCompound("calls"), t -> t.getUUID("id"), Call::from));
+        this.CALLS.putAll(NBTUtil.getMap(tag.getCompound("calls"), t -> t.getUUID("id"), Call::from));
     }
 
     public static HologramNetwork load(CompoundTag tag) {
@@ -66,13 +66,13 @@ public class HologramNetwork extends SavedData {
 
     public record Caller(UUID uuid, @Nullable WorldPos location, boolean handheld) {
         public static Caller from(CompoundTag tag) {
-            return new Caller(tag.getUUID("uuid"), NbtTools.getNullable(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
+            return new Caller(tag.getUUID("uuid"), NBTUtil.getNullable(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
         }
 
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("uuid", this.uuid);
-            tag.put("location", NbtTools.putNullable(this.location, WorldPos::save));
+            tag.put("location", NBTUtil.putNullable(this.location, WorldPos::save));
             tag.putBoolean("handheld", this.handheld);
             return  tag;
         }
@@ -80,14 +80,14 @@ public class HologramNetwork extends SavedData {
 
     public record Call(UUID id, Caller owner, List<Caller> participants) {
         public static Call from(CompoundTag tag) {
-            return new Call(tag.getUUID("id"), Caller.from(tag.getCompound("owner")), NbtTools.getList(tag.getCompound("participants"), Caller::from));
+            return new Call(tag.getUUID("id"), Caller.from(tag.getCompound("owner")), NBTUtil.getList(tag.getCompound("participants"), Caller::from));
         }
 
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("id", this.id);
             tag.put("owner", this.owner.save());
-            tag.put("participants", NbtTools.putList(this.participants, Caller::save));
+            tag.put("participants", NBTUtil.putList(this.participants, Caller::save));
             return  tag;
         }
     }

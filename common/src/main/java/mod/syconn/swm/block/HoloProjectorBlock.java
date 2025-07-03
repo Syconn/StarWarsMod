@@ -6,7 +6,7 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.utils.block.EntityBlockExtended;
+import mod.syconn.swm.utils.interfaces.IEntityBlock;
 import mod.syconn.swm.utils.block.WorldPos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,7 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements EntityBlockExtended {
+public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements IEntityBlock {
 
     public HoloProjectorBlock() {
         super(BlockBehaviour.Properties.of().noCollission().strength(0.5F));

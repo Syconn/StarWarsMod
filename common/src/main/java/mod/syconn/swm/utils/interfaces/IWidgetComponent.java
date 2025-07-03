@@ -1,8 +1,8 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.utils.interfaces;
 
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
 
-public interface WidgetComponent extends Renderable, GuiEventListener, NarratableEntry {
+public interface IWidgetComponent extends Renderable, GuiEventListener, NarratableEntry {
 }

@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.json;
+package mod.syconn.swm.utils.general;
 
 import com.google.gson.*;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class JsonUtils {
+public class JsonUtil {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 

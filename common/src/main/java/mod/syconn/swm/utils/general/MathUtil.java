@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.math;
+package mod.syconn.swm.utils.general;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.core.Direction;

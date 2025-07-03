@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.nbt;
+package mod.syconn.swm.utils.general;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class NbtTools {
+public class NBTUtil {
 
     public static <T> List<T> getList(CompoundTag tag, Function<CompoundTag, T> function) {
         var list = new ArrayList<T>();

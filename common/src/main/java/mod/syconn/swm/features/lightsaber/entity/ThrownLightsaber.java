@@ -4,7 +4,7 @@ import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.utils.nbt.NbtTools;
+import mod.syconn.swm.utils.general.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -125,14 +125,14 @@ public class ThrownLightsaber extends ThrowableProjectile {
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.returning = compound.getBoolean("return");
-        this.hand = NbtTools.getEnum(InteractionHand.class, compound.getCompound("hand"));
+        this.hand = NBTUtil.getEnum(InteractionHand.class, compound.getCompound("hand"));
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("return", this.returning);
-        compound.put("hand", NbtTools.writeEnum(this.hand));
+        compound.put("hand", NBTUtil.writeEnum(this.hand));
     }
 
     @Override

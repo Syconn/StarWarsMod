@@ -1,11 +1,10 @@
-package mod.syconn.swm.utils.json;
+package mod.syconn.swm.utils.server;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import mod.syconn.swm.utils.nbt.ISerializable;
-import mod.syconn.swm.utils.server.SyncedResourceManager;
+import mod.syconn.swm.utils.interfaces.ISerializable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;

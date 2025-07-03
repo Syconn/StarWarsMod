@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client.model;
+package mod.syconn.swm.utils.client;
 
 import com.google.gson.JsonObject;
 import net.minecraft.nbt.CompoundTag;

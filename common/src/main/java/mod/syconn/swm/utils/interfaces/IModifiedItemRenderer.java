@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client.render;
+package mod.syconn.swm.utils.interfaces;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

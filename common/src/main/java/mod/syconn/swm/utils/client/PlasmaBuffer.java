@@ -2,7 +2,7 @@ package mod.syconn.swm.utils.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import mod.syconn.swm.utils.math.MathUtil;
+import mod.syconn.swm.utils.general.MathUtil;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import org.joml.Vector4f;

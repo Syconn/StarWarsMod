@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client.render;
+package mod.syconn.swm.utils.interfaces;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.InteractionHand;

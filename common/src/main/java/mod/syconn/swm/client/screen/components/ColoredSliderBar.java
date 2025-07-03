@@ -1,6 +1,6 @@
 package mod.syconn.swm.client.screen.components;
 
-import mod.syconn.swm.utils.client.GraphicsUtil;
+import mod.syconn.swm.utils.general.GraphicsUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 

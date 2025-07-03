@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.syconn.swm.utils.client.render.IModifiedItemRenderer;
+import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.utils.general;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -7,7 +7,6 @@ import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.utils.math.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;

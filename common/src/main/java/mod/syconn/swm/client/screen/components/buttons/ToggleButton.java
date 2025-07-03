@@ -1,7 +1,7 @@
 package mod.syconn.swm.client.screen.components.buttons;
 
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.WidgetComponent;
+import mod.syconn.swm.utils.interfaces.IWidgetComponent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphics;
@@ -9,7 +9,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class ToggleButton extends ExpandedButton implements WidgetComponent {
+public class ToggleButton extends ExpandedButton implements IWidgetComponent {
 
     private static final ResourceLocation WIDGETS = Constants.withId("textures/gui/hologram_screen.png");
     private final Color color;

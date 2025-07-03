@@ -16,8 +16,8 @@ import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.render.IModifiedItemRenderer;
-import mod.syconn.swm.utils.client.render.IModifiedPoseRenderer;
+import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
+import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;

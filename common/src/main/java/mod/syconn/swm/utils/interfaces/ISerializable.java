@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.nbt;
+package mod.syconn.swm.utils.interfaces;
 
 import net.minecraft.nbt.Tag;
 

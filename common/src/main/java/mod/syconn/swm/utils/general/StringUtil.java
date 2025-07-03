@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils;
+package mod.syconn.swm.utils.general;
 
 import org.apache.commons.lang3.text.WordUtils;
 

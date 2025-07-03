@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.utils.general;
 
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.FormattedText;

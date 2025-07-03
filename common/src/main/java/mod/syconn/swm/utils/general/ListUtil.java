@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils;
+package mod.syconn.swm.utils.general;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.math;
+package mod.syconn.swm.utils.general;
 
 import com.google.common.collect.Queues;
 import net.minecraft.Util;

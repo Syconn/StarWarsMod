@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import com.google.common.collect.Multimap;
-import mod.syconn.swm.utils.client.IItemExtensions;
+import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.math;
+package mod.syconn.swm.utils.general;
 
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;

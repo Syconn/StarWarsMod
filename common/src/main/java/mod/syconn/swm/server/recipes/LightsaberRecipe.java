@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import mod.syconn.swm.core.ModRecipes;
-import mod.syconn.swm.utils.json.JsonUtils;
+import mod.syconn.swm.utils.general.JsonUtil;
 import mod.syconn.swm.utils.server.StackedIngredient;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -75,7 +75,7 @@ public record LightsaberRecipe(ResourceLocation id, ItemStack item, ImmutableLis
             }
             if (!parent.has("result")) throw new JsonSyntaxException("Missing result item entry");
             var resultObject = GsonHelper.getAsJsonObject(parent, "result");
-            var resultItem = JsonUtils.getItemStack(resultObject, true);
+            var resultItem = JsonUtil.getItemStack(resultObject, true);
             return new LightsaberRecipe(pRecipeId, resultItem, builder.build());
         }
 
