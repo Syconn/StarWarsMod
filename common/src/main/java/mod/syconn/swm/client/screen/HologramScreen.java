@@ -17,12 +17,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Locale;
-import java.util.Optional;
 
 public class HologramScreen extends Screen {
 
@@ -130,7 +128,7 @@ public class HologramScreen extends Screen {
     }
 
     public void hologramData(HologramNetwork network) {
-        System.out.println(network.getCalls(this.minecraft.player.getUUID()));
+        this.callData.handleNetworkPacket(network);
     }
 
     private void checkSearchStringUpdate(String newText) {

@@ -49,7 +49,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
 
     public static LightsaberData readTag(CompoundTag tag) {
         return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getFloat("lengthScalar"), tag.getDouble("radius"), tag.getInt("color"),
-                tag.getString("bladeType"), NbtTools.getArray(tag.getCompound("vectors"), NodeVec3::getNode));
+                tag.getString("bladeType"), NbtTools.getList(tag.getCompound("vectors"), NodeVec3::getNode));
     }
 
     public CompoundTag writeTag() {
@@ -60,7 +60,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
         tag.putDouble("radius", this.radius);
         tag.putInt("color", this.color);
         tag.putString("bladeType", this.bladeType);
-        tag.put("vectors", NbtTools.putArray(this.emitterPositions, NodeVec3::putNode));
+        tag.put("vectors", NbtTools.putList(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }
 }

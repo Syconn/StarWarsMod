@@ -18,11 +18,11 @@ public class CreateHoloCallPacket {
     }
 
     public CreateHoloCallPacket(FriendlyByteBuf buf) {
-        this.callers = NbtTools.getArray(buf.readNbt(), HologramNetwork.Caller::from);
+        this.callers = NbtTools.getList(buf.readNbt(), HologramNetwork.Caller::from);
     }
 
     public void encode(FriendlyByteBuf buf) {
-        buf.writeNbt(NbtTools.putArray(this.callers, HologramNetwork.Caller::save));
+        buf.writeNbt(NbtTools.putList(this.callers, HologramNetwork.Caller::save));
     }
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {

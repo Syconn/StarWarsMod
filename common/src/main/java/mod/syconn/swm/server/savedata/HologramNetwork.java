@@ -3,36 +3,37 @@ package mod.syconn.swm.server.savedata;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Function;
 
 public class HologramNetwork extends SavedData {
 
     private static final String tagID = "hologram_network";
 
-    private final List<Call> CALLS = new ArrayList<>();
+    private final Map<UUID, Call> CALLS = new HashMap<>();
 
     public HologramNetwork() {}
 
     public void createCall(Caller caller, List<Caller> callers) {
-        this.CALLS.add(new Call(caller, callers));
+        if (this.CALLS.containsKey(caller.uuid)) this.endCall(caller.uuid);
+        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers));
     }
 
-    public void modifyCall(int call, Function<Call, Call> function) {
-        this.CALLS.set(call, function.apply(this.CALLS.get(call)));
+    public void modifyCall(UUID callId, Function<Call, Call> function) {
+        this.CALLS.put(callId, function.apply(this.CALLS.get(callId)));
+    }
+
+    private void endCall(UUID callId) { // TODO IMPLEMENT
+
     }
 
     public List<Call> getCalls(UUID player) {
-        return CALLS.stream().filter(call -> canJoinCall(player, call)).toList();
+        return this.CALLS.values().stream().filter(call -> canJoinCall(player, call)).toList();
     }
 
     private boolean canJoinCall(UUID player, Call call) {
@@ -41,12 +42,12 @@ public class HologramNetwork extends SavedData {
 
     @Override
     public @NotNull CompoundTag save(CompoundTag compoundTag) {
-        compoundTag.put("calls", NbtTools.putArray(this.CALLS, Call::save));
+        compoundTag.put("calls", NbtTools.putMap(this.CALLS, k -> NbtTools.convert(t -> t.putUUID("id", k)), Call::save));
         return compoundTag;
     }
 
     public void read(CompoundTag tag) {
-        if(tag.contains(tagID, Tag.TAG_LIST)) tag.getList(tagID, Tag.TAG_COMPOUND).forEach(nbt -> CALLS.addAll(NbtTools.getArray(tag.getCompound("calls"), Call::from)));
+        this.CALLS.putAll(NbtTools.getMap(tag.getCompound("calls"), t -> t.getUUID("id"), Call::from));
     }
 
     public static HologramNetwork load(CompoundTag tag) {
@@ -71,21 +72,22 @@ public class HologramNetwork extends SavedData {
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("uuid", this.uuid);
-            tag.put("location", NbtTools.putNullable(location, WorldPos::save));
+            tag.put("location", NbtTools.putNullable(this.location, WorldPos::save));
             tag.putBoolean("handheld", this.handheld);
             return  tag;
         }
     }
 
-    public record Call(Caller owner, List<Caller> participants) {
+    public record Call(UUID id, Caller owner, List<Caller> participants) {
         public static Call from(CompoundTag tag) {
-            return new Call(Caller.from(tag.getCompound("owner")), NbtTools.getArray(tag.getCompound("participants"), Caller::from));
+            return new Call(tag.getUUID("id"), Caller.from(tag.getCompound("owner")), NbtTools.getList(tag.getCompound("participants"), Caller::from));
         }
 
         public CompoundTag save() {
             var tag = new CompoundTag();
-            tag.put("owner", owner.save());
-            tag.put("participants", NbtTools.putArray(participants, Caller::save));
+            tag.putUUID("id", this.id);
+            tag.put("owner", this.owner.save());
+            tag.put("participants", NbtTools.putList(this.participants, Caller::save));
             return  tag;
         }
     }
