@@ -4,7 +4,7 @@ import mod.syconn.swm.client.screen.components.buttons.CallButton;
 import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.client.screen.components.buttons.RefreshButton;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.CreateHoloCallPacket;
+import mod.syconn.swm.network.packets.serverside.CreateHoloCallPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.ListUtil;
@@ -17,6 +17,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -32,6 +33,7 @@ public class HologramScreen extends Screen {
     private String lastSearch = "";
     private CallDataRenderer callData;
     private EditBox searchBox;
+    private CallButton callButton;
     private Component pageTitle;
 
     public HologramScreen(WorldPos worldPos, boolean handheld) {
@@ -61,7 +63,7 @@ public class HologramScreen extends Screen {
         this.addRenderableWidget(new ExpandedButton(leftPos + 157, 44, buttonSize, 20, Component.literal("Join Call"), button -> this.showPage(Page.JOIN_CALL)));
 
         var m = this.marginX() + 3;
-        this.addRenderableWidget(new CallButton(m + 210, 74, CallButton.Type.START, this::createCall));
+        this.callButton = this.addRenderableWidget(new CallButton(m + 210, 74, CallButton.Type.START, this::createCall));
         this.callData = new CallDataRenderer(leftPos + 10, 92, this.page, this::addRenderableWidget);
         this.addRenderableWidget(new RefreshButton(m + 11, 90, this.callData::refresh));
 
@@ -82,9 +84,11 @@ public class HologramScreen extends Screen {
         this.callData.setPage(this.page);
         switch (page) {
             case CREATE_CALL:
+                this.callButton.visible = true;
                 this.pageTitle = Component.literal("Start Call");
                 break;
             case JOIN_CALL:
+                this.callButton.visible = false;
                 this.pageTitle = Component.literal("Join Call");
                 break;
         }
@@ -125,6 +129,10 @@ public class HologramScreen extends Screen {
         super.resize(minecraft, width, height); // TODO MAYBE ADD RESIZE SUPPORT
     }
 
+    public void hologramData(HologramNetwork network) {
+        System.out.println(network.getCalls(this.minecraft.player.getUUID()));
+    }
+
     private void checkSearchStringUpdate(String newText) {
         newText = newText.toLowerCase(Locale.ROOT);
         if (!newText.equals(this.lastSearch)) {
@@ -136,6 +144,7 @@ public class HologramScreen extends Screen {
 
     private void createCall(Button button) {
         Network.CHANNEL.sendToServer(new CreateHoloCallPacket(ListUtil.append(new HologramNetwork.Caller(this.minecraft.player.getUUID(), Optional.of(this.worldPos), this.handheld), this.callData.getCallers())));
+        Minecraft.getInstance().setScreen(null);
     }
 
     @Environment(EnvType.CLIENT)

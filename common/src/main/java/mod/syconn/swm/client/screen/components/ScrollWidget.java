@@ -77,6 +77,6 @@ public class ScrollWidget extends AbstractWidget implements WidgetComponent {
     }
 
     public void updateSize(int size) {
-        this.size = size;
+        this.size = Math.max(size, 0);
     }
 }

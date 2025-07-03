@@ -4,6 +4,8 @@ import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.client.screen.HologramScreen;
 import mod.syconn.swm.client.screen.components.ScrollWidget;
 import mod.syconn.swm.client.screen.components.buttons.ToggleButton;
+import mod.syconn.swm.network.Network;
+import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.client.GraphicsUtil;
 import mod.syconn.swm.utils.client.WidgetComponent;
@@ -36,7 +38,6 @@ public class CallDataRenderer implements WidgetComponent {
     private String lastSearch;
     private int scroll = 0;
 
-
     public CallDataRenderer(int x, int y, HologramScreen.Page page, Function<WidgetComponent, WidgetComponent> widgets) {
         this.x = x;
         this.y = y;
@@ -48,13 +49,14 @@ public class CallDataRenderer implements WidgetComponent {
         this.search(this.lastSearch);
     }
 
-    private void init(Function<WidgetComponent, WidgetComponent> widgets) {
+    private void init(Function<WidgetComponent, WidgetComponent> widgets) { // TODO ONLY SHOW CALLS TO JOIN THAT YOUR NOT OWNER OF
         widgets.apply(this);
 
         for (int i = 0; i < 3; i++) {
             final var v = i;
             this.toggleButtons[v] = (ToggleButton) widgets.apply(new ToggleButton(this.x + 180, this.y + 21 + this.height * v, false, ToggleButton.Color.GREEN, b -> this.toggled(b, v)));
         }
+
         this.scroller = (ScrollWidget) widgets.apply(new ScrollWidget(x + 207, y + 11, 91, this.listedPlayers.size() - 3, w -> true, this::updateMenu));
     }
 
@@ -71,8 +73,8 @@ public class CallDataRenderer implements WidgetComponent {
                 var connection = this.minecraft.player.connection;
                 var uuids = connection.getOnlinePlayerIds();
                 uuids.forEach(uuid -> this.listedPlayers.add(MenuData.of(connection.getPlayerInfo(uuid), isPlayerMe(connection.getPlayerInfo(uuid)))));
-                for (int i = 0; i < 2; i++) this.listedPlayers.add(MenuData.of(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + (i + 1))), false));
-            }
+                for (int i = 0; i < 2; i++) this.listedPlayers.add(MenuData.of(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + (i + 1))), false)); // TODO REMOVE
+            } else Network.CHANNEL.sendToServer(new RequestHologramPacket());
         }
     }
 
@@ -82,28 +84,41 @@ public class CallDataRenderer implements WidgetComponent {
 
         Arrays.stream(this.toggleButtons).forEach(b -> b.visible = false);
 
-        for (int i = scroll; i < Math.min(scroll + 3, this.shownPlayers.size()); i++) {
-            var player = this.shownPlayers.get(i);
-            var toggle = this.toggleButtons[i - scroll];
-            toggle.setActive(player.added);
-            toggle.setLocked(player.locked);
-            toggle.visible = true;
+        if (this.page == HologramScreen.Page.CREATE_CALL) {
+            for (int i = scroll; i < Math.min(scroll + 3, this.shownPlayers.size()); i++) {
+                var player = this.shownPlayers.get(i);
+                var toggle = this.toggleButtons[i - scroll];
+                toggle.setActive(player.added);
+                toggle.setLocked(player.locked);
+                toggle.visible = true;
+            }
         }
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { // TODO PLAYER LIST EMPTY SAY NO PLAYERS FOUND
-        graphics.drawCenteredString(this.minecraft.font, Component.literal("Add Players to Call"), x + width / 2, y, -1);
+        if (this.page == HologramScreen.Page.CREATE_CALL) {
+            graphics.drawCenteredString(this.minecraft.font, Component.literal("Add Players to Call"), x + width / 2, y, -1);
 
-        var y = this.y + 11;
-        for (int i = this.scroll; i < Math.min(this.scroll + 3, this.shownPlayers.size()); i++) {
-            var info = this.shownPlayers.get(i).info;
-            var minY = y + this.height * (i - this.scroll);
-            var name = this.isPlayerMe(info) ? "You" : info.getProfile().getName();
+            var y = this.y + 11;
+            if (this.shownPlayers.isEmpty()) graphics.drawCenteredString(this.minecraft.font, Component.literal("No Players Found").withStyle(ChatFormatting.BOLD, ChatFormatting.RED),
+                    x + width / 2, y + 16, -1);
+            for (int i = this.scroll; i < Math.min(this.scroll + 3, this.shownPlayers.size()); i++) {
+                var info = this.shownPlayers.get(i).info;
+                var me = this.isPlayerMe(info);
+                var minY = y + this.height * (i - this.scroll);
+                var name = me ? "You" : info.getProfile().getName();
 
-            GraphicsUtil.fillRect(graphics, this.x, minY, this.width, this.height, this.color);
-            PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), this.x + 4, minY + 4, 24);
-            graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD), this.x + 34, minY + 12, -1);
+                GraphicsUtil.fillRect(graphics, this.x, minY, this.width, this.height, this.color);
+                PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), this.x + 4, minY + 4, 24);
+                graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD).withStyle(me ? ChatFormatting.GOLD : ChatFormatting.WHITE), this.x + 34, minY + 12, -1);
+            }
+        } else {
+            graphics.drawCenteredString(this.minecraft.font, Component.literal("Calls You can Join"), x + width / 2, y, -1);
+
+            var y = this.y + 11;
+            if (this.shownPlayers.isEmpty()) graphics.drawCenteredString(this.minecraft.font, Component.literal("No Calls Found").withStyle(ChatFormatting.BOLD, ChatFormatting.RED),
+                    x + width / 2, y + 16, -1);
         }
     }
     
@@ -114,14 +129,14 @@ public class CallDataRenderer implements WidgetComponent {
     public void setPage(HologramScreen.Page page) {
         this.page = page;
         this.lastSearch = "";
-        this.refreshPlayerList();
-        this.updateMenu(0);
+
+        this.refresh();
     }
 
     public void search(String search) {
         this.lastSearch = search;
         this.shownPlayers.clear();
-        if (search == null || search.equals("")) this.shownPlayers.addAll(this.listedPlayers);
+        if (search == null || search.isEmpty()) this.shownPlayers.addAll(this.listedPlayers);
         else this.shownPlayers.addAll(this.listedPlayers.stream().filter(s -> s.info.getProfile().getName().toLowerCase().contains(search.toLowerCase())).toList());
         this.updateMenu(0);
     }

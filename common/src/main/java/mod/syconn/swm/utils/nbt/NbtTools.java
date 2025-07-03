@@ -29,9 +29,11 @@ public class NbtTools {
         else return Optional.of(function.apply(tag.getCompound("optional")));
     }
 
-    public static <T> CompoundTag putOptional(@Nullable T optional, Function<T, CompoundTag> function) {
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
+    public static <T> CompoundTag putOptional(Optional<T> optional, Function<Optional<T>, CompoundTag> function) {
         var tag = new CompoundTag();
-        if (optional == null) tag.putString("optional", "optional-null");
+        System.out.println(optional);
+        if (optional.isEmpty()) tag.putString("optional", "optional-null");
         else tag.put("optional", function.apply(optional));
         return tag;
     }

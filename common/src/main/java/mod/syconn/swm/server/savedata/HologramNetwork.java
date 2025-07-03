@@ -3,13 +3,15 @@ package mod.syconn.swm.server.savedata;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.nbt.NbtTools;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class HologramNetwork extends SavedData {
 
@@ -23,6 +25,14 @@ public class HologramNetwork extends SavedData {
         this.CALLS.add(new Call(caller, callers));
     }
 
+    public List<Call> getCalls(UUID player) {
+        return CALLS.stream().filter(call -> canJoinCall(player, call)).toList();
+    }
+
+    private boolean canJoinCall(UUID player, Call call) {
+        return call.owner.uuid.equals(player) || !call.participants.stream().filter(caller -> caller.uuid.equals(player)).toList().isEmpty();
+    }
+
     @Override
     public @NotNull CompoundTag save(CompoundTag compoundTag) {
         compoundTag.put("calls", NbtTools.putArray(this.CALLS, Call::save));
@@ -30,9 +40,7 @@ public class HologramNetwork extends SavedData {
     }
 
     public void read(CompoundTag tag) {
-        if(tag.contains(tagID, Tag.TAG_LIST)) {
-            tag.getList(tagID, Tag.TAG_COMPOUND).forEach(nbt -> CALLS.addAll(NbtTools.getArray(tag.getCompound("calls"), Call::from)));
-        }
+        if(tag.contains(tagID, Tag.TAG_LIST)) tag.getList(tagID, Tag.TAG_COMPOUND).forEach(nbt -> CALLS.addAll(NbtTools.getArray(tag.getCompound("calls"), Call::from)));
     }
 
     public static HologramNetwork load(CompoundTag tag) {
@@ -54,7 +62,6 @@ public class HologramNetwork extends SavedData {
             return new Caller(tag.getUUID("uuid"), NbtTools.getOptional(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
         }
 
-        @SuppressWarnings("OptionalGetWithoutIsPresent")
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("uuid", this.uuid);
@@ -64,7 +71,7 @@ public class HologramNetwork extends SavedData {
         }
     }
 
-    private record Call(Caller owner, List<Caller> participants) {
+    public record Call(Caller owner, List<Caller> participants) {
         public static Call from(CompoundTag tag) {
             return new Call(Caller.from(tag.getCompound("owner")), NbtTools.getArray(tag.getCompound("participants"), Caller::from));
         }

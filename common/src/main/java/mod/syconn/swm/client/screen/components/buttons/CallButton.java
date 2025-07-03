@@ -1,9 +1,12 @@
 package mod.syconn.swm.client.screen.components.buttons;
 
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 public class CallButton extends ExpandedButton {
 
@@ -25,6 +28,13 @@ public class CallButton extends ExpandedButton {
         guiGraphics.blit(HOLOGRAM_SCREEN, this.getX() * 5 / 4, this.getY() * 5 / 4, uX, uY, 20, 20);
 
         guiGraphics.pose().popPose();
+
+        if (isHovered) guiGraphics.renderTooltip(GameInstance.getClient().font, createNarrationMessage(), mouseX, mouseY);
+    }
+
+    @Override
+    protected @NotNull MutableComponent createNarrationMessage() {
+        return Component.literal(type == Type.START ? "Start Call" : "End Call");
     }
 
     public enum Type {

@@ -1,4 +1,4 @@
-package mod.syconn.swm.network.packets;
+package mod.syconn.swm.network.packets.serverside;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.server.savedata.HologramNetwork;

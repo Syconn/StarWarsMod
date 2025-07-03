@@ -1,4 +1,4 @@
-package mod.syconn.swm.network.packets;
+package mod.syconn.swm.network.packets.clientside;
 
 import dev.architectury.networking.NetworkManager;
 import io.netty.buffer.Unpooled;
