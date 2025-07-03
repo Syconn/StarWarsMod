@@ -24,7 +24,7 @@ public record WorldPos(ResourceKey<Level> level, BlockPos pos) {
 
     public CompoundTag save() {
         var tag = new CompoundTag();
-        tag.putString("level", this.level.toString());
+        tag.putString("level", this.level.location().toString());
         tag.put("pos", NbtUtils.writeBlockPos(this.pos));
         return tag;
     }
