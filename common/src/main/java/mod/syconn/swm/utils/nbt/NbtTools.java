@@ -1,12 +1,15 @@
 package mod.syconn.swm.utils.nbt;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 public class NbtTools {
@@ -22,6 +25,28 @@ public class NbtTools {
         for (int i = 0; i < elements.size(); i++) tag.put(String.valueOf(i), function.apply(elements.get(i)));
         tag.putInt("len", elements.size());
         return tag;
+    }
+
+    public static <K, V> Map<K, V> getMap(CompoundTag tag, Function<CompoundTag, K> keyFunction, Function<CompoundTag, V> valFunction) {
+        var map = new HashMap<K, V>();
+        tag.getList("map", Tag.TAG_COMPOUND).forEach(nbt -> {
+            CompoundTag data = (CompoundTag) nbt;
+            map.put(keyFunction.apply(data.getCompound("key")), valFunction.apply(data.getCompound("value")));
+        });
+        return map;
+    }
+
+    public static <K, V> CompoundTag putMap(Map<K, V> elements, Function<K, CompoundTag> keyFunction, Function<V, CompoundTag> valFunction) {
+        CompoundTag map = new CompoundTag();
+        ListTag list = new ListTag();
+        elements.forEach((k, v) -> {
+            CompoundTag tag = new CompoundTag();
+            tag.put("key", keyFunction.apply(k));
+            tag.put("value", valFunction.apply(v));
+            list.add(tag);
+        });
+        map.put("map", list);
+        return map;
     }
 
     public @Nullable static <T> T getNullable(CompoundTag tag, Function<CompoundTag, T> function) {
