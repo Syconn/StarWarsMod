@@ -2,6 +2,7 @@ package mod.syconn.swm.client;
 
 import com.mojang.authlib.GameProfile;
 import mod.syconn.swm.client.screen.HologramScreen;
+import mod.syconn.swm.utils.block.WorldPos;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screens.Screen;
@@ -15,8 +16,8 @@ import java.util.UUID;
 @Environment(EnvType.CLIENT)
 public class ClientHooks {
 
-    public static Screen createHologramScreen(boolean handheld) {
-        return new HologramScreen(handheld);
+    public static Screen createHologramScreen(WorldPos worldPos, boolean handheld) {
+        return new HologramScreen(worldPos, handheld);
     }
 
     public static AbstractClientPlayer createMockPlayer(ClientLevel level, String name) {

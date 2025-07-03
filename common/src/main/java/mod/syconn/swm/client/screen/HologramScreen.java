@@ -62,22 +62,23 @@ public class HologramScreen extends Screen {
         var m = this.marginX() + 3;
         this.addRenderableWidget(new CallButton(m + 210, 74, CallButton.Type.START, this::createCall));
 
+        this.callData = new CallDataRenderer(leftPos + 10, 92, this.page, this::addRenderableWidget);
+
         var string = this.searchBox != null ? this.searchBox.getValue() : "";
         this.searchBox = new EditBox(this.font, this.marginX() + 29, 75, 178, 13, Component.literal(string));
         this.searchBox.setMaxLength(26);
-        this.searchBox.setHint(Component.literal("Encryption Code"));
+        this.searchBox.setHint(Component.literal("Search"));
         this.searchBox.setVisible(true);
         this.searchBox.setTextColor(16777215);
         this.searchBox.setValue(string);
         this.searchBox.setResponder(this::checkSearchStringUpdate);
         this.addWidget(this.searchBox);
         this.showPage(this.page);
-
-        this.callData = new CallDataRenderer(leftPos + 10, 92, this::addRenderableWidget);
     }
 
     private void showPage(Page page) {
         this.page = page;
+        this.callData.setPage(this.page);
         switch (page) {
             case CREATE_CALL:
                 this.pageTitle = Component.literal("Start Call");
@@ -128,6 +129,7 @@ public class HologramScreen extends Screen {
         if (!newText.equals(this.lastSearch)) {
             this.lastSearch = newText;
             this.showPage(this.page);
+            this.callData.search(newText);
         }
     }
 
