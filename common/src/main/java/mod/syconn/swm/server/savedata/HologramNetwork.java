@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class HologramNetwork extends SavedData {
@@ -20,16 +22,33 @@ public class HologramNetwork extends SavedData {
     public HologramNetwork() {}
 
     public void createCall(Caller caller, List<Caller> callers) {
+        this.CALLS.clear(); // TODO REMOVE FOR AFTER TESTING
+
         if (this.CALLS.containsKey(caller.uuid)) this.endCall(caller.uuid);
         this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers));
+        this.setDirty();
     }
 
     public void modifyCall(UUID callId, Function<Call, Call> function) {
         this.CALLS.put(callId, function.apply(this.CALLS.get(callId)));
+        this.setDirty();
+    }
+
+    public void modifyCallParticipant(UUID callId, UUID participant, BiConsumer<List<Caller>, Caller> function) {
+        modifyCall(callId, call -> {
+            var participants = call.participants;
+            for (var caller : call.participants) {
+                if (caller.uuid.equals(participant)) {
+                    participants.remove(caller);
+                    function.accept(participants, caller);
+                }
+            }
+            return new Call(callId, call.owner, participants);
+        });
     }
 
     private void endCall(UUID callId) { // TODO IMPLEMENT
-
+        this.setDirty();
     }
 
     public List<Call> getCalls(UUID player) {

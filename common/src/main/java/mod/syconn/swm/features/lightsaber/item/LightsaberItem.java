@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -15,10 +16,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class LightsaberItem extends Item implements IItemExtensions {
 
@@ -46,6 +51,11 @@ public class LightsaberItem extends Item implements IItemExtensions {
         final var stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
         return InteractionResultHolder.fail(stack);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+        super.appendHoverText(stack, level, tooltipComponents, isAdvanced);
     }
 
     @Override
