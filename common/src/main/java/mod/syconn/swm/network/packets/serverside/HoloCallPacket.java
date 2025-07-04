@@ -9,23 +9,39 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class CreateHoloCallPacket {
+public class HoloCallPacket {
 
     private final List<HologramNetwork.Caller> callers;
+    private final Type type;
 
-    public CreateHoloCallPacket(List<HologramNetwork.Caller> callers) {
+    public HoloCallPacket(Type type, List<HologramNetwork.Caller> callers) {
+        this.type = type;
         this.callers = callers;
     }
 
-    public CreateHoloCallPacket(FriendlyByteBuf buf) {
+    public HoloCallPacket(FriendlyByteBuf buf) {
+        this.type = buf.readEnum(Type.class);
         this.callers = NBTUtil.getList(buf.readNbt(), HologramNetwork.Caller::from);
     }
 
     public void encode(FriendlyByteBuf buf) {
+        buf.writeEnum(this.type);
         buf.writeNbt(NBTUtil.putList(this.callers, HologramNetwork.Caller::save));
     }
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
-        context.get().queue(() -> { if (context.get().getPlayer() instanceof ServerPlayer sp) HologramNetwork.get(sp.serverLevel()).createCall(this.callers.remove(0), this.callers); });
+        context.get().queue(() -> {
+            if (context.get().getPlayer() instanceof ServerPlayer sp) {
+                if (this.type == Type.CREATE) HologramNetwork.get(sp.serverLevel()).createCall(this.callers.remove(0), this.callers);
+                else if (this.type == Type.CONNECT) ;
+                else ;
+            }
+        });
+    }
+
+    public enum Type {
+        CREATE,
+        CONNECT,
+        LEAVE
     }
 }
