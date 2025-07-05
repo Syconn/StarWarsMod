@@ -31,7 +31,7 @@ public class ChangeLightsaberHSVPacket {
         context.get().queue(() -> {
             if (context.get().getPlayer().level().getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
                 LightsaberTag.update(blockEntity.getContainer().getItem(0), t -> t.color = this.hsv);
-                blockEntity.markDirty();
+                blockEntity.setChanged();
             }
         });
     }

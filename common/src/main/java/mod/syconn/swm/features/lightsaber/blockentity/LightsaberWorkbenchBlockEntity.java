@@ -23,7 +23,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
         this.container.addListener(listener -> {
             var stack = container.getItem(0);
             if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) LightsaberTag.update(stack, LightsaberTag::toggle);
-            markDirty();
+            setChanged();
         });
     }
 
@@ -60,7 +60,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
         if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem && blockEntity.ticks <= 0) {
             LightsaberTag.update(blockEntity.getContainer().getItem(0), LightsaberTag::tick);
             blockEntity.ticks = 1;
-            blockEntity.markDirty();
+            blockEntity.setChanged();
         }
         blockEntity.ticks--;
     }

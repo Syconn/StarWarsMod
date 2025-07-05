@@ -1,6 +1,9 @@
 package mod.syconn.swm.server.savedata;
 
+import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.utils.block.WorldPos;
+import mod.syconn.swm.utils.general.ListUtil;
 import mod.syconn.swm.utils.general.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -12,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -23,14 +25,27 @@ public class HologramNetwork extends SavedData {
 
     private final Map<UUID, Call> CALLS = new HashMap<>();
 
-    public HologramNetwork() {}
+    public HologramNetwork() { }
 
     public void createCall(Caller caller, List<Caller> callers) {
-        this.CALLS.clear(); // TODO REMOVE FOR AFTER TESTING
+//        this.CALLS.clear(); // TODO REMOVE FOR AFTER TESTING
 
-        if (this.CALLS.containsKey(caller.uuid)) this.endCall(caller.uuid);
-        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
+//        if (this.CALLS.containsKey(caller.uuid)) this.endCall(caller.uuid); // TODO WORKING CODE
+//        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
+//        this.setDirty();
+
+        if (this.CALLS.containsKey(caller.uuid)) { // TODO MORE TESTING CODE
+            var c = this.CALLS.get(caller.uuid).owner;
+            this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, Map.of(c.uuid, c)));
+        } else this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
         this.setDirty();
+
+        var call = this.CALLS.get(caller.uuid);
+        var calls = ListUtil.add(call.owner, call.participants.values().stream().toList());
+        calls.forEach(c -> {
+            var blockEntity = GameInstance.getServer().getLevel(c.location.level()).getBlockEntity(c.location.pos());
+            if (c.location != null && blockEntity instanceof HoloProjectorBlockEntity projector) projector.joinCall(calls);
+        });
     }
 
     public void modifyCall(UUID callId, Function<Call, Call> function) {
