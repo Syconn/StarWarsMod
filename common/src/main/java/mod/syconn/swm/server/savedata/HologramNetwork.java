@@ -8,10 +8,14 @@ import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
-import java.util.function.BiConsumer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class HologramNetwork extends SavedData {
 
@@ -25,29 +29,18 @@ public class HologramNetwork extends SavedData {
         this.CALLS.clear(); // TODO REMOVE FOR AFTER TESTING
 
         if (this.CALLS.containsKey(caller.uuid)) this.endCall(caller.uuid);
-        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers));
+        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
         this.setDirty();
     }
 
     public void modifyCall(UUID callId, Function<Call, Call> function) {
-        this.CALLS.put(callId, function.apply(this.CALLS.get(callId)));
+        var val = function.apply(this.CALLS.get(callId));
+        if (val != null) this.CALLS.put(callId, val);
+        else this.CALLS.remove(callId);
         this.setDirty();
     }
 
-    public void modifyCallParticipant(UUID callId, UUID participant, BiConsumer<List<Caller>, Caller> function) {
-        modifyCall(callId, call -> {
-            var participants = call.participants;
-            for (var caller : call.participants) {
-                if (caller.uuid.equals(participant)) {
-                    participants.remove(caller);
-                    function.accept(participants, caller);
-                }
-            }
-            return new Call(callId, call.owner, participants);
-        });
-    }
-
-    private void endCall(UUID callId) { // TODO IMPLEMENT
+    public void endCall(UUID callId) { // TODO IMPLEMENT
         this.setDirty();
     }
 
@@ -56,7 +49,7 @@ public class HologramNetwork extends SavedData {
     }
 
     private boolean canJoinCall(UUID player, Call call) {
-        return call.owner.uuid.equals(player) || !call.participants.stream().filter(caller -> caller.uuid.equals(player)).toList().isEmpty();
+        return call.owner.uuid.equals(player) || call.participants.containsKey(player);
     }
 
     @Override
@@ -84,6 +77,15 @@ public class HologramNetwork extends SavedData {
     }
 
     public record Caller(UUID uuid, @Nullable WorldPos location, boolean handheld) {
+
+        public Caller updatePos(WorldPos pos) {
+            return new Caller(this.uuid, pos, this.handheld);
+        }
+
+        public Caller updateHandheld(boolean held) {
+            return new Caller(this.uuid, this.location, held);
+        }
+
         public static Caller from(CompoundTag tag) {
             return new Caller(tag.getUUID("uuid"), NBTUtil.getNullable(tag.getCompound("location"), WorldPos::from), tag.getBoolean("handheld"));
         }
@@ -97,16 +99,26 @@ public class HologramNetwork extends SavedData {
         }
     }
 
-    public record Call(UUID id, Caller owner, List<Caller> participants) {
+    public record Call(UUID id, Caller owner, Map<UUID, Caller> participants) {
+
+        public Call updateOwner(Caller caller) {
+            return new Call(this.id, caller, this.participants);
+        }
+
+        public Call updateParticipants(Consumer<Map<UUID, Caller>> consumer) {
+            consumer.accept(participants);
+            return new Call(this.id, this.owner, participants);
+        }
+
         public static Call from(CompoundTag tag) {
-            return new Call(tag.getUUID("id"), Caller.from(tag.getCompound("owner")), NBTUtil.getList(tag.getCompound("participants"), Caller::from));
+            return new Call(tag.getUUID("id"), Caller.from(tag.getCompound("owner")), NBTUtil.getMap(tag.getCompound("participants"), t -> t.getUUID("id"), Caller::from));
         }
 
         public CompoundTag save() {
             var tag = new CompoundTag();
             tag.putUUID("id", this.id);
             tag.put("owner", this.owner.save());
-            tag.put("participants", NBTUtil.putList(this.participants, Caller::save));
+            tag.put("participants", NBTUtil.putMap(this.participants, k -> NBTUtil.convert(t -> t.putUUID("id", k)), Caller::save));
             return  tag;
         }
     }

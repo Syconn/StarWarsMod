@@ -40,8 +40,14 @@ public class HoloCallPacket {
                 var network = HologramNetwork.get(sp.serverLevel());
                 var caller = this.callers.get(0);
                 if (this.type == Type.CREATE) network.createCall(this.callers.remove(0), this.callers);
-                else if (this.type == Type.CONNECT) network.modifyCallParticipant(this.id, caller.uuid(), (l, c) -> l.add(caller));
-                else network.modifyCallParticipant(this.id, caller.uuid(), (l, c) -> {});
+                else if (this.type == Type.CONNECT) network.modifyCall(this.id, call -> {
+                    if (caller.uuid().equals(call.id())) return call.updateOwner(caller);
+                    return call.updateParticipants(users -> users.put(caller.uuid(), caller));
+                });
+                else network.modifyCall(this.id, call -> {
+                    if (caller.uuid().equals(call.id())) return null;
+                    return call.updateParticipants(users -> users.remove(caller.uuid()));
+                });
             }
         });
     }
