@@ -10,10 +10,8 @@ import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.general.ListUtil;
 import mod.syconn.swm.utils.block.WorldPos;
-import mod.syconn.swm.utils.client.CallDataRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -33,7 +31,7 @@ public class HologramScreen extends Screen {
     private final WorldPos worldPos;
     private Page page = Page.CREATE_CALL;
     private String lastSearch = "";
-    private CallDataRenderer callData;
+    private CallMenuWidget callData;
     private EditBox searchBox;
     private CallButton callButton;
     private ErrorWidget errorWidget;
@@ -69,7 +67,7 @@ public class HologramScreen extends Screen {
 
         var m = this.marginX() + 3;
         this.callButton = this.addRenderableWidget(new CallButton(m + 209, 74, 0.80f, CallButton.Type.START, "Start Call", this::createCall));
-        this.callData = new CallDataRenderer(this, leftPos + 10, 92, this.page, this::addRenderableWidget);
+        this.callData = new CallMenuWidget(this, leftPos + 10, 92, this.page, this::addRenderableWidget);
         this.addRenderableWidget(new RefreshButton(m + 11, 90, this.callData::refresh));
 
         var string = this.searchBox != null ? this.searchBox.getValue() : "";

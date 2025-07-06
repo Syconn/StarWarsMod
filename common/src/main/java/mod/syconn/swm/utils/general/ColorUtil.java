@@ -48,6 +48,20 @@ public class ColorUtil {
         return FastColor.ABGR32.color(srcA, srcB, srcG, srcR);
     }
 
+    public static int grayScaled(int argb) {
+        int alpha = (argb >> 24) & 0xff;
+        int r = (argb >> 16) & 0xff;
+        int g = (argb >> 8) & 0xff;
+        int b = argb & 0xff;
+        int gray = (r + g + b) / 3;
+        return FastColor.ARGB32.color(alpha, gray, gray, gray);
+    }
+
+    public static int hologramColor(int argb) {
+        var gray = grayScaled(argb);
+        return tint(gray, FastColor.ARGB32.color(255, 255, 148, 0), TintMode.Overlay);
+    }
+
     public static int packRgb(int r, int g, int b) {
         var rgb = (r & 0xFF);
         rgb = (rgb << 8) + (g & 0xFF);

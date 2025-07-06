@@ -1,5 +1,7 @@
 {
-	"__comment": "Made in Blockbench by Syconn",
+	"format_version": "1.21.6",
+	"credit": "Made in Blockbench by Syconn",
+	"render_type": "minecraft:translucent",
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "swm:block/holo/outer_ring",
@@ -9,7 +11,6 @@
 		"4": "swm:block/holo/arm",
 		"particle": "swm:block/holo/outer_ring"
 	},
-	"render_type": "minecraft:translucent",
 	"elements": [
 		{
 			"name": "projector",
@@ -1068,13 +1069,11 @@
 			"scale": [0.37, 0.37, 0.37]
 		},
 		"firstperson_righthand": {
-			"rotation": [23, 20, 27],
-			"translation": [0, 5, 1.5],
+			"translation": [0, 6.25, 1.5],
 			"scale": [0.5, 0.5, 0.5]
 		},
 		"firstperson_lefthand": {
-			"rotation": [23, 20, 27],
-			"translation": [0, 5, 1.5],
+			"translation": [0, 5.25, 1.5],
 			"scale": [0.5, 0.5, 0.5]
 		},
 		"ground": {

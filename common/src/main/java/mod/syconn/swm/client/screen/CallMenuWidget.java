@@ -1,7 +1,6 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.client.screen;
 
 import mod.syconn.swm.client.ClientHooks;
-import mod.syconn.swm.client.screen.HologramScreen;
 import mod.syconn.swm.client.screen.components.PlayerCountWidget;
 import mod.syconn.swm.client.screen.components.ScrollerWidget;
 import mod.syconn.swm.client.screen.components.buttons.CallButton;
@@ -26,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.function.Function;
 
-public class CallDataRenderer implements IWidgetComponent {
+public class CallMenuWidget implements IWidgetComponent {
 
     private final List<MenuData> listedCreateCallPlayers = new ArrayList<>();
     private final List<MenuData> listedJoinCallPlayers = new ArrayList<>();
@@ -38,14 +37,14 @@ public class CallDataRenderer implements IWidgetComponent {
     private final Minecraft minecraft = Minecraft.getInstance();
     private final int color = ColorUtil.packArgb(74, 74, 74, 255);
     private final int height = 32;
+    private final HologramScreen screen;
     private final int x, y;
     private int scroll = 0;
     private ScrollerWidget scroller;
     private HologramScreen.Page page;
-    private HologramScreen screen;
     private String lastSearch;
 
-    public CallDataRenderer(HologramScreen screen, int x, int y, HologramScreen.Page page, Function<IWidgetComponent, IWidgetComponent> widgets) {
+    public CallMenuWidget(HologramScreen screen, int x, int y, HologramScreen.Page page, Function<IWidgetComponent, IWidgetComponent> widgets) {
         this.x = x;
         this.y = y;
         this.page = page;
@@ -72,7 +71,7 @@ public class CallDataRenderer implements IWidgetComponent {
         this.scroller = (ScrollerWidget) widgets.apply(new ScrollerWidget(x + 207, y + 11, 91, this.listedCreateCallPlayers.size() - 3, w -> true, this::updateMenu));
     }
 
-    private void toggled(ToggleButton button, int i) { // TODO TEST SEARCH WITH THIS
+    private void toggled(ToggleButton button, int i) {
         var player = this.shownCreateCallPlayers.get(this.scroll + i);
         this.shownCreateCallPlayers.set(this.scroll + i, new MenuData(player.info, List.of(), button.isActive(), player.locked));
     }

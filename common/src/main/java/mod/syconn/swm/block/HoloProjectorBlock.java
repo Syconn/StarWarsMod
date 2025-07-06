@@ -1,12 +1,11 @@
 package mod.syconn.swm.block;
 
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
-import mod.syconn.swm.server.savedata.HologramNetwork;
-import mod.syconn.swm.utils.block.WorldPos;
+import mod.syconn.swm.utils.client.HologramData;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import java.util.Objects;
 
 public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements IEntityBlock {
 
@@ -69,13 +68,17 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
 //            return InteractionResult.SUCCESS;
 //        }
 
-        // TODO TESTING CODE
-        if (pLevel instanceof ServerLevel serverLevel) {
-            var caller = new HologramNetwork.Caller(pPlayer.getUUID(), new WorldPos(serverLevel.dimension(), pPos), false);
-            var network = HologramNetwork.get(serverLevel);
-            network.createCall(caller, List.of());
-            return InteractionResult.SUCCESS;
+        if (pPlayer instanceof LocalPlayer lp && pLevel.getBlockEntity(pPos) instanceof HoloProjectorBlockEntity be) {
+            be.setHologramData(new HologramData(lp.clientLevel, lp.connection.getPlayerInfo(lp.getUUID())));
         }
+
+        // TODO TESTING CODE
+//        if (pLevel instanceof ServerLevel serverLevel) {
+//            var caller = new HologramNetwork.Caller(pPlayer.getUUID(), new WorldPos(serverLevel.dimension(), pPos), false);
+//            var network = HologramNetwork.get(serverLevel);
+//            network.createCall(caller, List.of());
+//            return InteractionResult.SUCCESS;
+//        }
 
         return InteractionResult.PASS;
     }

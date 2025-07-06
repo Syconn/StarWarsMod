@@ -20,7 +20,6 @@ public class ModelUtil {
         return Optional.empty();
     }
 
-
     public static <T extends LivingEntity> void smartLerpArmsRadians(T entity, InteractionHand mainHand, HumanoidModel<?> model, float delta, float leftPitch, float leftYaw, float leftRoll, float rightPitch, float rightYaw, float rightRoll) {
         ModelPart leftArm = model.leftArm;
         ModelPart rightArm = model.rightArm;

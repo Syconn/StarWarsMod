@@ -34,11 +34,11 @@ public class HologramNetwork extends SavedData {
 //        this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
 //        this.setDirty();
 
-        if (this.CALLS.containsKey(caller.uuid)) { // TODO MORE TESTING CODE
-            var c = this.CALLS.get(caller.uuid).owner;
-            this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, Map.of(c.uuid, c)));
-        } else this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
-        this.setDirty();
+//        if (this.CALLS.containsKey(caller.uuid)) { // TODO MORE TESTING CODE
+//            var c = this.CALLS.get(caller.uuid).owner;
+//            this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, Map.of(c.uuid, c)));
+//        } else this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
+//        this.setDirty();
 
         var call = this.CALLS.get(caller.uuid);
         var calls = ListUtil.add(call.owner, call.participants.values().stream().toList());
