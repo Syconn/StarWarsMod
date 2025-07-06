@@ -26,7 +26,7 @@ public class HologramData { // TODO TO UPDATE THE TEXTURES FOR THE BAR IN THE HO
 //        this.player = (AbstractClientPlayer) level.getPlayerByUUID(playerInfo.getProfile().getId()); TODO USE MORE LATER
 
         var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
-        ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(130, ColorUtil.hologramColor(color)));
+        ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(140, ColorUtil.hologramColor(color)));
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
     }
 

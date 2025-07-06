@@ -361,3 +361,28 @@ java.io.FileNotFoundException: minecraft:textures/gui/hologram_screen.png
 [02:31:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.0.4-dev.jar
 [02:32:00] [Server thread/INFO] (Minecraft) [Player53: Set the time to 1000]
 [02:32:00] [Render thread/INFO] (Minecraft) [System] [CHAT] Set the time to 1000
+[02:35:23] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.0.4-dev.jar
+[02:35:23] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar in 44.24 ms
+[02:35:28] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.0.4-dev.jar
+[02:35:54] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[02:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02:35:54] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
+[02:35:54] [Render thread/INFO] (JeiStarter) Stopping JEI
+[02:35:54] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
+[02:35:54] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
+[02:35:54] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 377.9 μs
+[02:35:54] [Server thread/INFO] (Minecraft) Player53 lost connection: Disconnected
+[02:35:54] [Server thread/INFO] (Minecraft) Player53 left the game
+[02:35:54] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[02:35:54] [Server thread/INFO] (Minecraft) Stopping server
+[02:35:54] [Server thread/INFO] (Minecraft) Saving players
+[02:35:54] [Server thread/INFO] (Minecraft) Saving worlds
+[02:35:55] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02:35:55] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02:35:55] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02:35:55] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (New World (1)): All chunks are saved
+[02:35:55] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02:35:55] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02:35:55] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
