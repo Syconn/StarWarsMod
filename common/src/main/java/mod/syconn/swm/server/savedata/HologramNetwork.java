@@ -40,12 +40,12 @@ public class HologramNetwork extends SavedData {
 //        } else this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
 //        this.setDirty();
 
-        var call = this.CALLS.get(caller.uuid);
-        var calls = ListUtil.add(call.owner, call.participants.values().stream().toList());
-        calls.forEach(c -> {
-            var blockEntity = GameInstance.getServer().getLevel(c.location.level()).getBlockEntity(c.location.pos());
-            if (c.location != null && blockEntity instanceof HoloProjectorBlockEntity projector) projector.joinCall(calls);
-        });
+//        var call = this.CALLS.get(caller.uuid);
+//        var calls = ListUtil.add(call.owner, call.participants.values().stream().toList());
+//        calls.forEach(c -> {
+//            var blockEntity = GameInstance.getServer().getLevel(c.location.level()).getBlockEntity(c.location.pos());
+//            if (c.location != null && blockEntity instanceof HoloProjectorBlockEntity projector) projector.joinCall(calls);
+//        });
     }
 
     public void modifyCall(UUID callId, Function<Call, Call> function) {

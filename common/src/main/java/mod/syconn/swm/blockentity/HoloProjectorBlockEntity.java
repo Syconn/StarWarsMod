@@ -1,34 +1,26 @@
 package mod.syconn.swm.blockentity;
 
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.server.savedata.HologramNetwork;
-import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.client.HologramData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
-public class HoloProjectorBlockEntity extends SidedSyncedBlockEntity {
+public class HoloProjectorBlockEntity extends SyncedBlockEntity {
 
-    private final List<WorldPos> connections = new ArrayList<>();
+    private UUID playerRender = null;
     private HologramData hologramData = null;
 
     public HoloProjectorBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.HOLO_PROJECTOR.get(), pWorldPosition, pBlockState);
     }
 
-    public void joinCall(List<HologramNetwork.Caller> calls) {
-        this.connections.clear();
-        this.connections.addAll(calls.stream().map(HologramNetwork.Caller::location).filter(Objects::nonNull).toList());
-        System.out.println(this.connections);
-    }
-
-    public void setHologramData(HologramData hologramData) {
-        this.hologramData = hologramData;
+    public void setHologramData(UUID player) {
+        this.playerRender = player;
+        markDirty();
     }
 
     public HologramData getHologramData() {
@@ -36,18 +28,21 @@ public class HoloProjectorBlockEntity extends SidedSyncedBlockEntity {
     }
 
     @Override
-    CompoundTag saveSynced() {
-        var tag = new CompoundTag();
-        return tag;
-    }
-
-    @Override
     public void load(CompoundTag tag) {
-        super.load(tag);
+        if (tag.contains("uuid")) this.playerRender = tag.getUUID("uuid");
+
+        if (this.level != null && this.level.isClientSide) this.hologramData = new HologramData(this.playerRender);
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+        if (this.playerRender != null) tag.putUUID("uuid", this.playerRender);
+    }
+
+    public static void tick(Level level, BlockPos pos, BlockState state, HoloProjectorBlockEntity blockEntity) {
+        if (blockEntity.hologramData != null) {
+            blockEntity.hologramData.tick();
+//            blockEntity.markDirty();
+        }
     }
 }

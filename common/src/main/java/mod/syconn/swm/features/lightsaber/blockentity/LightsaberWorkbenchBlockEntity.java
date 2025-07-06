@@ -23,7 +23,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
         this.container.addListener(listener -> {
             var stack = container.getItem(0);
             if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) LightsaberTag.update(stack, LightsaberTag::toggle);
-            setChanged();
+            markDirty();
         });
     }
 

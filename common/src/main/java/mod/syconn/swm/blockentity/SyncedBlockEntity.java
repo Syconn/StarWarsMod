@@ -25,4 +25,11 @@ public abstract class SyncedBlockEntity extends BlockEntity {
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
+
+    protected void markDirty() {
+        if (this.level != null) {
+            setChanged();
+            this.level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 2);
+        }
+    }
 }
