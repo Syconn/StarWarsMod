@@ -1,5 +1,6 @@
 package mod.syconn.swm.utils.client;
 
+import com.mojang.authlib.GameProfile;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.HologramRenderer;
 import mod.syconn.swm.utils.general.ColorUtil;
@@ -7,6 +8,8 @@ import mod.syconn.swm.utils.general.ResourceUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.MapRenderer;
+import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.nbt.CompoundTag;
@@ -18,7 +21,6 @@ import java.util.UUID;
 @Environment(EnvType.CLIENT)
 public class HologramData { // TODO TO UPDATE THE TEXTURES FOR THE BAR IN THE HOLOGRAM look at MAPRENDERER, ALL ENTITY SUPPORT?
 
-    private final Minecraft minecraft = GameInstance.getClient();
     private final HologramRenderer renderer;
     private final AbstractClientPlayer player;
     private final ResourceLocation skin;
@@ -29,16 +31,22 @@ public class HologramData { // TODO TO UPDATE THE TEXTURES FOR THE BAR IN THE HO
     }
 
     public HologramData(UUID uuid) {
-        var playerInfo = this.minecraft.player.connection.getPlayerInfo(uuid);
-
+        final var minecraft = GameInstance.getClient();
+        final var playerInfo = getPlayerInfo(minecraft, uuid);
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
-        this.player = new AbstractClientPlayer(this.minecraft.level, playerInfo.getProfile()) {};
+        this.player = new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
 //        this.player = (AbstractClientPlayer) level.getPlayerByUUID(playerInfo.getProfile().getId()); TODO USE MORE LATER
 
         var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
         ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(140, ColorUtil.hologramColor(color)));
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
         this.textureHeight = texture.getPixels().getHeight();
+    }
+
+    private PlayerInfo getPlayerInfo(Minecraft minecraft, UUID uuid) {
+        final var playerInfo = minecraft.player.connection.getPlayerInfo(uuid);
+        if (playerInfo == null) return new PlayerInfo(new GameProfile(uuid, "Offline-Player"), false);
+        return playerInfo;
     }
 
     public void tick() {
