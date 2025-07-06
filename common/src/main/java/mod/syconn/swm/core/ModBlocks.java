@@ -27,6 +27,10 @@ public class ModBlocks {
         return register(id, supplier, BlockItem::new);
     }
 
+    private static <T extends Block> RegistrySupplier<T> register(String id, Supplier<T> supplier, Function<Item.Properties, Item.Properties> function) {
+        return register(id, supplier, (block, properties) -> new BlockItem(block, function.apply(properties)));
+    }
+
     private static <B extends Block, I extends BlockItem> RegistrySupplier<B> register(String id, Supplier<B> blockSupplier, BiFunction<B, Item.Properties, I> itemSupplier) {
         RegistrySupplier<B> registeredBlock = BLOCKS.register(id, blockSupplier);
         ModItems.ITEMS.register(id, () -> itemSupplier.apply(registeredBlock.get(), new Item.Properties().arch$tab(ModItems.TAB)));

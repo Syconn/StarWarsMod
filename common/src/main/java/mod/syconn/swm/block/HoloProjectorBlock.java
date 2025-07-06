@@ -2,12 +2,7 @@ package mod.syconn.swm.block;
 
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.serverside.UpdateHologramPacket;
-import mod.syconn.swm.utils.client.HologramData;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -72,8 +67,9 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
 //            return InteractionResult.SUCCESS;
 //        }
 
-        if (pPlayer instanceof LocalPlayer lp && pLevel.getBlockEntity(pPos) instanceof HoloProjectorBlockEntity) {
-            Network.CHANNEL.sendToServer(new UpdateHologramPacket(pPos, lp.getUUID()));
+        if (!pLevel.isClientSide && pHand == InteractionHand.MAIN_HAND && pLevel.getBlockEntity(pPos) instanceof HoloProjectorBlockEntity blockEntity) {
+            blockEntity.setHologramData(pPlayer.getUUID());
+            return InteractionResult.SUCCESS;
         }
 
         // TODO TESTING CODE

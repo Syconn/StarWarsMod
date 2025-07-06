@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class HologramRenderer extends PlayerRenderer {
+public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMATION - FLICKER, SCAN LINES
 
     private static final Minecraft mc = GameInstance.getClient();
     private final HologramData data;
@@ -26,7 +26,11 @@ public class HologramRenderer extends PlayerRenderer {
     }
 
     public void render(PoseStack poseStack, MultiBufferSource buffer, float partialTicks, int packedLight) {
+        poseStack.pushPose();
+
         this.render(this.data.getPlayer(), 0, partialTicks, poseStack, buffer, packedLight);
+
+        poseStack.popPose();
     }
 
     @Override

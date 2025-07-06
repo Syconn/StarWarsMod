@@ -9,7 +9,6 @@ import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
-import mod.syconn.swm.network.packets.serverside.UpdateHologramPacket;
 import mod.syconn.swm.utils.Constants;
 
 public class Network {
@@ -25,6 +24,5 @@ public class Network {
         CHANNEL.register(HoloCallPacket.class, HoloCallPacket::encode, HoloCallPacket::new, HoloCallPacket::apply);
         CHANNEL.register(RequestedHologramPacket.class, RequestedHologramPacket::encode, RequestedHologramPacket::new, RequestedHologramPacket::apply);
         CHANNEL.register(RequestHologramPacket.class, RequestHologramPacket::encode, RequestHologramPacket::new, RequestHologramPacket::apply);
-        CHANNEL.register(UpdateHologramPacket.class, UpdateHologramPacket::encode, UpdateHologramPacket::new, UpdateHologramPacket::apply);
     }
 }

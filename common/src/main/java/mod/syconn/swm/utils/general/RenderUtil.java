@@ -1,6 +1,7 @@
 package mod.syconn.swm.utils.general;
 
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,5 +25,9 @@ public class RenderUtil {
             return ext.shouldCauseReequipAnimation(from, to, changed);
         }
         return true;
+    }
+
+    public static boolean isLeftHanded(ItemDisplayContext renderMode) {
+        return renderMode == ItemDisplayContext.FIRST_PERSON_LEFT_HAND || renderMode == ItemDisplayContext.THIRD_PERSON_LEFT_HAND;
     }
 }
