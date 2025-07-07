@@ -18,7 +18,8 @@ import java.util.function.Consumer;
 public class LightsaberTag {
 
     private static final String ID = "lightsaberData";
-    private static final byte TRANSITION_TICKS = 8;
+    private static final byte IGNITION_TICKS = 6;
+    private static final byte RETRACTION_TICKS = 12;
 
     private final String UUID = "uuid";
     private final String MODEL = "model";
@@ -127,7 +128,7 @@ public class LightsaberTag {
 
     public void toggle() {
         if (this.transition != 0) return;
-        this.transition = this.active ? -TRANSITION_TICKS : TRANSITION_TICKS;
+        this.transition = this.active ? -RETRACTION_TICKS : IGNITION_TICKS;
         this.active = !this.active;
     }
 
@@ -139,7 +140,7 @@ public class LightsaberTag {
     public float getSize() {
         var partialTicks = StarWarsClient.getTickDelta();
         if (this.transition == 0) return this.active ? 1 : 0;
-        if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
-        return AnimationUtil.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
+        if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / IGNITION_TICKS);
+        return AnimationUtil.inCubic(-(this.transition + partialTicks) / RETRACTION_TICKS);
     }
 }

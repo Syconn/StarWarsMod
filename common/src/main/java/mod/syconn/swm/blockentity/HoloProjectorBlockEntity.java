@@ -31,19 +31,15 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity { // TODO TO ITE
     public void load(CompoundTag tag) {
         this.playerRender = tag.contains("uuid") ? tag.getUUID("uuid") : null;
 
-        if (this.level != null && this.level.isClientSide) this.hologramData = this.playerRender != null ? new HologramData(this.playerRender) : null;
+        if (this.level != null && this.level.isClientSide) {
+            if (this.playerRender == null && this.hologramData != null) this.hologramData.endCall(() -> this.hologramData = null);
+            else this.hologramData = this.playerRender != null ? new HologramData(this.playerRender) : null;
+        }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         if (this.playerRender != null) tag.putUUID("uuid", this.playerRender);
-        tag.putInt("update", 1); // TODO DOESN'T LOAD IF NO TAG CHANGED - Fix
-    }
-
-    public static void tick(Level level, BlockPos pos, BlockState state, HoloProjectorBlockEntity blockEntity) {
-        if (blockEntity.hologramData != null) {
-            blockEntity.hologramData.tick();
-//            blockEntity.markDirty();
-        }
+        tag.putInt("update", 1);
     }
 }

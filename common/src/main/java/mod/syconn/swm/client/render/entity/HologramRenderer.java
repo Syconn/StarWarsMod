@@ -3,6 +3,7 @@ package mod.syconn.swm.client.render.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.client.HologramData;
+import mod.syconn.swm.utils.general.AnimationUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -17,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMATION - FLICKER, SCAN LINES
 
     private static final Minecraft mc = GameInstance.getClient();
+    private static final byte TRANSITION_TICKS = 8;
     private final HologramData data;
 
     public HologramRenderer(HologramData data, boolean useSlimModel) {
@@ -26,11 +28,22 @@ public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMAT
     }
 
     public void render(PoseStack poseStack, MultiBufferSource buffer, float partialTicks, int packedLight) {
-        poseStack.pushPose();
+        data.tick();
 
-        this.render(this.data.getPlayer(), 0, partialTicks, poseStack, buffer, packedLight);
+        if (this.data.shouldRender()) {
+            poseStack.pushPose();
 
-        poseStack.popPose();
+            var scale = this.data.getAnimationScale(partialTicks);
+            poseStack.scale(scale, scale, scale);
+            this.render(this.data.getPlayer(), 0, partialTicks, poseStack, buffer, packedLight);
+
+            poseStack.popPose();
+        }
+    }
+
+    @Override
+    public @NotNull ResourceLocation getTextureLocation(AbstractClientPlayer entity) {
+        return this.data.getSkin();
     }
 
     @Override
@@ -40,9 +53,4 @@ public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMAT
 
     @Override
     protected void renderNameTag(AbstractClientPlayer entity, Component displayName, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {}
-
-    @Override
-    public @NotNull ResourceLocation getTextureLocation(AbstractClientPlayer entity) {
-        return data.getSkin();
-    }
 }

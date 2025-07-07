@@ -19,7 +19,7 @@ public class ItemStackMixin {
         var stack = (ItemStack) (Object) this;
         if (stack.getItem() instanceof IItemExtensions ext) {
             if (!stack.hasTag() || !stack.getTag().contains("AttributeModifiers", 9)) {
-                cir.setReturnValue(ext.getAttributeModifiers(stack, slot));
+                cir.setReturnValue(ext.getAttributeModifications(stack, slot));
             }
         }
     }

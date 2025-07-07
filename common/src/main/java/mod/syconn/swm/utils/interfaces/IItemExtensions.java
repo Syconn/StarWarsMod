@@ -14,7 +14,7 @@ public interface IItemExtensions {
         return true;
     }
 
-    default Multimap<Attribute, AttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+    default Multimap<Attribute, AttributeModifier> getAttributeModifications(ItemStack stack, EquipmentSlot slot) {
         return ((Item) this).getDefaultAttributeModifiers(slot);
     }
 }

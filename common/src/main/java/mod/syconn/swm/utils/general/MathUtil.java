@@ -78,8 +78,8 @@ public class MathUtil {
     }
 
     public static int wrap(int value, int max) {
-        if (value < 0) return max;
-        if (value > max) return 0;
+        if (value < 0) return max + value + 1;
+        if (value > max) return value - max - 1;
         return value;
     }
 }

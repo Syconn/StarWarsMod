@@ -47,7 +47,7 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
             poseStack.translate(0f, -0.43f, 0f);
             poseStack.mulPose(Axis.YN.rotationDegrees(RenderUtil.isLeftHanded(renderMode) ? -45f : 45f));
             poseStack.scale(0.6f, 0.6f, 0.6f);
-            var hologramData = getOrRegisterRenderer(uuid, mod.syconn.swm.utils.client.HologramData.HologramTag.refreshed(stack));
+            var hologramData = getOrRegisterRenderer(uuid, HologramData.HologramTag.refreshed(stack));
             hologramData.getRenderer().render(poseStack, bufferSource, StarWarsClient.getTickDelta(), LightTexture.FULL_BLOCK);
 
             poseStack.popPose();
