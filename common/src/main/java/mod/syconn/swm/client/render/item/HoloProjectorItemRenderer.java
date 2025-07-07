@@ -32,31 +32,37 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
         poseStack.pushPose();
 
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
-        if (renderMode != ItemDisplayContext.GUI)
-            renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
+        if (renderMode != ItemDisplayContext.GUI) renderDirect(stack, renderMode, poseStack, bufferSource);
 
         poseStack.popPose();
     }
 
 
-    private void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
-        var uuid = HologramData.HologramTag.getOrCreate(stack).uuid;
-        if (uuid != null) {
+    private void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource) {
+        var holo = HologramData.HologramTag.getOrCreate(stack);
+        var hologramData = getHologramData(holo);
+
+        if (hologramData != null) {
             poseStack.pushPose();
 
             poseStack.translate(0f, -0.43f, 0f);
             poseStack.mulPose(Axis.YN.rotationDegrees(RenderUtil.isLeftHanded(renderMode) ? -45f : 45f));
             poseStack.scale(0.6f, 0.6f, 0.6f);
-            var hologramData = getOrRegisterRenderer(uuid, HologramData.HologramTag.refreshed(stack));
+
             hologramData.getRenderer().render(poseStack, bufferSource, StarWarsClient.getTickDelta(), LightTexture.FULL_BLOCK);
 
             poseStack.popPose();
         }
     }
 
-    private HologramData getOrRegisterRenderer(UUID uuid, boolean refresh) {
-        if (!RENDERER.containsKey(uuid) || refresh) RENDERER.put(uuid, new HologramData(uuid));
-        return RENDERER.get(uuid);
+    private HologramData getHologramData(HologramData.HologramTag hologramTag) {
+        var data = RENDERER.get(hologramTag.itemId);
+        if (data == null && hologramTag.uuid != null) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, true));
+        else if (data != null) {
+            if (data.getTransition() == 0 && hologramTag.uuid == null) data.endCall(() -> RENDERER.remove(hologramTag.itemId));
+            else if (hologramTag.uuid != null && !hologramTag.uuid.equals(data.getPlayer().getUUID())) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, true));
+        }
+        return RENDERER.get(hologramTag.itemId);
     }
 
     @Override

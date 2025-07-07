@@ -22,9 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
 public class HologramData {
@@ -34,6 +31,7 @@ public class HologramData {
     private final HologramRenderer renderer;
     private final AbstractClientPlayer player;
     private final ResourceLocation skin;
+    private final boolean item;
     private final int textureHeight = 64;
     private Runnable endCall = null;
     private int transition;
@@ -41,9 +39,10 @@ public class HologramData {
     private int scanBar1 = 0;
     private int scanBar2 = 0;
 
-    public HologramData(@NotNull UUID uuid) { // TODO HAND + BLOCK BREAK EACH OTHER
+    public HologramData(@NotNull UUID uuid, boolean item) { // TODO HAND + BLOCK BREAK EACH OTHER
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
+        this.item = item;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
         this.player = new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
 //        this.player = (AbstractClientPlayer) level.getPlayerByUUID(playerInfo.getProfile().getId()); TODO USE MORE LATER
@@ -73,7 +72,8 @@ public class HologramData {
             if (this.scanBar1 >= this.textureHeight) this.scanBar1 = 0;
             if (this.scanBar2 >= this.textureHeight) this.scanBar2 = 0;
 
-            ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.grayScaled(color) : ColorUtil.hologramColor(color)));
+            ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(scanBar(y) ? 255 : 160,
+                    scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(color)));
             ResourceUtil.registerOrGet(player.getName().getString(), texture);
 
             this.scanBar1++;
@@ -83,8 +83,12 @@ public class HologramData {
 
     public float getAnimationScale(float partialTicks) {
         if (this.transition == 0) {
-            if (this.endCall != null) this.endCall.run();
-            return this.endCall != null ? 0 : 1;
+            var ret = this.endCall != null ? 0 : 1;
+            if (this.endCall != null) {
+                this.endCall.run();
+                this.endCall = null;
+            }
+            return ret;
         }
         if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
         return AnimationUtil.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
@@ -95,12 +99,20 @@ public class HologramData {
         this.transition = -TRANSITION_TICKS;
     }
 
+    public int getTransition() {
+        return transition;
+    }
+
     private boolean scanBar(int y) {
         return this.scanBar1 == y || MathUtil.wrap(this.scanBar1 - 32, this.textureHeight) == y || this.scanBar2 == y || MathUtil.wrap(this.scanBar2 - 32, this.textureHeight) == y;
     }
 
     public boolean shouldRender() {
         return Constants.RANDOM.nextInt(55) != 0;
+    }
+
+    public boolean isItem() {
+        return item;
     }
 
     public HologramRenderer getRenderer() {
@@ -119,23 +131,23 @@ public class HologramData {
 
         private static final String ID = "hologramData";
 
+        public final UUID itemId;
         public UUID uuid;
-        public boolean refresh;
 
-        public HologramTag(@Nullable UUID uuid, Boolean refresh) {
+        public HologramTag(@Nullable UUID uuid) {
             this.uuid = uuid;
-            this.refresh = refresh;
+            this.itemId = UUID.randomUUID();
         }
 
-        public HologramTag(CompoundTag tag) {
+        public HologramTag(CompoundTag tag) { // TODO NEED A NEW SYSTEM
             this.uuid = tag.hasUUID("uuid") ? tag.getUUID("uuid") : null;
-            this.refresh = tag.getBoolean("refresh");
+            this.itemId = tag.hasUUID("id") ? tag.getUUID("id") : UUID.randomUUID();
         }
 
         private CompoundTag save() {
             var tag = new CompoundTag();
             if (this.uuid != null) tag.putUUID("uuid", this.uuid);
-            tag.putBoolean("refresh", this.refresh);
+            tag.putUUID("id", this.itemId);
             return tag;
         }
 
@@ -146,21 +158,12 @@ public class HologramData {
 
         public static void update(ItemStack stack, UUID uuid) {
             var holo = getOrCreate(stack);
-            holo.uuid = !uuid.equals(holo.uuid) ? uuid : null;
-            holo.refresh = true;
+            holo.uuid = uuid.equals(holo.uuid) ? null : uuid;
             holo.change(stack);
-        }
-
-        public static boolean refreshed(ItemStack stack) {
-            var holo = getOrCreate(stack);
-            var refresh = holo.refresh;
-            holo.refresh = false;
-            holo.change(stack);
-            return refresh;
         }
 
         private static HologramTag create() {
-            return new HologramTag(null, false);
+            return new HologramTag((UUID) null);
         }
 
         public void change(ItemStack stack) {

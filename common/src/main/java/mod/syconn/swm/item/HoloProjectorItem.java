@@ -20,9 +20,9 @@ public class HoloProjectorItem extends BlockItem implements IItemExtensions {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         var stack = player.getItemInHand(usedHand);
-        if (level.isClientSide) return InteractionResultHolder.fail(stack);
+        if (level.isClientSide) return InteractionResultHolder.pass(stack);
         HologramData.HologramTag.update(stack, player.getUUID());
-        return InteractionResultHolder.success(stack);
+        return InteractionResultHolder.pass(stack);
     }
 
     @Override

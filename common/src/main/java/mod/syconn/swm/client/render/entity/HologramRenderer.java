@@ -3,7 +3,6 @@ package mod.syconn.swm.client.render.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.client.HologramData;
-import mod.syconn.swm.utils.general.AnimationUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,10 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMATION - FLICKER, SCAN LINES
+public class HologramRenderer extends PlayerRenderer {
 
     private static final Minecraft mc = GameInstance.getClient();
-    private static final byte TRANSITION_TICKS = 8;
     private final HologramData data;
 
     public HologramRenderer(HologramData data, boolean useSlimModel) {
@@ -47,8 +45,8 @@ public class HologramRenderer extends PlayerRenderer { // TODO START/STOP ANIMAT
     }
 
     @Override
-    protected @Nullable RenderType getRenderType(AbstractClientPlayer livingEntity, boolean bodyVisible, boolean translucent, boolean glowing) {
-        return RenderType.entityTranslucentCull(this.getTextureLocation(livingEntity));
+    protected @Nullable RenderType getRenderType(AbstractClientPlayer livingEntity, boolean bodyVisible, boolean translucent, boolean glowing) { // TODO TEST THIS
+        return this.data.isItem() ? RenderType.itemEntityTranslucentCull(this.getTextureLocation(livingEntity)) : RenderType.entityTranslucentCull(this.getTextureLocation(livingEntity));
     }
 
     @Override
