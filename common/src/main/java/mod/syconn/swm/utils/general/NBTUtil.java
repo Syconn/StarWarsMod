@@ -6,10 +6,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -51,14 +48,13 @@ public class NBTUtil {
     }
 
     public @Nullable static <T> T getNullable(CompoundTag tag, Function<CompoundTag, T> function) {
-        if (tag.contains("nullable", CompoundTag.TAG_STRING) && tag.getString("nullable").equals("nullable-null")) return null;
-        return function.apply(tag.getCompound("nullable"));
+        if (tag.contains("nullable")) return function.apply(tag.getCompound("nullable"));
+        return null;
     }
 
     public static <T> CompoundTag putNullable(@Nullable T optional, Function<T, CompoundTag> function) {
         var tag = new CompoundTag();
-        if (optional == null) tag.putString("nullable", "optional-null");
-        else tag.put("nullable", function.apply(optional));
+        if (optional != null) tag.put("nullable", function.apply(optional));
         return tag;
     }
 
@@ -72,10 +68,18 @@ public class NBTUtil {
         return enumClass.getEnumConstants()[tag.getInt("enumValue")];
     }
 
-    public static CompoundTag writeEnum(Enum<?> value) {
+    public static CompoundTag putEnum(Enum<?> value) {
         var tag = new CompoundTag();
         tag.putInt("enumValue", value.ordinal());
         return tag;
+    }
+
+    public static CompoundTag putUUID(UUID uuid) {
+        return NBTUtil.convert(t -> t.putUUID("id", uuid));
+    }
+
+    public static UUID getUUID(CompoundTag tag) {
+        return tag.getUUID("id");
     }
 
     public static Vec3 getVec3(CompoundTag tag) {

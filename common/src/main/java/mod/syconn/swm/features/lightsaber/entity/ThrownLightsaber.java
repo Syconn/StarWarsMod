@@ -132,7 +132,7 @@ public class ThrownLightsaber extends ThrowableProjectile {
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("return", this.returning);
-        compound.put("hand", NBTUtil.writeEnum(this.hand));
+        compound.put("hand", NBTUtil.putEnum(this.hand));
     }
 
     @Override

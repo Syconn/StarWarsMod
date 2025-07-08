@@ -45,7 +45,7 @@ public class HologramRenderer extends PlayerRenderer {
     }
 
     @Override
-    protected @Nullable RenderType getRenderType(AbstractClientPlayer livingEntity, boolean bodyVisible, boolean translucent, boolean glowing) { // TODO TEST THIS
+    protected @Nullable RenderType getRenderType(AbstractClientPlayer livingEntity, boolean bodyVisible, boolean translucent, boolean glowing) {
         return this.data.isItem() ? RenderType.itemEntityTranslucentCull(this.getTextureLocation(livingEntity)) : RenderType.entityTranslucentCull(this.getTextureLocation(livingEntity));
     }
 

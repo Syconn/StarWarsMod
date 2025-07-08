@@ -27,7 +27,6 @@ import java.util.UUID;
 public class HologramData {
 
     public static final byte TRANSITION_TICKS = 16;
-
     private final HologramRenderer renderer;
     private final AbstractClientPlayer player;
     private final ResourceLocation skin;
@@ -39,7 +38,7 @@ public class HologramData {
     private int scanBar1 = 0;
     private int scanBar2 = 0;
 
-    public HologramData(@NotNull UUID uuid, boolean item) { // TODO HAND + BLOCK BREAK EACH OTHER
+    public HologramData(@NotNull UUID uuid, boolean item) {
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
         this.item = item;
@@ -152,13 +151,14 @@ public class HologramData {
         }
 
         public static HologramTag getOrCreate(ItemStack stack) {
-            if (!stack.getOrCreateTag().contains(ID)) return create();
-            return new HologramTag(stack.getOrCreateTag().getCompound(ID));
+            var tag = !stack.getOrCreateTag().contains(ID) ? create() : new HologramTag(stack.getOrCreateTag().getCompound(ID));
+            tag.change(stack);
+            return tag;
         }
 
         public static void update(ItemStack stack, UUID uuid) {
             var holo = getOrCreate(stack);
-            holo.uuid = uuid.equals(holo.uuid) ? null : uuid;
+            holo.uuid = uuid;
             holo.change(stack);
         }
 

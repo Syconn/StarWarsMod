@@ -16,9 +16,8 @@ public class ListUtil {
 
     @SafeVarargs
     public static <T> List<T> append(T element, List<T>... lists) {
-        var list = new ArrayList<T>();
-        list.add(element);
-        list.addAll(join(lists));
+        var list = join(lists);
+        list.add(0, element);
         return list;
     }
 

@@ -10,14 +10,16 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
 public class ClientHooks {
 
-    public static Screen createHologramScreen(WorldPos worldPos, boolean handheld) {
-        return new HologramScreen(worldPos, handheld);
+    public static Screen createHologramScreen(WorldPos worldPos, @Nullable ItemStack stack) {
+        return new HologramScreen(worldPos, stack);
     }
 
     public static AbstractClientPlayer createMockPlayer(ClientLevel level, String name) {

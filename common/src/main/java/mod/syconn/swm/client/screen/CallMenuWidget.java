@@ -8,6 +8,7 @@ import mod.syconn.swm.client.screen.components.buttons.ToggleButton;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
+import mod.syconn.swm.utils.client.HologramData;
 import mod.syconn.swm.utils.general.ColorUtil;
 import mod.syconn.swm.utils.general.GraphicsUtil;
 import mod.syconn.swm.utils.general.ListUtil;
@@ -15,10 +16,12 @@ import mod.syconn.swm.utils.interfaces.IWidgetComponent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.PlayerFaceRenderer;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,6 +35,7 @@ public class CallMenuWidget implements IWidgetComponent {
     private final List<MenuData> shownCreateCallPlayers = new ArrayList<>();
     private final List<MenuData> shownJoinCallPlayers = new ArrayList<>();
     private final ToggleButton[] toggleButtons = new ToggleButton[3];
+    private final CallButton[] callButtonsHandheld = new CallButton[3];
     private final PlayerCountWidget[] playerCountWidgets = new PlayerCountWidget[3];
     private final CallButton[] callButtons = new CallButton[6];
     private final Minecraft minecraft = Minecraft.getInstance();
@@ -39,16 +43,18 @@ public class CallMenuWidget implements IWidgetComponent {
     private final int height = 32;
     private final HologramScreen screen;
     private final int x, y;
+    private final ItemStack stack;
     private int scroll = 0;
     private ScrollerWidget scroller;
     private HologramScreen.Page page;
-    private String lastSearch;
+    private String lastSearch; // TODO IF HANDHELD CREATE CALL TO THE SLIDERS INSTEAD
 
     public CallMenuWidget(HologramScreen screen, int x, int y, HologramScreen.Page page, Function<IWidgetComponent, IWidgetComponent> widgets) {
         this.x = x;
         this.y = y;
         this.page = page;
         this.screen = screen;
+        this.stack = this.screen.getStack();
 
         this.refreshPlayerList();
         this.init(widgets);
@@ -63,6 +69,7 @@ public class CallMenuWidget implements IWidgetComponent {
             final var v = i;
             var row = this.height * v;
             this.toggleButtons[v] = (ToggleButton) widgets.apply(new ToggleButton(this.x + 180, this.y + 21 + row, false, ToggleButton.Color.GREEN, b -> this.toggled(b, v)));
+            this.callButtonsHandheld[v] = (CallButton) widgets.apply(new CallButton(this.x + 180, this.y + 17 + row, CallButton.Type.START, "Begin Call", b -> this.callHandheldPressed(b, v)));
             this.playerCountWidgets[v] = (PlayerCountWidget) widgets.apply(new PlayerCountWidget(this.x + 195, this.y + 28 + row));
             this.callButtons[v] = (CallButton) widgets.apply(new CallButton(this.x + 34, this.y + 26 + row, 0.75f, CallButton.Type.START, "Join Call", b -> callPressed((CallButton) b, v)));
             this.callButtons[v + 3] = (CallButton) widgets.apply(new CallButton(this.x + 100, this.y + 26 + row, 0.75f, CallButton.Type.END, "Decline Call", b -> callPressed((CallButton) b, v)));
@@ -74,6 +81,12 @@ public class CallMenuWidget implements IWidgetComponent {
     private void toggled(ToggleButton button, int i) {
         var player = this.shownCreateCallPlayers.get(this.scroll + i);
         this.shownCreateCallPlayers.set(this.scroll + i, new MenuData(player.info, List.of(), button.isActive(), player.locked));
+    }
+
+    private void callHandheldPressed(Button button, int i) {
+        var holo = HologramData.HologramTag.getOrCreate(this.stack);
+        var player = this.shownCreateCallPlayers.get(this.scroll + i);
+        this.screen.createCall(ListUtil.append(this.screen.getCaller(), List.of(new HologramNetwork.Caller(player.info.getProfile().getId(), null, null))));
     }
 
     private void callPressed(CallButton button, int i) {
@@ -92,7 +105,6 @@ public class CallMenuWidget implements IWidgetComponent {
                 var connection = this.minecraft.player.connection;
                 var uuids = connection.getOnlinePlayerIds();
                 uuids.forEach(uuid -> this.listedCreateCallPlayers.add(MenuData.ofCreate(connection.getPlayerInfo(uuid), isPlayerMe(connection.getPlayerInfo(uuid)))));
-                for (int i = 0; i < 2; i++) this.listedCreateCallPlayers.add(MenuData.ofCreate(ClientHooks.getInfo(ClientHooks.createMockPlayer(this.minecraft.level, "Test-Player" + (i + 1))), false)); // TODO REMOVE
             } else Network.CHANNEL.sendToServer(new RequestHologramPacket());
         }
     }
@@ -102,16 +114,22 @@ public class CallMenuWidget implements IWidgetComponent {
         this.scroller.updateSize(this.shownCreateCallPlayers.size() - 3);
 
         Arrays.stream(this.toggleButtons).forEach(b -> b.visible = false);
+        Arrays.stream(this.callButtonsHandheld).forEach(b -> b.visible = false);
         Arrays.stream(this.playerCountWidgets).forEach(b -> b.visible = false);
         Arrays.stream(this.callButtons).forEach(b -> b.visible = false);
 
         if (this.page == HologramScreen.Page.CREATE_CALL) {
             for (int i = scroll; i < Math.min(scroll + 3, this.shownCreateCallPlayers.size()); i++) {
                 var player = this.shownCreateCallPlayers.get(i);
-                var toggle = this.toggleButtons[i - scroll];
-                toggle.setActive(player.added);
-                toggle.setLocked(player.locked);
-                toggle.visible = true;
+                if (this.stack != null && !isPlayerMe(player.info)) {
+                    var call = this.callButtonsHandheld[i - scroll];
+                    call.visible = true;
+                } else {
+                    var toggle = this.toggleButtons[i - scroll];
+                    toggle.setActive(player.added);
+                    toggle.setLocked(player.locked);
+                    toggle.visible = true;
+                }
             }
         } else {
             for (int i = scroll; i < Math.min(scroll + 3, this.shownJoinCallPlayers.size()); i++) {
@@ -160,14 +178,15 @@ public class CallMenuWidget implements IWidgetComponent {
         if (menu.isEmpty()) graphics.drawCenteredString(this.minecraft.font, Component.literal(emptyList).withStyle(ChatFormatting.BOLD, ChatFormatting.RED), x + width / 2, y + 16, -1);
         for (int i = this.scroll; i < Math.min(this.scroll + 3, menu.size()); i++) {
             var info = menu.get(i).info;
-            var me = this.isPlayerMe(info);
-            var minY = y + this.height * (i - this.scroll);
-//            var name = me ? mePrefix : (info.getProfile().getName() + suffix);
-            var name = info.getProfile().getName() + suffix;
+            if (info != null) {
+                var me = this.isPlayerMe(info);
+                var minY = y + this.height * (i - this.scroll);
+                var name = me ? mePrefix : (info.getProfile().getName() + suffix);
 
-            GraphicsUtil.fillRect(graphics, this.x, minY, width, this.height, this.color);
-            PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), this.x + 4, minY + 4, 24);
-            graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD).withStyle(me ? ChatFormatting.GOLD : ChatFormatting.WHITE), this.x + 34, minY + 12 + offset, -1);
+                GraphicsUtil.fillRect(graphics, this.x, minY, width, this.height, this.color);
+                PlayerFaceRenderer.draw(graphics, info.getSkinLocation(), this.x + 4, minY + 4, 24);
+                graphics.drawString(this.minecraft.font, Component.literal(name).withStyle(ChatFormatting.BOLD).withStyle(me ? ChatFormatting.GOLD : ChatFormatting.WHITE), this.x + 34, minY + 12 + offset, -1);
+            }
         }
     }
     
@@ -189,7 +208,7 @@ public class CallMenuWidget implements IWidgetComponent {
         this.updateMenu(0);
     }
 
-    private void searchList(String search, List<MenuData> searchList, List<MenuData> players) { // TODO LIST UTIL FUNCTION
+    private void searchList(String search, List<MenuData> searchList, List<MenuData> players) {
         searchList.clear();
         if (search == null || search.isEmpty()) searchList.addAll(players);
         else searchList.addAll(players.stream().filter(s -> s.info.getProfile().getName().toLowerCase().contains(search.toLowerCase())).toList());
@@ -224,7 +243,7 @@ public class CallMenuWidget implements IWidgetComponent {
 
     public List<HologramNetwork.Caller> getCallers() {
         return this.shownCreateCallPlayers.stream().filter(p -> !isPlayerMe(p.info) && p.added)
-                .map(p -> new HologramNetwork.Caller(p.info.getProfile().getId(), null, false)).toList();
+                .map(p -> new HologramNetwork.Caller(p.info.getProfile().getId(), null, null)).toList();
     }
 
     record MenuData(PlayerInfo info, List<Component> players, boolean added, boolean locked) {

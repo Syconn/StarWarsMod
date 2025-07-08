@@ -8,6 +8,7 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.HologramData;
 import mod.syconn.swm.utils.general.ListUtil;
 import mod.syconn.swm.utils.block.WorldPos;
 import net.fabricmc.api.EnvType;
@@ -19,6 +20,8 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Locale;
@@ -27,7 +30,7 @@ import java.util.UUID;
 public class HologramScreen extends Screen {
 
     private static final ResourceLocation HOLOGRAM_SCREEN = Constants.withId("textures/gui/hologram_screen.png");
-    private final boolean handheld;
+    private final ItemStack stack;
     private final WorldPos worldPos;
     private Page page = Page.CREATE_CALL;
     private String lastSearch = "";
@@ -37,9 +40,9 @@ public class HologramScreen extends Screen {
     private ErrorWidget errorWidget;
     private Component pageTitle;
 
-    public HologramScreen(WorldPos worldPos, boolean handheld) {
+    public HologramScreen(WorldPos worldPos, @Nullable ItemStack stack) {
         super(Component.literal("Hologram Projector Screen"));
-        this.handheld = handheld;
+        this.stack = stack;
         this.worldPos = worldPos;
     }
 
@@ -66,7 +69,7 @@ public class HologramScreen extends Screen {
         this.errorWidget = this.addRenderableWidget(new ErrorWidget(leftPos + 236 / 2, 20));
 
         var m = this.marginX() + 3;
-        this.callButton = this.addRenderableWidget(new CallButton(m + 209, 74, 0.80f, CallButton.Type.START, "Start Call", this::createCall));
+        if (this.stack == null) this.callButton = this.addRenderableWidget(new CallButton(m + 209, 74, 0.80f, CallButton.Type.START, "Start Call", this::createCall));
         this.callData = new CallMenuWidget(this, leftPos + 10, 92, this.page, this::addRenderableWidget);
         this.addRenderableWidget(new RefreshButton(m + 11, 90, this.callData::refresh));
 
@@ -87,11 +90,11 @@ public class HologramScreen extends Screen {
         this.callData.setPage(this.page);
         switch (page) {
             case CREATE_CALL:
-                this.callButton.visible = true;
+                if (this.stack == null) this.callButton.visible = true;
                 this.pageTitle = Component.literal("Start Call");
                 break;
             case JOIN_CALL:
-                this.callButton.visible = false;
+                if (this.stack == null) this.callButton.visible = false;
                 this.pageTitle = Component.literal("Join Call");
                 break;
         }
@@ -136,6 +139,10 @@ public class HologramScreen extends Screen {
         this.callData.handleNetworkPacket(network);
     }
 
+    public ItemStack getStack() {
+        return stack;
+    }
+
     private void checkSearchStringUpdate(String newText) {
         newText = newText.toLowerCase(Locale.ROOT);
         if (!newText.equals(this.lastSearch)) {
@@ -147,9 +154,13 @@ public class HologramScreen extends Screen {
 
     private void createCall(Button button) {
         if (!this.callData.getCallers().isEmpty()) {
-            Network.CHANNEL.sendToServer(new HoloCallPacket(HoloCallPacket.Type.CREATE, UUID.randomUUID(), ListUtil.append(getCaller(), this.callData.getCallers())));
-            Minecraft.getInstance().setScreen(null);
+            this.createCall(ListUtil.append(getCaller(), this.callData.getCallers()));
         } else this.errorWidget.displayError("ERROR: You must add at least one player", 100);
+    }
+
+    public void createCall(List<HologramNetwork.Caller> callers) {
+        Network.CHANNEL.sendToServer(new HoloCallPacket(HoloCallPacket.Type.CREATE, UUID.randomUUID(), callers));
+        Minecraft.getInstance().setScreen(null);
     }
 
     public void joinCall(UUID callId) { // TODO TEST
@@ -161,8 +172,9 @@ public class HologramScreen extends Screen {
         Network.CHANNEL.sendToServer(new HoloCallPacket(HoloCallPacket.Type.LEAVE, callId, List.of(getCaller())));
     }
 
-    private HologramNetwork.Caller getCaller() {
-        return new HologramNetwork.Caller(this.minecraft.player.getUUID(), this.worldPos, this.handheld);
+    public HologramNetwork.Caller getCaller() {
+        var uuid = this.stack == null ? null : HologramData.HologramTag.getOrCreate(this.stack).itemId;
+        return new HologramNetwork.Caller(this.minecraft.player.getUUID(), uuid, this.worldPos);
     }
 
     @Environment(EnvType.CLIENT)
