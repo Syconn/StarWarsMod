@@ -17,7 +17,7 @@ public class ColoredLightsaberButton extends ExpandedButton {
     }
 
     public ColoredLightsaberButton(int xPos, int yPos, Component displayString, int hsv, int u, int v, OnPress handler) {
-        super(xPos, yPos, (int)(18 * 0.25f), (int)(18 * 0.25f), displayString, handler);
+        super(xPos, yPos, (int)(71 * 0.25f), (int)(71 * 0.25f), displayString, handler);
         this.hsv = hsv;
         this.u = u;
         this.v = v;
