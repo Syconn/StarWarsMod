@@ -55,7 +55,7 @@
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar
-[Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-f5ba508df9\1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2\minecraft-merged-f5ba508df9-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2.jar
+[Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\minecraftMaven\net\minecraft\minecraft-merged-adc751d9ee\1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2\minecraft-merged-adc751d9ee-1.20.1-loom.mappings.1_20_1.layered+hash.1900676243-v2.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\c7350a71920f3ae9142945e25fed4846cce53374\netty-transport-native-epoll-4.1.82.Final-linux-x86_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-epoll\4.1.82.Final\476409d6255001ca53a55f65b01c13822f8dc93a\netty-transport-native-epoll-4.1.82.Final-linux-aarch_64.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_1900676243_v2\net\fabricmc\fabric-api\fabric-api\0.92.5+1.20.1\fabric-api-0.92.5+1.20.1.jar
@@ -115,15 +115,15 @@
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_1900676243_v2\net\fabricmc\fabric-api\fabric-transitive-access-wideners-v1\4.3.2+1802ada577\fabric-transitive-access-wideners-v1-4.3.2+1802ada577.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_1900676243_v2\mezz\jei\jei-1.20.1-fabric-api\15.20.0.106\jei-1.20.1-fabric-api-15.20.0.106.jar
 [Architectury Transformer DEBUG]  - C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\.gradle\loom-cache\remapped_mods\loom_mappings_1_20_1_layered_hash_1900676243_v2\mezz\jei\jei-1.20.1-common-api-intermediary\15.20.0.106\jei-1.20.1-common-api-intermediary-15.20.0.106.jar
-[Architectury Transformer] Read classpath in 1.273 s
+[Architectury Transformer] Read classpath in 1.156 s
 [Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar
-[Architectury Transformer DEBUG] Transforming 5 transformer(s) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar to C:\Users\Aidan\AppData\Local\Temp\12730272120534462309.jar: 
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@66645fd2
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@64cacea1
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@307997a4
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@1587e9a6
-[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@51d9be0b
-[Architectury Transformer DEBUG] Transforming from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar to C:\Users\Aidan\AppData\Local\Temp\12730272120534462309.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
+[Architectury Transformer DEBUG] Transforming 5 transformer(s) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar to C:\Users\Aidan\AppData\Local\Temp\7683819189672731790.jar: 
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RuntimeMixinRefmapDetector@64d4fde6
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.GenerateFakeFabricMod@2af2d6fe
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformExpectPlatform@2a6d0fb3
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.RemapInjectables@5fa5dc92
+[Architectury Transformer DEBUG]  - dev.architectury.transformer.transformers.TransformPlatformOnly@1c5d314d
+[Architectury Transformer DEBUG] Transforming from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar to C:\Users\Aidan\AppData\Local\Temp\7683819189672731790.jar with 5 transformer(s) on dev.architectury.transformer.handler.SimpleTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/block/HoloProjectorBlock with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/block/TwoPartBlock with maxs=true frames=true
@@ -226,24 +226,22 @@
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/NodeVec3 with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/PlasmaBuffer with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/Constants with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/AnimationUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil$TintMode with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/DirectionUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/FontUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/GraphicsUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/JsonUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ListUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/MathUtil$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/MathUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ModelUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/NBTUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/RenderUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ResourceUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/StringUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/TransformUtil$State with maxs=true frames=true
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/TransformUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/AnimationUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil$TintMode with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/DirectionUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/FontUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/GraphicsUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/JsonUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ListUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/MathUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/MathUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ModelUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/NBTUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/RenderUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ResourceUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/StringUtil with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IEntityBlock with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IItemExtensions with maxs=true frames=true
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IModifiedItemRenderer with maxs=true frames=true
@@ -256,441 +254,324 @@
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/server/SyncedResourceManager with maxs=true frames=true
 [Architectury Transformer DEBUG] Checking whether /swm-common-common-refmap.json is a mixin config.
 [Architectury Transformer DEBUG] Checking whether /swm.mixins.json is a mixin config.
-[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\AppData\Local\Temp\12730272120534462309.jar
+[Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\AppData\Local\Temp\7683819189672731790.jar
 [Architectury Transformer] Listening at C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar
-[Architectury Transformer DEBUG] Temporary jar [C:\Users\Aidan\AppData\Local\Temp\12730272120534462309.jar] contains packages: mod.syconn.swm.utils.general, mod.syconn.swm.server.savedata, mod.syconn.swm.client.screen, mod.syconn.swm.features.lightsaber.blockentity, mod.syconn.swm.features.lightsaber.data, mod.syconn.swm.server.recipes, mod.syconn.swm.features.lightsaber.network, mod.syconn.swm, mod.syconn.swm.network.packets.clientside, mod.syconn.swm.integration.jei.category, mod.syconn.swm.utils.block, mod.syconn.swm.client.render.block, mod.syconn.swm.network, mod.syconn.swm.features.addons, mod.syconn.swm.utils.interfaces, mod.syconn.swm.features.lightsaber.client.entity, mod.syconn.swm.network.packets.serverside, mod.syconn.swm.features.blaster.item, mod.syconn.swm.block, mod.syconn.swm.utils.client, mod.syconn.swm.server.containers.slot, mod.syconn.swm.integration.jei, mod.syconn.swm.features.lightsaber.entity, mod.syconn.swm.utils, mod.syconn.swm.client.render.item, mod.syconn.swm.utils.server, mod.syconn.swm.core, mod.syconn.swm.features.blaster.data, mod.syconn.swm.client.screen.components, mod.syconn.swm.mixin, mod.syconn.swm.server, mod.syconn.swm.features.lightsaber.block, mod.syconn.swm.client.keys, mod.syconn.swm.features.lightsaber.server.container, mod.syconn.swm.client.screen.components.buttons, mod.syconn.swm.features.lightsaber.item, mod.syconn.swm.features.lightsaber.client, mod.syconn.swm.blockentity, mod.syconn.swm.features.blaster.client, mod.syconn.swm.client, mod.syconn.swm.item, mod.syconn.swm.client.render.entity, mod.syconn.swm.features.lightsaber.client.screen
+[Architectury Transformer DEBUG] Temporary jar [C:\Users\Aidan\AppData\Local\Temp\7683819189672731790.jar] contains packages: mod.syconn.swm.server.savedata, mod.syconn.swm.client.screen, mod.syconn.swm.features.lightsaber.blockentity, mod.syconn.swm.features.lightsaber.data, mod.syconn.swm.server.recipes, mod.syconn.swm.features.lightsaber.network, mod.syconn.swm, mod.syconn.swm.network.packets.clientside, mod.syconn.swm.integration.jei.category, mod.syconn.swm.utils.block, mod.syconn.swm.client.render.block, mod.syconn.swm.network, mod.syconn.swm.features.addons, mod.syconn.swm.utils.interfaces, mod.syconn.swm.features.lightsaber.client.entity, mod.syconn.swm.utils.generic, mod.syconn.swm.network.packets.serverside, mod.syconn.swm.features.blaster.item, mod.syconn.swm.block, mod.syconn.swm.utils.client, mod.syconn.swm.server.containers.slot, mod.syconn.swm.integration.jei, mod.syconn.swm.features.lightsaber.entity, mod.syconn.swm.utils, mod.syconn.swm.client.render.item, mod.syconn.swm.utils.server, mod.syconn.swm.core, mod.syconn.swm.features.blaster.data, mod.syconn.swm.client.screen.components, mod.syconn.swm.mixin, mod.syconn.swm.server, mod.syconn.swm.features.lightsaber.block, mod.syconn.swm.client.keys, mod.syconn.swm.features.lightsaber.server.container, mod.syconn.swm.client.screen.components.buttons, mod.syconn.swm.features.lightsaber.item, mod.syconn.swm.features.lightsaber.client, mod.syconn.swm.blockentity, mod.syconn.swm.features.blaster.client, mod.syconn.swm.client, mod.syconn.swm.item, mod.syconn.swm.client.render.entity, mod.syconn.swm.features.lightsaber.client.screen
 [Architectury Transformer DEBUG] Closed File Systems for C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.0.4-dev.jar
 [Architectury Transformer DEBUG] Classpath entry [C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\fabric\build\resources\main] contains packages: 
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/StarWars.class to mod/syconn/swm/StarWars.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/StarWars with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/StarWars in 1.622 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/StarWars in 1.433 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlocks.class to mod/syconn/swm/core/ModBlocks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlocks with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlocks in 904.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlocks in 596.2 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class to mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock in 1.690 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/block/LightsaberWorkbenchBlock in 1.292 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/IEntityBlock.class to mod/syconn/swm/utils/interfaces/IEntityBlock.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IEntityBlock with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IEntityBlock in 289.0 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IEntityBlock in 169.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/block/TwoPartBlock.class to mod/syconn/swm/block/TwoPartBlock.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/block/TwoPartBlock with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/TwoPartBlock in 697.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/TwoPartBlock in 698.2 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class to mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 458.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/blockentity/LightsaberWorkbenchBlockEntity in 526.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/blockentity/SyncedBlockEntity.class to mod/syconn/swm/blockentity/SyncedBlockEntity.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/SyncedBlockEntity with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 221.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/SyncedBlockEntity in 332.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModItems.class to mod/syconn/swm/core/ModItems.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModItems with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModItems in 491.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModItems in 669.7 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/item/LightsaberItem.class to mod/syconn/swm/features/lightsaber/item/LightsaberItem.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/item/LightsaberItem with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/item/LightsaberItem in 429.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/item/LightsaberItem in 479.7 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/IItemExtensions.class to mod/syconn/swm/utils/interfaces/IItemExtensions.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IItemExtensions with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IItemExtensions in 162.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IItemExtensions in 168.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/blaster/item/BlasterItem.class to mod/syconn/swm/features/blaster/item/BlasterItem.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/blaster/item/BlasterItem with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/blaster/item/BlasterItem in 192.4 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/blaster/item/BlasterItem in 185.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/block/HoloProjectorBlock.class to mod/syconn/swm/block/HoloProjectorBlock.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/block/HoloProjectorBlock with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/HoloProjectorBlock in 511.1 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/block/HoloProjectorBlock in 549.3 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/blockentity/HoloProjectorBlockEntity.class to mod/syconn/swm/blockentity/HoloProjectorBlockEntity.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/blockentity/HoloProjectorBlockEntity with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/HoloProjectorBlockEntity in 323.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/blockentity/HoloProjectorBlockEntity in 587.3 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/item/HoloProjectorItem.class to mod/syconn/swm/item/HoloProjectorItem.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/item/HoloProjectorItem with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/item/HoloProjectorItem in 477.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/item/HoloProjectorItem in 542.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/block/ModBlockStateProperties.class to mod/syconn/swm/utils/block/ModBlockStateProperties.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/block/ModBlockStateProperties with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/block/ModBlockStateProperties in 364.0 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/block/ModBlockStateProperties in 249.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/block/TwoPart.class to mod/syconn/swm/utils/block/TwoPart.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/block/TwoPart with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/block/TwoPart in 367.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/block/TwoPart in 279.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModBlockEntities.class to mod/syconn/swm/core/ModBlockEntities.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModBlockEntities with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlockEntities in 470.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModBlockEntities in 538.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModEntities.class to mod/syconn/swm/core/ModEntities.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModEntities with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModEntities in 417.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModEntities in 299.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class to mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber in 766.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/entity/ThrownLightsaber in 477.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModMenus.class to mod/syconn/swm/core/ModMenus.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModMenus with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModMenus in 313.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModMenus in 387.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class to mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu in 710.4 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberWorkbenchMenu in 351.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/containers/slot/SpecificSlot.class to mod/syconn/swm/server/containers/slot/SpecificSlot.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/containers/slot/SpecificSlot with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/containers/slot/SpecificSlot in 243.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/containers/slot/SpecificSlot in 163.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/server/container/LightsaberAssemblerMenu.class to mod/syconn/swm/features/lightsaber/server/container/LightsaberAssemblerMenu.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/server/container/LightsaberAssemblerMenu with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberAssemblerMenu in 461.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/server/container/LightsaberAssemblerMenu in 423.0 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModRecipes.class to mod/syconn/swm/core/ModRecipes.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModRecipes with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModRecipes in 297.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModRecipes in 282.0 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/recipes/LightsaberRecipe$Serializer.class to mod/syconn/swm/server/recipes/LightsaberRecipe$Serializer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/recipes/LightsaberRecipe$Serializer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/recipes/LightsaberRecipe$Serializer in 388.1 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/recipes/LightsaberRecipe$Serializer in 322.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModRecipes$1.class to mod/syconn/swm/core/ModRecipes$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModRecipes$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModRecipes$1 in 169.0 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModRecipes$1 in 143.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/Network.class to mod/syconn/swm/network/Network.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/Network with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/Network in 475.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/Network in 318.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/Constants.class to mod/syconn/swm/utils/Constants.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/Constants with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/Constants in 161.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/Constants in 157.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket in 427.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ToggleLightsaberPacket in 447.3 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class to mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket in 536.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ThrowLightsaberPacket in 447.1 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/clientside/SyncResourceDataPacket.class to mod/syconn/swm/network/packets/clientside/SyncResourceDataPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/clientside/SyncResourceDataPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/SyncResourceDataPacket in 443.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/SyncResourceDataPacket in 368.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/ChangeLightsaberHSVPacket.class to mod/syconn/swm/features/lightsaber/network/ChangeLightsaberHSVPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/ChangeLightsaberHSVPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ChangeLightsaberHSVPacket in 362.1 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/ChangeLightsaberHSVPacket in 433.7 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/network/CraftHiltPacket.class to mod/syconn/swm/features/lightsaber/network/CraftHiltPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/network/CraftHiltPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/CraftHiltPacket in 368.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/network/CraftHiltPacket in 374.3 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/serverside/HoloCallPacket.class to mod/syconn/swm/network/packets/serverside/HoloCallPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/serverside/HoloCallPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/HoloCallPacket in 449.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/HoloCallPacket in 354.7 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/serverside/HoloCallPacket$Type.class to mod/syconn/swm/network/packets/serverside/HoloCallPacket$Type.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/serverside/HoloCallPacket$Type with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/HoloCallPacket$Type in 227.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/HoloCallPacket$Type in 188.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/clientside/RequestedHologramPacket.class to mod/syconn/swm/network/packets/clientside/RequestedHologramPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/clientside/RequestedHologramPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/RequestedHologramPacket in 234.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/RequestedHologramPacket in 356.2 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/serverside/RequestHologramPacket.class to mod/syconn/swm/network/packets/serverside/RequestHologramPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/serverside/RequestHologramPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/RequestHologramPacket in 355.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/serverside/RequestHologramPacket in 297.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/network/packets/clientside/NotifyPlayerPacket.class to mod/syconn/swm/network/packets/clientside/NotifyPlayerPacket.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/network/packets/clientside/NotifyPlayerPacket with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/NotifyPlayerPacket in 476.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/network/packets/clientside/NotifyPlayerPacket in 206.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/addons/LightsaberContent.class to mod/syconn/swm/features/addons/LightsaberContent.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/addons/LightsaberContent with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/addons/LightsaberContent in 495.6 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ColorUtil.class to mod/syconn/swm/utils/general/ColorUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/addons/LightsaberContent in 342.6 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/ColorUtil.class to mod/syconn/swm/utils/generic/ColorUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ColorUtil in 599.7 μs
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/ColorUtil in 540.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/server/JsonResourceReloader.class to mod/syconn/swm/utils/server/JsonResourceReloader.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/server/JsonResourceReloader with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/JsonResourceReloader in 558.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/JsonResourceReloader in 496.0 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/server/SyncedResourceManager$ISyncedData.class to mod/syconn/swm/utils/server/SyncedResourceManager$ISyncedData.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/server/SyncedResourceManager$ISyncedData with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/SyncedResourceManager$ISyncedData in 153.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/SyncedResourceManager$ISyncedData in 109.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberData.class to mod/syconn/swm/features/lightsaber/data/LightsaberData.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberData with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberData in 789.1 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberData in 1.002 ms
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/ISerializable.class to mod/syconn/swm/utils/interfaces/ISerializable.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/ISerializable with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/ISerializable in 107.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/ISerializable in 168.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/StarWarsClient.class to mod/syconn/swm/client/StarWarsClient.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/StarWarsClient with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/StarWarsClient in 775.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/StarWarsClient in 603.2 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/IModifiedItemRenderer.class to mod/syconn/swm/utils/interfaces/IModifiedItemRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IModifiedItemRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IModifiedItemRenderer in 249.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IModifiedItemRenderer in 188.5 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/IModifiedPoseRenderer.class to mod/syconn/swm/utils/interfaces/IModifiedPoseRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IModifiedPoseRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IModifiedPoseRenderer in 209.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IModifiedPoseRenderer in 164.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class to mod/syconn/swm/features/lightsaber/client/LightsaberItemRender.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/LightsaberItemRender with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/LightsaberItemRender in 604.4 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/LightsaberItemRender in 510.1 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/blaster/client/BlasterItemRenderer.class to mod/syconn/swm/features/blaster/client/BlasterItemRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/blaster/client/BlasterItemRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/blaster/client/BlasterItemRenderer in 310.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/blaster/client/BlasterItemRenderer in 348.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/item/HoloProjectorItemRenderer.class to mod/syconn/swm/client/render/item/HoloProjectorItemRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/item/HoloProjectorItemRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/item/HoloProjectorItemRenderer in 437.0 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/item/HoloProjectorItemRenderer in 379.1 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/core/ModKeys.class to mod/syconn/swm/core/ModKeys.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/core/ModKeys with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModKeys in 223.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/core/ModKeys in 150.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/entity/ThrownLightsaberRenderer.class to mod/syconn/swm/features/lightsaber/client/entity/ThrownLightsaberRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/entity/ThrownLightsaberRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/entity/ThrownLightsaberRenderer in 645.2 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/entity/ThrownLightsaberRenderer in 413.1 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/StarWarsServer.class to mod/syconn/swm/server/StarWarsServer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/StarWarsServer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/StarWarsServer in 387.8 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/integration/jei/Plugin.class to mod/syconn/swm/integration/jei/Plugin.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/integration/jei/Plugin with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/integration/jei/Plugin in 836.6 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/StarWarsServer in 397.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/server/SyncedResourceManager.class to mod/syconn/swm/utils/server/SyncedResourceManager.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/server/SyncedResourceManager with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/SyncedResourceManager in 398.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/SyncedResourceManager in 576.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/entity/LightsaberWorkbenchRenderer.class to mod/syconn/swm/features/lightsaber/client/entity/LightsaberWorkbenchRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/entity/LightsaberWorkbenchRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/entity/LightsaberWorkbenchRenderer in 579.5 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/entity/LightsaberWorkbenchRenderer in 533.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/block/HoloProjectorBlockEntityRenderer.class to mod/syconn/swm/client/render/block/HoloProjectorBlockEntityRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/block/HoloProjectorBlockEntityRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/block/HoloProjectorBlockEntityRenderer in 337.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/block/HoloProjectorBlockEntityRenderer in 214.9 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class to mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen in 868.8 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberWorkbenchScreen in 979.7 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/client/screen/LightsaberAssemblerScreen.class to mod/syconn/swm/features/lightsaber/client/screen/LightsaberAssemblerScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/client/screen/LightsaberAssemblerScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberAssemblerScreen in 824.7 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/client/screen/LightsaberAssemblerScreen in 715.6 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/integration/jei/Plugin.class to mod/syconn/swm/integration/jei/Plugin.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/integration/jei/Plugin with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/integration/jei/Plugin in 531.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/keys/KeyHandler.class to mod/syconn/swm/client/keys/KeyHandler.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/keys/KeyHandler with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/keys/KeyHandler in 651.9 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/keys/KeyHandler in 566.0 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/server/StackedIngredient.class to mod/syconn/swm/utils/server/StackedIngredient.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/server/StackedIngredient with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/StackedIngredient in 1.634 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/server/StackedIngredient in 842.6 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/JsonUtil.class to mod/syconn/swm/utils/generic/JsonUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/JsonUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/JsonUtil in 397.4 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/recipes/LightsaberRecipe.class to mod/syconn/swm/server/recipes/LightsaberRecipe.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/server/recipes/LightsaberRecipe with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/recipes/LightsaberRecipe in 884.0 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/entity/PlasmaRenderer.class to mod/syconn/swm/client/render/entity/PlasmaRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/PlasmaRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/PlasmaRenderer in 1.543 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory.class to mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory in 1.120 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberTag.class to mod/syconn/swm/features/lightsaber/data/LightsaberTag.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberTag with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberTag in 1.552 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/recipes/LightsaberRecipe in 358.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/client/NodeVec3.class to mod/syconn/swm/utils/client/NodeVec3.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/NodeVec3 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/NodeVec3 in 751.0 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/NBTUtil.class to mod/syconn/swm/utils/general/NBTUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/NodeVec3 in 519.9 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/features/lightsaber/data/LightsaberTag.class to mod/syconn/swm/features/lightsaber/data/LightsaberTag.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/NBTUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/NBTUtil in 1.045 ms
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/features/lightsaber/data/LightsaberTag with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/features/lightsaber/data/LightsaberTag in 1.136 ms
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/NBTUtil.class to mod/syconn/swm/utils/generic/NBTUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/NBTUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/NBTUtil in 716.5 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/StringUtil.class to mod/syconn/swm/utils/generic/StringUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/StringUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/StringUtil in 610.0 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory.class to mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/integration/jei/category/LightsaberAssemblerCategory in 764.3 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/entity/PlasmaRenderer.class to mod/syconn/swm/client/render/entity/PlasmaRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Found class transformer
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/PlasmaRenderer with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/PlasmaRenderer in 944.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/client/HologramData.class to mod/syconn/swm/utils/client/HologramData.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/HologramData with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/HologramData in 1.654 ms
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/HologramData in 912.6 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/client/HologramData$1.class to mod/syconn/swm/utils/client/HologramData$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/HologramData$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/HologramData$1 in 231.4 μs
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/HologramData$1 in 255.8 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/render/entity/HologramRenderer.class to mod/syconn/swm/client/render/entity/HologramRenderer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/client/render/entity/HologramRenderer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/HologramRenderer in 584.2 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ResourceUtil.class to mod/syconn/swm/utils/general/ResourceUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/render/entity/HologramRenderer in 388.9 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/ResourceUtil.class to mod/syconn/swm/utils/generic/ResourceUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ResourceUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ResourceUtil in 666.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ColorUtil$TintMode.class to mod/syconn/swm/utils/general/ColorUtil$TintMode.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ResourceUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/ResourceUtil in 371.3 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/MathUtil.class to mod/syconn/swm/utils/generic/MathUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil$TintMode with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ColorUtil$TintMode in 454.9 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ColorUtil$1.class to mod/syconn/swm/utils/general/ColorUtil$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/MathUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/MathUtil in 433.5 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/ColorUtil$TintMode.class to mod/syconn/swm/utils/generic/ColorUtil$TintMode.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ColorUtil$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ColorUtil$1 in 259.8 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/StringUtil.class to mod/syconn/swm/utils/general/StringUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil$TintMode with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/ColorUtil$TintMode in 207.1 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/ColorUtil$1.class to mod/syconn/swm/utils/generic/ColorUtil$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/StringUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/StringUtil in 753.3 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/client/HologramData$HologramTag.class to mod/syconn/swm/utils/client/HologramData$HologramTag.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/ColorUtil$1 with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/ColorUtil$1 in 196.4 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/DirectionUtil.class to mod/syconn/swm/utils/generic/DirectionUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/HologramData$HologramTag with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/HologramData$HologramTag in 705.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/RenderUtil.class to mod/syconn/swm/utils/general/RenderUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/RenderUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/RenderUtil in 1.059 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/ClientHooks.class to mod/syconn/swm/client/ClientHooks.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/ClientHooks with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/ClientHooks in 690.0 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/HologramScreen.class to mod/syconn/swm/client/screen/HologramScreen.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/HologramScreen with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/HologramScreen in 711.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/ClientHooks$1.class to mod/syconn/swm/client/ClientHooks$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/ClientHooks$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/ClientHooks$1 in 119.3 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/HologramScreen$Page.class to mod/syconn/swm/client/screen/HologramScreen$Page.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/HologramScreen$Page with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/HologramScreen$Page in 154.3 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/ExpandedButton.class to mod/syconn/swm/client/screen/components/buttons/ExpandedButton.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/ExpandedButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/ExpandedButton in 189.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/ErrorWidget.class to mod/syconn/swm/client/screen/components/ErrorWidget.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/ErrorWidget with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/ErrorWidget in 144.6 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/CallMenuWidget.class to mod/syconn/swm/client/screen/CallMenuWidget.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/CallMenuWidget with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/CallMenuWidget in 1.070 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/interfaces/IWidgetComponent.class to mod/syconn/swm/utils/interfaces/IWidgetComponent.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/interfaces/IWidgetComponent with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/interfaces/IWidgetComponent in 74.00 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/CallButton.class to mod/syconn/swm/client/screen/components/buttons/CallButton.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/CallButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/CallButton in 175.2 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/ToggleButton.class to mod/syconn/swm/client/screen/components/buttons/ToggleButton.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/ToggleButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/ToggleButton in 189.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/PlayerCountWidget.class to mod/syconn/swm/client/screen/components/PlayerCountWidget.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/PlayerCountWidget with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/PlayerCountWidget in 157.0 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/CallMenuWidget$MenuData.class to mod/syconn/swm/client/screen/CallMenuWidget$MenuData.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/CallMenuWidget$MenuData with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/CallMenuWidget$MenuData in 301.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/ToggleButton$Color.class to mod/syconn/swm/client/screen/components/buttons/ToggleButton$Color.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/ToggleButton$Color with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/ToggleButton$Color in 156.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/ToggleButton$OnPress.class to mod/syconn/swm/client/screen/components/buttons/ToggleButton$OnPress.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/ToggleButton$OnPress with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/ToggleButton$OnPress in 115.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/CallButton$Type.class to mod/syconn/swm/client/screen/components/buttons/CallButton$Type.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/CallButton$Type with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/CallButton$Type in 152.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/ScrollerWidget.class to mod/syconn/swm/client/screen/components/ScrollerWidget.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/ScrollerWidget with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/ScrollerWidget in 267.6 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/RefreshButton.class to mod/syconn/swm/client/screen/components/buttons/RefreshButton.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/RefreshButton with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/RefreshButton in 308.4 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/components/buttons/RefreshButton$OnPress.class to mod/syconn/swm/client/screen/components/buttons/RefreshButton$OnPress.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/components/buttons/RefreshButton$OnPress with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/components/buttons/RefreshButton$OnPress in 125.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/client/screen/HologramScreen$1.class to mod/syconn/swm/client/screen/HologramScreen$1.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/client/screen/HologramScreen$1 with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/client/screen/HologramScreen$1 in 200.3 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/GraphicsUtil.class to mod/syconn/swm/utils/general/GraphicsUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/GraphicsUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/GraphicsUtil in 671.5 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/FontUtil.class to mod/syconn/swm/utils/general/FontUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/FontUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/FontUtil in 247.9 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/savedata/HologramNetwork.class to mod/syconn/swm/server/savedata/HologramNetwork.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/savedata/HologramNetwork with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/savedata/HologramNetwork in 1.667 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/savedata/HologramNetwork$Call.class to mod/syconn/swm/server/savedata/HologramNetwork$Call.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/savedata/HologramNetwork$Call with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/savedata/HologramNetwork$Call in 348.8 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/server/savedata/HologramNetwork$Caller.class to mod/syconn/swm/server/savedata/HologramNetwork$Caller.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/server/savedata/HologramNetwork$Caller with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/server/savedata/HologramNetwork$Caller in 489.4 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/block/WorldPos.class to mod/syconn/swm/utils/block/WorldPos.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/block/WorldPos with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/block/WorldPos in 238.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ListUtil.class to mod/syconn/swm/utils/general/ListUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ListUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ListUtil in 290.8 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/MathUtil.class to mod/syconn/swm/utils/general/MathUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/MathUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/MathUtil in 543.7 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ModelUtil.class to mod/syconn/swm/utils/general/ModelUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ModelUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ModelUtil in 370.1 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/AnimationUtil.class to mod/syconn/swm/utils/general/AnimationUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/AnimationUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/AnimationUtil in 200.5 μs
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/DirectionUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/DirectionUtil in 327.0 μs
 [Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/client/PlasmaBuffer.class to mod/syconn/swm/utils/client/PlasmaBuffer.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
 [Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/client/PlasmaBuffer with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/PlasmaBuffer in 2.616 ms
-n 1.399 ms
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ListUtil.class to mod/syconn/swm/utils/general/ListUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/client/PlasmaBuffer in 902.2 μs
+[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/generic/AnimationUtil.class to mod/syconn/swm/utils/generic/AnimationUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
 [Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ListUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ListUtil in 389.6 μs
-[Architectury Transformer DEBUG] Transforming from mod/syconn/swm/utils/general/ModelUtil.class to mod/syconn/swm/utils/general/ModelUtil.class with 5 transformer(s) on dev.architectury.transformer.handler.TinyRemapperPreparedTransformerHandler
-[Architectury Transformer DEBUG] Found class transformer
-[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/general/ModelUtil with maxs=true frames=true
-[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/general/ModelUtil in 590.3 μs
+[Architectury Transformer DEBUG] Writing mod/syconn/swm/utils/generic/AnimationUtil with maxs=true frames=true
+[Architectury Transformer DEBUG] Transformed mod/syconn/swm/utils/generic/AnimationUtil in 372.7 μs

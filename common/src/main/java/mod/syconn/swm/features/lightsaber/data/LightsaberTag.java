@@ -6,8 +6,8 @@ import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.NodeVec3;
-import mod.syconn.swm.utils.general.AnimationUtil;
-import mod.syconn.swm.utils.general.NBTUtil;
+import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 

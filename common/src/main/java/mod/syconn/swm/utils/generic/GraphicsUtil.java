@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;

@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import dev.architectury.utils.GameInstance;
@@ -6,7 +6,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.material.MapColor;
 import org.apache.commons.lang3.function.TriFunction;
 
 import java.io.IOException;

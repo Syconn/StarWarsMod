@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -58,8 +58,8 @@ public class ColorUtil {
     }
 
     public static int hologramColor(int argb) {
-        var gray = grayScaled(argb);
-        return tint(gray, FastColor.ARGB32.color(255, 255, 148, 0), TintMode.Overlay);
+        if (FastColor.ARGB32.alpha(argb) == 0) return argb;
+        return tint(grayScaled(argb), FastColor.ARGB32.color(255, 255, 148, 0), TintMode.Overlay);
     }
 
     public static int packRgb(int r, int g, int b) {

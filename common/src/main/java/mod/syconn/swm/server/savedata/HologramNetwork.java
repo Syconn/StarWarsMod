@@ -4,7 +4,7 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
 import mod.syconn.swm.utils.block.WorldPos;
-import mod.syconn.swm.utils.general.NBTUtil;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class HologramNetwork extends SavedData {

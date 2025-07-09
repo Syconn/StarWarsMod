@@ -6,7 +6,7 @@ import mod.syconn.swm.client.render.entity.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.utils.general.ModelUtil;
+import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.minecraft.client.model.HumanoidModel;
@@ -17,7 +17,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.LightBlock;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 

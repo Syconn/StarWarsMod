@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
 import com.google.gson.*;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

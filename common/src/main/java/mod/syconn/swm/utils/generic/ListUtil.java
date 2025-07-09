@@ -1,6 +1,5 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

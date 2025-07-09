@@ -1,6 +1,6 @@
 package mod.syconn.swm.client.screen.components;
 
-import mod.syconn.swm.utils.general.GraphicsUtil;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;

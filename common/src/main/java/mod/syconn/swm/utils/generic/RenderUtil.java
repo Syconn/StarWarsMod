@@ -1,4 +1,4 @@
-package mod.syconn.swm.utils.general;
+package mod.syconn.swm.utils.generic;
 
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.world.item.ItemDisplayContext;

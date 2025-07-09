@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import mod.syconn.swm.core.ModRecipes;
-import mod.syconn.swm.utils.general.JsonUtil;
+import mod.syconn.swm.utils.generic.JsonUtil;
 import mod.syconn.swm.utils.server.StackedIngredient;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;

@@ -2,7 +2,7 @@ package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
-import mod.syconn.swm.utils.general.MathUtil;
+import mod.syconn.swm.utils.generic.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

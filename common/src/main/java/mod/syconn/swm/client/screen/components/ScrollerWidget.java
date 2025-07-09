@@ -1,7 +1,7 @@
 package mod.syconn.swm.client.screen.components;
 
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.general.GraphicsUtil;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
 import mod.syconn.swm.utils.interfaces.IWidgetComponent;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;

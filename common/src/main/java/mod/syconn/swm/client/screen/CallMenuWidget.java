@@ -1,6 +1,5 @@
 package mod.syconn.swm.client.screen;
 
-import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.client.screen.components.PlayerCountWidget;
 import mod.syconn.swm.client.screen.components.ScrollerWidget;
 import mod.syconn.swm.client.screen.components.buttons.CallButton;
@@ -9,9 +8,9 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.client.HologramData;
-import mod.syconn.swm.utils.general.ColorUtil;
-import mod.syconn.swm.utils.general.GraphicsUtil;
-import mod.syconn.swm.utils.general.ListUtil;
+import mod.syconn.swm.utils.generic.ColorUtil;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
+import mod.syconn.swm.utils.generic.ListUtil;
 import mod.syconn.swm.utils.interfaces.IWidgetComponent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;

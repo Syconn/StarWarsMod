@@ -4,7 +4,7 @@ import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.utils.general.NBTUtil;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

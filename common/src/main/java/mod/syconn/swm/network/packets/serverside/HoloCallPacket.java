@@ -2,7 +2,7 @@ package mod.syconn.swm.network.packets.serverside;
 
 import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.server.savedata.HologramNetwork;
-import mod.syconn.swm.utils.general.NBTUtil;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 

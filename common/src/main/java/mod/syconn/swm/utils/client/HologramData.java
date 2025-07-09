@@ -4,10 +4,10 @@ import com.mojang.authlib.GameProfile;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.HologramRenderer;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.general.AnimationUtil;
-import mod.syconn.swm.utils.general.ColorUtil;
-import mod.syconn.swm.utils.general.MathUtil;
-import mod.syconn.swm.utils.general.ResourceUtil;
+import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.generic.ColorUtil;
+import mod.syconn.swm.utils.generic.MathUtil;
+import mod.syconn.swm.utils.generic.ResourceUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -36,7 +36,7 @@ public class HologramData {
     private int transition;
     private int scanBarTicks = 0;
     private int scanBar1 = 0;
-    private int scanBar2 = 0;
+    private int scanBar2 = 16;
 
     public HologramData(@NotNull UUID uuid, boolean item) {
         final var minecraft = GameInstance.getClient();
@@ -48,9 +48,8 @@ public class HologramData {
         this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
 
         var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
-        ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(160, ColorUtil.hologramColor(color)));
+        ResourceUtil.modifyTexture(texture, this::getPixelColor);
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
-        this.scanBar2 = this.textureHeight / 4;
         this.transition = TRANSITION_TICKS;
     }
 
@@ -72,13 +71,18 @@ public class HologramData {
             if (this.scanBar1 >= this.textureHeight) this.scanBar1 = 0;
             if (this.scanBar2 >= this.textureHeight) this.scanBar2 = 0;
 
-            ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(scanBar(y) ? 255 : 160,
-                    scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(color)));
+            ResourceUtil.modifyTexture(texture, this::getPixelColor);
+
             ResourceUtil.registerOrGet(player.getName().getString(), texture);
 
             this.scanBar1++;
             this.scanBar2++;
         }
+    }
+
+    private int getPixelColor(int x, int y, int rgba) {
+        if (FastColor.ARGB32.alpha(rgba) == 0) return rgba;
+        return FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(rgba));
     }
 
     public float getAnimationScale(float partialTicks) {
@@ -103,7 +107,7 @@ public class HologramData {
         return transition;
     }
 
-    private boolean scanBar(int y) {
+    private boolean scanBar(int y) { // TODO FIX PARTIAL TICKS?
         return this.scanBar1 == y || MathUtil.wrap(this.scanBar1 - 32, this.textureHeight) == y || this.scanBar2 == y || MathUtil.wrap(this.scanBar2 - 32, this.textureHeight) == y;
     }
 

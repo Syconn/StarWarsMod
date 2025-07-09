@@ -9,7 +9,7 @@ import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.HologramData;
-import mod.syconn.swm.utils.general.ListUtil;
+import mod.syconn.swm.utils.generic.ListUtil;
 import mod.syconn.swm.utils.block.WorldPos;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

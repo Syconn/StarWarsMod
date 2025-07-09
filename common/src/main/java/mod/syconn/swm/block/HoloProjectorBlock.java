@@ -1,6 +1,12 @@
 package mod.syconn.swm.block;
 
+import dev.architectury.utils.Env;
+import dev.architectury.utils.EnvExecutor;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
+import mod.syconn.swm.client.ClientHooks;
+import mod.syconn.swm.core.ModBlockEntities;
+import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,6 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -59,24 +67,15 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
 
     @Override
     public @NotNull InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-//        if (pLevel.isClientSide) { TODO UNCOMMENT LATER
-//            EnvExecutor.runInEnv(Env.CLIENT, () -> () -> GameInstance.getClient().setScreen(ClientHooks.createHologramScreen(new WorldPos(pLevel.dimension(), pPos), false)));
-//            return InteractionResult.SUCCESS;
-//        }
-
-        if (!pLevel.isClientSide && pHand == InteractionHand.MAIN_HAND && pLevel.getBlockEntity(pPos) instanceof HoloProjectorBlockEntity blockEntity) {
-            blockEntity.setHologramData(pPlayer.getUUID());
+        if (pLevel.isClientSide) {
+            EnvExecutor.runInEnv(Env.CLIENT, () -> () -> GameInstance.getClient().setScreen(ClientHooks.createHologramScreen(new WorldPos(pLevel.dimension(), pPos), null)));
             return InteractionResult.SUCCESS;
         }
-
-        // TODO TESTING CODE
-//        if (pLevel instanceof ServerLevel serverLevel) {
-//            var caller = new HologramNetwork.Caller(pPlayer.getUUID(), new WorldPos(serverLevel.dimension(), pPos), false);
-//            var network = HologramNetwork.get(serverLevel);
-//            network.createCall(caller, List.of());
-//            return InteractionResult.SUCCESS;
-//        }
-
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
     }
 }
