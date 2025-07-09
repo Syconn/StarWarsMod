@@ -43,8 +43,9 @@ public class HologramData {
         final var playerInfo = getPlayerInfo(minecraft, uuid);
         this.item = item;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
-        this.player = new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
-//        this.player = (AbstractClientPlayer) level.getPlayerByUUID(playerInfo.getProfile().getId()); TODO USE MORE LATER
+//        this.player = new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {}; // TODO TEST CODE
+        var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
+        this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
 
         var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
         ResourceUtil.modifyTexture(texture, (x, y, color) -> FastColor.ABGR32.color(160, ColorUtil.hologramColor(color)));
@@ -138,7 +139,7 @@ public class HologramData {
             this.itemId = UUID.randomUUID();
         }
 
-        public HologramTag(CompoundTag tag) { // TODO NEED A NEW SYSTEM
+        public HologramTag(CompoundTag tag) {
             this.uuid = tag.hasUUID("uuid") ? tag.getUUID("uuid") : null;
             this.itemId = tag.hasUUID("id") ? tag.getUUID("id") : UUID.randomUUID();
         }

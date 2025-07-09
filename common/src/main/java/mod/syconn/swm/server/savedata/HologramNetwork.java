@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class HologramNetwork extends SavedData { // TODO ASSEMBLER BUTTONS DONT WORK
+public class HologramNetwork extends SavedData {
 
     private static final String tagID = "hologram_network";
 

@@ -39,7 +39,7 @@ public class HoloProjectorItem extends BlockItem implements IItemExtensions {
         return changed;
     }
 
-    @Override // TODO ISSUE WITH CREATING UUID FOR ITEM AND WORLD POS WHEN CREATING CALL, TEST WITH PLAYER IN RENDERER
+    @Override // TODO TEST WITH PLAYER IN RENDERER
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         var id = HologramData.HologramTag.getOrCreate(stack);
         if (level instanceof ServerLevel serverLevel) {
