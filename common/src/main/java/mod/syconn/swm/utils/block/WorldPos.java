@@ -7,6 +7,7 @@ import net.minecraft.nbt.NbtUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public record WorldPos(ResourceKey<Level> level, BlockPos pos) {
 
@@ -16,6 +17,10 @@ public record WorldPos(ResourceKey<Level> level, BlockPos pos) {
             return wp.level.equals(this.level) && wp.pos.equals(this.pos);
         }
         return false;
+    }
+
+    public Vec3 toVector() {
+        return new Vec3(this.pos.getX(), this.pos.getY(), this.pos.getZ());
     }
 
     public static WorldPos from(CompoundTag tag) {

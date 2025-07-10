@@ -18,6 +18,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,13 +33,14 @@ public class HologramData {
     private final ResourceLocation skin;
     private final boolean item;
     private final int textureHeight = 64;
+    private Vec3 position;
     private Runnable endCall = null;
     private int transition;
     private int scanBarTicks = 0;
     private int scanBar1 = 0;
     private int scanBar2 = 16;
 
-    public HologramData(@NotNull UUID uuid, boolean item) {
+    public HologramData(@NotNull UUID uuid, Vec3 position, boolean item) {
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
         final var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
@@ -46,6 +48,7 @@ public class HologramData {
         ResourceUtil.modifyTexture(texture, this::getPixelColor);
 
         this.item = item;
+        this.position = position;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
         this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
@@ -102,8 +105,17 @@ public class HologramData {
         this.transition = -TRANSITION_TICKS;
     }
 
+    public HologramData setPosition(Vec3 position) {
+        this.position = position;
+        return this;
+    }
+
     public int getTransition() {
         return transition;
+    }
+
+    public Vec3 getPosition() {
+        return position;
     }
 
     private boolean scanBar(int y) { // TODO FIX PARTIAL TICKS?

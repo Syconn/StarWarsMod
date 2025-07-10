@@ -20,7 +20,7 @@ public class RequestHologramPacket {
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
-            if (context.get().getPlayer() instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(sp, new RequestedHologramPacket(HologramNetwork.get(sp.serverLevel()).save(new CompoundTag())));
+            if (context.get().getPlayer() instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(sp, new RequestedHologramPacket(HologramNetwork.get(sp.server.overworld()).save(new CompoundTag())));
         });
     }
 }

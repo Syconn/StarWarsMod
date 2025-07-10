@@ -18,6 +18,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +46,7 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
         if (hologramData != null) {
             poseStack.pushPose();
 
-            poseStack.translate(0f, -0.43f, 0f);
+            poseStack.translate(hologramData.getPosition().x, hologramData.getPosition().y, hologramData.getPosition().z);
             poseStack.mulPose(Axis.YN.rotationDegrees(RenderUtil.isLeftHanded(renderMode) ? -45f : 45f));
             poseStack.scale(0.6f, 0.6f, 0.6f);
 
@@ -57,10 +58,10 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
 
     private HologramData getHologramData(HologramData.HologramTag hologramTag) {
         var data = RENDERER.get(hologramTag.itemId);
-        if (data == null && hologramTag.uuid != null) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, true));
+        if (data == null && hologramTag.uuid != null) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
         else if (data != null) {
             if (data.getTransition() == 0 && hologramTag.uuid == null) data.endCall(() -> RENDERER.remove(hologramTag.itemId));
-            else if (hologramTag.uuid != null && !hologramTag.uuid.equals(data.getPlayer().getUUID())) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, true));
+            else if (hologramTag.uuid != null && !hologramTag.uuid.equals(data.getPlayer().getUUID())) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
         }
         return RENDERER.get(hologramTag.itemId);
     }

@@ -1,6 +1,7 @@
 package mod.syconn.swm.network.packets.serverside;
 
 import dev.architectury.networking.NetworkManager;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,7 +38,7 @@ public class HoloCallPacket {
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
             if (context.get().getPlayer() instanceof ServerPlayer sp) {
-                var network = HologramNetwork.get(sp.serverLevel());
+                var network = HologramNetwork.get(sp.server.overworld());
                 var caller = this.callers.get(0);
                 if (this.type == Type.CREATE) network.createCall(this.callers.remove(0), this.callers);
                 else if (this.type == Type.CONNECT) network.connect(this.id, caller);

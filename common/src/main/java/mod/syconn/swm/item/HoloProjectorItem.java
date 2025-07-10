@@ -43,7 +43,7 @@ public class HoloProjectorItem extends BlockItem implements IItemExtensions {
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         var id = HologramData.HologramTag.getOrCreate(stack);
         if (level instanceof ServerLevel serverLevel) {
-            var network = HologramNetwork.get(serverLevel);
+            var network = HologramNetwork.get(serverLevel.getServer().overworld());
             var callId = network.getCallId(id.itemId);
             if (callId != null && network.getCall(callId) != null) {
                 var call = network.getCall(callId);

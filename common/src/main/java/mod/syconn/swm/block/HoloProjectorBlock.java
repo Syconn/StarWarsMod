@@ -6,10 +6,12 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.core.ModBlockEntities;
+import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -59,6 +61,14 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
         }
     }
 
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (level instanceof ServerLevel serverLevel) level.getBlockEntity(pos, ModBlockEntities.HOLO_PROJECTOR.get())
+                .ifPresent(b -> HologramNetwork.get(serverLevel).blockRemoved(b.getCallId(), new WorldPos(level.dimension(), pos)));
+
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
@@ -72,10 +82,5 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
-    }
-
-    @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
     }
 }
