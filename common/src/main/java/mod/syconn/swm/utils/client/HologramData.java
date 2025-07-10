@@ -41,14 +41,13 @@ public class HologramData {
     public HologramData(@NotNull UUID uuid, boolean item) {
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
+        final var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
+        final var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
+        ResourceUtil.modifyTexture(texture, this::getPixelColor);
+
         this.item = item;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
-//        this.player = new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {}; // TODO TEST CODE
-        var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
         this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
-
-        var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
-        ResourceUtil.modifyTexture(texture, this::getPixelColor);
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
         this.transition = TRANSITION_TICKS;
     }

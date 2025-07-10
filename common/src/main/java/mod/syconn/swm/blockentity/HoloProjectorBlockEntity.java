@@ -23,7 +23,7 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity { // TODO TO ITE
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, HoloProjectorBlockEntity blockEntity) {
-        var entities = level.getEntitiesOfClass(Player.class, new AABB(pos).move(0, 1, 0).inflate(3.0)).stream().map(Entity::getUUID).toList();
+        var entities = level.getEntitiesOfClass(Player.class, new AABB(pos).move(0, 1, 0).inflate(3.5)).stream().map(Entity::getUUID).toList();
         var rem = blockEntity.renderables.stream().filter(u -> !entities.contains(u)).toList();
         var add = entities.stream().filter(u -> !blockEntity.renderables.contains(u)).toList();
         rem.forEach(blockEntity.renderables::remove);
@@ -41,11 +41,9 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity { // TODO TO ITE
         this.renderables.addAll(NBTUtil.getList(tag.getCompound("renderables"), NBTUtil::getUUID));
 
         if (this.level != null && this.level.isClientSide) {
-//            renderables.stream().filter(u -> !renderers.containsKey(u)).forEach(u -> this.renderers.get(u).endCall(() -> this.renderers.remove(u)));
+            renderers.keySet().stream().filter(u -> !renderables.contains(u)).forEach(u -> this.renderers.get(u).endCall(() -> this.renderers.remove(u)));
             renderables.forEach(uuid -> { if (!renderers.containsKey(uuid)) this.renderers.put(uuid, new HologramData(uuid, false)); });
         }
-
-        System.out.println(this.renderers);
     }
 
     @Override
