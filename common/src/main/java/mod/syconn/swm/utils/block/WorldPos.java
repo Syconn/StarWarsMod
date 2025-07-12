@@ -11,6 +11,10 @@ import net.minecraft.world.phys.Vec3;
 
 public record WorldPos(ResourceKey<Level> level, BlockPos pos) {
 
+    public static WorldPos from(CompoundTag tag) {
+        return new WorldPos(ResourceKey.create(Registries.DIMENSION, new ResourceLocation(tag.getString("level"))), NbtUtils.readBlockPos(tag.getCompound("pos")));
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof WorldPos wp) {
@@ -21,10 +25,6 @@ public record WorldPos(ResourceKey<Level> level, BlockPos pos) {
 
     public Vec3 toVector() {
         return new Vec3(this.pos.getX(), this.pos.getY(), this.pos.getZ());
-    }
-
-    public static WorldPos from(CompoundTag tag) {
-        return new WorldPos(ResourceKey.create(Registries.DIMENSION, new ResourceLocation(tag.getString("level"))), NbtUtils.readBlockPos(tag.getCompound("pos")));
     }
 
     public CompoundTag save() {

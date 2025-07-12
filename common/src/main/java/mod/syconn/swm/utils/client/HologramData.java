@@ -101,8 +101,10 @@ public class HologramData {
     }
 
     public void endCall(Runnable endCall) {
-        this.endCall = endCall;
-        this.transition = -TRANSITION_TICKS;
+        if (this.endCall != null) {
+            this.endCall = endCall;
+            this.transition = -TRANSITION_TICKS;
+        }
     }
 
     public HologramData setPosition(Vec3 position) {
@@ -118,7 +120,7 @@ public class HologramData {
         return position;
     }
 
-    private boolean scanBar(int y) { // TODO FIX PARTIAL TICKS?
+    private boolean scanBar(int y) {
         return this.scanBar1 == y || MathUtil.wrap(this.scanBar1 - 32, this.textureHeight) == y || this.scanBar2 == y || MathUtil.wrap(this.scanBar2 - 32, this.textureHeight) == y;
     }
 

@@ -7,12 +7,11 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.generic.ListUtil;
+import mod.syconn.swm.utils.generic.MapUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.apache.commons.compress.utils.Lists;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,22 +32,16 @@ public class HologramNetwork extends SavedData {
 
     private final Map<UUID, Call> CALLS = new HashMap<>();
     private final Map<UUID, UUID> ITEMS = new HashMap<>();
-    private final Map<UUID, List<WorldPos>> BLOCKS = new HashMap<>();
-    private final Map<WorldPos, List<UUID>> RENDERABLES = new HashMap<>();
+    private final Map<UUID, Map<WorldPos, List<UUID>>> BLOCKS = new HashMap<>();
 
     public HologramNetwork() { }
 
     public void createCall(Caller caller, List<Caller> callers) {
-        this.CALLS.clear(); // TODO REMOVE FOR AFTER TESTING
-        this.ITEMS.clear(); // TODO REMOVE FOR AFTER TESTING
-        this.BLOCKS.clear(); // TODO REMOVE FOR AFTER TESTING
-        this.RENDERABLES.clear(); // TODO REMOVE FOR AFTER TESTING
-
         if (this.CALLS.containsKey(caller.uuid)) this.leaveCall(caller.uuid, caller);
         this.CALLS.put(caller.uuid, new Call(caller.uuid, caller, callers.stream().collect(Collectors.toMap(Caller::uuid, c -> c))));
         if (caller.item != null) this.ITEMS.put(caller.item, caller.uuid);
         if (caller.location != null) {
-            this.BLOCKS.put(caller.uuid, List.of(caller.location));
+            this.BLOCKS.put(caller.uuid, MapUtil.of(caller.location, ListUtil.empty()));
             GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(caller.uuid));
         }
         this.setDirty();
@@ -60,8 +52,8 @@ public class HologramNetwork extends SavedData {
         this.CALLS.computeIfPresent(callId, ((uuid, call) -> call.updateParticipants(map -> map.put(caller.uuid, caller))));
         if (caller.item != null) this.ITEMS.put(caller.item, callId);
         if (caller.location != null) {
-            this.BLOCKS.put(callId, ListUtil.add(caller.location, this.BLOCKS.get(callId)));
-            GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(caller.uuid));
+            this.BLOCKS.put(callId, MapUtil.add(caller.location, ListUtil.empty(), this.BLOCKS.get(callId)));
+            GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(callId));
         }
         this.setDirty();
     }
@@ -71,7 +63,7 @@ public class HologramNetwork extends SavedData {
         if (call != null) {
             if (caller.item != null) this.ITEMS.remove(caller.item);
             if (caller.location != null) {
-                this.BLOCKS.put(callId, ListUtil.remove(caller.location, this.BLOCKS.get(callId)));
+                this.BLOCKS.put(callId, MapUtil.remove(caller.location, this.BLOCKS.get(callId)));
                 GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(null));
             }
             if (this.BLOCKS.get(callId) != null && this.BLOCKS.get(callId).isEmpty()) this.BLOCKS.remove(callId);
@@ -81,7 +73,7 @@ public class HologramNetwork extends SavedData {
                 call.participants.values().forEach(c -> {
                     if (c.item != null) this.ITEMS.remove(c.item);
                     if (caller.location != null) {
-                        this.BLOCKS.put(callId, ListUtil.remove(caller.location, this.BLOCKS.get(callId)));
+                        this.BLOCKS.put(callId, MapUtil.remove(caller.location, this.BLOCKS.get(callId)));
                         GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(null));
                     }
                 });
@@ -98,7 +90,7 @@ public class HologramNetwork extends SavedData {
         if (call != null) {
             var others = Map.copyOf(call.participants);
             if (call.owner.location.equals(worldPos)) this.leaveCall(callId, call.owner);
-            others.values().stream().filter(c -> c.location.equals(worldPos)).forEach(c -> this.leaveCall(callId, c));
+            others.values().stream().filter(c -> worldPos.equals(c.location)).forEach(c -> this.leaveCall(callId, c));
         }
     }
 
@@ -125,6 +117,10 @@ public class HologramNetwork extends SavedData {
         return this.ITEMS.get(itemId);
     }
 
+    public Map<WorldPos, List<UUID>> getBlockData(UUID callID) {
+        return this.BLOCKS.get(callID);
+    }
+
     private boolean canJoinCall(UUID player, Call call) {
         return call.owner.uuid.equals(player) || call.participants.containsKey(player);
     }
@@ -133,16 +129,14 @@ public class HologramNetwork extends SavedData {
     public @NotNull CompoundTag save(CompoundTag compoundTag) {
         compoundTag.put("calls", NBTUtil.putMap(this.CALLS, NBTUtil::putUUID, Call::save));
         compoundTag.put("items", NBTUtil.putMap(this.ITEMS, NBTUtil::putUUID, NBTUtil::putUUID));
-        compoundTag.put("blocks", NBTUtil.putMap(this.BLOCKS, NBTUtil::putUUID, w -> NBTUtil.putList(w, WorldPos::save)));
-        compoundTag.put("renderables", NBTUtil.putMap(this.RENDERABLES, WorldPos::save, w -> NBTUtil.putList(w, NBTUtil::putUUID)));
+        compoundTag.put("blocks", NBTUtil.putMap(this.BLOCKS, NBTUtil::putUUID, w -> NBTUtil.putMap(w, WorldPos::save, w2 -> NBTUtil.putList(w2, NBTUtil::putUUID))));
         return compoundTag;
     }
 
     private void read(CompoundTag tag) {
         this.CALLS.putAll(NBTUtil.getMap(tag.getCompound("calls"), NBTUtil::getUUID, Call::from));
         this.ITEMS.putAll(NBTUtil.getMap(tag.getCompound("items"), NBTUtil::getUUID, NBTUtil::getUUID));
-        this.BLOCKS.putAll(NBTUtil.getMap(tag.getCompound("blocks"), NBTUtil::getUUID, t -> NBTUtil.getList(t, WorldPos::from)));
-        this.RENDERABLES.putAll(NBTUtil.getMap(tag.getCompound("renderables"), WorldPos::from, t -> NBTUtil.getList(t, NBTUtil::getUUID)));
+        this.BLOCKS.putAll(NBTUtil.getMap(tag.getCompound("blocks"), NBTUtil::getUUID, t -> NBTUtil.getMap(t, WorldPos::from, t2 -> NBTUtil.getList(t2, NBTUtil::getUUID))));
     }
 
     public static HologramNetwork load(CompoundTag tag) {
@@ -166,38 +160,39 @@ public class HologramNetwork extends SavedData {
         calls.forEach(((uuid, call) -> { if (call.participants.containsKey(player.getUUID())) this.leaveCall(uuid, call.participants.get(player.getUUID())); }));
     }
 
-    public void serverTick(ServerLevel level) { // TODO MAY NEED TO DELAY HOW OFTEN THIS RUNS
+    public void serverTick(ServerLevel level) {
+        cleanCalls(level);
+        createCallData(level);
+    }
+
+    private void cleanCalls(ServerLevel level) {
+        var onlinePlayers = level.players().stream().map(Entity::getUUID).toList();
+        var calls = Map.copyOf(this.CALLS);
+        calls.forEach(((uuid, call) -> {
+            if (!onlinePlayers.contains(call.owner.uuid)) this.leaveCall(uuid, call.owner);
+            else {
+                call.participants.forEach(((uuid1, caller) -> {
+                    if (!onlinePlayers.contains(caller.uuid)) this.leaveCall(uuid, caller);
+                }));
+            }
+        }));
+    }
+
+    private void createCallData(ServerLevel level) {
         var inflate = 3.5;
 
         this.CALLS.forEach(((uuid, call) -> {
-            var blocks = this.BLOCKS.get(uuid);
-            if (blocks != null && !blocks.isEmpty()) {
-                blocks.forEach(block -> {
-                    var players = this.RENDERABLES.containsKey(block) ? this.RENDERABLES.get(block) : new ArrayList<UUID>();
+            var blocks = Map.copyOf(this.BLOCKS.get(uuid) != null ? this.BLOCKS.get(uuid) : new HashMap<>());
+            if (!blocks.isEmpty()) {
+                blocks.forEach((block, existing) -> {
                     var entities = level.getServer().getLevel(block.level()).getEntitiesOfClass(Player.class, new AABB(block.pos()).move(0, 1, 0).inflate(inflate)).stream().map(Entity::getUUID).toList();
-                    var rem = players.stream().filter(u -> !entities.contains(u)).toList();
-                    var add = entities.stream().filter(u -> !players.contains(u)).toList();
-                    rem.forEach(players::remove);
-                    players.addAll(add);
+                    var rem = existing.stream().filter(u -> !entities.contains(u)).toList();
+                    var add = entities.stream().filter(u -> !existing.contains(u)).toList();
+                    rem.forEach(existing::remove);
+                    existing.addAll(add);
                     if (!rem.isEmpty() || !add.isEmpty()) {
-                        this.RENDERABLES.put(block, players);
+                        this.BLOCKS.put(uuid, MapUtil.add(block, existing, blocks));
                         this.setDirty();
-                    }
-                });
-            }
-        }));
-
-        this.CALLS.forEach(((callId, call) -> {
-            var blocks = this.BLOCKS.get(callId);
-            if (blocks != null && !blocks.isEmpty()) {
-                blocks.forEach(block -> {
-                    if (level.getServer().getLevel(block.level()).getBlockEntity(block.pos()) instanceof HoloProjectorBlockEntity blockEntity) {
-                        this.RENDERABLES.entrySet().stream().filter(e -> !e.getKey().equals(block)).forEach(entry -> {
-                            entry.getValue().forEach(uuid -> {
-                                var player = level.getServer().getLevel(entry.getKey().level()).getPlayerByUUID(uuid);
-                                blockEntity.addEntity(uuid, player == null ? new Vec3(0, 0, 0) : player.position().subtract(entry.getKey().toVector()));
-                            });
-                        });
                     }
                 });
             }
@@ -205,11 +200,6 @@ public class HologramNetwork extends SavedData {
     }
 
     public record Caller(UUID uuid, @Nullable UUID item, @Nullable WorldPos location) {
-
-        @Override
-        public @NotNull String toString() { // TODO FOR TESTING
-            return "UUID-" + uuid + " ITEM-" + item + " WORLD-" + location;
-        }
 
         public static Caller from(CompoundTag tag) {
             return new Caller(tag.getUUID("uuid"), NBTUtil.getNullable(tag.getCompound("item"), NBTUtil::getUUID), NBTUtil.getNullable(tag.getCompound("location"), WorldPos::from));

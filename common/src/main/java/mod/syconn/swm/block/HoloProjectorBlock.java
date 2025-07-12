@@ -6,6 +6,7 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.core.ModBlockEntities;
+import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
@@ -82,5 +83,10 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
     }
 }

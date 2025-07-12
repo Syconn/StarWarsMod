@@ -1,5 +1,6 @@
 package mod.syconn.swm.utils.generic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,5 +31,9 @@ public class ListUtil {
     @SafeVarargs
     public static <T> List<T> join(List<T>... lists) {
         return Arrays.stream(lists).flatMap(List::stream).collect(Collectors.toList());
+    }
+
+    public static <T> List<T> empty() {
+        return new ArrayList<>();
     }
 }

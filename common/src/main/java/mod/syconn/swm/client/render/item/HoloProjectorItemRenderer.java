@@ -26,7 +26,7 @@ import java.util.UUID;
 
 public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
-    private final Map<UUID, HologramData> RENDERER = new HashMap<>();
+    private final Map<UUID, HologramData> RENDERERS = new HashMap<>();
 
     @Override
     public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
@@ -57,13 +57,13 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
     }
 
     private HologramData getHologramData(HologramData.HologramTag hologramTag) {
-        var data = RENDERER.get(hologramTag.itemId);
-        if (data == null && hologramTag.uuid != null) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
+        var data = RENDERERS.get(hologramTag.itemId);
+        if (data == null && hologramTag.uuid != null) RENDERERS.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
         else if (data != null) {
-            if (data.getTransition() == 0 && hologramTag.uuid == null) data.endCall(() -> RENDERER.remove(hologramTag.itemId));
-            else if (hologramTag.uuid != null && !hologramTag.uuid.equals(data.getPlayer().getUUID())) RENDERER.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
+            if (data.getTransition() == 0 && hologramTag.uuid == null) data.endCall(() -> RENDERERS.remove(hologramTag.itemId));
+            else if (hologramTag.uuid != null && !hologramTag.uuid.equals(data.getPlayer().getUUID())) RENDERERS.put(hologramTag.itemId, new HologramData(hologramTag.uuid, new Vec3(0f, -0.43f, 0f), true));
         }
-        return RENDERER.get(hologramTag.itemId);
+        return RENDERERS.get(hologramTag.itemId);
     }
 
     @Override
