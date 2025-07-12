@@ -72,7 +72,7 @@ public class HologramNetwork extends SavedData {
                 this.CALLS.remove(callId);
                 call.participants.values().forEach(c -> {
                     if (c.item != null) this.ITEMS.remove(c.item);
-                    if (caller.location != null) {
+                    if (caller.location != null && this.BLOCKS.containsKey(callId)) {
                         this.BLOCKS.put(callId, MapUtil.remove(caller.location, this.BLOCKS.get(callId)));
                         GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(null));
                     }

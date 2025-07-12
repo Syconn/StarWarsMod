@@ -36,7 +36,7 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity {
                 var entities = map.values().stream().flatMap(Collection::stream).toList();
                 var removals = Map.copyOf(blockEntity.renderables).keySet().stream().filter(u -> !entities.contains(u)).toList();
                 if (!removals.isEmpty()) update = true;
-                removals.forEach(blockEntity.renderables::remove); // TODO ANIMATION OUT
+                removals.forEach(blockEntity.renderables::remove);
                 for (var entry : map.entrySet()) {
                     for (var uuid : entry.getValue()) {
                         if (!blockEntity.renderables.containsKey(uuid) || !blockEntity.renderables.get(uuid).equals(entry.getKey())) {
