@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<HoloProjectorBlockEntity> {
     // TODO SETTINGS MENU FOR (AREA, ENTITY TYPES, NON POSITIONAL CALLS), CENTER PLAYER WITH HANDHELD ON MIDDLE OF CALL
-    //  ADD MULTI ENTITY SUPPORT, CHANGE IN VIEW RENDER LOGIC TO CERTAIN AREAS, ITEM NEED GRADIENT, REMOVE BLOCK FUNCTIONALITY,
+    //  ADD MULTI ENTITY SUPPORT, ITEM NEED GRADIENT, REMOVE BLOCK FUNCTIONALITY,
 
     private final Map<UUID, HologramData> RENDERERS = new HashMap<>();
 
@@ -30,6 +30,22 @@ public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<Hol
             var hologramData = getHologramData(renderable.getKey(), renderable.getValue());  // TODO PARTIAL TICKS TRANSITION TO POSITION MAYBE FOR SMOOTHNESS
             poseStack.translate(hologramData.getPosition().x, hologramData.getPosition().y, hologramData.getPosition().z);
             hologramData.getRenderer().render(poseStack, buffer, partialTick, LightTexture.FULL_BLOCK);
+
+            poseStack.popPose();
+        }
+
+        for (var removed : blockEntity.getDeletions().entrySet()) {
+            poseStack.pushPose();
+
+            var data = RENDERERS.get(removed.getKey());
+            if (data != null) {
+                poseStack.translate(data.getPosition().x, data.getPosition().y, data.getPosition().z);
+                data.getRenderer().render(poseStack, buffer, partialTick, LightTexture.FULL_BLOCK);
+                data.endCall(() -> {
+                    blockEntity.removeDeletion(removed.getKey());
+                    this.RENDERERS.remove(removed.getKey());
+                });
+            }
 
             poseStack.popPose();
         }

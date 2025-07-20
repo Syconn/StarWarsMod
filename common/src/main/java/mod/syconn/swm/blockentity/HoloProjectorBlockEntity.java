@@ -1,10 +1,14 @@
 package mod.syconn.swm.blockentity;
 
+import dev.architectury.utils.Env;
+import dev.architectury.utils.EnvExecutor;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.generic.MapUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -20,6 +24,8 @@ import java.util.stream.Collectors;
 
 public class HoloProjectorBlockEntity extends SyncedBlockEntity {
 
+    @Environment(EnvType.CLIENT)
+    private final Map<UUID, Vec3> deletions = new HashMap<>();
     private final Map<UUID, Vec3> renderables = new HashMap<>();
     private UUID callId = null;
 
@@ -63,6 +69,14 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity {
         return renderables;
     }
 
+    public Map<UUID, Vec3> getDeletions() {
+        return deletions;
+    }
+
+    public void removeDeletion(UUID id) {
+        this.deletions.remove(id);
+    }
+
     public void addCall(UUID callId) {
         this.renderables.clear();
         if (this.callId != null && callId != null && this.level instanceof ServerLevel serverLevel)
@@ -73,8 +87,12 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity {
 
     @Override
     public void load(CompoundTag tag) {
+        var renderables = NBTUtil.getMap(tag.getCompound("renderables"), NBTUtil::getUUID, NBTUtil::getVec3);
+        EnvExecutor.runInEnv(Env.CLIENT, () -> () -> this.deletions.putAll(this.renderables.entrySet().stream()
+                .filter(v -> !renderables.containsKey(v.getKey())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))));
+
         this.renderables.clear();
-        this.renderables.putAll(NBTUtil.getMap(tag.getCompound("renderables"), NBTUtil::getUUID, NBTUtil::getVec3));
+        this.renderables.putAll(renderables);
         this.callId = NBTUtil.getNullable(tag.getCompound("call"), NBTUtil::getUUID);
     }
 

@@ -130,11 +130,6 @@ public class HologramScreen extends Screen {
         return this.callData.mouseScrolled(mouseX, mouseY, delta) || super.mouseScrolled(mouseX, mouseY, delta);
     }
 
-    @Override
-    public void resize(Minecraft minecraft, int width, int height) {
-        super.resize(minecraft, width, height); // TODO MAYBE ADD RESIZE SUPPORT
-    }
-
     public void hologramData(HologramNetwork network) {
         this.callData.handleNetworkPacket(network);
     }
@@ -163,12 +158,12 @@ public class HologramScreen extends Screen {
         Minecraft.getInstance().setScreen(null);
     }
 
-    public void joinCall(UUID callId) { // TODO TEST
+    public void joinCall(UUID callId) {
         Network.CHANNEL.sendToServer(new HoloCallPacket(HoloCallPacket.Type.CONNECT, callId, List.of(getCaller())));
         Minecraft.getInstance().setScreen(null);
     }
 
-    public void leaveCall(UUID callId) { // TODO TEST
+    public void leaveCall(UUID callId) {
         Network.CHANNEL.sendToServer(new HoloCallPacket(HoloCallPacket.Type.LEAVE, callId, List.of(getCaller())));
     }
 

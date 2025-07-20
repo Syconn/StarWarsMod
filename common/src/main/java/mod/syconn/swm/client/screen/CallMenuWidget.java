@@ -46,7 +46,7 @@ public class CallMenuWidget implements IWidgetComponent {
     private int scroll = 0;
     private ScrollerWidget scroller;
     private HologramScreen.Page page;
-    private String lastSearch; // TODO IF HANDHELD CREATE CALL TO THE SLIDERS INSTEAD
+    private String lastSearch;
 
     public CallMenuWidget(HologramScreen screen, int x, int y, HologramScreen.Page page, Function<IWidgetComponent, IWidgetComponent> widgets) {
         this.x = x;
@@ -61,7 +61,7 @@ public class CallMenuWidget implements IWidgetComponent {
         this.search(this.lastSearch);
     }
 
-    private void init(Function<IWidgetComponent, IWidgetComponent> widgets) { // TODO TEST SECOND SCREEN SCROLL AND SEARCH
+    private void init(Function<IWidgetComponent, IWidgetComponent> widgets) {
         widgets.apply(this);
 
         for (int i = 0; i < 3; i++) {

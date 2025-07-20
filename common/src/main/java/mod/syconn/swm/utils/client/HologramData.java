@@ -101,7 +101,7 @@ public class HologramData {
     }
 
     public void endCall(Runnable endCall) {
-        if (this.endCall != null) {
+        if (this.endCall == null) {
             this.endCall = endCall;
             this.transition = -TRANSITION_TICKS;
         }
