@@ -35,24 +35,32 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, HoloProjectorBlockEntity blockEntity) {
         if (level instanceof ServerLevel serverLevel) {
-            var networkData = HologramNetwork.get(serverLevel).getBlockData(blockEntity.callId);
-            if (networkData != null && !networkData.isEmpty()) {
-                var update = false;
-                var map = networkData.entrySet().stream().filter(e -> !e.getKey().equals(new WorldPos(level.dimension(), pos))).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-                var entities = map.values().stream().flatMap(Collection::stream).toList();
-                var removals = Map.copyOf(blockEntity.renderables).keySet().stream().filter(u -> !entities.contains(u)).toList();
-                if (!removals.isEmpty()) update = true;
-                removals.forEach(blockEntity.renderables::remove);
-                for (var entry : map.entrySet()) {
-                    for (var uuid : entry.getValue()) {
-                        if (!blockEntity.renderables.containsKey(uuid) || !blockEntity.renderables.get(uuid).equals(entry.getKey())) {
-                            var player = level.getServer().getLevel(entry.getKey().level()).getPlayerByUUID(uuid);
-                            blockEntity.renderables.put(uuid, player == null ? new Vec3(0, 0, 0) : player.position().subtract(entry.getKey().toVector()));
-                            update = true;
+            var network = HologramNetwork.get(serverLevel);
+            var networkData = network.getBlockData(blockEntity.callId);
+            var handheld = network.getHandheldPlayer(blockEntity.callId);
+            if (networkData != null && !networkData.isEmpty() || handheld.isPresent()) {
+                if (networkData != null && !networkData.isEmpty()) {
+                    var update = false;
+                    var map = networkData.entrySet().stream().filter(e -> !e.getKey().equals(new WorldPos(level.dimension(), pos))).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                    var entities = map.values().stream().flatMap(Collection::stream).toList();
+                    var removals = Map.copyOf(blockEntity.renderables).keySet().stream().filter(u -> !entities.contains(u)).toList();
+                    if (!removals.isEmpty()) update = true;
+                    removals.forEach(blockEntity.renderables::remove);
+                    for (var entry : map.entrySet()) {
+                        for (var uuid : entry.getValue()) {
+                            if (!blockEntity.renderables.containsKey(uuid) || !blockEntity.renderables.get(uuid).equals(entry.getKey())) {
+                                var player = level.getServer().getLevel(entry.getKey().level()).getPlayerByUUID(uuid);
+                                blockEntity.renderables.put(uuid, player == null ? new Vec3(0, 0, 0) : player.position().subtract(entry.getKey().toVector()));
+                                update = true;
+                            }
                         }
                     }
+                    if (update) blockEntity.markDirty();
                 }
-                if (update) blockEntity.markDirty();
+                if (handheld.isPresent() && !blockEntity.renderables.containsKey(handheld.get())) {
+                    blockEntity.renderables.put(handheld.get(), new Vec3(0.5f, 0.12f, 0.5f));
+                    blockEntity.markDirty();
+                }
             } else if (!blockEntity.renderables.isEmpty()) {
                 blockEntity.renderables.clear();
                 blockEntity.callId = null;

@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<HoloProjectorBlockEntity> {
-    // TODO SETTINGS MENU FOR (AREA, ENTITY TYPES, NON POSITIONAL CALLS), CENTER PLAYER WITH HANDHELD ON MIDDLE OF CALL
-    //  ADD MULTI ENTITY SUPPORT, ITEM NEED GRADIENT, REMOVE BLOCK FUNCTIONALITY,
 
     private final Map<UUID, HologramData> RENDERERS = new HashMap<>();
 

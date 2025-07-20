@@ -1,7 +1,6 @@
 package mod.syconn.swm.server.savedata;
 
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -121,6 +119,11 @@ public class HologramNetwork extends SavedData {
         return this.BLOCKS.get(callID);
     }
 
+    public Optional<UUID> getHandheldPlayer(UUID callID) {
+        var call = this.CALLS.get(callID);
+        return call != null ? ListUtil.add(call.owner, call.participants.values()).stream().filter(c -> c.item != null).map(c -> c.uuid).findFirst() : Optional.empty();
+    }
+
     private boolean canJoinCall(UUID player, Call call) {
         return call.owner.uuid.equals(player) || call.participants.containsKey(player);
     }
@@ -215,10 +218,6 @@ public class HologramNetwork extends SavedData {
     }
 
     public record Call(UUID id, Caller owner, Map<UUID, Caller> participants) {
-
-        public Call updateOwner(Caller caller) {
-            return new Call(this.id, caller, this.participants);
-        }
 
         public Call updateParticipants(Consumer<Map<UUID, Caller>> consumer) {
             consumer.accept(participants);

@@ -112,7 +112,7 @@ public class HologramData {
 
     public HologramData setPosition(Vec3 position) {
         if (!position.equals(this.currentPosition)) {
-            this.previousPosition = this.getInterpolatedPosition(); // smooth transition from last visible location
+            this.previousPosition = this.getInterpolatedPosition();
             this.currentPosition = position;
             this.lastUpdateTime = System.currentTimeMillis();
         }
