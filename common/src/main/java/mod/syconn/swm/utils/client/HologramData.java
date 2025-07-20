@@ -33,14 +33,16 @@ public class HologramData {
     private final ResourceLocation skin;
     private final boolean item;
     private final int textureHeight = 64;
-    private Vec3 position;
+    private Vec3 currentPosition;
+    private Vec3 previousPosition;
+    private long lastUpdateTime = System.currentTimeMillis();
     private Runnable endCall = null;
     private int transition;
     private int scanBarTicks = 0;
     private int scanBar1 = 0;
     private int scanBar2 = 16;
 
-    public HologramData(@NotNull UUID uuid, Vec3 position, boolean item) {
+    public HologramData(@NotNull UUID uuid, Vec3 currentPosition, boolean item) {
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
         final var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
@@ -48,7 +50,8 @@ public class HologramData {
         ResourceUtil.modifyTexture(texture, this::getPixelColor);
 
         this.item = item;
-        this.position = position;
+        this.currentPosition = currentPosition;
+        this.previousPosition = currentPosition;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
         this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
         this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
@@ -108,16 +111,24 @@ public class HologramData {
     }
 
     public HologramData setPosition(Vec3 position) {
-        this.position = position;
+        if (!position.equals(this.currentPosition)) {
+            this.previousPosition = this.getInterpolatedPosition(); // smooth transition from last visible location
+            this.currentPosition = position;
+            this.lastUpdateTime = System.currentTimeMillis();
+        }
         return this;
+    }
+
+    public Vec3 getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public Vec3 getInterpolatedPosition() {
+        return previousPosition.lerp(currentPosition, Math.min(1.0, (System.currentTimeMillis() - lastUpdateTime) / 100.0));
     }
 
     public int getTransition() {
         return transition;
-    }
-
-    public Vec3 getPosition() {
-        return position;
     }
 
     private boolean scanBar(int y) {

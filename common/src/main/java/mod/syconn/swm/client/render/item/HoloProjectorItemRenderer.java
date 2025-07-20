@@ -46,7 +46,7 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
         if (hologramData != null) {
             poseStack.pushPose();
 
-            poseStack.translate(hologramData.getPosition().x, hologramData.getPosition().y, hologramData.getPosition().z);
+            poseStack.translate(hologramData.getCurrentPosition().x, hologramData.getCurrentPosition().y, hologramData.getCurrentPosition().z);
             poseStack.mulPose(Axis.YN.rotationDegrees(RenderUtil.isLeftHanded(renderMode) ? -45f : 45f));
             poseStack.scale(0.6f, 0.6f, 0.6f);
 

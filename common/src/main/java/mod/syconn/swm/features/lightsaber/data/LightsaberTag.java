@@ -96,10 +96,6 @@ public class LightsaberTag {
         return getTemporary(this, active);
     }
 
-    public static ItemStack getTemporary(ItemStack original, boolean active) {
-        return getTemporary(LightsaberTag.getOrCreate(original), active);
-    }
-
     public static ItemStack getTemporary(LightsaberTag original, boolean active) {
         original.active = active;
         var stack = new ItemStack(ModItems.LIGHTSABER.get());

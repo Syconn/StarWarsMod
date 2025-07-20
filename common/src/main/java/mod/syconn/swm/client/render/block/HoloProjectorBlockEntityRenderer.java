@@ -24,11 +24,11 @@ public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<Hol
 
     @Override
     public void render(HoloProjectorBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        for (var renderable : blockEntity.getRenderables().entrySet()) { // TODO PROBABLY NO LEAVE ANIMATION
+        for (var renderable : blockEntity.getRenderables().entrySet()) {
             poseStack.pushPose();
 
-            var hologramData = getHologramData(renderable.getKey(), renderable.getValue());  // TODO PARTIAL TICKS TRANSITION TO POSITION MAYBE FOR SMOOTHNESS
-            poseStack.translate(hologramData.getPosition().x, hologramData.getPosition().y, hologramData.getPosition().z);
+            var hologramData = getHologramData(renderable.getKey(), renderable.getValue());
+            poseStack.translate(hologramData.getInterpolatedPosition().x, hologramData.getInterpolatedPosition().y, hologramData.getInterpolatedPosition().z);
             hologramData.getRenderer().render(poseStack, buffer, partialTick, LightTexture.FULL_BLOCK);
 
             poseStack.popPose();
@@ -39,7 +39,7 @@ public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<Hol
 
             var data = RENDERERS.get(removed.getKey());
             if (data != null) {
-                poseStack.translate(data.getPosition().x, data.getPosition().y, data.getPosition().z);
+                poseStack.translate(data.getInterpolatedPosition().x, data.getInterpolatedPosition().y, data.getInterpolatedPosition().z);
                 data.getRenderer().render(poseStack, buffer, partialTick, LightTexture.FULL_BLOCK);
                 data.endCall(() -> {
                     blockEntity.removeDeletion(removed.getKey());
@@ -54,7 +54,7 @@ public class HoloProjectorBlockEntityRenderer implements BlockEntityRenderer<Hol
     private HologramData getHologramData(UUID entity, Vec3 pos) {
         var data = RENDERERS.get(entity);
         if (data == null) RENDERERS.put(entity, new HologramData(entity, pos, false));
-        else if (!pos.equals(data.getPosition())) RENDERERS.put(entity, data.setPosition(pos));
+        else if (!pos.equals(data.getCurrentPosition())) RENDERERS.put(entity, data.setPosition(pos));
         return RENDERERS.get(entity);
     }
 
