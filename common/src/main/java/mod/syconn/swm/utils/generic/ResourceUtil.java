@@ -4,28 +4,37 @@ import com.mojang.blaze3d.platform.NativeImage;
 import dev.architectury.utils.GameInstance;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.HttpTexture;
+import net.minecraft.client.resources.SkinManager;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.function.TriFunction;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Environment(EnvType.CLIENT)
 public class ResourceUtil {
 
     private static final Map<String, ResourceLocation> DYNAMIC_TEXTURES = new HashMap<>();
+    private static final Map<ResourceLocation, NativeImage> SKINS = new HashMap<>();
 
-    public static NativeImage loadResource(ResourceLocation location) {
+    public static Optional<NativeImage> loadResource(ResourceLocation location) {
         try {
             var inputStream = GameInstance.getClient().getResourceManager().open(location);
             var nativeImage = NativeImage.read(inputStream);
             inputStream.close();
-            return nativeImage;
+            return Optional.of(nativeImage);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return Optional.empty();
         }
+    }
+
+    public static Optional<NativeImage> loadSkin(ResourceLocation skinLocation) {
+        if (GameInstance.getClient().getResourceManager().getResource(skinLocation).isPresent()) return loadResource(skinLocation);
+        if (SKINS.containsKey(skinLocation)) return Optional.of(SKINS.get(skinLocation).mappedCopy(p -> p));
+        return Optional.empty();
     }
 
     public static ResourceLocation registerOrGet(String id, DynamicTexture texture) {
@@ -59,5 +68,9 @@ public class ResourceUtil {
             }
             texture.upload();
         }
+    }
+
+    public static void registerSkin(String id, NativeImage skin) {
+        if (!SKINS.containsKey(id)) SKINS.put(new ResourceLocation("skins/" + id), skin);
     }
 }

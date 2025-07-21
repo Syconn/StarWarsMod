@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin;
+package mod.syconn.swm.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;

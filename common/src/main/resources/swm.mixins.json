@@ -4,16 +4,17 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "HumanoidModelMixin",
-    "ItemInHandRendererMixin",
-    "ItemRendererMixin",
-    "LevelRendererMixin"
+    "client.HumanoidModelMixin",
+    "client.ItemInHandRendererMixin",
+    "client.ItemRendererMixin",
+    "client.LevelRendererMixin",
+    "client.HttpTextureMixin"
   ],
   "mixins": [
-    "AbstractArrowMixin",
-    "ItemStackMixin",
-    "LivingEntityMixin",
-    "PlayerMixin"
+    "common.AbstractArrowMixin",
+    "common.ItemStackMixin",
+    "common.LivingEntityMixin",
+    "common.PlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

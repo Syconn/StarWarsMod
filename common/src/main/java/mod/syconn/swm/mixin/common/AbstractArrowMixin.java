@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin;
+package mod.syconn.swm.mixin.common;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;

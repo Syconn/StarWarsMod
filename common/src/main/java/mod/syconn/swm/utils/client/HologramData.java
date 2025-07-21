@@ -46,15 +46,15 @@ public class HologramData {
         final var minecraft = GameInstance.getClient();
         final var playerInfo = getPlayerInfo(minecraft, uuid);
         final var clientPlayer = item ? null : minecraft.level.getPlayerByUUID(playerInfo.getProfile().getId());
-        final var texture = new DynamicTexture(ResourceUtil.loadResource(playerInfo.getSkinLocation()));
-        ResourceUtil.modifyTexture(texture, this::getPixelColor);
+        final var texture = ResourceUtil.loadSkin(playerInfo.getSkinLocation()).map(DynamicTexture::new);
+        texture.ifPresent(dynamicTexture -> ResourceUtil.modifyTexture(dynamicTexture, this::getPixelColor));
 
         this.item = item;
         this.currentPosition = currentPosition;
         this.previousPosition = currentPosition;
         this.renderer = new HologramRenderer(this, playerInfo.getModelName().equals("slim"));
         this.player = clientPlayer != null ? (AbstractClientPlayer) clientPlayer : new AbstractClientPlayer(minecraft.level, playerInfo.getProfile()) {};
-        this.skin = ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), texture);
+        this.skin = texture.map(dynamicTexture -> ResourceUtil.registerOrGet(playerInfo.getProfile().getName(), dynamicTexture)).orElse(playerInfo.getSkinLocation());
         this.transition = TRANSITION_TICKS;
     }
 
@@ -72,22 +72,24 @@ public class HologramData {
         if (this.scanBarTicks >= 2) {
             this.scanBarTicks = 0;
 
-            var texture = new DynamicTexture(ResourceUtil.loadResource(player.getSkinTextureLocation()));
-            if (this.scanBar1 >= this.textureHeight) this.scanBar1 = 0;
-            if (this.scanBar2 >= this.textureHeight) this.scanBar2 = 0;
+            final var texture = ResourceUtil.loadSkin(player.getSkinTextureLocation()).map(DynamicTexture::new);
+            if (texture.isPresent()) {
+                if (this.scanBar1 >= this.textureHeight) this.scanBar1 = 0;
+                if (this.scanBar2 >= this.textureHeight) this.scanBar2 = 0;
 
-            ResourceUtil.modifyTexture(texture, this::getPixelColor);
+                ResourceUtil.modifyTexture(texture.get(), this::getPixelColor);
+                ResourceUtil.registerOrGet(player.getName().getString(), texture.get());
 
-            ResourceUtil.registerOrGet(player.getName().getString(), texture);
-
-            this.scanBar1++;
-            this.scanBar2++;
+                this.scanBar1++;
+                this.scanBar2++;
+            }
         }
     }
 
     private int getPixelColor(int x, int y, int rgba) {
         if (FastColor.ARGB32.alpha(rgba) == 0) return rgba;
         return FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(rgba));
+//        return FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(rgba));
     }
 
     public float getAnimationScale(float partialTicks) {

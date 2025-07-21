@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin;
+package mod.syconn.swm.mixin.client;
 
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import mod.syconn.swm.utils.generic.RenderUtil;

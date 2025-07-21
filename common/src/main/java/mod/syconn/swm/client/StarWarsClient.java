@@ -43,6 +43,7 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
+//        ClientLifecycleEvent.CLIENT_LEVEL_LOAD
     }
 
     public static void setupEvent(Minecraft minecraft) {

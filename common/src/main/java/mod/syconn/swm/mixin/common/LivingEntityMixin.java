@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin;
+package mod.syconn.swm.mixin.common;
 
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
