@@ -1,16 +1,16 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
-import mod.syconn.swm.client.screen.components.ExpandedButton;
+import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.StringUtil;
-import mod.syconn.swm.util.client.GraphicsUtil;
-import mod.syconn.swm.util.client.render.IngredientRenderer;
-import mod.syconn.swm.util.math.MathUtil;
-import mod.syconn.swm.util.server.StackedIngredient;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.generic.StringUtil;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
+import mod.syconn.swm.utils.client.IngredientRenderer;
+import mod.syconn.swm.utils.generic.MathUtil;
+import mod.syconn.swm.utils.server.StackedIngredient;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

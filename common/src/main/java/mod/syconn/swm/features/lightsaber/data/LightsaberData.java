@@ -2,10 +2,10 @@ package mod.syconn.swm.features.lightsaber.data;
 
 import com.google.gson.JsonObject;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.util.client.model.NodeVec3;
-import mod.syconn.swm.util.json.JsonUtils;
-import mod.syconn.swm.util.nbt.ISerializable;
-import mod.syconn.swm.util.nbt.NbtTools;
+import mod.syconn.swm.utils.client.NodeVec3;
+import mod.syconn.swm.utils.generic.JsonUtil;
+import mod.syconn.swm.utils.interfaces.ISerializable;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +32,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
 
     public static LightsaberData fromJson(JsonObject json) {
         return new LightsaberData(json.get("model").getAsInt(), json.get("stable").getAsBoolean(), json.get("length").getAsFloat(), json.get("radius").getAsDouble(), json.get("color").getAsInt(),
-                json.get("bladeType").getAsString(), JsonUtils.getArray(json.getAsJsonObject("vectors"), NodeVec3::getNode));
+                json.get("bladeType").getAsString(), JsonUtil.getArray(json.getAsJsonObject("vectors"), NodeVec3::getNode));
     }
 
     public JsonObject toJson() {
@@ -43,13 +43,13 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
         json.addProperty("radius", this.radius);
         json.addProperty("color", this.color);
         json.addProperty("bladeType", this.bladeType);
-        json.add("vectors", JsonUtils.addArray(this.emitterPositions, NodeVec3::addNode));
+        json.add("vectors", JsonUtil.addArray(this.emitterPositions, NodeVec3::addNode));
         return json;
     }
 
     public static LightsaberData readTag(CompoundTag tag) {
         return new LightsaberData(tag.getInt("model"), tag.getBoolean("stable"), tag.getFloat("lengthScalar"), tag.getDouble("radius"), tag.getInt("color"),
-                tag.getString("bladeType"), NbtTools.getArray(tag.getCompound("vectors"), NodeVec3::getNode));
+                tag.getString("bladeType"), NBTUtil.getList(tag.getCompound("vectors"), NodeVec3::getNode));
     }
 
     public CompoundTag writeTag() {
@@ -60,7 +60,7 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
         tag.putDouble("radius", this.radius);
         tag.putInt("color", this.color);
         tag.putString("bladeType", this.bladeType);
-        tag.put("vectors", NbtTools.putArray(this.emitterPositions, NodeVec3::putNode));
+        tag.put("vectors", NBTUtil.putList(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }
 }

@@ -1,8 +1,8 @@
 package mod.syconn.swm.features.lightsaber.client.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
-import mod.syconn.swm.util.math.MathUtil;
+import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaber;
+import mod.syconn.swm.utils.generic.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.joml.Quaternionf;
 
-public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaberEntity> {
+public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaber> {
 
     private final ItemRenderer itemRenderer;
 
@@ -21,11 +21,11 @@ public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaberEnt
         this.itemRenderer = context.getItemRenderer();
     }
 
-    public ResourceLocation getTextureLocation(ThrownLightsaberEntity entity) {
+    public ResourceLocation getTextureLocation(ThrownLightsaber entity) {
         return new ResourceLocation("missing");
     }
 
-    public void render(ThrownLightsaberEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(ThrownLightsaber entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         poseStack.translate(0, 0.5f * entity.getEyeHeight(), 0);
 

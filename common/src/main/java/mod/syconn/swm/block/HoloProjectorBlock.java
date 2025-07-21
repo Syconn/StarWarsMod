@@ -1,10 +1,18 @@
 package mod.syconn.swm.block;
 
+import dev.architectury.utils.Env;
+import dev.architectury.utils.EnvExecutor;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
+import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.util.block.EntityBlockExtended;
+import mod.syconn.swm.core.ModEntities;
+import mod.syconn.swm.server.savedata.HologramNetwork;
+import mod.syconn.swm.utils.block.WorldPos;
+import mod.syconn.swm.utils.interfaces.IEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +33,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements EntityBlockExtended {
+public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements IEntityBlock {
 
     public HoloProjectorBlock() {
         super(BlockBehaviour.Properties.of().noCollission().strength(0.5F));
@@ -38,7 +46,7 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         if (pState.getValue(FACE) == AttachFace.CEILING)
             return Block.box(3, 15, 3, 13, 16, 13);
         else if (pState.getValue(FACE) == AttachFace.FLOOR)
@@ -54,6 +62,14 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
         }
     }
 
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (level instanceof ServerLevel serverLevel) level.getBlockEntity(pos, ModBlockEntities.HOLO_PROJECTOR.get())
+                .ifPresent(b -> HologramNetwork.get(serverLevel).blockRemoved(b.getCallId(), new WorldPos(level.dimension(), pos)));
+
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
@@ -63,14 +79,14 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
     @Override
     public @NotNull InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pLevel.isClientSide) {
+            EnvExecutor.runInEnv(Env.CLIENT, () -> () -> GameInstance.getClient().setScreen(ClientHooks.createHologramScreen(new WorldPos(pLevel.dimension(), pPos), null)));
             return InteractionResult.SUCCESS;
         }
-
         return InteractionResult.PASS;
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
     }
 }

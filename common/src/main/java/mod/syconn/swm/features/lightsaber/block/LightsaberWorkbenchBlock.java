@@ -8,8 +8,8 @@ import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEn
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
-import mod.syconn.swm.util.block.EntityBlockExtended;
-import mod.syconn.swm.util.block.ModBlockStateProperties;
+import mod.syconn.swm.utils.interfaces.IEntityBlock;
+import mod.syconn.swm.utils.block.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -28,7 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class LightsaberWorkbenchBlock extends TwoPartBlock implements EntityBlockExtended {
+public class LightsaberWorkbenchBlock extends TwoPartBlock implements IEntityBlock {
 
     public LightsaberWorkbenchBlock() {
         super(Properties.copy(Blocks.IRON_BLOCK).noOcclusion());

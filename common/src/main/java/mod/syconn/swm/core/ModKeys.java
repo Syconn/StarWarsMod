@@ -1,6 +1,6 @@
 package mod.syconn.swm.core;
 
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;
 

@@ -7,7 +7,7 @@ import mod.syconn.swm.features.lightsaber.client.screen.LightsaberAssemblerScree
 import mod.syconn.swm.features.lightsaber.client.screen.LightsaberWorkbenchScreen;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 

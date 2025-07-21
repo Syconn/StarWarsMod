@@ -2,11 +2,11 @@ package mod.syconn.swm.fabric.datagen;
 
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.util.Constants;
+import mod.syconn.swm.utils.Constants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
-import static mod.syconn.swm.util.Constants.MOD;
+import static mod.syconn.swm.utils.Constants.MOD;
 
 public class LangProvider extends FabricLanguageProvider {
 

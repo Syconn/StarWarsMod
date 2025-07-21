@@ -1,15 +1,15 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
-import mod.syconn.swm.client.screen.components.ColoredLightsaberButton;
-import mod.syconn.swm.client.screen.components.ColoredScrollBar;
+import mod.syconn.swm.client.screen.components.buttons.ColoredLightsaberButton;
+import mod.syconn.swm.client.screen.components.ColoredSliderBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.GraphicsUtil;
-import mod.syconn.swm.util.math.ColorUtil;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
+import mod.syconn.swm.utils.generic.ColorUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphics;
@@ -28,7 +28,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
 
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
-    private final ColoredScrollBar[] scrollBars = new ColoredScrollBar[3];
+    private final ColoredSliderBar[] scrollBars = new ColoredSliderBar[3];
     private UUID itemId;
     private double deltaScroll = 0;
     private float rotation = -45f;
@@ -44,11 +44,11 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     protected void init() {
         super.init();
 
-        addRenderableWidget(this.scrollBars[0] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, this.hue * 355f,
+        addRenderableWidget(this.scrollBars[0] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, this.hue * 355f,
                 f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value), b -> this.hue = b.getValueInt() / 355f));
-        addRenderableWidget(this.scrollBars[1] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, this.saturation * 100f,
+        addRenderableWidget(this.scrollBars[1] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, this.saturation * 100f,
                 f -> ColorUtil.packHsv(this.hue, f / 161f, this.value), b -> this.saturation = b.getValueInt() / 100f));
-        addRenderableWidget(this.scrollBars[2] = new ColoredScrollBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, this.value * 100f,
+        addRenderableWidget(this.scrollBars[2] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, this.value * 100f,
                 f -> ColorUtil.packHsv(this.hue, this.saturation, f / 161f), b -> this.value = b.getValueInt() / 100f));
 
         getLightsaberColor();

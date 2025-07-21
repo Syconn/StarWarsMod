@@ -4,18 +4,15 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import mod.syconn.swm.client.StarWarsClient;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.PlasmaBuffer;
-import mod.syconn.swm.util.math.ColorUtil;
-import mod.syconn.swm.util.math.MathUtil;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.PlasmaBuffer;
+import mod.syconn.swm.utils.generic.ColorUtil;
+import mod.syconn.swm.utils.generic.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderBuffers;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.Mth;
-
-import static mod.syconn.swm.util.math.ColorUtil.*;
 
 public class PlasmaRenderer {
 
@@ -158,10 +155,10 @@ public class PlasmaRenderer {
             var hueOffset = unstable ? (noise * 0.025f) : 0;
 
             var x = MathUtil.remap(layer, mL, xL, minOutputLayer, 60);
-            var alpha = getAlpha(x);
+            var alpha = ColorUtil.getAlpha(x);
             if (alpha < 16 / 255f) continue;
 
-            var color = ColorUtil.hsvToRgbInt(getHue(glowHue + hueOffset, x), getSaturation(x, glowSat), getValue(x, glowVal));
+            var color = ColorUtil.hsvToRgbInt(ColorUtil.getHue(glowHue + hueOffset, x), ColorUtil.getSaturation(x, glowSat), ColorUtil.getValue(x, glowVal));
             PlasmaBuffer.RENDER.setColor(color, (int)(255 * alpha));
             var layerThickness = deltaThickness * layer;
 
@@ -184,8 +181,8 @@ public class PlasmaRenderer {
                     var dTBottom = unstable ? (float)Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * i) * 0.0085f : 0;
 
                     noise = (float) Constants.SIMPLEX.getValue(globalTime, 3 * dLength * i);
-                    color = ColorUtil.hsvToRgbInt(0, (unstable ? (0.07f - noise * 0.07f) : 0) * glowSat, getValue(x, glowVal) - 0.12f);
-                    PlasmaBuffer.RENDER.setColor(color, (int)(255 * getAlpha(x)));
+                    color = ColorUtil.hsvToRgbInt(0, (unstable ? (0.07f - noise * 0.07f) : 0) * glowSat, ColorUtil.getValue(x, glowVal) - 0.12f);
+                    PlasmaBuffer.RENDER.setColor(color, (int)(255 * ColorUtil.getAlpha(x)));
                     PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(topThicknessLerp + dTTop, bottomThicknessLerp + dTBottom, 0, dLength * (i + 1), 0, 0, dLength * i, 0);
                 }
             }
@@ -212,7 +209,7 @@ public class PlasmaRenderer {
             var layerThickness = deltaThickness * layer;
 
             if (layer > 0) {
-                var color = ColorUtil.hsvToRgbInt(getHue(glowHue, x), getSaturation(x, glowSat), getValue(x, glowVal));
+                var color = ColorUtil.hsvToRgbInt(ColorUtil.getHue(glowHue, x), ColorUtil.getSaturation(x, glowSat), ColorUtil.getValue(x, glowVal));
                 PlasmaBuffer.RENDER.setColor(color, (int)(255 * alpha));
 
                 PlasmaBuffer.RENDER.invertCull(true);
@@ -223,7 +220,7 @@ public class PlasmaRenderer {
                 PlasmaBuffer.RENDER.skipFace(-1);
                 PlasmaBuffer.RENDER.invertCull(false);
             } else {
-                PlasmaBuffer.RENDER.setColor(0x101010, (int)(255 * getAlpha(x)));
+                PlasmaBuffer.RENDER.setColor(0x101010, (int)(255 * ColorUtil.getAlpha(x)));
                 PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thicknessTop, thicknessBottom, 0, bladeLength * 0.6f, 0, 0, 0, 0);
                 PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thicknessTop / 4f, thicknessTop, 0, bladeLength, thicknessTop * 0.75f, 0, bladeLength * 0.6f, 0);
             }

@@ -4,10 +4,10 @@ import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.util.Constants;
-import mod.syconn.swm.util.client.model.NodeVec3;
-import mod.syconn.swm.util.math.Ease;
-import mod.syconn.swm.util.nbt.NbtTools;
+import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.NodeVec3;
+import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
@@ -18,7 +18,8 @@ import java.util.function.Consumer;
 public class LightsaberTag {
 
     private static final String ID = "lightsaberData";
-    private static final byte TRANSITION_TICKS = 8;
+    private static final byte IGNITION_TICKS = 6;
+    private static final byte RETRACTION_TICKS = 12;
 
     private final String UUID = "uuid";
     private final String MODEL = "model";
@@ -52,7 +53,7 @@ public class LightsaberTag {
         this.radius = tag.getDouble(RADIUS);
         this.color = tag.getInt(COLOR);
         this.bladeType = tag.contains(BLADE_TYPE) ? tag.getString(BLADE_TYPE) : "plasma";
-        this.emitterPositions = NbtTools.getArray(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
+        this.emitterPositions = NBTUtil.getList(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
     }
 
     public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) {
@@ -95,10 +96,6 @@ public class LightsaberTag {
         return getTemporary(this, active);
     }
 
-    public static ItemStack getTemporary(ItemStack original, boolean active) {
-        return getTemporary(LightsaberTag.getOrCreate(original), active);
-    }
-
     public static ItemStack getTemporary(LightsaberTag original, boolean active) {
         original.active = active;
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
@@ -116,7 +113,7 @@ public class LightsaberTag {
         tag.putDouble(RADIUS, this.radius);
         tag.putInt(COLOR, this.color);
         tag.putString(BLADE_TYPE, this.bladeType);
-        tag.put(EMITTER_POSITIONS, NbtTools.putArray(this.emitterPositions, NodeVec3::putNode));
+        tag.put(EMITTER_POSITIONS, NBTUtil.putList(this.emitterPositions, NodeVec3::putNode));
         return tag;
     }
 
@@ -127,7 +124,7 @@ public class LightsaberTag {
 
     public void toggle() {
         if (this.transition != 0) return;
-        this.transition = this.active ? -TRANSITION_TICKS : TRANSITION_TICKS;
+        this.transition = this.active ? -RETRACTION_TICKS : IGNITION_TICKS;
         this.active = !this.active;
     }
 
@@ -139,7 +136,7 @@ public class LightsaberTag {
     public float getSize() {
         var partialTicks = StarWarsClient.getTickDelta();
         if (this.transition == 0) return this.active ? 1 : 0;
-        if (this.transition > 0) return Ease.outCubic(1 - (this.transition - partialTicks) / TRANSITION_TICKS);
-        return Ease.inCubic(-(this.transition + partialTicks) / TRANSITION_TICKS);
+        if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / IGNITION_TICKS);
+        return AnimationUtil.inCubic(-(this.transition + partialTicks) / RETRACTION_TICKS);
     }
 }
