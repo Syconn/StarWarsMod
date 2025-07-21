@@ -4,14 +4,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.features.blaster.data.BlasterTag;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
-import mod.syconn.swm.util.client.PlasmaBuffer;
-import mod.syconn.swm.util.math.Ease;
-import mod.syconn.swm.util.math.MathUtil;
+import mod.syconn.swm.utils.generic.AnimationUtil;
 import net.minecraft.client.CameraType;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.util.Mth;
 import org.joml.Quaternionf;
@@ -94,7 +90,7 @@ public class BoltRendererHelper {
                 var side = 1;
 //                if (sourceArm.get() == Arm.LEFT) side = -1;
 
-                var d = 1 - Ease.outCubic((float)Mth.clamp(ownerDist / 15, 0, 1));
+                var d = 1 - AnimationUtil.outCubic((float)Mth.clamp(ownerDist / 15, 0, 1));
                 poseStack.translate(0.2f * d, 0, 0.5f * d * side);
             }
 

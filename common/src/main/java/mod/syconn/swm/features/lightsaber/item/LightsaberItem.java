@@ -3,7 +3,7 @@ package mod.syconn.swm.features.lightsaber.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.util.client.IItemExtensions;
+import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -54,12 +54,12 @@ public class LightsaberItem extends Item implements IItemExtensions {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
+    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.NONE;
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+    public Multimap<Attribute, AttributeModifier> getAttributeModifications(ItemStack stack, EquipmentSlot slot) {
         var damage = LightsaberTag.getOrCreate(stack).active ? 7.0f : 0.0f;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", damage, AttributeModifier.Operation.ADDITION));
