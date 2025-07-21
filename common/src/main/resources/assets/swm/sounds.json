@@ -1,0 +1,7 @@
+{
+  "item.lightsaber.activation": { "subtitle": "subtitle.stf.activation", "sounds": [ "swm:item/lightsaber/activation" ] },
+  "item.lightsaber.deactivation": { "subtitle": "subtitle.stf.deactivation", "sounds": [ "swm:item/lightsaber/deactivation" ] },
+  "item.lightsaber.clash": { "subtitle": "subtitle.stf.clash", "sounds": [ "swm:item/lightsaber/clash" ] },
+  "item.lightsaber.swing": { "subtitle": "subtitle.stf.swing", "sounds": [ "swm:item/lightsaber/swing" ] },
+  "item.lightsaber.ambient": { "subtitle": "subtitle.stf.ambient", "sounds": [ "swm:item/lightsaber/ambient" ] }
+}

@@ -17,6 +17,7 @@ public final class StarWars {
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
         ModItems.TABS.register();
+        ModSounds.SOUNDS.register();
         ModBlockEntities.BLOCK_ENTITIES.register();
         ModEntities.ENTITIES.register();
         ModMenus.MENUS.register();
