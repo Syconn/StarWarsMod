@@ -1,6 +1,7 @@
 package mod.syconn.swm.utils.generic;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
@@ -81,5 +82,10 @@ public class MathUtil {
         if (value < 0) return max + value + 1;
         if (value > max) return value - max - 1;
         return value;
+    }
+
+    @SafeVarargs
+    public static <R> R randomChoice(R... choices) {
+        return choices[Constants.RANDOM.nextIntBetweenInclusive(0, choices.length - 1)];
     }
 }

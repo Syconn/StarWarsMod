@@ -3,5 +3,11 @@
   "item.lightsaber.deactivation": { "subtitle": "subtitle.stf.deactivation", "sounds": [ "swm:item/lightsaber/deactivation" ] },
   "item.lightsaber.clash": { "subtitle": "subtitle.stf.clash", "sounds": [ "swm:item/lightsaber/clash" ] },
   "item.lightsaber.swing": { "subtitle": "subtitle.stf.swing", "sounds": [ "swm:item/lightsaber/swing" ] },
-  "item.lightsaber.ambient": { "subtitle": "subtitle.stf.ambient", "sounds": [ "swm:item/lightsaber/ambient" ] }
+  "item.lightsaber.ambient": { "subtitle": "subtitle.stf.ambient", "sounds": [ "swm:item/lightsaber/ambient" ] },
+  "item.lightsaber.deflect": { "subtitle": "subtitle.stf.deflect", "sounds": [ "swm:item/lightsaber/deflect" ] },
+  "item.lightsaber.deflect2": { "subtitle": "subtitle.stf.deflect2", "sounds": [ "swm:item/lightsaber/deflect2" ] },
+  "item.lightsaber.impact": { "subtitle": "subtitle.stf.impact", "sounds": [ "swm:item/lightsaber/impact" ] },
+  "item.lightsaber.impact2": { "subtitle": "subtitle.stf.impact2", "sounds": [ "swm:item/lightsaber/impact2" ] },
+  "item.lightsaber.return": { "subtitle": "subtitle.stf.return", "sounds": [ "swm:item/lightsaber/return" ] },
+  "item.lightsaber.thrown": { "subtitle": "subtitle.stf.thrown", "sounds": [ "swm:item/lightsaber/thrown" ] }
 }

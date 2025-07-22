@@ -1,5 +1,7 @@
 package mod.syconn.swm.forge;
 
+import dev.architectury.networking.NetworkManager;
+import dev.architectury.networking.forge.NetworkManagerImpl;
 import dev.architectury.platform.forge.EventBuses;
 import mod.syconn.swm.StarWars;
 import mod.syconn.swm.utils.Constants;

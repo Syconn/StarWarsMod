@@ -16,6 +16,12 @@ public class ModSounds {
     public static final RegistrySupplier<SoundEvent> LIGHTSABER_CLASH = register("item.lightsaber.clash");
     public static final RegistrySupplier<SoundEvent> LIGHTSABER_SWING = register("item.lightsaber.swing");
     public static final RegistrySupplier<SoundEvent> LIGHTSABER_AMBIENT = register("item.lightsaber.ambient");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_DEFLECT = register("item.lightsaber.deflect");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_DEFLECT2 = register("item.lightsaber.deflect2");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_IMPACT = register("item.lightsaber.impact");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_IMPACT2 = register("item.lightsaber.impact2");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_RETURN = register("item.lightsaber.return");
+    public static final RegistrySupplier<SoundEvent> LIGHTSABER_THROWN = register("item.lightsaber.thrown");
 
     private static RegistrySupplier<SoundEvent> register(String key) {
         return SOUNDS.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Constants.MOD, key)));

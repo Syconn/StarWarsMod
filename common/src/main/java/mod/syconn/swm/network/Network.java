@@ -1,16 +1,19 @@
 package mod.syconn.swm.network;
 
 import dev.architectury.networking.NetworkChannel;
-import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
-import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
-import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
-import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
+import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.features.lightsaber.network.*;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
 import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.utils.Constants;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class Network {
 
@@ -26,5 +29,18 @@ public class Network {
         CHANNEL.register(RequestedHologramPacket.class, RequestedHologramPacket::encode, RequestedHologramPacket::new, RequestedHologramPacket::apply);
         CHANNEL.register(RequestHologramPacket.class, RequestHologramPacket::encode, RequestHologramPacket::new, RequestHologramPacket::apply);
         CHANNEL.register(NotifyPlayerPacket.class, NotifyPlayerPacket::encode, NotifyPlayerPacket::new, NotifyPlayerPacket::apply);
+        CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
+    }
+
+    public static <T> void sendToTrackingPlayers(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {
+        var playerlist = GameInstance.getServer().getPlayerList().getPlayers();
+        for (ServerPlayer serverPlayer : playerlist) {
+            if (serverPlayer != player && serverPlayer.level().dimension() == dimension) {
+                double d = pos.x - serverPlayer.getX();
+                double e = pos.y - serverPlayer.getY();
+                double f = pos.z - serverPlayer.getZ();
+                if (d * d + e * e + f * f < radius * radius) CHANNEL.sendToPlayer(serverPlayer, message);
+            }
+        }
     }
 }

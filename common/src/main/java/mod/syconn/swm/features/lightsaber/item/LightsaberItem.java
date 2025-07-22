@@ -2,13 +2,19 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
+import mod.syconn.swm.network.Network;
+import mod.syconn.swm.utils.generic.ItemStackUtil;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -33,7 +39,11 @@ public class LightsaberItem extends Item implements IItemExtensions {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        LightsaberTag.update(stack, LightsaberTag::tick);
+        if (!level.isClientSide && isSelected) {
+            LightsaberTag.update(stack, LightsaberTag::tick);
+            if (entity instanceof LivingEntity le)
+                Network.sendToTrackingPlayers(null, entity.level().dimension(), entity.position(), 32, new PlayAmbientLightsaberSoundPacket(entity.getId(), ItemStackUtil.getEquipmentSlot(le, stack)));
+        }
     }
 
     @Override
@@ -42,9 +52,9 @@ public class LightsaberItem extends Item implements IItemExtensions {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         final var stack = player.getItemInHand(usedHand);
-        player.startUsingItem(usedHand);
+        if (LightsaberTag.getOrCreate(stack).active) player.startUsingItem(usedHand);
         return InteractionResultHolder.fail(stack);
     }
 

@@ -3,14 +3,15 @@ package mod.syconn.swm.features.lightsaber.entity;
 import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.utils.generic.NBTUtil;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,20 +24,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ThrownLightsaberEntity extends ThrowableProjectile {
 
     private static final EntityDataAccessor<CompoundTag> LIGHTSABER_DATA = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.COMPOUND_TAG);
     private InteractionHand hand;
     private boolean returning = false;
+    private List<BlockPos> hitBlock = new ArrayList<>();
 
-    public ThrownLightsaberEntity(EntityType<? extends ThrownLightsaberEntity> entityType, Level level) {
+    public ThrownLightsaberEntity(EntityType<? extends ThrownLightsaberEntity> entityType, Level level) { // TODO PLAY THROW SOUND
         super(entityType, level);
-    }
-
-    public ThrownLightsaberEntity(Level level, LivingEntity shooter, ItemStack stack, InteractionHand hand) {
-        super(ModEntities.THROWN_LIGHTSABER.get(), shooter, level);
-        this.entityData.set(LIGHTSABER_DATA, LightsaberTag.getOrCreate(stack).save());
-        this.hand = hand;
     }
 
     public ThrownLightsaberEntity(Level level, LivingEntity shooter, InteractionHand hand) {
@@ -61,6 +60,7 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
                 if (this.getOwner() instanceof Player player && !player.isCreative()) {
                     if (player.getItemInHand(hand).isEmpty()) player.setItemSlot(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, this.getItem());
                     else if (player instanceof ServerPlayer sp) ItemStackHooks.giveItem(sp, this.getItem());
+                    this.playSound(ModSounds.LIGHTSABER_RETURN.get(), 0.5f, 1.0f);
                 }
                 this.discard();
             }
@@ -96,7 +96,6 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
 
         var entity2 = this.getOwner();
         var damageSource = ModDamageSources.lightsaber(level());
-        var soundEvent = SoundEvents.TRIDENT_HIT; // TODO CHANGE THIS TOO
         if (entity2 != entity && entity.hurt(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) return;
 
@@ -105,15 +104,17 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
                     EnchantmentHelper.doPostHurtEffects(livingEntity2, entity2);
                     EnchantmentHelper.doPostDamageEffects((LivingEntity)entity2, livingEntity2);
                 }
+
+                this.playSound(ModSounds.LIGHTSABER_IMPACT.get(), 0.5f, 1.0f);
             }
         }
-
-        this.playSound(soundEvent, 1.0F, 1.0F);
     }
 
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         this.returning = true;
+        if (!hitBlock.contains(result.getBlockPos())) this.playSound(ModSounds.LIGHTSABER_IMPACT2.get(), 0.2f, 1.0f);
+        hitBlock.add(result.getBlockPos());
     }
 
     @Override

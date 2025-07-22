@@ -1,5 +1,7 @@
 package mod.syconn.swm.mixin.common;
 
+import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.features.lightsaber.sound.LightsaberAudio;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.phys.EntityHitResult;
@@ -22,8 +24,9 @@ public class AbstractArrowMixin {
             if (entity2 instanceof LivingEntity) ((LivingEntity) entity2).setLastHurtMob(entity);
         }
 
-        if (result.getEntity() instanceof LivingEntity livingEntity && livingEntity.isDamageSourceBlocked(damageSource)) {
+        if (result.getEntity() instanceof LivingEntity livingEntity && livingEntity.isDamageSourceBlocked(damageSource) && livingEntity.getUseItem().is(ModItems.LIGHTSABER.get())) {
             arrow.discard();
+            LightsaberAudio.playDeflectAudio(livingEntity.level(), livingEntity.getOnPos().above());
             ci.cancel();
         }
     }
