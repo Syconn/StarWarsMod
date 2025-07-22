@@ -36,7 +36,10 @@ public class MapUtil {
 
     @SafeVarargs
     public static <K, V> Map<K, V> join(Map<K, V>... maps) {
-        System.out.println(Arrays.toString(maps));
-        return Arrays.stream(maps).flatMap(m -> m.entrySet().stream()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        var joined = new HashMap<K, V>();
+        for (var map : maps) {
+            if (map != null) joined.putAll(map);
+        }
+        return joined;
     }
 }
