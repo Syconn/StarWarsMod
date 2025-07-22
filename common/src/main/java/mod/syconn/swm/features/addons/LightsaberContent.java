@@ -28,20 +28,15 @@ public class LightsaberContent {
     public static final String DARK_SABER = "dark_saber";
     public static final String BRICK = "brick";
 
-    private static final int MODEL_FIXER = 6;
+    private static final int MODEL_FIXER = 6; // TODO NEED REWORK
 
-    public static final JsonResourceReloader<LightsaberData> LIGHTSABER_DATA = new JsonResourceReloader<>(Constants.withId("lightsaber_defaults"), "lightsaber/defaults",
-            LightsaberData::fromJson, LightsaberData::readTag);
+    public static final JsonResourceReloader<LightsaberData> LIGHTSABER_DATA =
+            new JsonResourceReloader<>(Constants.withId("lightsaber_defaults"), "lightsaber/defaults", LightsaberData::fromJson, LightsaberData::readTag);
 
     public static List<ItemStack> getLightsabers() {
         var list = new ArrayList<ItemStack>();
-        LIGHTSABER_DATA.sets().forEach(entry -> list.add(entry.getValue().toItem(StringUtil.makeLightsaberName(entry.getKey().getPath()))));
+        LIGHTSABER_DATA.sets().forEach(entry -> list.add(entry.getValue().toItem()));
         return list;
-    }
-
-    public static ItemStack createDefinedSaber(LightsaberTag tag) {
-        var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        return tag.change(stack);
     }
 
     public static void renderFixes(ItemDisplayContext renderMode, PoseStack poseStack, ItemStack stack) {

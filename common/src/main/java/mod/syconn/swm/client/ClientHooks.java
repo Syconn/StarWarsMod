@@ -19,12 +19,4 @@ public class ClientHooks {
     public static Screen createHologramScreen(WorldPos worldPos, @Nullable ItemStack stack) {
         return new HologramScreen(worldPos, stack);
     }
-
-    public static AbstractClientPlayer createMockPlayer(ClientLevel level, String name) {
-        return new AbstractClientPlayer(level, new GameProfile(UUID.nameUUIDFromBytes(name.getBytes()), name)) {};
-    }
-
-    public static PlayerInfo getInfo(Player player) {
-        return new PlayerInfo(player.getGameProfile(), false);
-    }
 }

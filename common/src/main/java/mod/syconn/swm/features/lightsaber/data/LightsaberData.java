@@ -24,12 +24,6 @@ public record LightsaberData(int model, boolean stable, float lengthScalar, doub
         return toTag().change(stack);
     }
 
-    public ItemStack toItem(String name) {
-        var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        stack.setHoverName(Component.literal(name + " Lightsaber"));
-        return toTag().change(stack);
-    }
-
     public static LightsaberData fromJson(JsonObject json) {
         return new LightsaberData(json.get("model").getAsInt(), json.get("stable").getAsBoolean(), json.get("length").getAsFloat(), json.get("radius").getAsDouble(), json.get("color").getAsInt(),
                 json.get("bladeType").getAsString(), JsonUtil.getArray(json.getAsJsonObject("vectors"), NodeVec3::getNode));

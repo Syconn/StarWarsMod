@@ -50,7 +50,7 @@ public class HologramNetwork extends SavedData {
         this.CALLS.computeIfPresent(callId, ((uuid, call) -> call.updateParticipants(map -> map.put(caller.uuid, caller))));
         if (caller.item != null) this.ITEMS.put(caller.item, callId);
         if (caller.location != null) {
-            this.BLOCKS.put(callId, MapUtil.add(caller.location, ListUtil.empty(), this.BLOCKS.get(callId)));
+            this.BLOCKS.put(callId, MapUtil.add(caller.location, ListUtil.empty(), this.BLOCKS.containsKey(callId) ? this.BLOCKS.get(callId) : new HashMap<>()));
             GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(callId));
         }
         this.setDirty();
