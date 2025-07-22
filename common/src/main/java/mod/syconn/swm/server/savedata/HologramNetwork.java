@@ -2,6 +2,7 @@ package mod.syconn.swm.server.savedata;
 
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.core.ModBlockEntities;
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
 import mod.syconn.swm.utils.block.WorldPos;
@@ -9,10 +10,13 @@ import mod.syconn.swm.utils.generic.ListUtil;
 import mod.syconn.swm.utils.generic.MapUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -54,6 +58,11 @@ public class HologramNetwork extends SavedData {
             GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(callId));
         }
         this.setDirty();
+
+        var call = this.CALLS.get(callId);
+        var callers = ListUtil.add(call.owner, call.participants.values());
+        for (var c : callers)
+            if (c.location != null) GameInstance.getServer().getLevel(c.location.level()).playSound(null, c.location.pos(), ModSounds.HOLOGRAM_ACTIVATE.get(), SoundSource.BLOCKS, 0.5f, 1.0f);
     }
 
     public void leaveCall(UUID callId, Caller caller) {
@@ -75,8 +84,7 @@ public class HologramNetwork extends SavedData {
                         GameInstance.getServer().getLevel(caller.location.level()).getBlockEntity(caller.location.pos(), ModBlockEntities.HOLO_PROJECTOR.get()).ifPresent(b -> b.addCall(null));
                     }
                 });
-            } else if (this.CALLS.get(callId).participants().containsKey(caller.uuid))
-                this.CALLS.compute(callId, ((uuid, c) -> c.updateParticipants(map -> map.remove(caller.uuid))));
+            } else if (this.CALLS.get(callId).participants().containsKey(caller.uuid)) this.CALLS.compute(callId, ((uuid, c) -> c.updateParticipants(map -> map.remove(caller.uuid))));
 
             if (this.CALLS.containsKey(callId) && this.CALLS.get(callId).participants.isEmpty()) this.leaveCall(callId, call.owner);
             this.setDirty();

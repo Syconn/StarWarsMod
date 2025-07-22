@@ -2,10 +2,13 @@ package mod.syconn.swm.features.lightsaber.sound;
 
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.sounds.SoundSource;
 
+@Environment(EnvType.CLIENT)
 public class ThrownLightsaberSoundInstance extends AbstractTickableSoundInstance {
 
     private final ThrownLightsaberEntity thrownLightsaber;

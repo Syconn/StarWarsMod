@@ -3,15 +3,18 @@ package mod.syconn.swm.blockentity;
 import dev.architectury.utils.Env;
 import dev.architectury.utils.EnvExecutor;
 import mod.syconn.swm.core.ModBlockEntities;
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.generic.MapUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -86,6 +89,8 @@ public class HoloProjectorBlockEntity extends SyncedBlockEntity {
     }
 
     public void addCall(UUID callId) {
+        if (callId == null) this.level.playSound(null, this.worldPosition, ModSounds.HOLOGRAM_DEACTIVATE.get(), SoundSource.BLOCKS, 0.5f, 1.0f);
+
         this.renderables.clear();
         if (this.callId != null && callId != null && this.level instanceof ServerLevel serverLevel)
             HologramNetwork.get(serverLevel).blockRemoved(this.callId, new WorldPos(serverLevel.dimension(), this.worldPosition));

@@ -5,14 +5,20 @@ import dev.architectury.utils.EnvExecutor;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.client.ClientHooks;
+import mod.syconn.swm.client.sounds.HoloProjectorSoundInstance;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.core.ModEntities;
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock implements IEntityBlock {
+
+    private boolean playAudio = true;
 
     public HoloProjectorBlock() {
         super(BlockBehaviour.Properties.of().noCollission().strength(0.5F));
@@ -88,5 +96,16 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return !level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntity::tick) : null;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (level.isClientSide && level.getBlockEntity(pos) instanceof HoloProjectorBlockEntity blockEntity) {
+            if (blockEntity.getCallId() == null) this.playAudio = true;
+            else if (this.playAudio) {
+                Minecraft.getInstance().getSoundManager().play(new HoloProjectorSoundInstance(pos));
+                this.playAudio = false;
+            }
+        }
     }
 }

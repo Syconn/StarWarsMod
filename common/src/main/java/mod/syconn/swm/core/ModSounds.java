@@ -23,6 +23,13 @@ public class ModSounds {
     public static final RegistrySupplier<SoundEvent> LIGHTSABER_RETURN = register("item.lightsaber.return");
     public static final RegistrySupplier<SoundEvent> LIGHTSABER_THROWN = register("item.lightsaber.thrown");
 
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_ACTIVATE = register("block.hologram.activate");
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_DEACTIVATE = register("block.hologram.deactivate");
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_STATIC = register("block.hologram.static");
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_BUTTON1 = register("block.hologram.button1");
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_BUTTON2 = register("block.hologram.button2");
+    public static final RegistrySupplier<SoundEvent> HOLOGRAM_BUTTON3 = register("block.hologram.button3");
+
     private static RegistrySupplier<SoundEvent> register(String key) {
         return SOUNDS.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Constants.MOD, key)));
     }
