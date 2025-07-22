@@ -31,8 +31,8 @@ public class StarWarsClient {
 
     public static void init() {
         IModifiedItemRenderer.register(LightsaberItem.class, new LightsaberItemRender());
-        IModifiedPoseRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
-        IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
+        IModifiedItemRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
+        IModifiedItemRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
         IModifiedPoseRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());

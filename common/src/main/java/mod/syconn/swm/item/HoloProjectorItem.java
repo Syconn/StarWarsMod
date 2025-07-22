@@ -18,6 +18,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 public class HoloProjectorItem extends BlockItem implements IItemExtensions {
 
     public HoloProjectorItem(HoloProjectorBlock block, Properties properties) {
@@ -45,13 +48,13 @@ public class HoloProjectorItem extends BlockItem implements IItemExtensions {
         if (level instanceof ServerLevel serverLevel) {
             var network = HologramNetwork.get(serverLevel.getServer().overworld());
             var callId = network.getCallId(id.itemId);
-            if (callId != null && network.getCall(callId) != null) {
+            if (callId != null && network.getCall(callId) != null && network.getBlockData(callId) != null) {
                 var call = network.getCall(callId);
-                var playerList = call.participants().values().stream().filter(p -> p.item() != null).findFirst();
-                if (playerList.isPresent()) {
-                    var caller = call.owner().uuid().equals(entity.getUUID()) ? playerList.get() : call.owner();
-                    if (serverLevel.getPlayerByUUID(caller.uuid()) == null && id.uuid != null) HologramData.HologramTag.update(stack, null);
-                    else if (!caller.uuid().equals(id.uuid)) HologramData.HologramTag.update(stack, caller.uuid());
+                var uuids = network.getBlockData(callId).values().stream().flatMap(Collection::stream).toList();
+                if (!uuids.isEmpty()) {
+                    var uuid = !call.owner().uuid().equals(entity.getUUID()) && uuids.contains(call.owner().uuid()) ? call.owner().uuid() : uuids.get(0);
+                    if (serverLevel.getPlayerByUUID(uuid) == null && id.uuid != null) HologramData.HologramTag.update(stack, null);
+                    else if (!uuid.equals(id.uuid)) HologramData.HologramTag.update(stack, uuid);
                     return;
                 }
             }
