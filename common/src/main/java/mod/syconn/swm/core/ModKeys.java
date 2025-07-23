@@ -7,7 +7,8 @@ import org.lwjgl.glfw.GLFW;
 public class ModKeys {
 
     public static final KeyMapping TOGGLE_ITEM = new KeyMapping(keyId("toggle_item"), GLFW.GLFW_KEY_V, modCategory());
-    public static final KeyMapping POWER_1 = new KeyMapping(keyId("power_1"), GLFW.GLFW_KEY_X, modCategory());
+    public static final KeyMapping QUICK_SWAP_LIGHTSABER = new KeyMapping(keyId("quick_swap_lightsaber"), GLFW.GLFW_KEY_K, modCategory());
+    public static final KeyMapping THROW_LIGHTSABER = new KeyMapping(keyId("throw_lightsaber"), GLFW.GLFW_KEY_X, modCategory());
 
     public static String modCategory() {
         return "key.categories." + Constants.MOD;

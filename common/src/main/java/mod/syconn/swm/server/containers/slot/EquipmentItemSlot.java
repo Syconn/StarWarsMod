@@ -2,6 +2,7 @@ package mod.syconn.swm.server.containers.slot;
 
 import com.mojang.datafixers.util.Pair;
 import mod.syconn.swm.server.data.SWGear;
+import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -24,13 +25,12 @@ public class EquipmentItemSlot extends Slot {
 
     public void setChanged() {
         player.getInventory().setChanged();
-//        SWGear.getOrCreate(player).change(player); TODO DO I NEED
         super.setChanged();
     }
 
     @Override
     public @Nullable Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-        return super.getNoItemIcon();
+        return Pair.of(InventoryMenu.BLOCK_ATLAS, Constants.withId("custom/lightsaber"));
     }
 
     public boolean mayPlace(ItemStack stack) {

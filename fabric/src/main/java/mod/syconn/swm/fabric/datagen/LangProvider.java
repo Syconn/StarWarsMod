@@ -21,7 +21,8 @@ public class LangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("key.categories." + Constants.MOD, "Star Wars Controls");
         translationBuilder.add("key.swm.toggle_item", "Toggle Held Item");
-        translationBuilder.add("key.swm.power_1", "Use Force Power 1");
+        translationBuilder.add("key.swm.quick_swap_lightsaber", "Quick Swap Lightsaber");
+        translationBuilder.add("key.swm.throw_lightsaber", "Throw Lightsaber");
 
         translationBuilder.add(ModItems.LIGHTSABER.get(), "Lightsaber");
         translationBuilder.add(ModItems.F11.get(), "F11D Blaster");

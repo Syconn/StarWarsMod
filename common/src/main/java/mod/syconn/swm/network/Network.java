@@ -8,6 +8,7 @@ import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
 import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
+import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,6 +30,7 @@ public class Network {
         CHANNEL.register(RequestHologramPacket.class, RequestHologramPacket::encode, RequestHologramPacket::new, RequestHologramPacket::apply);
         CHANNEL.register(NotifyPlayerPacket.class, NotifyPlayerPacket::encode, NotifyPlayerPacket::new, NotifyPlayerPacket::apply);
         CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
+        CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
     }
 
     public static <T> void sendToTrackingPlayers(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {

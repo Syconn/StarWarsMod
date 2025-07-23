@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.player.Player;
@@ -15,15 +16,26 @@ import org.jetbrains.annotations.Nullable;
 
 public class ClientHooks {
 
-    public static void overrideAbstractScreen(AbstractContainerScreen<?> screen, GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+    public static void overrideAbstractScreen(AbstractContainerScreen<?> screen, GuiGraphics graphics, int mouseX, int mouseY, float tickDelta) {
         if(screen instanceof InventoryScreen) {
             Player p = Minecraft.getInstance().player;
             if (p != null) {
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F); // TODO SHOW IN CREATIVE
+                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 graphics.blit(AbstractContainerScreen.INVENTORY_LOCATION, screen.leftPos + 76, screen.topPos + 43, 7, 7, 18, 18, 256, 256);
             }
+        } else if(screen instanceof CreativeModeInventoryScreen creative && creative.isInventoryOpen()) {
+            Player p = Minecraft.getInstance().player;
+            if (p != null) {
+                RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                graphics.blit(AbstractContainerScreen.INVENTORY_LOCATION, screen.leftPos + 126, screen.topPos + 19, 7, 7, 18, 18, 256, 256);
+            }
         }
+    }
+
+    public static void renderHUD(GuiGraphics graphics, float tickDelta) {
+
     }
 
     public static Screen createHologramScreen(WorldPos worldPos, @Nullable ItemStack stack) {
