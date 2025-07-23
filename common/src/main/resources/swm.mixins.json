@@ -12,10 +12,12 @@
     "client.LevelRendererMixin"
   ],
   "mixins": [
-    "common.AbstractArrowMixin",
-    "common.ItemStackMixin",
-    "common.LivingEntityMixin",
-    "common.PlayerMixin"
+    "AbstractArrowMixin",
+    "InventoryMenuMixin",
+    "InventoryMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

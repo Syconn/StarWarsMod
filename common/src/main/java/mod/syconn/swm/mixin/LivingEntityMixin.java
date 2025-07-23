@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin.common;
+package mod.syconn.swm.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import mod.syconn.swm.core.ModItems;

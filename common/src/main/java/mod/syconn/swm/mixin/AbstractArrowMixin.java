@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin.common;
+package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.sound.LightsaberAudio;

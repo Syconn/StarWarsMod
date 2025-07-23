@@ -3,7 +3,7 @@ package mod.syconn.swm.features.lightsaber.client.screen;
 import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
-import mod.syconn.swm.features.lightsaber.server.container.LightsaberAssemblerMenu;
+import mod.syconn.swm.features.lightsaber.server.menu.LightsaberAssemblerMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.StringUtil;

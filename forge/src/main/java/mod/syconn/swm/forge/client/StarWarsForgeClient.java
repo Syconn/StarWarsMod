@@ -1,10 +1,10 @@
 package mod.syconn.swm.forge.client;
 
 import mod.syconn.swm.client.StarWarsClient;
-import mod.syconn.swm.client.render.entity.layers.LightsaberLayer;
+import mod.syconn.swm.client.render.entity.layers.SWGearLayer;
 import mod.syconn.swm.utils.Constants;
-import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,11 +23,11 @@ public class StarWarsForgeClient {
 
     @SubscribeEvent
     public static void addRenderLayers(EntityRenderersEvent.AddLayers event) {
-        addPlayerLayers(event.getPlayerSkin("default"));
-        addPlayerLayers(event.getPlayerSkin("slim"));
+        addPlayerLayers(event.getPlayerSkin("default"), event.getContext());
+        addPlayerLayers(event.getPlayerSkin("slim"), event.getContext());
     }
 
-    private static void addPlayerLayers(EntityRenderer<? extends Player> renderer) {
-        if(renderer instanceof PlayerRenderer playerRenderer) playerRenderer.addLayer(new LightsaberLayer<>(playerRenderer));
+    private static void addPlayerLayers(EntityRenderer<? extends Player> renderer, EntityRendererProvider.Context context) {
+        if(renderer instanceof PlayerRenderer playerRenderer) playerRenderer.addLayer(new SWGearLayer<>(playerRenderer, context.getItemRenderer()));
     }
 }

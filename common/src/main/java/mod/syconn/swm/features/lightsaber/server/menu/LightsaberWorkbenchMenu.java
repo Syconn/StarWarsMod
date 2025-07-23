@@ -1,12 +1,10 @@
-package mod.syconn.swm.features.lightsaber.server.container;
+package mod.syconn.swm.features.lightsaber.server.menu;
 
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.core.ModMenus;
-import mod.syconn.swm.core.ModRecipes;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.server.containers.slot.SpecificSlot;
-import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -18,26 +16,21 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
-public class LightsaberAssemblerMenu extends AbstractContainerMenu {
+public class LightsaberWorkbenchMenu extends AbstractContainerMenu {
 
     private final LightsaberWorkbenchBlockEntity blockEntity;
-    private final List<LightsaberRecipe> recipes;
 
-    public LightsaberAssemblerMenu(int containerId, Inventory inventory, FriendlyByteBuf data) {
+    public LightsaberWorkbenchMenu(int containerId, Inventory inventory, FriendlyByteBuf data) {
         this(containerId, inventory, data.readBlockPos());
     }
 
-    public LightsaberAssemblerMenu(int containerId, Inventory inventory, BlockPos pos){
-        super(ModMenus.LIGHTSABER_ASSEMBLER.get(), containerId);
-
+    public LightsaberWorkbenchMenu(int containerId, Inventory inventory, BlockPos pos){
+        super(ModMenus.LIGHTSABER_WORKBENCH.get(), containerId);
         this.blockEntity = inventory.player.level().getBlockEntity(pos, ModBlockEntities.LIGHTSABER_WORKBENCH.get()).orElseThrow();
-        this.recipes = inventory.player.level().getRecipeManager().getAllRecipesFor(ModRecipes.LIGHTSABER.get());
 
-        this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 174, 37, LightsaberItem.class));
-        for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 8 + j1 * 18, 102 + l * 18));
-        for(int i1 = 0; i1 < 9; ++i1) this.addSlot(new Slot(inventory, i1, 8 + i1 * 18, 160));
+        this.addSlot(new SpecificSlot(this.blockEntity.getContainer(), 0, 14, 63, LightsaberItem.class));
+        for(int l = 0; l < 3; ++l) for(int j1 = 0; j1 < 9; ++j1) this.addSlot(new Slot(inventory, j1 + l * 9 + 9, 48 + j1 * 18, 159 + l * 18));
+        for(int i1 = 0; i1 < 9; ++i1) this.addSlot(new Slot(inventory, i1, 48 + i1 * 18, 217));
     }
 
     public static MenuProvider menu(BlockPos pos) {
@@ -47,7 +40,7 @@ public class LightsaberAssemblerMenu extends AbstractContainerMenu {
             }
 
             public @NotNull AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-                return new LightsaberAssemblerMenu(i, inventory, pos);
+                return new LightsaberWorkbenchMenu(i, inventory, pos);
             }
         };
     }
@@ -94,9 +87,5 @@ public class LightsaberAssemblerMenu extends AbstractContainerMenu {
 
     public LightsaberWorkbenchBlockEntity getBlockEntity() {
         return blockEntity;
-    }
-
-    public List<LightsaberRecipe> getRecipes() {
-        return recipes;
     }
 }

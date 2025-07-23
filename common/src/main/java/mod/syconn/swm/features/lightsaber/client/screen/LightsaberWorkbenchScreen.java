@@ -5,7 +5,7 @@ import mod.syconn.swm.client.screen.components.ColoredSliderBar;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
-import mod.syconn.swm.features.lightsaber.server.container.LightsaberWorkbenchMenu;
+import mod.syconn.swm.features.lightsaber.server.menu.LightsaberWorkbenchMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.GraphicsUtil;

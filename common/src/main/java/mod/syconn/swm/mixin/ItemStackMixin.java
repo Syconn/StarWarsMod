@@ -1,4 +1,4 @@
-package mod.syconn.swm.mixin.common;
+package mod.syconn.swm.mixin;
 
 import com.google.common.collect.Multimap;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;

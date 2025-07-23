@@ -7,6 +7,7 @@ import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.generic.ItemStackUtil;
+import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
@@ -21,15 +22,16 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public class LightsaberItem extends Item implements IItemExtensions {
+public class LightsaberItem extends Item implements IItemExtensions, IEquipmentItem {
 
     public LightsaberItem() {
-        super(new Properties().stacksTo(1));
+        super(new Properties().stacksTo(1).rarity(Rarity.EPIC));
     }
 
     @Override
@@ -75,5 +77,10 @@ public class LightsaberItem extends Item implements IItemExtensions {
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", damage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -2.4, AttributeModifier.Operation.ADDITION));
         return slot == EquipmentSlot.MAINHAND ? builder.build() : super.getDefaultAttributeModifiers(slot);
+    }
+
+    @Override
+    public SWEquipmentSlot getSWEquipmentSlot() {
+        return SWEquipmentSlot.LIGHTSABER;
     }
 }

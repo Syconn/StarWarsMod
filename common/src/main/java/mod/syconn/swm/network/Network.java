@@ -5,13 +5,12 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.lightsaber.network.*;
 import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
 import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
-import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
+import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 

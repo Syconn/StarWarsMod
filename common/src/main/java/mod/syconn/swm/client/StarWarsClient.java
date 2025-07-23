@@ -1,6 +1,8 @@
 package mod.syconn.swm.client;
 
+import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
+import dev.architectury.event.events.client.ClientScreenInputEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
@@ -45,6 +47,7 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
+        ClientGuiEvent.RENDER_CONTAINER_BACKGROUND.register(ClientHooks::overrideAbstractScreen);
     }
 
     public static void setupEvent(Minecraft minecraft) {
