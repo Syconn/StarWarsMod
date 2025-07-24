@@ -1,6 +1,5 @@
 package mod.syconn.swm.server.data;
 
-import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -39,21 +38,21 @@ public class SWGear implements Container {
     }
 
     public @NotNull ItemStack clearSlot(int slot) {
-        ItemStack itemStack = ContainerHelper.removeItem(this.gear, slot, getItem(slot).getCount());
+        var itemStack = ContainerHelper.removeItem(this.gear, slot, getItem(slot).getCount());
         if (!itemStack.isEmpty()) this.setChanged();
         return itemStack;
     }
 
     @Override
     public @NotNull ItemStack removeItem(int slot, int amount) {
-        ItemStack itemStack = ContainerHelper.removeItem(this.gear, slot, amount);
+        var itemStack = ContainerHelper.removeItem(this.gear, slot, amount);
         if (!itemStack.isEmpty()) this.setChanged();
         return itemStack;
     }
 
     @Override
     public @NotNull ItemStack removeItemNoUpdate(int slot) {
-        ItemStack itemStack = this.gear.get(slot);
+        var itemStack = this.gear.get(slot);
         if (itemStack.isEmpty()) return ItemStack.EMPTY;
         else {
             this.gear.set(slot, ItemStack.EMPTY);
@@ -62,7 +61,7 @@ public class SWGear implements Container {
     }
 
     public @NotNull ItemStack removeItemNoUpdate(IEquipmentItem.SWEquipmentSlot slot) {
-        ItemStack itemStack = ContainerHelper.removeItem(this.gear, slotFromEquipment(slot), getItemFromSlot(slot).getCount());
+        var itemStack = ContainerHelper.removeItem(this.gear, slotFromEquipment(slot), getItemFromSlot(slot).getCount());
         if (!itemStack.isEmpty()) this.setChanged();
         return itemStack;
     }

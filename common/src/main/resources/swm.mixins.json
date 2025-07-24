@@ -8,6 +8,7 @@
     "client.HttpTextureMixin",
     "client.HumanoidModelMixin",
     "client.ItemInHandRendererMixin",
+    "client.ItemPickerMenuMixin",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin"
   ],
