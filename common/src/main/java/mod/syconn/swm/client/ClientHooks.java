@@ -43,7 +43,7 @@ public class ClientHooks {
         }
     }
 
-    public static void renderHUD(GuiGraphics graphics, float tickDelta) { // TODO MAKE SURE OFF HAND DOESNT INTERFERE
+    public static void renderHUD(GuiGraphics graphics, float tickDelta) {
         var gear = ((SWGear.SWGearAccess) Minecraft.getInstance().player).swm$getSWGear();
         if (!gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER).isEmpty()) {
             var xOffset = Minecraft.getInstance().player.getMainArm() == HumanoidArm.RIGHT ? 91 : -127;

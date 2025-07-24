@@ -39,8 +39,7 @@ public class StarWarsClient {
         IModifiedPoseRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
         IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
-        KeyMappingRegistry.register(ModKeys.TOGGLE_ITEM);
-        KeyMappingRegistry.register(ModKeys.THROW_LIGHTSABER);
+        ModKeys.KEYS.forEach(KeyMappingRegistry::register);
 
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);

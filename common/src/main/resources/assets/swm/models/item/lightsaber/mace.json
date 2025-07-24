@@ -6653,7 +6653,7 @@
 		},
 		"fixed": {
 			"rotation": [0, -180, 0],
-			"translation": [0.25, 8, 0.25],
+			"translation": [0, 8, 0],
 			"scale": [2, 2, 2]
 		}
 	},

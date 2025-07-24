@@ -1,0 +1,2 @@
+Unaltered Location = (7.5, 7.88, 7.5)
+(Origin - new Position) / 16 = position
