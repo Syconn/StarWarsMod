@@ -25,7 +25,6 @@ public abstract class HumanoidModelMixin<T extends LivingEntity> extends Ageable
         if (entity.isSwimming()) return;
 
         var model = (HumanoidModel<T>) (Object) this;
-        model.head.xRot = 0;
 
         for (var hand : InteractionHand.values()) {
             var stack = entity.getItemInHand(hand);

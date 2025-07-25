@@ -3,6 +3,7 @@ package mod.syconn.swm.features.lightsaber.client.item;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.generic.ModelUtil;
@@ -42,7 +43,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
                 var bladePos = lT.emitterPositions.get(i);
                 poseStack.translate(bladePos.x, bladePos.y, bladePos.z);
                 poseStack.mulPose(bladePos.q);
-//                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
+                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
                 renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
                 poseStack.popPose();
             }
