@@ -1,6 +1,5 @@
 package mod.syconn.swm.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -14,6 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -47,15 +47,9 @@ public class PlayerMixin implements SWGear.SWGearAccess {
         return ((Player) (Object) this).getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof LightsaberItem || value;
     }
 
-    @ModifyExpressionValue(method = "attack", at = @At(value = "FIELD", target = "Lnet/minecraft/sounds/SoundEvents;PLAYER_ATTACK_SWEEP:Lnet/minecraft/sounds/SoundEvent;"))
-    public SoundEvent modifySweepAttack(SoundEvent original) {
+    @ModifyArg(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"), index = 4)
+    public SoundEvent modifySweepAttack(SoundEvent sound) {
         if (this.swm$player.getMainHandItem().is(ModItems.LIGHTSABER.get())) return ModSounds.LIGHTSABER_SWING.get();
-        return original;
-    }
-
-    @ModifyExpressionValue(method = "attack", at = @At(value = "FIELD", target = "Lnet/minecraft/sounds/SoundEvents;PLAYER_ATTACK_CRIT:Lnet/minecraft/sounds/SoundEvent;"))
-    public SoundEvent modifyCritAttack(SoundEvent original) {
-        if (this.swm$player.getMainHandItem().is(ModItems.LIGHTSABER.get())) return ModSounds.LIGHTSABER_SWING.get();
-        return original;
+        return sound;
     }
 }

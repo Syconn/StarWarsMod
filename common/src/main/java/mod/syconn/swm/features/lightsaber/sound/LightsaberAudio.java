@@ -2,8 +2,11 @@ package mod.syconn.swm.features.lightsaber.sound;
 
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.utils.generic.MathUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 import static mod.syconn.swm.core.ModSounds.LIGHTSABER_ACTIVATION;
@@ -21,5 +24,9 @@ public class LightsaberAudio {
 
     public static void playImpactAudio(Level level, BlockPos pos) {
         level.playSound(null, pos, MathUtil.randomChoice(ModSounds.LIGHTSABER_IMPACT, ModSounds.LIGHTSABER_IMPACT2).get(), SoundSource.PLAYERS, 0.25F, 1.0F);
+    }
+
+    public static void playAmbientLightsaber(LivingEntity livingEntity, EquipmentSlot slot) {
+        Minecraft.getInstance().getSoundManager().play(new LightsaberAmbientSoundInstance(livingEntity, slot));
     }
 }

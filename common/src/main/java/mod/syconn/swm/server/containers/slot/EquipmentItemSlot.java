@@ -1,7 +1,6 @@
 package mod.syconn.swm.server.containers.slot;
 
 import com.mojang.datafixers.util.Pair;
-import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.resources.ResourceLocation;

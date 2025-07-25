@@ -4,15 +4,14 @@ import com.mojang.blaze3d.platform.NativeImage;
 import dev.architectury.utils.GameInstance;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.HttpTexture;
-import net.minecraft.client.resources.SkinManager;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.function.TriFunction;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public class ResourceUtil {

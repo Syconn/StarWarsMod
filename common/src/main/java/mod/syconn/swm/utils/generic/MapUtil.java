@@ -1,9 +1,7 @@
 package mod.syconn.swm.utils.generic;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class MapUtil {
 

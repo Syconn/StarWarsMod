@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin.client;
 
-import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import mod.syconn.swm.utils.generic.RenderUtil;
+import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.util.Mth;

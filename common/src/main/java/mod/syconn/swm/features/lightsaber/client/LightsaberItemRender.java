@@ -11,14 +11,12 @@ import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.joml.Quaternionf;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
@@ -43,8 +41,8 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
             for (int i = 0; i < lT.emitterPositions.size(); i++) {
                 poseStack.pushPose();
                 var bladePos = lT.emitterPositions.get(i);
-//                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
-                poseStack.translate(0.003125, -0.0375, 0);
+                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
+//                poseStack.translate(0.003125, -0.0375, 0);
                 poseStack.mulPose(bladePos.q);
                 LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
                 renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);

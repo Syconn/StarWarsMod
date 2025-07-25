@@ -4,10 +4,9 @@ import com.google.gson.JsonObject;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.utils.client.NodeVec3;
 import mod.syconn.swm.utils.generic.JsonUtil;
-import mod.syconn.swm.utils.interfaces.ISerializable;
 import mod.syconn.swm.utils.generic.NBTUtil;
+import mod.syconn.swm.utils.interfaces.ISerializable;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;

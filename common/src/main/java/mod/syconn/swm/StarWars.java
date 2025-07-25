@@ -1,7 +1,6 @@
 package mod.syconn.swm;
 
 import dev.architectury.event.events.common.LifecycleEvent;
-import dev.architectury.event.events.common.TickEvent;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.utils.Env;
@@ -11,7 +10,6 @@ import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
-import mod.syconn.swm.server.data.SWGear;
 import net.minecraft.server.packs.PackType;
 
 public final class StarWars {
