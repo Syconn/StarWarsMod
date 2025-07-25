@@ -31,11 +31,11 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
 
         var transform = model.getTransforms().getTransform(renderMode);
         transform.apply(leftHanded, poseStack);
-        poseStack.mulPose(new Quaternionf().rotationXYZ(0f, leftHanded ? -transform.rotation.y() : transform.rotation.y() * Mth.DEG_TO_RAD,
-                0f));
+//        poseStack.mulPose(new Quaternionf().rotationXYZ(0f, leftHanded ? -transform.rotation.y() : transform.rotation.y() * Mth.DEG_TO_RAD,
+//                0f));
         renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
 
-        poseStack.popPose();
+        poseStack.popPose(); // TODO FIX MACE
     }
 
     public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
@@ -47,8 +47,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
             for (int i = 0; i < lT.emitterPositions.size(); i++) {
                 poseStack.pushPose();
                 var bladePos = lT.emitterPositions.get(i);
-//                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
-                poseStack.translate(0f, -0.12656f, 0f);
+                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
                 poseStack.mulPose(bladePos.q);
 //                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
                 renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
@@ -58,7 +57,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     }
 
     private void renderBlade(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, LightsaberTag lT, float bladeScalar) {
-        var r = 0.95f; // TODO MOVE BACK TO INLINE
+        var r = 0.65f; // TODO MOVE BACK TO INLINE
 
         switch (lT.bladeType) {
             case DARK_SABER -> PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
