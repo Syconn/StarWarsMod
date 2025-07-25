@@ -36,7 +36,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
 
         var lT = LightsaberTag.getOrCreate(stack);
 
-        if (renderMode != ItemDisplayContext.GUI) {
+        if (renderMode != ItemDisplayContext.GUI) { // TODO DARKSABER
             for (int i = 0; i < lT.emitterPositions.size(); i++) {
                 poseStack.pushPose();
                 var bladePos = lT.emitterPositions.get(i);
