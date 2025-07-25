@@ -1,5 +1,6 @@
 package mod.syconn.swm.forge.client;
 
+import mod.syconn.swm.client.ClientHooks;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.client.render.entity.layers.SWGearLayer;
 import mod.syconn.swm.utils.Constants;
@@ -8,6 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ContainerScreenEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,5 +31,9 @@ public class StarWarsForgeClient {
 
     private static void addPlayerLayers(EntityRenderer<? extends Player> renderer, EntityRendererProvider.Context context) {
         if(renderer instanceof PlayerRenderer playerRenderer) playerRenderer.addLayer(new SWGearLayer<>(playerRenderer, context.getItemRenderer()));
+    }
+
+    public static void onPlayerRenderScreen(ContainerScreenEvent.Render.Background event) {
+        ClientHooks.overrideAbstractScreen(event.getContainerScreen(), event.getGuiGraphics(),  event.getContainerScreen().getGuiLeft(), event.getContainerScreen().getGuiTop());
     }
 }

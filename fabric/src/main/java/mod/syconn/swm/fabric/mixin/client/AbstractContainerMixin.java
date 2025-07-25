@@ -1,0 +1,25 @@
+package mod.syconn.swm.fabric.mixin.client;
+
+import mod.syconn.swm.client.ClientHooks;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(AbstractContainerScreen.class)
+public class AbstractContainerMixin {
+
+    @Shadow
+    protected int leftPos;
+
+    @Shadow
+    protected int topPos;
+
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/Screen;render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V"))
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
+        ClientHooks.overrideAbstractScreen((AbstractContainerScreen<?>) (Object) this, guiGraphics, leftPos, topPos);
+    }
+}

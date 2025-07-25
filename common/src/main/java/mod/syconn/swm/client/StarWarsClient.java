@@ -45,7 +45,6 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
-        ClientGuiEvent.RENDER_CONTAINER_BACKGROUND.register(ClientHooks::overrideAbstractScreen);
         ClientGuiEvent.RENDER_HUD.register(ClientHooks::renderHUD);
     }
 
