@@ -1,5 +1,5 @@
-[19:30:10] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.14
-[19:30:10] [main/INFO] (FabricLoader) Loading 62 mods:
+[01:42:44] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.14
+[01:42:44] [main/INFO] (FabricLoader) Loading 62 mods:
 	- architectury 9.2.14
 	- fabric-api 0.92.5+1.20.1
 	- fabric-api-base 0.4.32+1802ada577
@@ -56,21 +56,21 @@
 	- fabric-transfer-api-v1 3.3.6+8dd72ea377
 	- fabric-transitive-access-wideners-v1 4.3.2+1802ada577
 	- fabricloader 0.16.14
-	- generated_57fde7b 1.0.0
+	- generated_3323c42 1.0.0
 	- java 22
 	- jei 15.20.0.106
 	- minecraft 1.20.1
 	- mixinextras 0.4.1
-	- swm 2.1.3
-[19:30:11] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.5+mixin.0.8.7/22f9eb729e216a091673a574a5906dc1b9027fb3/sponge-mixin-0.15.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[19:30:11] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[19:30:11] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
-[19:30:11] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[19:30:12] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[19:30:16] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 107 milliseconds
-[19:30:18] [Render thread/INFO] (Minecraft) [STDERR]: [LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
-[19:30:18] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[19:30:18] [Render thread/ERROR] (Minecraft) Failed to verify authentication
+	- swm 2.1.5
+[01:42:44] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.5+mixin.0.8.7/22f9eb729e216a091673a574a5906dc1b9027fb3/sponge-mixin-0.15.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[01:42:44] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[01:42:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
+[01:42:45] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
+[01:42:45] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[01:42:50] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 123 milliseconds
+[01:42:51] [Render thread/INFO] (Minecraft) [STDERR]: [LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
+[01:42:51] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[01:42:52] [Render thread/ERROR] (Minecraft) Failed to verify authentication
 com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
 	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156) ~[authlib-4.0.43.jar:?]
@@ -89,161 +89,57 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129) ~[authlib-4.0.43.jar:?]
 	... 10 more
-[19:30:18] [Render thread/INFO] (Minecraft) Setting user: Player306
-[19:30:19] [Render thread/ERROR] (Minecraft) No data fixer registered for throw_lightsaber
-[19:30:19] [Render thread/ERROR] (Minecraft) No data fixer registered for blaster_bolt
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6936fc2a442437b6a02d34860178c087
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6936fc2a442437b6a02d34860178c087
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c6e5874747553c8ba1efb48f8c357d3c
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c6e5874747553c8ba1efb48f8c357d3c
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/04f96388cede3dd883a3ed0563a16a66
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/04f96388cede3dd883a3ed0563a16a66
-[19:30:19] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
-[19:30:19] [Render thread/INFO] (PluginCaller) Sending ConfigManager...
-[19:30:19] [Render thread/INFO] (PluginCaller) Sending ConfigManager took 1.750 ms
-[19:30:19] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[19:30:19] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.2-snapshot
-[19:30:20] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-containers-v0, fabric-models-v0, fabric-message-api-v1, fabric-gametest-api-v1, generated_57fde7b, fabric-api, fabric-object-builder-api-v1, fabric-transfer-api-v1, fabric-sound-api-v1, fabric-keybindings-v0, fabric-networking-api-v1, fabric-loot-tables-v1, fabric-events-lifecycle-v0, fabric-content-registries-v0, fabric-mining-level-api-v1, fabric-rendering-fluids-v1, fabric-particles-v1, fabric-lifecycle-events-v1, fabric-screen-handler-api-v1, fabric-commands-v0, fabric-rendering-data-attachment-v1, fabric-api-base, fabric-transitive-access-wideners-v1, fabric-crash-report-info-v1, fabric-command-api-v2, fabric-resource-loader-v0, fabric-command-api-v1, fabric-key-binding-api-v1, fabricloader, fabric-renderer-api-v1, fabric-dimensions-v1, fabric-rendering-v0, jei, fabric-resource-conditions-api-v1, fabric-convention-tags-v1, fabric-block-api-v1, fabric-client-tags-api-v1, fabric-renderer-registries-v1, fabric-api-lookup-api-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-item-api-v1, fabric-biome-api-v1, fabric-screen-api-v1, fabric-renderer-indigo, fabric-entity-events-v1, fabric-recipe-api-v1, fabric-block-view-api-v2, fabric-rendering-v1, fabric-registry-sync-v0, fabric-game-rule-api-v1, fabric-events-interaction-v0, fabric-loot-api-v2, fabric-model-loading-api-v1, fabric-networking-v0, fabric-blockrenderlayer-v1, fabric-item-group-api-v1)
-[19:30:20] [Worker-Main-1/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
-[19:30:21] [Worker-Main-4/ERROR] (ModNioResourcePack) Invalid path in mod resource-pack generated_57fde7b: swm:textures/item/graphic display.png, ignoring
-[19:30:21] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
-[19:30:21] [Worker-Main-4/WARN] (Minecraft) Texture swm:item/silver with size 65x65 limits mip level from 4 to 0
-[19:30:21] [Worker-Main-4/WARN] (Minecraft) minecraft:textures/atlas/blocks.png: dropping miplevel from 4 to 0, because of minimum power of two: 1
-[19:30:22] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[19:30:22] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[19:30:22] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
-[19:30:22] [Render thread/INFO] (Minecraft) Sound engine started
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 2048x2048x0 minecraft:textures/atlas/blocks.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[19:30:22] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[19:30:22] [Render thread/INFO] (Minecraft) Created: 256x256x0 jei:textures/atlas/gui.png-atlas
-[19:32:06] [Render thread/INFO] (Minecraft) Loaded 8 recipes
-[19:32:06] [Render thread/INFO] (Minecraft) Loaded 1287 advancements
-[19:32:07] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
-[19:32:07] [Render thread/INFO] (JeiStarter) Stopping JEI
-[19:32:07] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
-[19:32:07] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
-[19:32:07] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 431.8 μs
-[19:32:07] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 1.148 ms
-[19:32:07] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.20.1
-[19:32:07] [Server thread/INFO] (Minecraft) Generating keypair
-[19:32:08] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[19:32:09] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:32:09] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:32:09] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:32:09] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:32:10] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[19:32:10] [Render thread/INFO] (Minecraft) Preparing spawn area: 81%
-[19:32:10] [Render thread/INFO] (Minecraft) Time elapsed: 2605 ms
-[19:32:11] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
-[19:32:11] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
-[19:32:11] [Server thread/INFO] (Minecraft) Player306[local:E:c1be72e7] logged in with entity id 186 at (-102.38311047140432, 65.0, -330.4988076042732)
-[19:32:11] [Server thread/INFO] (Minecraft) Player306 joined the game
-[19:32:11] [Render thread/INFO] (LoggedTimer) Starting JEI...
-[19:32:11] [Render thread/INFO] (PluginCaller) Registering item subtypes...
-[19:32:11] [Render thread/INFO] (PluginCaller) Registering item subtypes took 5.733 ms
-[19:32:11] [Render thread/INFO] (PluginCaller) Registering fluid subtypes...
-[19:32:11] [Render thread/INFO] (PluginCaller) Registering fluid subtypes took 2.334 ms
-[19:32:11] [Render thread/INFO] (PluginCaller) Registering ingredients...
-[19:32:12] [Render thread/WARN] (ItemStackListFactory) Item Group has no display items and no search tab display items. Items from this group will be missing from the JEI ingredient list. Operator Utilities
-[19:32:12] [Render thread/INFO] (PluginCallerTimerRunnable) Registering ingredients: jei:minecraft took 80.93 milliseconds
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering ingredients took 83.37 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering extra ingredients...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering extra ingredients took 858.1 μs
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases took 669.2 μs
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering categories...
-[19:32:12] [Render thread/INFO] (PluginCallerTimerRunnable) Registering categories: jei:minecraft took 14.78 milliseconds
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering categories took 26.51 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions took 3.594 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipe catalysts...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipe catalysts took 2.149 ms
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building recipe registry...
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building recipe registry took 19.25 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering advanced plugins...
-[19:32:12] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug
-[19:32:12] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug_focus
-[19:32:12] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:obnoxiously_large_recipe
-[19:32:12] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:information
-[19:32:12] [Render thread/INFO] (AdvancedRegistration) Added typed recipe manager plugin: class mezz.jei.library.plugins.debug.DebugSimpleRecipeManagerPlugin
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering advanced plugins took 3.363 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipes...
-[19:32:12] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:minecraft took 196.9 milliseconds
-[19:32:12] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:internal took 32.81 milliseconds
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipes took 238.0 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers took 2.887 ms
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building runtime...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering gui handlers...
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering gui handlers took 11.19 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering Runtime...
-[19:32:12] [Render thread/INFO] (JeiGuiStarter) Starting JEI GUI
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building ingredient list...
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building ingredient list took 26.91 ms
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building ingredient filter...
-[19:32:12] [Render thread/INFO] (IngredientFilter) Adding 1586 ingredients
-[19:32:12] [Render thread/INFO] (IngredientFilter) Added 1586 ingredients
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building ingredient filter took 163.8 ms
-[19:32:12] [Render thread/INFO] (PluginCallerTimerRunnable) Registering Runtime: jei:fabric_gui took 258.5 milliseconds
-[19:32:12] [Render thread/INFO] (PluginCaller) Registering Runtime took 259.1 ms
-[19:32:12] [Render thread/INFO] (LoggedTimer) Building runtime took 293.8 ms
-[19:32:12] [Render thread/INFO] (PluginCaller) Sending Runtime...
-[19:32:12] [Render thread/INFO] (IngredientManager) Ingredients are being added at runtime: 10 mezz.jei.library.plugins.debug.ingredients.DebugIngredient
-[19:32:12] [Render thread/INFO] (PluginCaller) Sending Runtime took 3.217 ms
-[19:32:12] [Render thread/INFO] (LoggedTimer) Starting JEI took 738.7 ms
-[19:32:13] [Render thread/INFO] (Minecraft) Loaded 2 advancements
-[19:32:37] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:32:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:32:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:32:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:32:38] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
-[19:32:38] [Render thread/INFO] (JeiStarter) Stopping JEI
-[19:32:38] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
-[19:32:38] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
-[19:32:38] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 406.2 μs
-[19:32:38] [Server thread/INFO] (Minecraft) Player306 lost connection: Disconnected
-[19:32:38] [Server thread/INFO] (Minecraft) Player306 left the game
-[19:32:38] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[19:32:38] [Server thread/INFO] (Minecraft) Stopping server
-[19:32:38] [Server thread/INFO] (Minecraft) Saving players
-[19:32:38] [Server thread/INFO] (Minecraft) Saving worlds
-[19:32:38] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:32:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:32:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:32:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (New World (1)): All chunks are saved
-[19:32:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[19:32:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[19:32:39] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
-[19:32:40] [Render thread/INFO] (Minecraft) Stopping!
-[19:32:40] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
-[19:32:40] [Render thread/INFO] (JeiStarter) Stopping JEI
-[19:32:40] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
-[19:32:40] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
-[19:32:40] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 383.8 μs
+[01:42:52] [Render thread/INFO] (Minecraft) Setting user: Player457
+[01:42:52] [Render thread/ERROR] (Minecraft) No data fixer registered for throw_lightsaber
+[01:42:52] [Render thread/ERROR] (Minecraft) No data fixer registered for blaster_bolt
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6936fc2a442437b6a02d34860178c087
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6936fc2a442437b6a02d34860178c087
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c6e5874747553c8ba1efb48f8c357d3c
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c6e5874747553c8ba1efb48f8c357d3c
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/04f96388cede3dd883a3ed0563a16a66
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/04f96388cede3dd883a3ed0563a16a66
+[01:42:52] [Render thread/INFO] (PluginCaller) Sending ConfigManager...
+[01:42:52] [Render thread/INFO] (PluginCaller) Sending ConfigManager took 1.423 ms
+[01:42:52] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
+[01:42:52] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[01:42:53] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.2-snapshot
+[01:42:54] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-command-api-v2, fabric-lifecycle-events-v1, fabric-screen-handler-api-v1, fabric-networking-v0, fabric-crash-report-info-v1, fabric-mining-level-api-v1, fabric-object-builder-api-v1, fabric-block-view-api-v2, fabric-rendering-v1, fabric-api, fabric-particles-v1, fabric-dimensions-v1, fabric-data-attachment-api-v1, fabric-sound-api-v1, fabric-model-loading-api-v1, fabric-recipe-api-v1, fabric-game-rule-api-v1, jei, fabric-rendering-v0, generated_3323c42, fabric-rendering-fluids-v1, fabricloader, fabric-models-v0, fabric-events-interaction-v0, fabric-client-tags-api-v1, fabric-key-binding-api-v1, fabric-content-registries-v0, fabric-api-base, fabric-commands-v0, fabric-transfer-api-v1, fabric-blockrenderlayer-v1, fabric-item-api-v1, fabric-loot-api-v2, fabric-rendering-data-attachment-v1, fabric-item-group-api-v1, fabric-keybindings-v0, fabric-networking-api-v1, fabric-command-api-v1, fabric-gametest-api-v1, fabric-entity-events-v1, fabric-screen-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-registries-v1, fabric-renderer-indigo, fabric-transitive-access-wideners-v1, fabric-resource-loader-v0, fabric-loot-tables-v1, fabric-biome-api-v1, fabric-message-api-v1, fabric-events-lifecycle-v0, fabric-containers-v0, fabric-block-api-v1, fabric-data-generation-api-v1, fabric-convention-tags-v1, fabric-api-lookup-api-v1, fabric-resource-conditions-api-v1)
+[01:42:54] [Worker-Main-7/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
+[01:42:54] [Worker-Main-4/ERROR] (ModNioResourcePack) Invalid path in mod resource-pack generated_3323c42: swm:textures/item/graphic display.png, ignoring
+[01:42:54] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[01:42:54] [Worker-Main-6/WARN] (Minecraft) Texture swm:item/silver with size 65x65 limits mip level from 4 to 0
+[01:42:54] [Worker-Main-6/WARN] (Minecraft) minecraft:textures/atlas/blocks.png: dropping miplevel from 4 to 0, because of minimum power of two: 1
+[01:42:55] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
+[01:42:55] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[01:42:55] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
+[01:42:55] [Render thread/INFO] (Minecraft) Sound engine started
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 2048x2048x0 minecraft:textures/atlas/blocks.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[01:42:55] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[01:42:55] [Render thread/INFO] (Minecraft) Created: 256x256x0 jei:textures/atlas/gui.png-atlas

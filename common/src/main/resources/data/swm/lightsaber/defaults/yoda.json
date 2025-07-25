@@ -1,7 +1,7 @@
 {
   "bladeType": "plasma",
   "color": 6029183,
-  "length": 1.4,
+  "length": 1.2,
   "model": 4,
   "radius": 0.85,
   "stable": true,
@@ -13,7 +13,7 @@
       "qz": 0.0,
       "scalar": 1.0,
       "x": 0.0,
-      "y": 0.125,
+      "y": 0.10625,
       "z": 0.0
     }
   }

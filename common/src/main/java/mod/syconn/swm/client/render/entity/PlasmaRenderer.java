@@ -23,7 +23,7 @@ public class PlasmaRenderer {
             RenderType.CompositeState.builder().setLayeringState(RenderStateShard.LayeringStateShard.VIEW_OFFSET_Z_LAYERING).setTransparencyState(RenderStateShard.LIGHTNING_TRANSPARENCY)
             .setShaderState(RenderStateShard.RENDERTYPE_LIGHTNING_SHADER).createCompositeState(true));
 
-    public static void renderPlasma(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, boolean unstable, float length, float lengthScalar, float radius, boolean cap, int glowHsv) {
+    public static void renderPlasma(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, boolean unstable, float length, float lengthScalar, float radius, boolean cap, int glowHsv, boolean bolt) {
         final VertexConsumer vc = bufferSource.getBuffer(PLASMA);
 
         var totalLength = length * lengthScalar * 1.3f;
@@ -36,7 +36,7 @@ public class PlasmaRenderer {
         poseStack.translate(dX, 0, dY);
 
         PlasmaBuffer.RENDER.init(vc, poseStack.last(), 1, 1, 1, 1, overlay, light);
-        renderGlow(totalLength, radius, ColorUtil.hsvGetH(glowHsv), ColorUtil.hsvGetS(glowHsv), ColorUtil.hsvGetV(glowHsv), unstable, cap);
+        renderGlow(totalLength, radius, ColorUtil.hsvGetH(glowHsv), ColorUtil.hsvGetS(glowHsv), ColorUtil.hsvGetV(glowHsv), unstable, cap, bolt);
     }
 
 
@@ -59,10 +59,6 @@ public class PlasmaRenderer {
 
         PlasmaBuffer.RENDER.invertCull(true);
         PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thickness, thickness, 0, totalLength, 0, 0, 0, 0);
-        PlasmaBuffer.RENDER.invertCull(false);
-
-        PlasmaBuffer.RENDER.invertCull(true);
-        PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thickness * 0.6f, thickness * 0.6f, 0, 0.3f * totalLength, 0, 0, 0.35f * totalLength, 0);
         PlasmaBuffer.RENDER.invertCull(false);
     }
 
@@ -135,7 +131,7 @@ public class PlasmaRenderer {
         PlasmaBuffer.RENDER.vertex(-size, -size, 0, nx, ny, nz, 0, 0);
     }
 
-    private static void renderGlow(float length, float radius, float glowHue, float glowSat, float glowVal, boolean unstable, boolean cap) {
+    private static void renderGlow(float length, float radius, float glowHue, float glowSat, float glowVal, boolean unstable, boolean cap, boolean bolt) {
         if (length == 0) return;
 
         var thicknessBottom = radius * 0.018f;
@@ -162,9 +158,11 @@ public class PlasmaRenderer {
             PlasmaBuffer.RENDER.setColor(color, (int)(255 * alpha));
             var layerThickness = deltaThickness * layer;
 
+            var bottom = bolt ? -layerThickness : 0;
+
             if (layer > 0) {
                 PlasmaBuffer.RENDER.invertCull(true);
-                PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thicknessTop + layerThickness, thicknessBottom + layerThickness, 0, length + layerThickness, 0, 0, -layerThickness, 0);
+                PlasmaBuffer.RENDER.drawSolidBoxSkewTaper(thicknessTop + layerThickness, thicknessBottom + layerThickness, 0, length + layerThickness, 0, 0, bottom, 0);
                 PlasmaBuffer.RENDER.invertCull(false);
             } else {
                 final var segments = unstable ? 35 : 1;
@@ -176,9 +174,8 @@ public class PlasmaRenderer {
                 for (var i = 0; i < segments; i++) {
                     var topThicknessLerp = Mth.lerp(dSegments * (i + 1), thicknessBottom, thicknessTop);
                     var bottomThicknessLerp = Mth.lerp(dSegments * i, thicknessBottom, thicknessTop);
-
                     var dTTop = unstable ? (float) Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * (i + 1)) * 0.0085f : 0;
-                    var dTBottom = unstable ? (float)Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * i) * 0.0085f : 0;
+                    var dTBottom = unstable ? (float) Constants.SIMPLEX.getValue(globalTime, dLengthTime * dLength * i) * 0.0085f : 0;
 
                     noise = (float) Constants.SIMPLEX.getValue(globalTime, 3 * dLength * i);
                     color = ColorUtil.hsvToRgbInt(0, (unstable ? (0.07f - noise * 0.07f) : 0) * glowSat, ColorUtil.getValue(x, glowVal) - 0.12f);

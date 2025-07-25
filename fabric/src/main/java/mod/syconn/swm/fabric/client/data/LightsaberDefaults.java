@@ -13,13 +13,13 @@ public class LightsaberDefaults {
 
     public enum LightsaberTypes {
         ANAKIN("anakin", new LightsaberData(0, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0, -0.085, 0)))),
-        LUKE("luke", new LightsaberData(1, true, 1.2f, 1, GREEN, PLASMA, List.of(new NodeVec3(0, -0.05, 0.01)))),
-        MACE("mace", new LightsaberData(2, true, 1.2f, 1, PURPLE, PLASMA, List.of(new NodeVec3(0.003125, -0.0375, 0)))),
+        LUKE("luke", new LightsaberData(1, true, 1.2f, 1, GREEN, PLASMA, List.of(new NodeVec3(0.00071f, 0.02188f, 0f)))),
+        MACE("mace", new LightsaberData(2, true, 1.2f, 0.95f, PURPLE, PLASMA, List.of(new NodeVec3(0.00391f, -0.05312f, -0.00047f)))),
         OBI_WAN("obi", new LightsaberData(3, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0, -0.205, 0)))),
-        YODA("yoda", new LightsaberData(4, true, 1.2f, 0.85, GREEN, PLASMA, List.of(new NodeVec3(0, 0.10625, 0)))), //
+        YODA("yoda", new LightsaberData(4, true, 1.2f, 0.85, GREEN, PLASMA, List.of(new NodeVec3(0f, -0.12656f, 0f)))),
         AHSOKA("ahsoka", new LightsaberData(5, true, 1.2f, 1, GREEN, PLASMA, List.of(new NodeVec3(0, 0.05, 0)))),
         DARK_SABER("dark_saber", new LightsaberData(6, true, 1.2f, 1, WHITE, LightsaberContent.DARK_SABER, List.of(new NodeVec3(0, -0.6, 0, Axis.YN.rotationDegrees(180f))))),
-        TEMPLE_GUARD("temple_guard", new LightsaberData(7, true, 1.2f, 1, YELLOW, PLASMA, List.of(new NodeVec3(0, 0, 0)))),
+        TEMPLE_GUARD("temple_guard", new LightsaberData(7, true, 1.2f, 0.95f, YELLOW, PLASMA, List.of(new NodeVec3(0.00312f, 0.01250f, -0.00156f)))),
         KAL("kal", new LightsaberData(8, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0, -0.325, 0)))),
         KYLO("kylo", new LightsaberData(9, false, 1.2f, 1, RED, PLASMA, List.of(new NodeVec3(-0.0025, -0.005, 0),
                 new NodeVec3(0.125, 0.075, 0, Axis.ZP.rotationDegrees(90f), 0.15f/1.1f), new NodeVec3(-0.125, 0.075, 0, Axis.ZP.rotationDegrees(-90f), 0.15f/1.1f)))),

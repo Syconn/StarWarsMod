@@ -94,7 +94,7 @@ public class BoltRendererHelper {
                 poseStack.translate(0.2f * d, 0, 0.5f * d * side);
             }
 
-            PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, 0xFFFFFF, false, 1.5f, 1.0f, 1.0f, false, LightsaberContent.RED);
+            PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, 0xFFFFFF, false, 1.5f, 1.0f, 1.0f, false, LightsaberContent.RED, true);
         }
         poseStack.popPose();
     }

@@ -1,11 +1,13 @@
 package mod.syconn.swm.features.lightsaber.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.utils.generic.MathUtil;
 import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
@@ -17,6 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import org.joml.Quaternionf;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
@@ -26,7 +29,10 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
         poseStack.pushPose();
 
-        model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
+        var transform = model.getTransforms().getTransform(renderMode);
+        transform.apply(leftHanded, poseStack);
+        poseStack.mulPose(new Quaternionf().rotationXYZ(0f, leftHanded ? -transform.rotation.y() : transform.rotation.y() * Mth.DEG_TO_RAD,
+                0f));
         renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
 
         poseStack.popPose();
@@ -41,10 +47,10 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
             for (int i = 0; i < lT.emitterPositions.size(); i++) {
                 poseStack.pushPose();
                 var bladePos = lT.emitterPositions.get(i);
-                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
-//                poseStack.translate(0.003125, -0.0375, 0);
+//                poseStack.translate(-bladePos.x, -bladePos.y, -bladePos.z);
+                poseStack.translate(0f, -0.12656f, 0f);
                 poseStack.mulPose(bladePos.q);
-                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
+//                LightsaberContent.renderFixes(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, stack);
                 renderBlade(poseStack, bufferSource, light, overlay, lT, bladePos.scalar);
                 poseStack.popPose();
             }
@@ -52,9 +58,11 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     }
 
     private void renderBlade(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, LightsaberTag lT, float bladeScalar) {
+        var r = 0.95f; // TODO MOVE BACK TO INLINE
+
         switch (lT.bladeType) {
             case DARK_SABER -> PlasmaRenderer.renderDarksaber(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
-            case PLASMA -> PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(), 1.2f * bladeScalar, (float) lT.radius, true, lT.color); // lT.lengthScalar
+            case PLASMA -> PlasmaRenderer.renderPlasma(poseStack, bufferSource, light, overlay, !lT.stable, lT.getSize(), lT.lengthScalar * bladeScalar, r, true, lT.color, false);
             case BRICK -> PlasmaRenderer.renderBrick(poseStack, bufferSource, light, overlay, lT.getSize(), lT.lengthScalar * bladeScalar, lT.color);
         }
     }

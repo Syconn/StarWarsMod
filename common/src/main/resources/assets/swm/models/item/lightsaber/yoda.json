@@ -923,7 +923,7 @@
 			"scale": [2, 2, 2]
 		},
 		"fixed": {
-			"translation": [0, 8, 0],
+			"translation": [0, 9.5, 0],
 			"scale": [2, 2, 2]
 		}
 	},
