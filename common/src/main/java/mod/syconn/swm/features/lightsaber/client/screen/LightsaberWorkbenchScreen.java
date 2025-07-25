@@ -1,15 +1,15 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
-import mod.syconn.swm.client.screen.components.buttons.ColoredLightsaberButton;
 import mod.syconn.swm.client.screen.components.ColoredSliderBar;
+import mod.syconn.swm.client.screen.components.buttons.ColoredLightsaberButton;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
 import mod.syconn.swm.features.lightsaber.server.menu.LightsaberWorkbenchMenu;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.generic.GraphicsUtil;
 import mod.syconn.swm.utils.generic.ColorUtil;
+import mod.syconn.swm.utils.generic.GraphicsUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphics;

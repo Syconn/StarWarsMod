@@ -1,7 +1,6 @@
 package mod.syconn.swm.network.packets.serverside;
 
 import dev.architectury.networking.NetworkManager;
-import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.network.FriendlyByteBuf;

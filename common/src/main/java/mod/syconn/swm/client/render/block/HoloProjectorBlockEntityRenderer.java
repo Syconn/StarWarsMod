@@ -3,14 +3,11 @@ package mod.syconn.swm.client.render.block;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
-import mod.syconn.swm.client.ClientHooks;
-import mod.syconn.swm.client.render.entity.HologramRenderer;
 import mod.syconn.swm.utils.client.HologramData;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.HashMap;

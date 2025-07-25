@@ -1,7 +1,6 @@
 package mod.syconn.swm.network.packets.serverside;
 
 import dev.architectury.networking.NetworkManager;
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.network.FriendlyByteBuf;

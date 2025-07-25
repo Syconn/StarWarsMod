@@ -19,7 +19,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 public class HoloProjectorItem extends BlockItem implements IItemExtensions {
 

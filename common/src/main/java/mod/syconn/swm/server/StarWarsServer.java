@@ -2,12 +2,9 @@ package mod.syconn.swm.server;
 
 import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.event.events.common.TickEvent;
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.server.savedata.HologramNetwork;
-import mod.syconn.swm.utils.client.HologramData;
 import mod.syconn.swm.utils.server.SyncedResourceManager;
-import net.minecraft.client.telemetry.events.WorldLoadEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 

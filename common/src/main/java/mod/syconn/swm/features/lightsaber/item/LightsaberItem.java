@@ -2,7 +2,6 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
 import mod.syconn.swm.network.Network;
@@ -10,7 +9,6 @@ import mod.syconn.swm.utils.generic.ItemStackUtil;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;

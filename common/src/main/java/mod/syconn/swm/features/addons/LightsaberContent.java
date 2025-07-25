@@ -1,14 +1,12 @@
 package mod.syconn.swm.features.addons;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.data.LightsaberData;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.generic.StringUtil;
-import mod.syconn.swm.utils.server.JsonResourceReloader;
 import mod.syconn.swm.utils.generic.ColorUtil;
+import mod.syconn.swm.utils.server.JsonResourceReloader;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 

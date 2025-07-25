@@ -1,6 +1,5 @@
 package mod.syconn.swm.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
@@ -12,7 +11,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;

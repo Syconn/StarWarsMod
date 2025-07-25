@@ -9,9 +9,6 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.controls.ControlsScreen;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 

@@ -1,6 +1,5 @@
 package mod.syconn.swm.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;

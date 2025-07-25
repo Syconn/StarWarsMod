@@ -3,7 +3,6 @@ package mod.syconn.swm.mixin;
 import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
 import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
-import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingContainer;
