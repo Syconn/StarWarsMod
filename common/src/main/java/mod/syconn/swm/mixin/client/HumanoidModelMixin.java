@@ -22,20 +22,19 @@ public abstract class HumanoidModelMixin<T extends LivingEntity> extends Ageable
     @SuppressWarnings("unchecked")
     @Inject(method = "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V", at = @At(value = "TAIL"))
     public void setAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
-//        if (entity.isSwimming()) return;
-//
-//        var model = (HumanoidModel<T>) (Object) this;
-//        model.head.xRot = 0;
-//
-//        for (var hand : InteractionHand.values()) {
-//            var stack = entity.getItemInHand(hand);
-//            if (!stack.isEmpty()) {
-//                final IModifiedPoseRenderer pose = IModifiedPoseRenderer.REGISTRY.get(stack.getItem().getClass());
-//                if (pose != null) {
-//                    pose.modifyPose(entity, hand, stack, model, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, StarWarsClient.getTickDelta());
-//                    break;
-//                }
-//            }
-//        }
+        if (entity.isSwimming()) return;
+
+        var model = (HumanoidModel<T>) (Object) this;
+
+        for (var hand : InteractionHand.values()) {
+            var stack = entity.getItemInHand(hand);
+            if (!stack.isEmpty()) {
+                final IModifiedPoseRenderer pose = IModifiedPoseRenderer.REGISTRY.get(stack.getItem().getClass());
+                if (pose != null) {
+                    pose.modifyPose(entity, hand, stack, model, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, StarWarsClient.getTickDelta());
+                    break;
+                }
+            }
+        }
     }
 }

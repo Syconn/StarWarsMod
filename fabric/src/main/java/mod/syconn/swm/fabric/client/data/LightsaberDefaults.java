@@ -18,7 +18,7 @@ public class LightsaberDefaults {
         OBI_WAN("obi", new LightsaberData(3, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0.00391f, 0.18906f, -0.00047)))),
         YODA("yoda", new LightsaberData(4, true, 1.2f, 0.85, GREEN, PLASMA, List.of(new NodeVec3(0f, -0.12656f, 0f)))),
         AHSOKA("ahsoka", new LightsaberData(5, true, 1.2f, 0.85f, GREEN, PLASMA, List.of(new NodeVec3(0.00391f, -0.06719f, -0.00047f)))),
-        DARK_SABER("dark_saber", new LightsaberData(6, true, 1.2f, 1, WHITE, LightsaberContent.DARK_SABER, List.of(new NodeVec3(0, -0.6, 0, Axis.YN.rotationDegrees(180f))))),
+        DARK_SABER("dark_saber", new LightsaberData(6, true, 1.2f, 1, WHITE, LightsaberContent.DARK_SABER, List.of(new NodeVec3(0f, 0.62500f, 0f, Axis.YN.rotationDegrees(180f))))),
         TEMPLE_GUARD("temple_guard", new LightsaberData(7, true, 1.2f, 0.95f, YELLOW, PLASMA, List.of(new NodeVec3(0.00312f, 0.01250f, -0.00156f)))),
         KAL("kal", new LightsaberData(8, true, 1.4f, 0.95f, BLUE, PLASMA, List.of(new NodeVec3(0.00078f, 0.30469f, -0.00047f)))),
         KYLO("kylo", new LightsaberData(9, false, 1.2f, 1, RED, PLASMA, List.of(new NodeVec3(0.00234f, 0.00781f, -0.00203f),
