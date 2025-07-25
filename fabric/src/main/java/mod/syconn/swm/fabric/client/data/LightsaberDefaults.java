@@ -14,7 +14,7 @@ public class LightsaberDefaults {
     public enum LightsaberTypes {
         ANAKIN("anakin", new LightsaberData(0, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0.00391f, 0.07031f, -0.00047f)))),
         LUKE("luke", new LightsaberData(1, true, 1.2f, 1, GREEN, PLASMA, List.of(new NodeVec3(0.00071f, 0.02188f, 0f)))),
-        MACE("mace", new LightsaberData(2, true, 1.2f, 0.95f, PURPLE, PLASMA, List.of(new NodeVec3(0.00391f, -0.05312f, -0.00047f)))),
+        MACE("mace", new LightsaberData(2, true, 1.2f, 0.95f, PURPLE, PLASMA, List.of(new NodeVec3(0.00391f, -0.05469f, -0.00047f)))),
         OBI_WAN("obi", new LightsaberData(3, true, 1.2f, 1, BLUE, PLASMA, List.of(new NodeVec3(0.00391f, 0.18906f, -0.00047)))),
         YODA("yoda", new LightsaberData(4, true, 1.2f, 0.85, GREEN, PLASMA, List.of(new NodeVec3(0f, -0.12656f, 0f)))),
         AHSOKA("ahsoka", new LightsaberData(5, true, 1.2f, 0.85f, GREEN, PLASMA, List.of(new NodeVec3(0.00391f, -0.06719f, -0.00047f)))),

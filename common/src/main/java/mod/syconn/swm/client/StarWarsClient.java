@@ -13,7 +13,7 @@ import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
 import mod.syconn.swm.features.blaster.client.entity.BlasterBoltRenderer;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
-import mod.syconn.swm.features.lightsaber.client.LightsaberItemRender;
+import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.entity.LightsaberWorkbenchRenderer;
 import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
