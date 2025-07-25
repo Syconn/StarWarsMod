@@ -5,12 +5,10 @@ import dev.architectury.utils.EnvExecutor;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.blockentity.HoloProjectorBlockEntity;
 import mod.syconn.swm.client.ClientHooks;
-import mod.syconn.swm.client.sounds.HoloProjectorSoundInstance;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEntityBlock;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -96,12 +94,14 @@ public class HoloProjectorBlock extends FaceAttachedHorizontalDirectionalBlock i
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (level.isClientSide && level.getBlockEntity(pos) instanceof HoloProjectorBlockEntity blockEntity) {
-            if (blockEntity.getCallId() == null) this.playAudio = true;
-            else if (this.playAudio) {
-                Minecraft.getInstance().getSoundManager().play(new HoloProjectorSoundInstance(pos));
-                this.playAudio = false;
+        EnvExecutor.runInEnv(Env.CLIENT, () -> () -> {
+            if (level.getBlockEntity(pos) instanceof HoloProjectorBlockEntity blockEntity) {
+                if (blockEntity.getCallId() == null) this.playAudio = true;
+                else if (this.playAudio) {
+                    ClientHooks.playerHoloSound(pos);
+                    this.playAudio = false;
+                }
             }
-        }
+        });
     }
 }

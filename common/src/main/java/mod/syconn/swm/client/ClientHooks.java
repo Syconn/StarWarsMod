@@ -3,9 +3,13 @@ package mod.syconn.swm.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.screen.HologramScreen;
+import mod.syconn.swm.client.sounds.HoloProjectorSoundInstance;
+import mod.syconn.swm.features.lightsaber.sound.LightsaberAmbientSoundInstance;
 import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -13,12 +17,14 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+@Environment(EnvType.CLIENT)
 public class ClientHooks {
 
     private static final ResourceLocation WIDGETS_LOCATION = new ResourceLocation("textures/gui/widgets.png");
@@ -52,6 +58,10 @@ public class ClientHooks {
 
     public static Screen createHologramScreen(WorldPos worldPos, @Nullable ItemStack stack) {
         return new HologramScreen(worldPos, stack);
+    }
+
+    public static void playerHoloSound(BlockPos pos) {
+        GameInstance.getClient().getSoundManager().play(new HoloProjectorSoundInstance(pos));
     }
 
     private static void renderSlot(GuiGraphics guiGraphics, int x, int y, float partialTick, Player player, ItemStack stack) {
