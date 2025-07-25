@@ -23,7 +23,7 @@ public abstract class InventoryMenuMixin extends RecipeBookMenu<CraftingContaine
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    protected void init(Inventory playerInventory, boolean active, Player owner, CallbackInfo ci) { // TODO CREATIVE MODE ONE RENDER SLOT ELSEWHERE
+    protected void init(Inventory playerInventory, boolean active, Player owner, CallbackInfo ci) {
         this.addSlot(new EquipmentItemSlot(owner, IEquipmentItem.SWEquipmentSlot.LIGHTSABER, ((SWGear.SWGearAccess) owner).swm$getSWGear(), 0, 77, 44));
     }
 }
