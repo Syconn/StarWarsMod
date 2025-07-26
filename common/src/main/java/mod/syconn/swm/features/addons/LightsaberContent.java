@@ -1,13 +1,9 @@
 package mod.syconn.swm.features.addons;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import mod.syconn.swm.features.lightsaber.data.LightsaberData;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.features.lightsaber.data.LightsaberJson;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ColorUtil;
 import mod.syconn.swm.utils.server.JsonResourceReloader;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -26,24 +22,12 @@ public class LightsaberContent {
     public static final String DARK_SABER = "dark_saber";
     public static final String BRICK = "brick";
 
-    private static final int MODEL_FIXER = 6; // TODO NEED REWORK
-
-    public static final JsonResourceReloader<LightsaberData> LIGHTSABER_DATA =
-            new JsonResourceReloader<>(Constants.withId("lightsaber_defaults"), "lightsaber/defaults", LightsaberData::fromJson, LightsaberData::readTag);
+    public static final JsonResourceReloader<LightsaberJson> LIGHTSABER_DATA =
+            new JsonResourceReloader<>(Constants.withId("lightsaber_defaults"), "lightsaber/defaults", LightsaberJson::fromJson, LightsaberJson::readTag);
 
     public static List<ItemStack> getLightsabers() {
         var list = new ArrayList<ItemStack>();
         LIGHTSABER_DATA.sets().forEach(entry -> list.add(entry.getValue().toItem()));
         return list;
-    }
-
-    public static void renderFixes(ItemDisplayContext renderMode, PoseStack poseStack, ItemStack stack) {
-        if (stack.getItem() instanceof LightsaberItem) {
-            var lt = LightsaberTag.getOrCreate(stack);
-            if (lt.model == MODEL_FIXER) {
-                if (renderMode == ItemDisplayContext.NONE) poseStack.scale(0.5f, 0.5f, 0.5f);
-                else poseStack.scale(3f, 1.5f, 3f);
-            }
-        }
     }
 }

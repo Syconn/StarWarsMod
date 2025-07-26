@@ -84,7 +84,7 @@ public class SWGear implements Container {
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack itemStack : this.gear) if (!itemStack.isEmpty()) return false;
+        for (var itemStack : this.gear) if (!itemStack.isEmpty()) return false;
         return true;
     }
 
@@ -103,7 +103,7 @@ public class SWGear implements Container {
     public void setChanged() {}
 
     public CompoundTag save(){
-        CompoundTag tag = new CompoundTag();
+        var tag = new CompoundTag();
         ContainerHelper.saveAllItems(tag, this.gear);
         return tag;
     }

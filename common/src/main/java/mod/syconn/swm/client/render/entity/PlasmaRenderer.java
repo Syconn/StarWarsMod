@@ -71,7 +71,7 @@ public class PlasmaRenderer {
         double dX = (float) Constants.RANDOM.nextGaussian() * shake;
         double dY = (float) Constants.RANDOM.nextGaussian() * shake;
         poseStack.translate(dX, 0, dY);
-        poseStack.scale(1, 1.5f, 1);
+        poseStack.scale(3f, 3f, 3f);
 
         PlasmaBuffer.RENDER.init(vc, poseStack.last(), 1, 1, 1, 1, overlay, light);
         renderDarkSaberGlow(totalLength, ColorUtil.hsvGetH(glowHsv), ColorUtil.hsvGetS(glowHsv), ColorUtil.hsvGetV(glowHsv));

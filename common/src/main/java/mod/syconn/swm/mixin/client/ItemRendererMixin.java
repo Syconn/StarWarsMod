@@ -24,7 +24,7 @@ public abstract class ItemRendererMixin {
             final IModifiedItemRenderer itemRenderer = IModifiedItemRenderer.INSTANCES.get(itemStack.getItem().getClass());
             if (itemRenderer != null) {
                 itemRenderer.render(null, itemStack, displayContext, leftHand, poseStack, buffer, combinedLight, combinedOverlay, model);
-//                ci.cancel();
+                ci.cancel();
             }
         }
     }

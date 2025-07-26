@@ -23,7 +23,7 @@ public class JsonUtil {
         return list;
     }
 
-    public static <T> JsonObject addArray(List<T> elements, Function<T, JsonObject> function) {
+    public static <T> JsonObject putArray(List<T> elements, Function<T, JsonObject> function) {
         var json = new JsonObject();
         for (var i = 0; i < elements.size(); i++) json.add(String.valueOf(i), function.apply(elements.get(i)));
         return json;

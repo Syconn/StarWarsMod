@@ -1,7 +1,7 @@
 package mod.syconn.swm.fabric.datagen;
 
 import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
-import mod.syconn.swm.features.lightsaber.data.LightsaberData;
+import mod.syconn.swm.features.lightsaber.data.LightsaberJson;
 import mod.syconn.swm.utils.Constants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.CachedOutput;
@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 public class LightsaberDataProvider implements DataProvider {
 
     private final FabricDataOutput output;
-    public final Map<String, LightsaberData> lightsaberData = new HashMap<>();
+    public final Map<String, LightsaberJson> lightsaberData = new HashMap<>();
 
     public LightsaberDataProvider(FabricDataOutput output) {
         this.output = output;
