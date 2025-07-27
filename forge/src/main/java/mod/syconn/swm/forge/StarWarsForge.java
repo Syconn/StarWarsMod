@@ -3,6 +3,7 @@ package mod.syconn.swm.forge;
 import dev.architectury.platform.forge.EventBuses;
 import mod.syconn.swm.StarWars;
 import mod.syconn.swm.utils.Constants;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 

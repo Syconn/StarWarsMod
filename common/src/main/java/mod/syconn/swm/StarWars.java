@@ -1,7 +1,6 @@
 package mod.syconn.swm;
 
 import dev.architectury.event.events.common.LifecycleEvent;
-import dev.architectury.platform.Platform;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.architectury.utils.Env;
@@ -15,8 +14,10 @@ import mod.syconn.swm.utils.Constants;
 import net.minecraft.server.packs.PackType;
 
 public final class StarWars {
+
     public static void init() {
-        if (Constants.TRACKER.shouldUpdate(Platform.getMod(Constants.MOD).getVersion(), Platform.getMinecraftVersion())) Constants.LOG.debug("Out of Date Version");
+        Constants.LOG.info("Starting SW Version Check");
+        if (Constants.TRACKER.shouldUpdate()) Constants.LOG.info("Out of Date Version");
 
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();

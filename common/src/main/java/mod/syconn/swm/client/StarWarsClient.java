@@ -1,7 +1,9 @@
 package mod.syconn.swm.client;
 
+import dev.architectury.event.EventResult;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
+import dev.architectury.event.events.client.ClientPlayerEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
@@ -20,6 +22,7 @@ import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.item.HoloProjectorItem;
 import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.UpdateTracker;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
@@ -46,6 +49,7 @@ public class StarWarsClient {
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
         ClientGuiEvent.RENDER_HUD.register(ClientHooks::renderHUD);
+        ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(Constants.TRACKER::clientPlayerJoined);
     }
 
     public static void setupEvent(Minecraft minecraft) {
