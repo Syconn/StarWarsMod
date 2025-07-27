@@ -13,6 +13,7 @@ public class Constants {
     public static final Logger LOG = LoggerFactory.getLogger(MOD);
     public static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();
     public static final SimplexNoise SIMPLEX = new SimplexNoise(RANDOM);
+    public static final UpdateTracker TRACKER = new UpdateTracker();
 
     public static ResourceLocation withId(String s) {
         return new ResourceLocation(MOD, s);
