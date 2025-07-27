@@ -80,8 +80,8 @@ public class BladeData {
         return json;
     }
 
-    public void toggle(boolean active) {
-        if (this.active == active) this.toggle();
+    public void toggle(boolean toggleIfNot) {
+        if (this.active != toggleIfNot) this.toggle();
     }
 
     public void toggle() {

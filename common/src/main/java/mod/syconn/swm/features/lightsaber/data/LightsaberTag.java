@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T), SECONDARY_STATE VALID BLADES ID"S TO RENDER
+public class LightsaberTag {
     // TODO TIMED ANIMATION SO each blade is different time
 
     private static final String ID = "lightsaber";
@@ -66,14 +66,30 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
     }
 
     public void togglePrimary() {
-        if (!blades.isEmpty()) this.blades.get(0).toggle();
-        if (!this.blades.get(0).active) toggleAll();
+        if (this.getPrimaryBlade() != null) {
+            var active = this.isActive();
+            this.getPrimaryBlade().toggle();
+            if (active) for (var blade : getSecondaryBlades()) blade.toggle(false);
+        }
     }
 
     public void toggleAll() {
-        if (!blades.isEmpty()) {
-            for (var blade : this.blades) blade.toggle(this.blades.get(0).active);
+        if (this.getPrimaryBlade() != null) {
+            if (this.isActive() && this.hasUnactive()) blades.forEach(b -> b.toggle(true));
+            else {
+                var active = !this.isActive();
+                this.getPrimaryBlade().toggle();
+                for (var blade : getSecondaryBlades()) blade.toggle(active);
+            }
         }
+    }
+
+    public BladeData getPrimaryBlade() {
+        return this.blades.isEmpty() ? null : this.blades.get(0);
+    }
+
+    public List<BladeData> getSecondaryBlades() {
+        return this.blades.size() > 1 ? this.blades.subList(1, this.blades.size()) : List.of();
     }
 
     public void tick() {
@@ -90,7 +106,11 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
     }
 
     public boolean isActive() {
-        return this.blades.get(0).active;
+        return this.blades.stream().anyMatch(b -> b.active);
+    }
+
+    public boolean hasUnactive() {
+        return this.blades.stream().anyMatch(b -> !b.active);
     }
 
     @Deprecated // TODO TO BE REPLACED WITH SABER DEPENDENT COLORING

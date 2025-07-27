@@ -15,9 +15,14 @@ import net.minecraft.world.entity.player.Player;
 public class KeyHandler {
 
     public static void handleKeyMappings(Player player) {
-        while (ModKeys.TOGGLE_ITEM.consumeClick()) {
+        while (ModKeys.TOGGLE_BLADE.consumeClick()) {
             InteractionHand hand = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof LightsaberItem ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) Network.CHANNEL.sendToServer(new ToggleLightsaberPacket(hand));
+            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) Network.CHANNEL.sendToServer(new ToggleLightsaberPacket(hand, true));
+        }
+
+        while (ModKeys.TOGGLE_PRIMARY_BLADE.consumeClick()) {
+            InteractionHand hand = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof LightsaberItem ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+            if (player.getItemInHand(hand).getItem() instanceof LightsaberItem) Network.CHANNEL.sendToServer(new ToggleLightsaberPacket(hand, false));
         }
 
         while (ModKeys.THROW_LIGHTSABER.consumeClick()) {
