@@ -42,11 +42,15 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
         var saved = LightsaberContent.LIGHTSABER_DATA.get(this.model);
         if (saved == null) Constants.LOG.warn("Invalid Lightsaber Data for {}", this.model);
         else if (this.version != saved.version()) {
+            var active = this.isActive();
             var tag = saved.toTag().save();
+
             this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
             this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("yoda");
             this.blades = NBTUtil.getList(tag.getCompound("blades"), BladeData::new);
             this.version = saved.version();
+
+            this.blades.forEach(b -> b.active = active);
         }
     }
 

@@ -35,7 +35,7 @@ public class BladeData {
     public BladeData(CompoundTag tag) {
         this.stable = !tag.contains("stable") || tag.getBoolean("stable");
         this.active = tag.contains("active") && tag.getBoolean("active");
-        this.bladeLengthScalar = tag.contains("bladeLengthScalar") ? tag.getInt("bladeLengthScalar") : 1.0f;
+        this.bladeLengthScalar = tag.contains("bladeLengthScalar") ? tag.getFloat("bladeLengthScalar") : 1.0f;
         this.transition = tag.contains("transition") ? tag.getByte("transition") : 0;
         this.radius = tag.contains("radius") ? tag.getDouble("radius") : 1d;
         this.color = tag.contains("color") ? tag.getInt("color") : LightsaberContent.BLUE;

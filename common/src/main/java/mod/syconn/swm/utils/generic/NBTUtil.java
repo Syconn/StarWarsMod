@@ -3,6 +3,7 @@ package mod.syconn.swm.utils.generic;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -76,6 +77,14 @@ public class NBTUtil {
 
     public static CompoundTag putUUID(UUID uuid) {
         return NBTUtil.convert(t -> t.putUUID("id", uuid));
+    }
+
+    public static ResourceLocation getResourceLocation(CompoundTag tag) {
+        return new ResourceLocation(tag.getString("resourceLocation"));
+    }
+
+    public static CompoundTag putResourceLocation(ResourceLocation location) {
+        return NBTUtil.convert(t -> t.putString("resourceLocation", location.toString()));
     }
 
     public static UUID getUUID(CompoundTag tag) {

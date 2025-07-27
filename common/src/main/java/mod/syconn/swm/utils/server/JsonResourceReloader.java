@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import mod.syconn.swm.utils.generic.NBTUtil;
 import mod.syconn.swm.utils.interfaces.ISerializable;
 import mod.syconn.swm.utils.interfaces.ISpecialRenderer;
 import net.minecraft.nbt.CompoundTag;
@@ -35,11 +36,10 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
     }
 
     protected void apply(Map<ResourceLocation, JsonElement> pJsonMap, ResourceManager resourceManager, ProfilerFiller profiler) {
-        pJsonMap.forEach(((resourceLocation, jsonElement) ->
-                resources.put(resourceLocation.withPath("lightsaber/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
+        pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation.withPath("lightsaber/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
     }
 
-    public void reload(final Map<ResourceLocation, D> resources) {
+    public void reload(final Map<ResourceLocation, D> resources) { // TODO SYNCED DATA IS THE BROKEN
         this.resources.clear();
         this.resources.putAll(resources);
     }
@@ -56,22 +56,11 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
         return this.id;
     }
 
-    public FriendlyByteBuf writeData(FriendlyByteBuf buffer) {
-        buffer.writeVarInt(this.resources.size());
-        this.resources.forEach((id, resource) -> {
-            buffer.writeResourceLocation(id);
-            buffer.writeNbt(resource.writeTag());
-        });
-        return buffer;
+    public CompoundTag writeData() {
+        return NBTUtil.putMap(this.resources, NBTUtil::putResourceLocation, ISerializable::writeTag);
     }
 
-    public boolean readData(FriendlyByteBuf buffer) {
-        int size = buffer.readVarInt();
-        if(size > 0) {
-            ImmutableMap.Builder<ResourceLocation, D> builder = ImmutableMap.builder();
-            for(int i = 0; i < size; i++) builder.put(buffer.readResourceLocation(), tagReader.apply(buffer.readNbt()));
-            reload(builder.build());
-        }
-        return true;
+    public void readData(CompoundTag tag) {
+        this.reload(NBTUtil.getMap(tag, NBTUtil::getResourceLocation, this.tagReader));
     }
 }

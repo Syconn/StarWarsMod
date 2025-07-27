@@ -2,7 +2,7 @@
   "blades": {
     "0": {
       "active": false,
-      "bladeLengthScalar": 1.4,
+      "bladeLengthScalar": 1.6,
       "bladeType": "plasma",
       "color": 10082431,
       "emitterPos": {
@@ -20,5 +20,5 @@
     }
   },
   "model": "swm:kal",
-  "version": 1
+  "version": 3
 }

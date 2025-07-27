@@ -2,7 +2,7 @@
   "blades": {
     "0": {
       "active": false,
-      "bladeLengthScalar": 1.2,
+      "bladeLengthScalar": 1.0,
       "bladeType": "plasma",
       "color": 2873471,
       "emitterPos": {
@@ -20,5 +20,5 @@
     }
   },
   "model": "swm:temple_guard",
-  "version": 1
+  "version": 2
 }

@@ -2,7 +2,7 @@
   "blades": {
     "0": {
       "active": false,
-      "bladeLengthScalar": 1.2,
+      "bladeLengthScalar": 1.0,
       "bladeType": "plasma",
       "color": 13434751,
       "emitterPos": {
@@ -20,5 +20,5 @@
     }
   },
   "model": "swm:mace",
-  "version": 1
+  "version": 2
 }
