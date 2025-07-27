@@ -32,7 +32,7 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
 
     public LightsaberTag(CompoundTag tag) {
         this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
-        this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("yoda");
+        this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("lightsaber/yoda");
         this.blades = NBTUtil.getList(tag.getCompound("blades"), BladeData::new);
         updateData(tag.getInt("version"));
     }
@@ -40,7 +40,8 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
     private void updateData(int value) {
         this.version = value;
         var saved = LightsaberContent.LIGHTSABER_DATA.get(this.model);
-        if (this.version != saved.version()) {
+        if (saved == null) Constants.LOG.warn("Invalid Lightsaber Data for {}", this.model);
+        else if (this.version != saved.version()) {
             var tag = saved.toTag().save();
             this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
             this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("yoda");
@@ -60,8 +61,15 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
         return stack;
     }
 
+    public void togglePrimary() {
+        if (!blades.isEmpty()) this.blades.get(0).toggle();
+        if (!this.blades.get(0).active) toggleAll();
+    }
+
     public void toggleAll() {
-        for (var blade : this.blades) blade.toggle();
+        if (!blades.isEmpty()) {
+            for (var blade : this.blades) blade.toggle(this.blades.get(0).active);
+        }
     }
 
     public void tick() {
@@ -75,6 +83,20 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
         tag.putInt("version", this.version);
         tag.put("blades", NBTUtil.putList(this.blades, BladeData::save));
         return tag;
+    }
+
+    public boolean isActive() {
+        return this.blades.get(0).active;
+    }
+
+    @Deprecated // TODO TO BE REPLACED WITH SABER DEPENDENT COLORING
+    public int getColor() {
+        return !this.blades.isEmpty() ? this.blades.get(0).color : -1;
+    }
+
+    @Deprecated // TODO TO BE REPLACED WITH SABER DEPENDENT COLORING
+    public void setColor(int color) {
+        this.blades.forEach(bladeData -> bladeData.color = color);
     }
 
     public static ItemStack getTemporary(ItemStack stack, boolean active) {
@@ -104,7 +126,7 @@ public class LightsaberTag { // TODO LOCKED = UPDATE FROM LATEST DATA (DEFAULT T
     }
 
     private static LightsaberTag create(ItemStack stack) {
-        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("yoda")).toTag();
+        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("lightsaber/yoda")).toTag();
         lT.change(stack);
         return lT;
     }

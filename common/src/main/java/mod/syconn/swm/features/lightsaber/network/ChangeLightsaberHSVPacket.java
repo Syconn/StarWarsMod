@@ -30,7 +30,7 @@ public class ChangeLightsaberHSVPacket {
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
             if (context.get().getPlayer().level().getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
-                LightsaberTag.update(blockEntity.getContainer().getItem(0), t -> t.color = this.hsv);
+                LightsaberTag.update(blockEntity.getContainer().getItem(0), t -> t.setColor(this.hsv));
                 blockEntity.setChanged();
             }
         });

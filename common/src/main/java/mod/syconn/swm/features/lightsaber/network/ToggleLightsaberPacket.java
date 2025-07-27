@@ -31,10 +31,10 @@ public class ToggleLightsaberPacket {
         context.get().queue(() -> {
             Player player = context.get().getPlayer();
 
-            if (player != null) {
+            if (player != null) { // TODO HANDLE MULTI BLADE SUPPORT
                 ItemStack stack = player.getItemInHand(hand);
-                if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, LightsaberTag::toggle);
-                LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).active);
+                if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, LightsaberTag::toggleAll);
+                LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).isActive());
             }
         });
     }

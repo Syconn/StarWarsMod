@@ -80,6 +80,10 @@ public class BladeData {
         return json;
     }
 
+    public void toggle(boolean active) {
+        if (this.active == active) this.toggle();
+    }
+
     public void toggle() {
         if (this.transition != 0) return;
         this.transition = this.active ? -RETRACTION_TICKS : IGNITION_TICKS;

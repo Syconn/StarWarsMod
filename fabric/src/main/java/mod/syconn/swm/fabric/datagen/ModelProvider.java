@@ -59,9 +59,9 @@ public class ModelProvider extends FabricModelProvider {
 
         generator.generateFlatItem(ModItems.SCREEN.get(), ModelTemplates.FLAT_ITEM);
 
-        var builder = parent("lightsaber/yoda");
-        for (var lightsaber : LightsaberDefaults.LightsaberTypes.values())
-            override(builder, Constants.withId("item/lightsaber/" + lightsaber.getId()), Constants.withId("model"), lightsaber.getData().model() / 10.0);
+        var builder = parent("lightsaber/yoda"); // TODO REDO THIS
+//        for (var lightsaber : LightsaberDefaults.LightsaberTypes.values())
+//            override(builder, Constants.withId("item/lightsaber/" + lightsaber.getId()), Constants.withId("model"), lightsaber.getData().model() / 10.0);
         gen.accept(ModelLocationUtils.getModelLocation(ModItems.LIGHTSABER.get()), () -> builder);
     }
 

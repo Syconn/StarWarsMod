@@ -101,7 +101,7 @@ public class GraphicsUtil {
                 var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
                 if (!model.usesBlockLight()) Lighting.setupForFlatItems();
 
-                LightsaberContent.renderFixes(ItemDisplayContext.NONE, guiGraphics.pose(), stack);
+//                LightsaberContent.renderFixes(ItemDisplayContext.NONE, guiGraphics.pose(), stack); TODO DO I NEED?
                 Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
                         15728880, OverlayTexture.NO_OVERLAY, model);
 

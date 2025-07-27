@@ -16,7 +16,7 @@ import java.util.UUID;
 public record LightsaberJson(ResourceLocation model, int version, List<BladeData> blades) implements ISerializable<CompoundTag> {
 
     public LightsaberTag toTag() {
-        return new LightsaberTag(UUID.randomUUID(), this.model, this.version, this.blades);
+        return new LightsaberTag(UUID.randomUUID(), this.model.withPath("lightsaber/" + this.model.getPath()), this.version, this.blades);
     }
 
     public ItemStack toItem() {

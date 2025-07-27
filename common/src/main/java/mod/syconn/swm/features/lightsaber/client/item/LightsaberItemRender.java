@@ -3,16 +3,20 @@ package mod.syconn.swm.features.lightsaber.client.item;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
-import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.data.BladeData;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.mixin.client.ItemRendererInvoker;
+import mod.syconn.swm.mixin.client.ItemRendererMixin;
+import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,16 +28,35 @@ import static mod.syconn.swm.features.addons.LightsaberContent.*;
 public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
     @Override
-    public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
+    public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {
         poseStack.pushPose();
 
+        var model = this.getModel(stack, backupModel);
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
-        renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
+        renderLightsaberBlade(stack, renderMode, poseStack, bufferSource, light, overlay);
+        renderLightsaberItem(stack, poseStack, bufferSource, light, overlay, model);
 
+        poseStack.popPose();
+        return true;
+    }
+
+    private BakedModel getModel(ItemStack stack, BakedModel backupModel) {
+        var model = GameInstance.getClient().getModelManager().getModel(new ModelResourceLocation(LightsaberTag.getOrCreate(stack).model, "inventory"));
+        return model == GameInstance.getClient().getModelManager().getMissingModel() ? backupModel : model;
+    }
+
+    private void renderLightsaberItem(ItemStack stack, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
+        var invoker = ((ItemRendererInvoker) GameInstance.getClient().getItemRenderer());
+        var renderType = ItemBlockRenderTypes.getRenderType(stack, true);
+        var vertexConsumer = invoker.getFoil(buffer, renderType, true, stack.hasFoil());
+
+        poseStack.pushPose();
+        poseStack.translate(-0.5F, -0.5F, -0.5F);
+        invoker.renderModel(model, stack, light, overlay, poseStack, vertexConsumer);
         poseStack.popPose();
     }
 
-    public void renderDirect(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
+    private void renderLightsaberBlade(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {
         if (!(stack.getItem() instanceof LightsaberItem)) return;
 
         var lT = LightsaberTag.getOrCreate(stack);
@@ -62,12 +85,12 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         if (mc.player == entity && mc.options.getCameraType().isFirstPerson() && hand == InteractionHand.OFF_HAND) return;
 
         if (entity.isUsingItem()) {
-            var delta = getBlockAnimationDelta(entity, tickDelta);
+            var delta = this.getBlockAnimationDelta(entity, tickDelta);
             ModelUtil.smartLerpArmsRadians(entity, hand, model, delta, -1.164f, 0.602f, 0.426f, -1.672f, -0.266f, 0.882f);
         }
     }
 
-    private static float getBlockAnimationDelta(LivingEntity entity, float tickDelta) {
+    private float getBlockAnimationDelta(LivingEntity entity, float tickDelta) {
         return Mth.clamp(entity.getUseItemRemainingTicks() + tickDelta, 0, 2) / 2f;
     }
 }

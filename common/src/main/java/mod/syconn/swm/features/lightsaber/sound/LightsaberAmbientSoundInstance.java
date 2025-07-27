@@ -32,7 +32,7 @@ public class LightsaberAmbientSoundInstance extends AbstractTickableSoundInstanc
     @Override
     public void tick() {
         var stack = this.holder.getItemBySlot(slot);
-        if (stack.isEmpty() || !(stack.getItem() instanceof LightsaberItem) || !LightsaberTag.getOrCreate(stack).active || this.holder.isRemoved()) {
+        if (stack.isEmpty() || !(stack.getItem() instanceof LightsaberItem) || !LightsaberTag.getOrCreate(stack).isActive() || this.holder.isRemoved()) {
             this.stop();
             return;
         }

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import mod.syconn.swm.utils.interfaces.ISerializable;
+import mod.syconn.swm.utils.interfaces.ISpecialRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -29,10 +30,13 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
         this.jsonReader = jsonReader;
         this.tagReader = tagReader;
         this.id = id;
+
+        ISpecialRenderer.registerPath("models/item/lightsaber");
     }
 
     protected void apply(Map<ResourceLocation, JsonElement> pJsonMap, ResourceManager resourceManager, ProfilerFiller profiler) {
-        pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation, jsonReader.apply(jsonElement.getAsJsonObject()))));
+        pJsonMap.forEach(((resourceLocation, jsonElement) ->
+                resources.put(resourceLocation.withPath("lightsaber/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
     }
 
     public void reload(final Map<ResourceLocation, D> resources) {

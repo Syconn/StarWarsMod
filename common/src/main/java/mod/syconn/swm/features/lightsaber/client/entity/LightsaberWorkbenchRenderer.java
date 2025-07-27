@@ -35,7 +35,7 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
             poseStack.translate(pos.get(0), 1, pos.get(1));
             poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
 
-            LightsaberContent.renderFixes(ItemDisplayContext.NONE, poseStack, stack);
+//            LightsaberContent.renderFixes(ItemDisplayContext.NONE, poseStack, stack); TODO NEED TO REDO THIS
             itemRenderer.renderStatic(stack, ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
 
             poseStack.popPose();

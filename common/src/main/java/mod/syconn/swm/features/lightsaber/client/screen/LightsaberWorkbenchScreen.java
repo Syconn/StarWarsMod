@@ -34,7 +34,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private float rotation = -45f;
     private float hue = 0, saturation = 0, value = 0;
 
-    public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) {
+    public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) { // TODO MULTI BLADE COLORING
         super(menu, playerInventory, title);
         this.imageWidth = 256;
         this.imageHeight = 241;
@@ -86,7 +86,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             this.deltaScroll = 0f;
 
             if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
-            else if (lT.color != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(lT);
+            else if (lT.getColor() != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(lT);
         }
     }
 
@@ -109,7 +109,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         var stack = getMenu().getBlockEntity().getContainer().getItem(0);
         if (stack.getItem() instanceof LightsaberItem) {
             var lT = LightsaberTag.getOrCreate(stack);
-            setColor(lT.color);
+            setColor(lT.getColor());
             this.itemId = lT.uuid;
         }
     }
@@ -125,7 +125,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     }
 
     private void updateLightsaberColor(LightsaberTag lT) {
-        lT.color = ColorUtil.packHsv(this.hue, this.saturation, this.value);
-        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), lT.color));
+//        lT.setColor(ColorUtil.packHsv(this.hue, this.saturation, this.value)); TODO IS THIS NECESSARY
+        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), ColorUtil.packHsv(this.hue, this.saturation, this.value)));
     }
 }

@@ -58,7 +58,6 @@ public class NodeVec3 {
         var qy = json.get("qy").getAsFloat();
         var qz = json.get("qz").getAsFloat();
         var qw = json.get("qw").getAsFloat();
-        var scalar = json.get("scalar").getAsFloat();
         return new NodeVec3(x, y, z, new Quaternionf(qx, qy, qz, qw));
     }
 

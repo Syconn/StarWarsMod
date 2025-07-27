@@ -22,7 +22,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
         this.container.addListener(listener -> {
             var stack = container.getItem(0);
-            if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).active) LightsaberTag.update(stack, LightsaberTag::toggle);
+            if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).isActive()) LightsaberTag.update(stack, LightsaberTag::toggleAll);
             markDirty();
         });
     }
@@ -44,7 +44,7 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public ItemStack removeItem() {
-        return LightsaberTag.update(container.removeItem(0, 1), tag -> { if (!tag.active) tag.toggle(); });
+        return LightsaberTag.update(container.removeItem(0, 1), tag -> { if (!tag.isActive()) tag.toggleAll(); });
     }
 
     public void addItem(Player player, InteractionHand hand) {

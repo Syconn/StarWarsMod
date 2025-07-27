@@ -49,9 +49,6 @@ public class StarWarsClient {
     }
 
     public static void setupEvent(Minecraft minecraft) {
-        ItemPropertiesRegistry.register(ModItems.LIGHTSABER.get(), Constants.withId("model"),
-                ((stack, level, holder, seed) -> (float) LightsaberTag.getOrCreate(stack).model * 0.1f));
-
         BlockEntityRendererRegistry.register(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), LightsaberWorkbenchRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.HOLO_PROJECTOR.get(), HoloProjectorBlockEntityRenderer::new);
 

@@ -1,20 +1,24 @@
 {
-  "bladeType": "plasma",
-  "color": 13434751,
-  "length": 1.2,
-  "model": 2,
-  "radius": 0.949999988079071,
-  "stable": true,
-  "vectors": {
+  "blades": {
     "0": {
-      "qw": 1.0,
-      "qx": 0.0,
-      "qy": 0.0,
-      "qz": 0.0,
-      "scalar": 1.0,
-      "x": 0.003909999970346689,
-      "y": -0.05469,
-      "z": -4.6999999904073775E-4
+      "active": false,
+      "bladeLengthScalar": 1.2,
+      "bladeType": "plasma",
+      "color": 13434751,
+      "emitterPos": {
+        "qw": 1.0,
+        "qx": 0.0,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 0.003909999970346689,
+        "y": -0.05468999966979027,
+        "z": -4.6999999904073775E-4
+      },
+      "radius": 0.949999988079071,
+      "stable": true,
+      "transition": 0
     }
-  }
+  },
+  "model": "swm:mace",
+  "version": 1
 }

@@ -1,20 +1,24 @@
 {
-  "bladeType": "plasma",
-  "color": 6029183,
-  "length": 1.2,
-  "model": 1,
-  "radius": 1.0,
-  "stable": true,
-  "vectors": {
+  "blades": {
     "0": {
-      "qw": 1.0,
-      "qx": 0.0,
-      "qy": 0.0,
-      "qz": 0.0,
-      "scalar": 1.0,
-      "x": 7.099999929778278E-4,
-      "y": 0.021880000829696655,
-      "z": 0.0
+      "active": false,
+      "bladeLengthScalar": 1.2,
+      "bladeType": "plasma",
+      "color": 6029183,
+      "emitterPos": {
+        "qw": 1.0,
+        "qx": 0.0,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 7.099999929778278E-4,
+        "y": 0.021880000829696655,
+        "z": 0.0
+      },
+      "radius": 1.0,
+      "stable": true,
+      "transition": 0
     }
-  }
+  },
+  "model": "swm:luke",
+  "version": 1
 }
