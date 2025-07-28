@@ -67,10 +67,15 @@ public class LightsaberTag {
     }
 
     public ItemStack getTemporary(int blade, float lengthScale) {
-        this.toggleTo(false);
+        this.blades.forEach(b -> {
+            b.active = false;
+            b.transition = 0;
+        });
         if (this.blades.get(blade) != null) {
-            this.blades.get(blade).active = true;
-            this.blades.get(blade).bladeLengthScalar = lengthScale;
+            final var bladeData = this.blades.get(blade);
+            bladeData.active = true;
+            bladeData.transition = 0;
+            bladeData.bladeLengthScalar = lengthScale;
         }
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
         return change(stack);

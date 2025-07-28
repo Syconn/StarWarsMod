@@ -78,6 +78,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private void changeBlade(int direction) {
         final var stack = getMenu().getBlockEntity().getContainer().getItem(0);
         if (stack.getItem() instanceof LightsaberItem) this.blade = MathUtil.wrap(this.blade + direction, LightsaberTag.getOrCreate(stack).blades.size() - 1);
+        getLightsaberColor();
     }
 
 
@@ -97,12 +98,15 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         final var stack = this.menu.getBlockEntity().getContainer().getItem(0);
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
             final var lT = LightsaberTag.getOrCreate(stack);
-            final var renderStack = lT.getTemporary(0, 1.0f);
+            final var renderStack = lT.getTemporary(this.blade, 1.0f);
             this.rotation += (float) (-10f * this.deltaScroll);
             GraphicsUtil.renderLightsaberFromBehind(guiGraphics, renderStack, this.leftPos + 247, this.topPos + 36.5, this.rotation);
             this.deltaScroll = 0f;
 
-            if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
+            if (!lT.uuid.equals(this.itemId)) {
+                getLightsaberColor();
+                this.blade = 0;
+            }
             else if (lT.getColor(this.blade) != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(false);
         }
     }

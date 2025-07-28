@@ -19,7 +19,10 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     public LightsaberWorkbenchBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
-        this.container.addListener(listener -> this.markDirty());
+        this.container.addListener(listener -> {
+            if (listener.getItem(0).getItem() instanceof LightsaberItem) LightsaberTag.update(listener.getItem(0), lT -> lT.toggleTo(false));
+            this.markDirty();
+        });
     }
 
     @Override
