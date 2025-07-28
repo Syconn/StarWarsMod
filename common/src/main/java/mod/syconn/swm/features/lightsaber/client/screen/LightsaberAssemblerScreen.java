@@ -43,17 +43,17 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
         createRenderers();
         super.init();
 
-        addRenderableWidget(new ExpandedButton(this.leftPos + 8, this.topPos + 53, 20, 20, Component.literal("<"), pButton -> {
+        this.addRenderableWidget(new ExpandedButton(this.leftPos + 8, this.topPos + 53, 20, 20, Component.literal("<"), pButton -> {
             this.selectedRecipe = MathUtil.wrap(this.selectedRecipe - 1, this.menu.getRecipes().size() - 1);
             createRenderers();
         }));
 
-        addRenderableWidget(new ExpandedButton(this.leftPos + 148, this.topPos + 53, 20, 20, Component.literal(">"), pButton -> {
+        this.addRenderableWidget(new ExpandedButton(this.leftPos + 148, this.topPos + 53, 20, 20, Component.literal(">"), pButton -> {
             this.selectedRecipe = MathUtil.wrap(this.selectedRecipe + 1, this.menu.getRecipes().size() - 1);
             createRenderers();
         }));
 
-        addRenderableWidget(this.craftButton = new ExpandedButton(this.leftPos + 131, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
+        this.craftButton = this.addRenderableWidget(new ExpandedButton(this.leftPos + 131, this.topPos + 78, 36, 18, Component.literal("Craft"), pButton -> {
             Network.CHANNEL.sendToServer(new CraftHiltPacket(this.menu.getBlockEntity().getBlockPos(), this.menu.getRecipes().get(this.selectedRecipe).getId()));
         }));
     }

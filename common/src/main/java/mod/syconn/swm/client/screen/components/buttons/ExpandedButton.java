@@ -11,6 +11,10 @@ import net.minecraft.network.chat.FormattedText;
 
 public class ExpandedButton extends Button {
 
+    public ExpandedButton(int xPos, int yPos, int width, int height, String displayString, OnPress handler) {
+        this(xPos, yPos, width, height, Component.literal(displayString), handler, DEFAULT_NARRATION);
+    }
+
     public ExpandedButton(int xPos, int yPos, int width, int height, Component displayString, OnPress handler) {
         this(xPos, yPos, width, height, displayString, handler, DEFAULT_NARRATION);
     }

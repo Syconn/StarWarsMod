@@ -133,14 +133,16 @@ public class LightsaberTag {
         return this.blades.stream().anyMatch(b -> !b.active);
     }
 
-    @Deprecated // TODO TO BE REPLACED WITH SABER DEPENDENT COLORING
-    public int getColor() {
-        return !this.blades.isEmpty() ? this.blades.get(0).color : -1;
+    public int getColor(int blade) {
+        return this.blades.get(blade) != null ? this.blades.get(blade).color : -1;
     }
 
-    @Deprecated // TODO TO BE REPLACED WITH SABER DEPENDENT COLORING
     public void setColor(int color) {
         this.blades.forEach(bladeData -> bladeData.color = color);
+    }
+
+    public void setColor(int blade, int color) {
+        if (this.blades.get(blade) != null) this.blades.get(blade).color = color;
     }
 
     public static ItemStack getTemporary(ItemStack stack, boolean active) {
