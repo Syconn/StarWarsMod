@@ -144,3 +144,4 @@ fabric/src/main/generated
 /forge/run/logs/
 /fabric/src/main/generated/.cache/
 /forge/run/crash-reports/
+/forge/run/

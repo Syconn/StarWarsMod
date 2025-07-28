@@ -42,6 +42,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
     protected void init() {
         createRenderers();
         super.init();
+
         addRenderableWidget(new ExpandedButton(this.leftPos + 8, this.topPos + 53, 20, 20, Component.literal("<"), pButton -> {
             this.selectedRecipe = MathUtil.wrap(this.selectedRecipe - 1, this.menu.getRecipes().size() - 1);
             createRenderers();
@@ -64,7 +65,7 @@ public class LightsaberAssemblerScreen extends AbstractContainerScreen<Lightsabe
         var lT = LightsaberTag.getOrCreate(this.menu.getRecipes().get(selectedRecipe).item().copy());
         this.rotation += (float) (-10f * this.deltaScroll);
         guiGraphics.drawCenteredString(this.font, StringUtil.makeLightsaberName(this.menu.getRecipes().get(selectedRecipe).id().getPath()), this.leftPos + 88, this.topPos + 59, 0xFF_FFFF);
-        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 80, this.topPos + 36.5, this.rotation);
+        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, false), this.leftPos + 92, this.topPos + 36.5, this.rotation);
         this.deltaScroll = 0f;
     }
 
