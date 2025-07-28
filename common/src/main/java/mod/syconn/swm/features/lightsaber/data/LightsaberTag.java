@@ -75,7 +75,7 @@ public class LightsaberTag {
             final var bladeData = this.blades.get(blade);
             bladeData.active = true;
             bladeData.transition = 0;
-            bladeData.bladeLengthScalar = lengthScale;
+            bladeData.bladeLengthScalar = Math.min(lengthScale, bladeData.bladeLengthScalar);
         }
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
         return change(stack);

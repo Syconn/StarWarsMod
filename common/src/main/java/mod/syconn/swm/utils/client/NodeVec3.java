@@ -45,6 +45,11 @@ public class NodeVec3 {
         return q;
     }
 
+    @Override
+    public String toString() {
+        return "Pos(" + x + ", " + y + ", " + z + ") Rotation(" + q.x + ", " + q.y + ", " + q.z + ", " + q.w + ")";
+    }
+
     public Matrix4f matrix4f() {
         var pose = new PoseStack();
         pose.translate(this.x, this.y, this.z);
