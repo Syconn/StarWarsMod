@@ -60,7 +60,18 @@ public class LightsaberTag {
     }
 
     public ItemStack getTemporary(boolean active, boolean singleBlade) {
-        if (singleBlade && this.getPrimaryBlade() != null) this.blades.get(0).active = active;
+        if (singleBlade && this.getPrimaryBlade() != null) this.getPrimaryBlade().active = active;
+        this.getSecondaryBlades().forEach(b -> b.active = active && !singleBlade);
+        var stack = new ItemStack(ModItems.LIGHTSABER.get());
+        return change(stack);
+    }
+
+    public ItemStack getTemporary(int blade, float lengthScale) {
+        this.toggleTo(false);
+        if (this.blades.get(blade) != null) {
+            this.blades.get(blade).active = true;
+            this.blades.get(blade).bladeLengthScalar = lengthScale;
+        }
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
         return change(stack);
     }

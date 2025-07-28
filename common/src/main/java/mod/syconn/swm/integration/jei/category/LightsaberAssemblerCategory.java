@@ -89,6 +89,6 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
         var lT = LightsaberTag.getOrCreate(recipe.item());
         var titleX = this.window.getWidth() / 2;
         guiGraphics.drawCenteredString(GameInstance.getClient().font, StringUtil.makeLightsaberName(recipe.id().getPath()) + "'s Lightsaber", titleX, 5, 0xFFFFFFFF);
-        GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
+        GraphicsUtil.renderLightsaberFromBlade(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
     }
 }

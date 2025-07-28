@@ -78,11 +78,12 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        var stack = this.menu.getBlockEntity().getContainer().getItem(0);
+        final var stack = this.menu.getBlockEntity().getContainer().getItem(0);
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
-            var lT = LightsaberTag.getOrCreate(stack);
+            final var lT = LightsaberTag.getOrCreate(stack);
+            final var renderStack = lT.getTemporary(0, 1.0f);
             this.rotation += (float) (-10f * this.deltaScroll);
-            GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(true, true), this.leftPos + 185, this.topPos + 36.5, this.rotation);
+            GraphicsUtil.renderLightsaberFromBehind(guiGraphics, renderStack, this.leftPos + 247, this.topPos + 36.5, this.rotation);
             this.deltaScroll = 0f;
 
             if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
