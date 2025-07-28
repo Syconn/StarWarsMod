@@ -1,11 +1,10 @@
 package mod.syconn.swm.utils.generic;
 
-import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.features.addons.LightsaberContent;
+import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -84,29 +83,61 @@ public class GraphicsUtil {
         }
     }
 
-    public static void renderLightsaber(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float rotation) {
+    public static void renderLightsaberFromBlade(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float rotation) {
         final var minecraft = GameInstance.getClient();
 
         if (minecraft != null) {
             final var level = minecraft.level;
+            final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : null;
+            final var scale = LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber") ? 50 : 100;
 
             guiGraphics.pose().pushPose();
             guiGraphics.pose().translate(x, y, 50.0);
+            if (emitterPos != null) guiGraphics.pose().translate((emitterPos.y() - LightsaberTag.getOrCreate(stack).hiltLength() / 2) * scale, 0, 0);
             guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(-90f));
             guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-rotation));
-            guiGraphics.pose().scale(100, 100, 100);
+            guiGraphics.pose().scale(scale, scale, scale);
+            guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
+
+            if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
+
+                var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
+                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
+            }
+
+            guiGraphics.flush();
+            guiGraphics.pose().popPose();
+        }
+    }
+
+    public static void renderLightsaberFromBehind(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot) {
+        renderLightsaberFromBehind(guiGraphics, stack, x, y, yRot, -1);
+    }
+
+    public static void renderLightsaberFromBehind(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot, int targetBlade) {
+        final var minecraft = GameInstance.getClient();
+
+        if (minecraft != null) {
+            final var level = minecraft.level;
+            final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : null;
+            final var scale = LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber") ? 50 : 100;
+            final var hiltLength = LightsaberTag.getOrCreate(stack).hiltLength();
+
+            guiGraphics.pose().pushPose();
+            guiGraphics.pose().translate(x, y, 50.0);
+            if (emitterPos != null) guiGraphics.pose().translate((emitterPos.y() - hiltLength) * scale - 1, 0, 0);
+            guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(-90f));
+            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-yRot));
+            if (targetBlade != -1 && emitterPos != null && LightsaberTag.getOrCreate(stack).blades.get(targetBlade) != null) guiGraphics.pose()
+                    .rotateAround(LightsaberTag.getOrCreate(stack).blades.get(targetBlade).emitterPos.q(), 0, (float) (hiltLength - emitterPos.y() - hiltLength / 2) * scale, 0);
+            guiGraphics.pose().scale(scale, scale, scale);
             guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
             if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
                 var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
-                if (!model.usesBlockLight()) Lighting.setupForFlatItems();
-
-                LightsaberContent.renderFixes(ItemDisplayContext.NONE, guiGraphics.pose(), stack);
-                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(),
-                        15728880, OverlayTexture.NO_OVERLAY, model);
-
-                if (!model.usesBlockLight()) Lighting.setupFor3DItems();
+                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
             }
+
             guiGraphics.flush();
             guiGraphics.pose().popPose();
         }

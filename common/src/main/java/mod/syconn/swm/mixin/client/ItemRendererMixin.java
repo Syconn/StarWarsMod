@@ -22,10 +22,7 @@ public abstract class ItemRendererMixin {
     public void renderItem(ItemStack itemStack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay, BakedModel model, CallbackInfo ci) {
         if (!itemStack.isEmpty()) {
             final IModifiedItemRenderer itemRenderer = IModifiedItemRenderer.INSTANCES.get(itemStack.getItem().getClass());
-            if (itemRenderer != null) {
-                itemRenderer.render(null, itemStack, displayContext, leftHand, poseStack, buffer, combinedLight, combinedOverlay, model);
-//                ci.cancel();
-            }
+            if (itemRenderer != null && itemRenderer.render(null, itemStack, displayContext, leftHand, poseStack, buffer, combinedLight, combinedOverlay, model)) ci.cancel();
         }
     }
 }

@@ -41,7 +41,7 @@ public class LivingEntityMixin {
                 var vec33 = vec3.vectorTo(livingEntity.position()).normalize();
                 vec33 = new Vec3(vec33.x, 0.0, vec33.z);
                 if (vec33.dot(vec32) < 0.0) {
-                    cir.setReturnValue(lT.active);
+                    cir.setReturnValue(lT.isActive());
                 }
             }
         }

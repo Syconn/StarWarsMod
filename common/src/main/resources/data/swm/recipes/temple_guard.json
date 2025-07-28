@@ -12,6 +12,6 @@
   ],
   "result": {
     "item": "swm:lightsaber",
-    "nbt": "{lightsaberData:{active:1b,bladeType:\"plasma\",color:2873471,lengthScalar:1.1f,model:7,radius:1.0d,stable:1b,transition:0b,uuid:[I;-2084757903,782581772,-1572973494,-1037633669],vectors:{0:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,scalar:1.0f,x:0.0d,y:0.0d,z:0.0d},len:1}}}"
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"plasma\",color:2873471,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:0.003120000008493662d,y:0.012500000186264515d,z:-0.001560000004246831d},radius:0.949999988079071d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/temple_guard\",uuid:[I;-876595820,339624599,-1765897847,-701086995],version:2}}"
   }
 }

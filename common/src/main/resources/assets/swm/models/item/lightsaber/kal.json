@@ -2311,12 +2311,12 @@
 		"thirdperson_righthand": {
 			"rotation": [0, 103, 0],
 			"translation": [0, -1.25, 0.75],
-			"scale": [0.75, 0.75, 0.74]
+			"scale": [0.75, 0.75, 0.75]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [0, 103, 0],
 			"translation": [0, -1.25, 0.75],
-			"scale": [0.75, 0.75, 0.74]
+			"scale": [0.75, 0.75, 0.75]
 		},
 		"firstperson_righthand": {
 			"rotation": [-10, 0, 0],

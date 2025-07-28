@@ -29,13 +29,14 @@ public class HoloProjectorItemRenderer implements IModifiedItemRenderer, IModifi
     private final Map<UUID, HologramData> RENDERERS = new HashMap<>();
 
     @Override
-    public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
+    public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel model) {
         poseStack.pushPose();
 
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
         if (renderMode != ItemDisplayContext.GUI) renderDirect(stack, renderMode, poseStack, bufferSource);
 
         poseStack.popPose();
+        return false;
     }
 
 

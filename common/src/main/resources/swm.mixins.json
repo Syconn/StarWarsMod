@@ -9,8 +9,10 @@
     "client.HumanoidModelMixin",
     "client.ItemInHandRendererMixin",
     "client.ItemPickerMenuMixin",
+    "client.ItemRendererInvoker",
     "client.ItemRendererMixin",
-    "client.LevelRendererMixin"
+    "client.LevelRendererMixin",
+    "client.TitleScreenMixin"
   ],
   "mixins": [
     "AbstractArrowMixin",

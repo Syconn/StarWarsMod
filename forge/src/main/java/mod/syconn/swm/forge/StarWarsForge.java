@@ -2,14 +2,10 @@ package mod.syconn.swm.forge;
 
 import dev.architectury.platform.forge.EventBuses;
 import mod.syconn.swm.StarWars;
-import mod.syconn.swm.forge.client.StarWarsForgeClient;
 import mod.syconn.swm.utils.Constants;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod(Constants.MOD)
 public final class StarWarsForge {
@@ -17,11 +13,6 @@ public final class StarWarsForge {
     public StarWarsForge() {
         final var bus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(Constants.MOD, bus);
-
-        if (FMLEnvironment.dist.isClient()) {
-            MinecraftForge.EVENT_BUS.addListener(StarWarsForgeClient::onPlayerRenderScreen);
-        }
-
         StarWars.init();
     }
 }

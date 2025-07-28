@@ -11,6 +11,9 @@ import org.joml.Quaternionf;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
+import java.util.Map;
+import java.util.Objects;
+
 public class MathUtil {
 
     public static final Vec3 V3D_POS_X = new Vec3(1, 0, 0);
@@ -52,14 +55,22 @@ public class MathUtil {
         return degrees * Mth.RAD_TO_DEG;
     }
 
-    public static Vec3 transform(Vec3 v, Matrix4f transform) {
-        var vec3d = new Vector3d(v.x, v.y, v.z).mulPosition(transform);
-        return new Vec3(vec3d.x, vec3d.y, vec3d.z);
+    public static void translateRotation(PoseStack poseStack, Direction direction, float x, float y, float z) {
+        switch (direction) {
+            case NORTH -> poseStack.translate(-x, y, z);
+            case SOUTH -> poseStack.translate(x, y, z);
+            case EAST -> poseStack.translate(z, y, -x);
+            case WEST -> poseStack.translate(z, y, x);
+        }
+
     }
 
-    public static void scalePos(PoseStack stack, float x, float y, float z) {
-        var entry = stack.last();
-        entry.pose().scale(x, y, z);
+    public static <T> Map<Direction, T> dataList(T north, T south, T west, T east) {
+        return Map.of(Direction.NORTH, north, Direction.SOUTH, south, Direction.WEST, west, Direction.EAST, east);
+    }
+
+    public static <T> Map<Direction, T> dataList(T north, T south, T west, T east, T up, T down) {
+        return Map.of(Direction.NORTH, north, Direction.SOUTH, south, Direction.WEST, west, Direction.EAST, east, Direction.UP, up, Direction.DOWN, down);
     }
 
     public static Quaternionf getRotation(Direction direction) {

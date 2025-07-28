@@ -32,9 +32,9 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
     private static final EntityDataAccessor<CompoundTag> LIGHTSABER_DATA = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.COMPOUND_TAG);
     private InteractionHand hand;
     private boolean returning = false;
-    private List<BlockPos> hitBlock = new ArrayList<>();
+    private final List<BlockPos> hitBlock = new ArrayList<>();
 
-    public ThrownLightsaberEntity(EntityType<? extends ThrownLightsaberEntity> entityType, Level level) { // TODO PLAY THROW SOUND
+    public ThrownLightsaberEntity(EntityType<? extends ThrownLightsaberEntity> entityType, Level level) {
         super(entityType, level);
     }
 

@@ -20,7 +20,8 @@ public class LangProvider extends FabricLanguageProvider {
         translationBuilder.add("itemGroup." + MOD + ".star_wars", "Syconn's Star Wars");
 
         translationBuilder.add("key.categories." + Constants.MOD, "Star Wars Controls");
-        translationBuilder.add("key.swm.toggle_item", "Toggle Held Item");
+        translationBuilder.add("key.swm.toggle_primary_blade", "Toggle Primary Lightsaber Blade");
+        translationBuilder.add("key.swm.toggle_blade", "Toggle Lightsaber");
         translationBuilder.add("key.swm.quick_swap_lightsaber", "Quick Swap Lightsaber");
         translationBuilder.add("key.swm.throw_lightsaber", "Throw Lightsaber");
 

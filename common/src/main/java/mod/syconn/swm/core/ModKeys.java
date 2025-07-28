@@ -11,7 +11,8 @@ public class ModKeys {
 
     public static List<KeyMapping> KEYS = new ArrayList<>();
 
-    public static final KeyMapping TOGGLE_ITEM = registerKeybind(keyId("toggle_item"), GLFW.GLFW_KEY_V, modCategory());
+    public static final KeyMapping TOGGLE_PRIMARY_BLADE = registerKeybind(keyId("toggle_primary_blade"), GLFW.GLFW_KEY_N, modCategory());
+    public static final KeyMapping TOGGLE_BLADE = registerKeybind(keyId("toggle_blade"), GLFW.GLFW_KEY_V, modCategory());
     public static final KeyMapping QUICK_SWAP_LIGHTSABER = registerKeybind(keyId("quick_swap_lightsaber"), GLFW.GLFW_KEY_K, modCategory());
     public static final KeyMapping THROW_LIGHTSABER = registerKeybind(keyId("throw_lightsaber"), GLFW.GLFW_KEY_X, modCategory());
 

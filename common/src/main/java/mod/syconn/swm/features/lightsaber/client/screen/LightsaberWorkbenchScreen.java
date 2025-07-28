@@ -1,7 +1,10 @@
 package mod.syconn.swm.features.lightsaber.client.screen;
 
+import com.mojang.math.Axis;
 import mod.syconn.swm.client.screen.components.ColoredSliderBar;
 import mod.syconn.swm.client.screen.components.buttons.ColoredLightsaberButton;
+import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
+import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ChangeLightsaberHSVPacket;
@@ -10,6 +13,7 @@ import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ColorUtil;
 import mod.syconn.swm.utils.generic.GraphicsUtil;
+import mod.syconn.swm.utils.generic.MathUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphics;
@@ -29,9 +33,12 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     private static final ResourceLocation WORKSTATION_BACKGROUND = Constants.withId("textures/gui/lightsaber_workbench.png");
 
     private final ColoredSliderBar[] scrollBars = new ColoredSliderBar[3];
+    private final ExpandedButton[] toggleButtons = new ExpandedButton[2];
+    private ExpandedButton setAllButton;
     private UUID itemId;
     private double deltaScroll = 0;
     private float rotation = -45f;
+    private int blade = 0;
     private float hue = 0, saturation = 0, value = 0;
 
     public LightsaberWorkbenchScreen(LightsaberWorkbenchMenu menu, Inventory playerInventory, Component title) {
@@ -44,26 +51,37 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     protected void init() {
         super.init();
 
-        addRenderableWidget(this.scrollBars[0] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, this.hue * 355f,
+        this.scrollBars[0] = this.addRenderableWidget(new ColoredSliderBar(this.leftPos + 47, this.topPos + 63, 161, 16, "", 0, 355, this.hue * 355f,
                 f -> ColorUtil.packHsv((f * (355f / 161f)) / 360f, this.saturation, this.value), b -> this.hue = b.getValueInt() / 355f));
-        addRenderableWidget(this.scrollBars[1] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, this.saturation * 100f,
+        this.scrollBars[1] = this.addRenderableWidget(new ColoredSliderBar(this.leftPos + 47, this.topPos + 83, 161, 16, "", 0, 100, this.saturation * 100f,
                 f -> ColorUtil.packHsv(this.hue, f / 161f, this.value), b -> this.saturation = b.getValueInt() / 100f));
-        addRenderableWidget(this.scrollBars[2] = new ColoredSliderBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, this.value * 100f,
+        this.scrollBars[2] = this.addRenderableWidget(new ColoredSliderBar(this.leftPos + 47, this.topPos + 103, 161, 16, "", 0, 100, this.value * 100f,
                 f -> ColorUtil.packHsv(this.hue, this.saturation, f / 161f), b -> this.value = b.getValueInt() / 100f));
+
+        this.toggleButtons[0] = this.addRenderableWidget(new ExpandedButton(this.leftPos + 5, this.topPos + 83, 20, 20, "<", b -> changeBlade(-1)));
+        this.toggleButtons[1] = this.addRenderableWidget(new ExpandedButton(this.leftPos + 25, this.topPos + 83, 20, 20, ">", b -> changeBlade(1)));
+        this.setAllButton = this.addRenderableWidget(new ExpandedButton(this.leftPos + 5, this.topPos + 103, 40, 20, "Set All", b -> updateLightsaberColor(true)));
 
         getLightsaberColor();
 
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 46, this.topPos + 122, "", BLUE, 0, 0, this::updateColorButton));
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 74, this.topPos + 122, "", GREEN, 1, 0, this::updateColorButton));
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 102, this.topPos + 122, "", YELLOW, 2, 1, this::updateColorButton));
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 135, this.topPos + 122, "", WHITE, 1, 1, this::updateColorButton));
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 163, this.topPos + 122, "", PURPLE, 2, 0, this::updateColorButton));
-        addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 191, this.topPos + 122, "", RED, 0, 1, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 46, this.topPos + 122, "", BLUE, 0, 0, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 74, this.topPos + 122, "", GREEN, 1, 0, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 102, this.topPos + 122, "", YELLOW, 2, 1, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 135, this.topPos + 122, "", WHITE, 1, 1, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 163, this.topPos + 122, "", PURPLE, 2, 0, this::updateColorButton));
+        this.addRenderableWidget(new ColoredLightsaberButton(this.leftPos + 191, this.topPos + 122, "", RED, 0, 1, this::updateColorButton));
     }
 
     private void updateColorButton(Button button) {
         this.setColor(((ColoredLightsaberButton) button).getHSV());
     }
+
+    private void changeBlade(int direction) {
+        final var stack = getMenu().getBlockEntity().getContainer().getItem(0);
+        if (stack.getItem() instanceof LightsaberItem) this.blade = MathUtil.wrap(this.blade + direction, LightsaberTag.getOrCreate(stack).blades.size() - 1);
+        getLightsaberColor();
+    }
+
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
@@ -78,15 +96,19 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        var stack = this.menu.getBlockEntity().getContainer().getItem(0);
+        final var stack = this.menu.getBlockEntity().getContainer().getItem(0);
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
-            var lT = LightsaberTag.getOrCreate(stack);
+            final var lT = LightsaberTag.getOrCreate(stack);
+            final var renderStack = lT.getTemporary(this.blade, 1.0f);
             this.rotation += (float) (-10f * this.deltaScroll);
-            GraphicsUtil.renderLightsaber(guiGraphics, lT.getTemporary(true, true), this.leftPos + 185, this.topPos + 36.5, this.rotation);
+            GraphicsUtil.renderLightsaberFromBehind(guiGraphics, renderStack, this.leftPos + 247, this.topPos + 36.5, this.rotation, this.blade);
             this.deltaScroll = 0f;
 
-            if (!lT.uuid.equals(this.itemId)) getLightsaberColor();
-            else if (lT.color != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(lT);
+            if (!lT.uuid.equals(this.itemId)) {
+                getLightsaberColor();
+                this.blade = 0;
+            }
+            else if (lT.getColor(this.blade) != ColorUtil.packHsv(this.hue, this.saturation, this.value)) updateLightsaberColor(false);
         }
     }
 
@@ -105,11 +127,27 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         return super.mouseScrolled(mouseX, mouseY, delta);
     }
 
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+
+        final var stack = this.menu.getBlockEntity().getContainer().getItem(0);
+        if (LightsaberTag.getOrCreate(stack).blades.size() > 1) {
+            this.toggleButtons[0].visible = true;
+            this.toggleButtons[1].visible = true;
+            this.setAllButton.visible = true;
+        } else {
+            this.toggleButtons[0].visible = false;
+            this.toggleButtons[1].visible = false;
+            this.setAllButton.visible = false;
+        }
+    }
+
     private void getLightsaberColor() {
-        var stack = getMenu().getBlockEntity().getContainer().getItem(0);
+        final var stack = getMenu().getBlockEntity().getContainer().getItem(0);
         if (stack.getItem() instanceof LightsaberItem) {
             var lT = LightsaberTag.getOrCreate(stack);
-            setColor(lT.color);
+            setColor(lT.getColor(this.blade));
             this.itemId = lT.uuid;
         }
     }
@@ -124,8 +162,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
         this.scrollBars[2].setValue(this.value * 100f);
     }
 
-    private void updateLightsaberColor(LightsaberTag lT) {
-        lT.color = ColorUtil.packHsv(this.hue, this.saturation, this.value);
-        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), lT.color));
+    private void updateLightsaberColor(boolean allBlades) {
+        Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), ColorUtil.packHsv(this.hue, this.saturation, this.value), allBlades ? -1 : this.blade));
     }
 }

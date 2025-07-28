@@ -14,17 +14,20 @@ import java.util.function.Supplier;
 public class ToggleLightsaberPacket {
 
     private final InteractionHand hand;
+    private final boolean all;
 
-    public ToggleLightsaberPacket(InteractionHand hand) {
+    public ToggleLightsaberPacket(InteractionHand hand, boolean all) {
         this.hand = hand;
+        this.all = all;
     }
 
     public ToggleLightsaberPacket(FriendlyByteBuf buf) {
-        this(buf.readEnum(InteractionHand.class));
+        this(buf.readEnum(InteractionHand.class), buf.readBoolean());
     }
 
     public void encode(FriendlyByteBuf buf) {
-        buf.writeEnum(this.hand) ;
+        buf.writeEnum(this.hand);
+        buf.writeBoolean(this.all);
     }
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
@@ -33,8 +36,8 @@ public class ToggleLightsaberPacket {
 
             if (player != null) {
                 ItemStack stack = player.getItemInHand(hand);
-                if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, LightsaberTag::toggle);
-                LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).active);
+                if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, this.all ? LightsaberTag::toggleAll : LightsaberTag::togglePrimary);
+                LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).isActive());
             }
         });
     }

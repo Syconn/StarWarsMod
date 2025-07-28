@@ -1,14 +1,12 @@
 package mod.syconn.swm.features.lightsaber.data;
 
-import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.NodeVec3;
-import mod.syconn.swm.utils.generic.AnimationUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -16,57 +14,150 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public class LightsaberTag {
+    // TODO TIMED ANIMATION SO each blade is different time
 
-    private static final String ID = "lightsaberData";
-    private static final byte IGNITION_TICKS = 6;
-    private static final byte RETRACTION_TICKS = 12;
-
-    private final String UUID = "uuid";
-    private final String MODEL = "model";
-    private final String STABLE = "stable";
-    private final String ACTIVE = "active";
-    private final String TRANSITION = "transition";
-    private final String RADIUS = "radius";
-    private final String LENGTH_SCALAR = "lengthScalar";
-    private final String COLOR = "color";
-    private final String BLADE_TYPE = "bladeType";
-    private final String EMITTER_POSITIONS = "vectors";
+    private static final String ID = "lightsaber";
 
     public UUID uuid;
-    public int model;
-    public boolean stable;
-    public boolean active;
-    public float lengthScalar;
-    public byte transition;
-    public double radius;
-    public int color;
-    public String bladeType;
-    public List<NodeVec3> emitterPositions;
+    public ResourceLocation model;
+    public int version;
+    public List<BladeData> blades;
 
-    public LightsaberTag(CompoundTag tag) {
-        this.uuid = tag.hasUUID(UUID) ? tag.getUUID(UUID) : java.util.UUID.randomUUID();
-        this.model = tag.getInt(MODEL);
-        this.stable = tag.getBoolean(STABLE);
-        this.active = tag.getBoolean(ACTIVE);
-        this.transition = tag.getByte(TRANSITION);
-        this.lengthScalar = tag.getFloat(LENGTH_SCALAR);
-        this.radius = tag.getDouble(RADIUS);
-        this.color = tag.getInt(COLOR);
-        this.bladeType = tag.contains(BLADE_TYPE) ? tag.getString(BLADE_TYPE) : "plasma";
-        this.emitterPositions = NBTUtil.getList(tag.getCompound(EMITTER_POSITIONS), NodeVec3::getNode);
-    }
-
-    public LightsaberTag(UUID uuid, int model, boolean stable, float lengthScalar, boolean active, byte transition, double radius, int color, String bladeType, List<NodeVec3> emitterPositions) {
+    public LightsaberTag(UUID uuid, ResourceLocation model, int version, List<BladeData> blades) {
         this.uuid = uuid;
         this.model = model;
-        this.stable = stable;
-        this.active = active;
-        this.transition = transition;
-        this.lengthScalar = lengthScalar;
-        this.radius = radius;
-        this.color = color;
-        this.bladeType = bladeType;
-        this.emitterPositions = emitterPositions;
+        this.version = version;
+        this.blades = blades;
+    }
+
+    public LightsaberTag(CompoundTag tag) {
+        this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
+        this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("lightsaber/yoda");
+        this.blades = NBTUtil.getList(tag.getCompound("blades"), BladeData::new);
+        updateData(tag.getInt("version"));
+    }
+
+    private void updateData(int value) {
+        this.version = value;
+        var saved = LightsaberContent.LIGHTSABER_DATA.get(this.model);
+        if (saved == null) Constants.LOG.warn("Invalid Lightsaber Data for {}", this.model);
+        else if (this.version != saved.version()) {
+            var active = this.isActive();
+            var tag = saved.toTag().save();
+
+            this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
+            this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("yoda");
+            this.blades = NBTUtil.getList(tag.getCompound("blades"), BladeData::new);
+            this.version = saved.version();
+
+            this.blades.forEach(b -> b.active = active);
+        }
+    }
+
+    public double hiltLength() {
+        if (this.getPrimaryBlade() == null) return 0f;
+        return ((this.getPrimaryBlade().emitterPos.y() - 0.1) * 16 + 9.6) / 16;
+    }
+
+    public ItemStack getTemporary(boolean active, boolean singleBlade) {
+        if (singleBlade && this.getPrimaryBlade() != null) this.getPrimaryBlade().active = active;
+        this.getSecondaryBlades().forEach(b -> b.active = active && !singleBlade);
+        var stack = new ItemStack(ModItems.LIGHTSABER.get());
+        return change(stack);
+    }
+
+    public ItemStack getTemporary(int blade, float lengthScale) {
+        this.blades.forEach(b -> {
+            b.active = false;
+            b.transition = 0;
+        });
+        if (this.blades.get(blade) != null) {
+            final var bladeData = this.blades.get(blade);
+            bladeData.active = true;
+            bladeData.transition = 0;
+            bladeData.bladeLengthScalar = Math.min(lengthScale, bladeData.bladeLengthScalar);
+        }
+        var stack = new ItemStack(ModItems.LIGHTSABER.get());
+        return change(stack);
+    }
+
+    public ItemStack change(ItemStack stack) {
+        stack.getOrCreateTag().put(ID, save());
+        return stack;
+    }
+
+    public void togglePrimary() {
+        if (this.getPrimaryBlade() != null) {
+            var active = this.isActive();
+            this.getPrimaryBlade().toggle();
+            if (active) for (var blade : getSecondaryBlades()) blade.toggle(false);
+        }
+    }
+
+    public void toggleAll() {
+        if (this.getPrimaryBlade() != null) {
+            if (this.isActive() && this.hasUnactive()) blades.forEach(b -> b.toggle(true));
+            else {
+                var active = !this.isActive();
+                this.getPrimaryBlade().toggle();
+                for (var blade : getSecondaryBlades()) blade.toggle(active);
+            }
+        }
+    }
+
+    public void toggleTo(boolean active) {
+        if (this.getPrimaryBlade() != null) blades.forEach(b -> b.toggle(active));
+    }
+
+    public BladeData getPrimaryBlade() {
+        return this.blades.isEmpty() ? null : this.blades.get(0);
+    }
+
+    public List<BladeData> getSecondaryBlades() {
+        return this.blades.size() > 1 ? this.blades.subList(1, this.blades.size()) : List.of();
+    }
+
+    public void tick() {
+        for (var blade : this.blades) blade.tick();
+    }
+
+    public CompoundTag save() {
+        var tag = new CompoundTag();
+        tag.putUUID("uuid", this.uuid);
+        tag.putString("model", this.model.toString());
+        tag.putInt("version", this.version);
+        tag.put("blades", NBTUtil.putList(this.blades, BladeData::save));
+        return tag;
+    }
+
+    public boolean isActive() {
+        return this.blades.stream().anyMatch(b -> b.active);
+    }
+
+    public boolean hasUnactive() {
+        return this.blades.stream().anyMatch(b -> !b.active);
+    }
+
+    public int getColor(int blade) {
+        return this.blades.get(blade) != null ? this.blades.get(blade).color : -1;
+    }
+
+    public void setColor(int color) {
+        this.blades.forEach(bladeData -> bladeData.color = color);
+    }
+
+    public void setColor(int blade, int color) {
+        if (this.blades.get(blade) != null) this.blades.get(blade).color = color;
+    }
+
+    public static ItemStack getTemporary(ItemStack stack, boolean active) {
+        return getTemporary(getOrCreate(stack), active);
+    }
+
+    public static ItemStack getTemporary(LightsaberTag original, boolean active) {
+        original.blades.forEach(b -> b.active = active);
+        var stack = new ItemStack(ModItems.LIGHTSABER.get());
+        return original.change(stack);
     }
 
     public static boolean identical(ItemStack stack1, ItemStack stack2) {
@@ -86,61 +177,8 @@ public class LightsaberTag {
     }
 
     private static LightsaberTag create(ItemStack stack) {
-        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("yoda")).toTag();
+        var lT = LightsaberContent.LIGHTSABER_DATA.get(Constants.withId("lightsaber/yoda")).toTag();
         lT.change(stack);
         return lT;
-    }
-
-    public ItemStack getTemporary(boolean active, boolean singleBlade) {
-        if (singleBlade) this.emitterPositions = List.of(this.emitterPositions.get(0));
-        return getTemporary(this, active);
-    }
-
-    public static ItemStack getTemporary(ItemStack stack, boolean active) {
-        return getTemporary(getOrCreate(stack), active);
-    }
-
-    public static ItemStack getTemporary(LightsaberTag original, boolean active) {
-        original.active = active;
-        var stack = new ItemStack(ModItems.LIGHTSABER.get());
-        return original.change(stack);
-    }
-
-    public CompoundTag save() {
-        var tag = new CompoundTag();
-        tag.putUUID(UUID, this.uuid);
-        tag.putInt(MODEL, this.model);
-        tag.putBoolean(STABLE, this.stable);
-        tag.putBoolean(ACTIVE, this.active);
-        tag.putFloat(LENGTH_SCALAR, this.lengthScalar);
-        tag.putByte(TRANSITION, this.transition);
-        tag.putDouble(RADIUS, this.radius);
-        tag.putInt(COLOR, this.color);
-        tag.putString(BLADE_TYPE, this.bladeType);
-        tag.put(EMITTER_POSITIONS, NBTUtil.putList(this.emitterPositions, NodeVec3::putNode));
-        return tag;
-    }
-
-    public ItemStack change(ItemStack stack) {
-        stack.getOrCreateTag().put(ID, save());
-        return stack;
-    }
-
-    public void toggle() {
-        if (this.transition != 0) return;
-        this.transition = this.active ? -RETRACTION_TICKS : IGNITION_TICKS;
-        this.active = !this.active;
-    }
-
-    public void tick() {
-        if (this.transition > 0) this.transition--;
-        if (this.transition < 0) this.transition++;
-    }
-
-    public float getSize() {
-        var partialTicks = StarWarsClient.getTickDelta();
-        if (this.transition == 0) return this.active ? 1 : 0;
-        if (this.transition > 0) return AnimationUtil.outCubic(1 - (this.transition - partialTicks) / IGNITION_TICKS);
-        return AnimationUtil.inCubic(-(this.transition + partialTicks) / RETRACTION_TICKS);
     }
 }

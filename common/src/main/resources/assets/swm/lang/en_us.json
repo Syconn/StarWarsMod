@@ -11,5 +11,6 @@
   "key.categories.swm": "Star Wars Controls",
   "key.swm.throw_lightsaber": "Throw Lightsaber",
   "key.swm.quick_swap_lightsaber": "Quick Swap Lightsaber",
-  "key.swm.toggle_item": "Toggle Held Item"
+  "key.swm.toggle_primary_blade": "Toggle Primary Lightsaber Blade",
+  "key.swm.toggle_blade": "Toggle Lightsaber"
 }

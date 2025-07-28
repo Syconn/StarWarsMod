@@ -18,13 +18,14 @@ import net.minecraft.world.item.ItemStack;
 
 public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
-    public void render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
+    public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
         poseStack.pushPose();
 
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
 //        renderDirect(stack, renderMode, poseStack, bufferSource, light, overlay);
 
         poseStack.popPose();
+        return false;
     }
 
     public void modifyPose(LivingEntity entity, InteractionHand hand, ItemStack stack, HumanoidModel<? extends LivingEntity> model, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float tickDelta) {

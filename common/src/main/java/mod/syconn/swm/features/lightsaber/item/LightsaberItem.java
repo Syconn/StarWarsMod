@@ -54,7 +54,7 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         final var stack = player.getItemInHand(usedHand);
-        if (LightsaberTag.getOrCreate(stack).active) player.startUsingItem(usedHand);
+        if (LightsaberTag.getOrCreate(stack).isActive()) player.startUsingItem(usedHand);
         return InteractionResultHolder.fail(stack);
     }
 
@@ -70,7 +70,7 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifications(ItemStack stack, EquipmentSlot slot) {
-        var damage = LightsaberTag.getOrCreate(stack).active ? 7.0f : 0.0f;
+        var damage = LightsaberTag.getOrCreate(stack).isActive() ? 7.0f : 0.0f;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", damage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -2.4, AttributeModifier.Operation.ADDITION));

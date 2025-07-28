@@ -10,10 +10,15 @@ import mod.syconn.swm.core.*;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
+import mod.syconn.swm.utils.Constants;
 import net.minecraft.server.packs.PackType;
 
 public final class StarWars {
+
     public static void init() {
+        Constants.LOG.info("Starting SW Version Check");
+        if (Constants.TRACKER.shouldUpdate()) Constants.LOG.info("Out of Date Version");
+
         ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
         ModItems.TABS.register();
@@ -28,7 +33,7 @@ public final class StarWars {
 
         CreativeTabRegistry.modify(ModItems.TAB, ModItems::addCreative);
 
-        ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA);
+        ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA, Constants.withId("lightsaber_data"));
 
         EnvExecutor.runInEnv(Env.CLIENT, () -> StarWarsClient::init);
         LifecycleEvent.SETUP.register(StarWarsServer::init);

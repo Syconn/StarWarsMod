@@ -1,20 +1,24 @@
 {
-  "bladeType": "plasma",
-  "color": 6029183,
-  "length": 1.2,
-  "model": 5,
-  "radius": 0.8500000238418579,
-  "stable": true,
-  "vectors": {
+  "blades": {
     "0": {
-      "qw": 1.0,
-      "qx": 0.0,
-      "qy": 0.0,
-      "qz": 0.0,
-      "scalar": 1.0,
-      "x": 0.003909999970346689,
-      "y": -0.06718999892473221,
-      "z": -4.6999999904073775E-4
+      "active": false,
+      "bladeLengthScalar": 1.0,
+      "bladeType": "plasma",
+      "color": 6029183,
+      "emitterPos": {
+        "qw": 1.0,
+        "qx": 0.0,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 0.003909999970346689,
+        "y": -0.06718999892473221,
+        "z": -4.6999999904073775E-4
+      },
+      "radius": 0.8500000238418579,
+      "stable": true,
+      "transition": 0
     }
-  }
+  },
+  "model": "swm:ahsoka",
+  "version": 2
 }
