@@ -125,7 +125,6 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
     }
 
     private void updateLightsaberColor(LightsaberTag lT) {
-//        lT.setColor(ColorUtil.packHsv(this.hue, this.saturation, this.value)); TODO IS THIS NECESSARY
         Network.CHANNEL.sendToServer(new ChangeLightsaberHSVPacket(this.menu.getBlockEntity().getBlockPos(), ColorUtil.packHsv(this.hue, this.saturation, this.value)));
     }
 }

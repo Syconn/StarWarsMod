@@ -31,15 +31,22 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
         this.jsonReader = jsonReader;
         this.tagReader = tagReader;
         this.id = id;
+    }
 
-        ISpecialRenderer.registerPath("models/item/lightsaber");
+    public JsonResourceReloader(ResourceLocation id, String directory, Function<JsonObject, D> jsonReader, Function<CompoundTag, D> tagReader, String specialRenderPath) {
+        super(new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create(), directory);
+        this.jsonReader = jsonReader;
+        this.tagReader = tagReader;
+        this.id = id;
+
+        ISpecialRenderer.registerPath(specialRenderPath);
     }
 
     protected void apply(Map<ResourceLocation, JsonElement> pJsonMap, ResourceManager resourceManager, ProfilerFiller profiler) {
         pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation.withPath("lightsaber/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
     }
 
-    public void reload(final Map<ResourceLocation, D> resources) { // TODO SYNCED DATA IS THE BROKEN
+    public void reload(final Map<ResourceLocation, D> resources) {
         this.resources.clear();
         this.resources.putAll(resources);
     }

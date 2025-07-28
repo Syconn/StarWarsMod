@@ -1,15 +1,18 @@
 package mod.syconn.swm.utils.client;
 
 import com.google.gson.JsonObject;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.nbt.CompoundTag;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
 public class NodeVec3 {
 
-    public final double x;
-    public final double y;
-    public final double z;
-    public final Quaternionf q;
+    private final double x;
+    private final double y;
+    private final double z;
+    private final Quaternionf q;
 
     public NodeVec3() {
         this(0, 0, 0, new Quaternionf(0, 0, 0, 1.0f));
@@ -24,6 +27,29 @@ public class NodeVec3 {
         this.y = y;
         this.z = z;
         this.q = q;
+    }
+
+    public double x() {
+        return x;
+    }
+
+    public double y() {
+        return y;
+    }
+
+    public double z() {
+        return z;
+    }
+
+    public Quaternionf q() {
+        return q;
+    }
+
+    public Matrix4f matrix4f() {
+        var pose = new PoseStack();
+        pose.translate(this.x, this.y, this.z);
+        pose.mulPose(this.q);
+        return pose.last().pose();
     }
 
     public CompoundTag save() {

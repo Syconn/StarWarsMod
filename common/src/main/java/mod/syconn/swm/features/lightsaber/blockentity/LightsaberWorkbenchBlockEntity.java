@@ -16,15 +16,10 @@ import net.minecraft.world.level.block.state.BlockState;
 public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
 
     private final SimpleContainer container = new SimpleContainer(1);
-    private int ticks = 1;
 
     public LightsaberWorkbenchBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.LIGHTSABER_WORKBENCH.get(), pWorldPosition, pBlockState);
-        this.container.addListener(listener -> {
-            var stack = container.getItem(0);
-            if (stack.getItem() instanceof LightsaberItem && LightsaberTag.getOrCreate(stack).isActive()) LightsaberTag.update(stack, LightsaberTag::toggleAll);
-            markDirty();
-        });
+        this.container.addListener(listener -> this.markDirty());
     }
 
     @Override
@@ -40,28 +35,33 @@ public class LightsaberWorkbenchBlockEntity extends SyncedBlockEntity {
     }
 
     public boolean hasItem() {
-        return !container.getItem(0).isEmpty();
+        return !this.container.getItem(0).isEmpty();
     }
 
     public ItemStack removeItem() {
-        return LightsaberTag.update(container.removeItem(0, 1), tag -> { if (!tag.isActive()) tag.toggleAll(); });
+        var stack = LightsaberTag.update(this.container.removeItem(0, this.container.getItem(0).getCount()), lT -> lT.toggleTo(true));
+        this.markDirty();
+        return stack;
     }
 
     public void addItem(Player player, InteractionHand hand) {
-        container.addItem(player.getItemInHand(hand).copyWithCount(1));
-        player.getItemInHand(hand).shrink(1);
+        var stack = player.getItemInHand(hand).copyWithCount(1);
+        if (stack.getItem() instanceof LightsaberItem) {
+            LightsaberTag.update(stack, lT -> lT.toggleTo(false));
+            this.container.addItem(stack);
+            player.getItemInHand(hand).shrink(1);
+            this.markDirty();
+        }
     }
 
     public SimpleContainer getContainer() {
-        return container;
+        return this.container;
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, LightsaberWorkbenchBlockEntity blockEntity) {
-        if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem && blockEntity.ticks <= 0) {
+        if (blockEntity.getContainer().getItem(0).getItem() instanceof LightsaberItem) {
             LightsaberTag.update(blockEntity.getContainer().getItem(0), LightsaberTag::tick);
-            blockEntity.ticks = 1;
-            blockEntity.setChanged();
+            blockEntity.markDirty();
         }
-        blockEntity.ticks--;
     }
 }

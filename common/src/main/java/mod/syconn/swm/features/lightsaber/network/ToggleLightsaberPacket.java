@@ -34,7 +34,7 @@ public class ToggleLightsaberPacket {
         context.get().queue(() -> {
             Player player = context.get().getPlayer();
 
-            if (player != null) { // TODO HANDLE MULTI BLADE SUPPORT
+            if (player != null) {
                 ItemStack stack = player.getItemInHand(hand);
                 if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, this.all ? LightsaberTag::toggleAll : LightsaberTag::togglePrimary);
                 LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).isActive());

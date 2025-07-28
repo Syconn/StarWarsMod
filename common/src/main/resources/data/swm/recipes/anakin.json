@@ -16,6 +16,6 @@
   ],
   "result": {
     "item": "swm:lightsaber",
-    "nbt": "{lightsaberData:{active:1b,bladeType:\"plasma\",color:10082431,lengthScalar:1.2f,model:0,radius:1.0d,stable:1b,transition:0b,uuid:[I;-719284438,1739474632,-1739714480,213334608],vectors:{0:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,scalar:1.0f,x:0.0d,y:-0.085d,z:0.0d},len:1}}}"
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"plasma\",color:10082431,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:0.003909999970346689d,y:0.07030999660491943d,z:-4.6999999904073775E-4d},radius:1.0d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/anakin\",uuid:[I;1499133763,-1097972821,-2020406925,-1154796700],version:2}}"
   }
 }

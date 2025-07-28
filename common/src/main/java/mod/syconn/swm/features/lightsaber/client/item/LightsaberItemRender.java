@@ -64,8 +64,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
             for (int i = 0; i < lT.blades.size(); i++) {
                 poseStack.pushPose();
                 var blade = lT.blades.get(i);
-                poseStack.translate(blade.emitterPos.x, blade.emitterPos.y, blade.emitterPos.z);
-                poseStack.mulPose(blade.emitterPos.q);
+                poseStack.mulPoseMatrix(blade.emitterPos.matrix4f());
                 renderBlade(poseStack, bufferSource, light, overlay, blade);
                 poseStack.popPose();
             }

@@ -54,8 +54,13 @@ public class LightsaberTag {
         }
     }
 
+    public double hiltLength() {
+        if (this.getPrimaryBlade() == null) return 0f;
+        return ((this.getPrimaryBlade().emitterPos.y() - 0.1) * 16 + 9.6) / 16;
+    }
+
     public ItemStack getTemporary(boolean active, boolean singleBlade) {
-        if (singleBlade && !this.blades.isEmpty()) this.blades.get(0).active = active;
+        if (singleBlade && this.getPrimaryBlade() != null) this.blades.get(0).active = active;
         var stack = new ItemStack(ModItems.LIGHTSABER.get());
         return change(stack);
     }
@@ -82,6 +87,10 @@ public class LightsaberTag {
                 for (var blade : getSecondaryBlades()) blade.toggle(active);
             }
         }
+    }
+
+    public void toggleTo(boolean active) {
+        if (this.getPrimaryBlade() != null) blades.forEach(b -> b.toggle(active));
     }
 
     public BladeData getPrimaryBlade() {
