@@ -2,8 +2,8 @@ package mod.syconn.swm.network;
 
 import dev.architectury.networking.NetworkChannel;
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.client.render.entity.layers.SWGearLayer;
 import mod.syconn.swm.features.lightsaber.network.*;
+import mod.syconn.swm.network.packets.PlayAnimationPacket;
 import mod.syconn.swm.network.packets.clientside.*;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
@@ -27,7 +27,7 @@ public class Network {
         CHANNEL.register(HoloCallPacket.class, HoloCallPacket::encode, HoloCallPacket::new, HoloCallPacket::apply);
         CHANNEL.register(RequestedHologramPacket.class, RequestedHologramPacket::encode, RequestedHologramPacket::new, RequestedHologramPacket::apply);
         CHANNEL.register(RequestHologramPacket.class, RequestHologramPacket::encode, RequestHologramPacket::new, RequestHologramPacket::apply);
-        CHANNEL.register(NotifyPlayerPacket.class, NotifyPlayerPacket::encode, NotifyPlayerPacket::new, NotifyPlayerPacket::apply);
+        CHANNEL.register(MessagePlayerPacket.class, MessagePlayerPacket::encode, MessagePlayerPacket::new, MessagePlayerPacket::apply);
         CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
         CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
         CHANNEL.register(PlayAnimationPacket.class, PlayAnimationPacket::encode, PlayAnimationPacket::new, PlayAnimationPacket::apply);

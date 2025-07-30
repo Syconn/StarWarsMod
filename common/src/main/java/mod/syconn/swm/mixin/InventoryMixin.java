@@ -1,6 +1,6 @@
 package mod.syconn.swm.mixin;
 
-import mod.syconn.swm.server.data.SWGear;
+import mod.syconn.swm.server.containers.SWGear;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

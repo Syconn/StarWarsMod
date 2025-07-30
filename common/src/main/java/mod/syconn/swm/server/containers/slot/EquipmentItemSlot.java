@@ -23,8 +23,8 @@ public class EquipmentItemSlot extends Slot {
     }
 
     public void setChanged() {
-        player.getInventory().setChanged();
         super.setChanged();
+        player.getInventory().setChanged();
     }
 
     @Override

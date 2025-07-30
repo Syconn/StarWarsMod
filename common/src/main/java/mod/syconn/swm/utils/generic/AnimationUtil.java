@@ -10,16 +10,12 @@ import dev.kosmx.playerAnim.core.util.Ease;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.clientside.PlayAnimationPacket;
+import mod.syconn.swm.network.packets.PlayAnimationPacket;
 import mod.syconn.swm.utils.Constants;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public class AnimationUtil {
 

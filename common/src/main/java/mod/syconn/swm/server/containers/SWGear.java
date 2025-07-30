@@ -1,4 +1,4 @@
-package mod.syconn.swm.server.data;
+package mod.syconn.swm.server.containers;
 
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.core.NonNullList;
@@ -98,7 +98,7 @@ public class SWGear implements Container {
 
     @Override
     public void setChanged() {
-        if (this.playerInventory != null) this.playerInventory.setChanged();
+        if (this.playerInventory != null && !this.playerInventory.player.level().isClientSide) this.playerInventory.player.swm$setSyncedData(this);
     }
 
     public CompoundTag save(){

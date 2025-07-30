@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component;
 
 import java.util.function.Supplier;
 
-public class NotifyPlayerPacket {
+public class MessagePlayerPacket {
 
     private final Component msg;
 
-    public NotifyPlayerPacket(Component msg) {
+    public MessagePlayerPacket(Component msg) {
         this.msg = msg;
     }
 
-    public NotifyPlayerPacket(FriendlyByteBuf buf) {
+    public MessagePlayerPacket(FriendlyByteBuf buf) {
         this.msg = buf.readComponent();
     }
 

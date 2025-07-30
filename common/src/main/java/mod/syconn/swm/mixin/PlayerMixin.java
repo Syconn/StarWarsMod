@@ -3,7 +3,7 @@ package mod.syconn.swm.mixin;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.server.data.SWGear;
+import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -62,12 +62,15 @@ public abstract class PlayerMixin extends LivingEntity implements SWGear.SWGearA
 
     @Inject(at = @At("TAIL"), method = "addAdditionalSaveData")
     protected void addAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
-        if (this.swm$getSWGear() != null) compound.put(Constants.MOD + ":swGear", this.inventory.swm$getSWGear().save());
+        if (this.swm$getSWGear() != null) compound.put(Constants.MOD + ":swGear", this.swm$getSWGear().save());
     }
 
     @Inject(at = @At("TAIL"), method = "readAdditionalSaveData")
     protected void readAdditionalSaveData(CompoundTag compound, CallbackInfo info) {
-        if (compound.contains(Constants.MOD + ":swGear")) this.swm$getSWGear().load(compound.getCompound(Constants.MOD + ":swGear"));
+        if (compound.contains(Constants.MOD + ":swGear")) {
+            this.swm$getSWGear().load(compound.getCompound(Constants.MOD + ":swGear"));
+            this.swm$setSyncedData(this.swm$getSWGear());
+        }
     }
 
     @ModifyVariable(method = "attack", at = @At("STORE"), ordinal = 3)
