@@ -1,8 +1,8 @@
 package mod.syconn.swm.mixin.client;
 
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
 import mod.syconn.swm.features.lightsaber.client.sound.ThrownLightsaberSoundInstance;
+import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;

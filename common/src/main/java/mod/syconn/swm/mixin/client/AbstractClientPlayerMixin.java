@@ -1,0 +1,54 @@
+package mod.syconn.swm.mixin.client;
+
+import com.mojang.authlib.GameProfile;
+import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.api.layered.modifier.AbstractFadeModifier;
+import dev.kosmx.playerAnim.core.util.Ease;
+import dev.kosmx.playerAnim.impl.IAnimatedPlayer;
+import mod.syconn.swm.utils.client.AnimationSubStack;
+import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.interfaces.IAnimatablePlayer;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(AbstractClientPlayer.class)
+public abstract class AbstractClientPlayerMixin extends Player implements IAnimatablePlayer {
+
+    @Unique
+    private final AnimationSubStack<IAnimation> swm$playerAnimation = new AnimationSubStack<>();
+
+    public AbstractClientPlayerMixin(Level level, BlockPos pos, float yRot, GameProfile gameProfile) {
+        super(level, pos, yRot, gameProfile);
+    }
+
+    @SuppressWarnings("UnstableApiUsage")
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void postInit(ClientLevel clientLevel, GameProfile gameProfile, CallbackInfo ci) {
+        ((IAnimatedPlayer) this).getAnimationStack().addAnimLayer(100, swm$playerAnimation.base);
+    }
+
+    @Override
+    public void swm$playAnimation(String name, int fadeIn, Ease ease) {
+        var animation = AnimationUtil.getAnimation(name);
+        var mirror = this.getMainArm() == HumanoidArm.LEFT;
+        swm$playerAnimation.mirror.setEnabled(mirror);
+        swm$playerAnimation.base.replaceAnimationWithFade(AbstractFadeModifier.standardFadeIn(fadeIn, ease), new KeyframeAnimationPlayer(animation));
+    }
+
+    @Override
+    public void swm$stopAnimation(int fadeOut, Ease ease) {
+        IAnimation currentAnimation = swm$playerAnimation.base.getAnimation();
+        if (currentAnimation instanceof KeyframeAnimationPlayer) swm$playerAnimation.base.replaceAnimationWithFade(AbstractFadeModifier.standardFadeIn(fadeOut, Ease.INOUTSINE), null);
+
+    }
+}

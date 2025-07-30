@@ -5,7 +5,6 @@ import dev.kosmx.playerAnim.core.util.Ease;
 import mod.syconn.swm.utils.generic.AnimationUtil;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.UUID;
@@ -41,12 +40,8 @@ public class PlayAnimationPacket {
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
-            if (context.get().getPlayer() instanceof ServerPlayer serverPlayer) AnimationUtil.notifyPlayers(serverPlayer, this.animation, this.length, this.ease);
-            else {
-                context.get().getPlayer().sendSystemMessage(Component.literal("playing animation"));
-                var target = context.get().getPlayer().level().getPlayerByUUID(this.uuid);
-                if (target instanceof AbstractClientPlayer clientPlayer) AnimationUtil.play(clientPlayer, this.animation, this.length, this.ease);
-            }
+            if (context.get().getPlayer() instanceof ServerPlayer player) AnimationUtil.notifyPlayers(player, this.animation, this.length, this.ease);
+            else if (context.get().getPlayer().level().getPlayerByUUID(this.uuid) instanceof AbstractClientPlayer player) player.swm$playAnimation(this.animation, this.length, this.ease);
         });
     }
 }

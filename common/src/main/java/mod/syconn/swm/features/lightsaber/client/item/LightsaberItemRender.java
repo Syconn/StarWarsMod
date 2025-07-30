@@ -5,9 +5,9 @@ import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
+import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.BladeData;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
-import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.mixin.client.ItemRendererInvoker;
 import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
@@ -22,7 +22,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.joml.Quaternionf;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 

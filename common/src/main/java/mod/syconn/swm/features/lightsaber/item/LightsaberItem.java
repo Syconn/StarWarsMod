@@ -2,8 +2,8 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.generic.ItemStackUtil;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;

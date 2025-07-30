@@ -2,6 +2,7 @@
   "accessWidener": "swm.accesswidener",
   "injected_interfaces": {
     "net/minecraft/class_1661": ["mod/syconn/swm/server/containers/SWGear$SWGearAccess"],
-    "net/minecraft/class_1657": ["mod/syconn/swm/server/containers/SWGear$SWGearAccess"]
+    "net/minecraft/class_1657": ["mod/syconn/swm/server/containers/SWGear$SWGearAccess"],
+    "net/minecraft/class_742": ["mod/syconn/swm/utils/interfaces/IAnimatablePlayer"]
   }
 }

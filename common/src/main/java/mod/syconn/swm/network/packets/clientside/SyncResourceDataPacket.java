@@ -1,13 +1,10 @@
 package mod.syconn.swm.network.packets.clientside;
 
 import dev.architectury.networking.NetworkManager;
-import io.netty.buffer.Unpooled;
-import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.server.SyncedResourceManager;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Supplier;

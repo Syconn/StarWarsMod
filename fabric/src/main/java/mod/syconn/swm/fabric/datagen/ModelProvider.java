@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.block.ModBlockStateProperties;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
