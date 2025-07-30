@@ -1,8 +1,7 @@
-package mod.syconn.swm.features.lightsaber.data;
+package mod.syconn.swm.features.lightsaber.server.data;
 
 import com.google.gson.JsonObject;
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.utils.client.NodeVec3;
 import mod.syconn.swm.utils.generic.JsonUtil;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import mod.syconn.swm.utils.interfaces.ISerializable;

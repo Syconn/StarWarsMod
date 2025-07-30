@@ -4,8 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.client.screen.HologramScreen;
 import mod.syconn.swm.client.sounds.HoloProjectorSoundInstance;
-import mod.syconn.swm.features.lightsaber.sound.LightsaberAmbientSoundInstance;
-import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.fabricmc.api.EnvType;
@@ -48,7 +46,7 @@ public class ClientHooks {
     }
 
     public static void renderHUD(GuiGraphics graphics, float tickDelta) {
-        var gear = ((SWGear.SWGearAccess) Minecraft.getInstance().player).swm$getSWGear();
+        var gear = Minecraft.getInstance().player.swm$getSWGear();
         if (!gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER).isEmpty()) {
             var xOffset = Minecraft.getInstance().player.getMainArm() == HumanoidArm.RIGHT ? 91 : -127;
             graphics.blit(WIDGETS_LOCATION, graphics.guiWidth() / 2 + xOffset, graphics.guiHeight() - 23, 53, 22, 29, 24);

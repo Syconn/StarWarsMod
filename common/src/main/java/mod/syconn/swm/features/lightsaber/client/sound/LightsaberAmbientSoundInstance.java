@@ -1,7 +1,7 @@
-package mod.syconn.swm.features.lightsaber.sound;
+package mod.syconn.swm.features.lightsaber.client.sound;
 
 import mod.syconn.swm.core.ModSounds;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

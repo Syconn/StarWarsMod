@@ -1,4 +1,4 @@
-package mod.syconn.swm.features.lightsaber.data;
+package mod.syconn.swm.features.lightsaber.server.data;
 
 import com.google.gson.JsonObject;
 import mod.syconn.swm.client.StarWarsClient;

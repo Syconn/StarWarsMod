@@ -2,8 +2,8 @@ package mod.syconn.swm.fabric.client.data;
 
 import com.mojang.math.Axis;
 import mod.syconn.swm.features.addons.LightsaberContent;
-import mod.syconn.swm.features.lightsaber.data.BladeData;
-import mod.syconn.swm.features.lightsaber.data.LightsaberJson;
+import mod.syconn.swm.features.lightsaber.server.data.BladeData;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberJson;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.NodeVec3;
 

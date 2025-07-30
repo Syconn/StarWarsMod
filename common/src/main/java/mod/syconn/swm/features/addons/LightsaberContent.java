@@ -1,6 +1,6 @@
 package mod.syconn.swm.features.addons;
 
-import mod.syconn.swm.features.lightsaber.data.LightsaberJson;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberJson;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ColorUtil;
 import mod.syconn.swm.utils.server.JsonResourceReloader;

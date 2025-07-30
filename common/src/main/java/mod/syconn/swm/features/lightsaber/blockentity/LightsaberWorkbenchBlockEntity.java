@@ -2,7 +2,7 @@ package mod.syconn.swm.features.lightsaber.blockentity;
 
 import mod.syconn.swm.blockentity.SyncedBlockEntity;
 import mod.syconn.swm.core.ModBlockEntities;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

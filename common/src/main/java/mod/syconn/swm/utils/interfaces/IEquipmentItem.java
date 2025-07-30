@@ -8,10 +8,6 @@ public interface IEquipmentItem {
 
     SWEquipmentSlot getSWEquipmentSlot();
 
-    default void equipmentTick(ItemStack stack, Entity entity) {
-        if (this instanceof Item item) item.inventoryTick(stack, entity.level(), entity, -1, false);
-    }
-
     enum SWEquipmentSlot {
         LIGHTSABER,
         BLASTER_BACK,

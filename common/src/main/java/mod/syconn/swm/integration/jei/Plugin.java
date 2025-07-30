@@ -10,7 +10,7 @@ import mezz.jei.api.registration.ISubtypeRegistration;
 import mod.syconn.swm.core.ModBlocks;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModRecipes;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.integration.jei.category.LightsaberAssemblerCategory;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.client.Minecraft;

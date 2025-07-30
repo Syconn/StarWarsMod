@@ -5,21 +5,18 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class SWGear implements Container {
 
-    private final Player player;
-    private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);;
+    private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+    private final Inventory playerInventory;
 
-    public SWGear(Player player) {
-        this.player = player;
-    }
-
-    public void tick() {
-        for (int slot = 0; slot < this.getContainerSize(); slot++) this.getItem(slot).inventoryTick(this.player.level(), this.player, -1, false);
+    public SWGear(Inventory playerInventory) {
+        this.playerInventory = playerInventory;
     }
 
     private int slotFromEquipment(IEquipmentItem.SWEquipmentSlot slot) {
@@ -100,7 +97,9 @@ public class SWGear implements Container {
     }
 
     @Override
-    public void setChanged() {}
+    public void setChanged() {
+        if (this.playerInventory != null) this.playerInventory.setChanged();
+    }
 
     public CompoundTag save(){
         var tag = new CompoundTag();
@@ -114,6 +113,14 @@ public class SWGear implements Container {
     }
 
     public interface SWGearAccess {
-        SWGear swm$getSWGear();
+        default SWGear swm$getSWGear() {
+            return new SWGear(null);
+        }
+
+        default SWGear swm$getSyncedData() {
+            return new SWGear(null);
+        }
+
+        default void swm$setSyncedData(SWGear swGear) {}
     }
 }

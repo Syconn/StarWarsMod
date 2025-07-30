@@ -1,4 +1,4 @@
-package mod.syconn.swm.features.lightsaber.data;
+package mod.syconn.swm.features.lightsaber.server.data;
 
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.features.addons.LightsaberContent;
@@ -14,7 +14,6 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public class LightsaberTag {
-    // TODO TIMED ANIMATION SO each blade is different time
 
     private static final String ID = "lightsaber";
 
@@ -48,9 +47,8 @@ public class LightsaberTag {
             this.uuid = tag.contains("uuid") ? tag.getUUID("uuid") : UUID.randomUUID();
             this.model = tag.contains("model") ? new ResourceLocation(tag.getString("model")): Constants.withId("yoda");
             this.blades = NBTUtil.getList(tag.getCompound("blades"), BladeData::new);
-            this.version = saved.version();
-
             this.blades.forEach(b -> b.active = active);
+            this.version = saved.version();
         }
     }
 

@@ -2,10 +2,9 @@ package mod.syconn.swm.network;
 
 import dev.architectury.networking.NetworkChannel;
 import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.client.render.entity.layers.SWGearLayer;
 import mod.syconn.swm.features.lightsaber.network.*;
-import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
-import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
-import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
+import mod.syconn.swm.network.packets.clientside.*;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
@@ -31,6 +30,7 @@ public class Network {
         CHANNEL.register(NotifyPlayerPacket.class, NotifyPlayerPacket::encode, NotifyPlayerPacket::new, NotifyPlayerPacket::apply);
         CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
         CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
+        CHANNEL.register(PlayAnimationPacket.class, PlayAnimationPacket::encode, PlayAnimationPacket::new, PlayAnimationPacket::apply);
     }
 
     public static <T> void sendToTrackingPlayers(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {

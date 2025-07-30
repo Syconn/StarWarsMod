@@ -1,7 +1,6 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
-import mod.syconn.swm.server.data.SWGear;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -23,6 +22,6 @@ public abstract class InventoryMenuMixin extends RecipeBookMenu<CraftingContaine
 
     @Inject(method = "<init>", at = @At("TAIL"))
     protected void init(Inventory playerInventory, boolean active, Player owner, CallbackInfo ci) {
-        this.addSlot(new EquipmentItemSlot(owner, IEquipmentItem.SWEquipmentSlot.LIGHTSABER, ((SWGear.SWGearAccess) owner).swm$getSWGear(), 0, 77, 44));
+        this.addSlot(new EquipmentItemSlot(owner, IEquipmentItem.SWEquipmentSlot.LIGHTSABER, owner.swm$getSWGear(), 0, 77, 44));
     }
 }
