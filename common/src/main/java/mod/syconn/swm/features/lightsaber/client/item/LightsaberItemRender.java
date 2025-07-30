@@ -1,14 +1,14 @@
 package mod.syconn.swm.features.lightsaber.client.item;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.client.render.entity.PlasmaRenderer;
-import mod.syconn.swm.features.lightsaber.data.BladeData;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.BladeData;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.mixin.client.ItemRendererInvoker;
-import mod.syconn.swm.mixin.client.ItemRendererMixin;
-import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
@@ -22,10 +22,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import org.joml.Quaternionf;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
-public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
+public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer { // TODO LEFT HANDED VERSION
 
     @Override
     public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {
@@ -33,6 +34,14 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
 
         var model = this.getModel(stack, backupModel);
         model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
+
+        if (renderMode.firstPerson() && entity != null && entity.isUsingItem() && entity.getUseItem().equals(stack)) {
+            var delta = getBlockAnimationDelta(entity, StarWarsClient.getTickDelta());
+            if (leftHanded) delta = -delta;
+            poseStack.translate(-0.1, -0.1, 0);
+            poseStack.mulPose(Axis.ZN.rotationDegrees(-50f * delta));
+        }
+
         renderLightsaberBlade(stack, renderMode, poseStack, bufferSource, light, overlay);
         renderLightsaberItem(stack, poseStack, bufferSource, light, overlay, model);
 

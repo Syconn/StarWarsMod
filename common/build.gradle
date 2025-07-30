@@ -10,10 +10,11 @@ loom {
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    modImplementation "net.fabricmc:fabric-loader:$project.fabric_loader_version"
+    modImplementation "dev.architectury:architectury:$project.architectury_api_version"
 
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
+    modImplementation "dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 repositories {

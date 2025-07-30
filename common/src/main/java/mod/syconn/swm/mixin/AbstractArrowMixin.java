@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.features.lightsaber.sound.LightsaberAudio;
+import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.phys.EntityHitResult;

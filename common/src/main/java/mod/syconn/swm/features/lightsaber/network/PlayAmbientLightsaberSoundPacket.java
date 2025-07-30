@@ -1,7 +1,7 @@
 package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
-import mod.syconn.swm.features.lightsaber.sound.LightsaberAudio;
+import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;

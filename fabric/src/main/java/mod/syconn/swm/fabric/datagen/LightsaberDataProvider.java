@@ -1,7 +1,7 @@
 package mod.syconn.swm.fabric.datagen;
 
 import mod.syconn.swm.fabric.client.data.LightsaberDefaults;
-import mod.syconn.swm.features.lightsaber.data.LightsaberJson;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberJson;
 import mod.syconn.swm.utils.Constants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.data.CachedOutput;
