@@ -37,11 +37,13 @@ public class SetEquipmentSlotPacket {
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
-            var player = context.get().getPlayer().level().getPlayerByUUID(this.target);
-            if (player != null) {
-                player.getInventory().swm$getSWGear().setItem(this.slot, this.stack);
-                if (context.get().getPlayer() instanceof ServerPlayer sp && player instanceof ServerPlayer sp2)
-                    Network.CHANNEL.sendToPlayers(ListUtil.remove(sp2, sp.serverLevel().players()), new SetEquipmentSlotPacket(this.target, this.stack, this.slot));
+            if (context.get().getPlayer() != null) {
+                var player = context.get().getPlayer().level().getPlayerByUUID(this.target);
+                if (player != null) {
+                    player.getInventory().swm$getSWGear().setItem(this.slot, this.stack);
+                    if (context.get().getPlayer() instanceof ServerPlayer sp && player instanceof ServerPlayer sp2)
+                        Network.CHANNEL.sendToPlayers(ListUtil.remove(sp2, sp.serverLevel().players()), new SetEquipmentSlotPacket(this.target, this.stack, this.slot));
+                }
             }
         });
     }

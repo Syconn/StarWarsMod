@@ -2,6 +2,7 @@ package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.server.containers.SWGear;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;

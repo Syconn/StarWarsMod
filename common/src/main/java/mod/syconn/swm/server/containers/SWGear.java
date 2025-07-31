@@ -17,11 +17,6 @@ import org.jetbrains.annotations.NotNull;
 public class SWGear implements Container {
 
     private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-//    private final Inventory inventory;
-//
-//    public SWGear(Inventory inventory) {
-//        this.inventory = inventory;
-//    }
 
     public @NotNull ItemStack getItemFromSlot(IEquipmentItem.SWEquipmentSlot slot) {
         return getItem(slot.getSlot());

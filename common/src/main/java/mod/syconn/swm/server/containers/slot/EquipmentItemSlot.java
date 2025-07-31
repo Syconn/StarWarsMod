@@ -20,8 +20,6 @@ public class EquipmentItemSlot extends Slot {
 
     public EquipmentItemSlot(Player player, IEquipmentItem.SWEquipmentSlot slot, Container container, int index, int x, int y) {
         super(container, index, x, y);
-        System.out.println(player + " " + slot);
-
         this.player = player;
         this.slot = slot;
     }
