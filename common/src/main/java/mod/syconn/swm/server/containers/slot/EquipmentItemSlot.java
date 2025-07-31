@@ -1,11 +1,17 @@
 package mod.syconn.swm.server.containers.slot;
 
 import com.mojang.datafixers.util.Pair;
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -26,8 +32,7 @@ public class EquipmentItemSlot extends Slot {
 
     public void setChanged() {
         super.setChanged();
-        player.getInventory().setChanged();
-        if (player.level().isClientSide) Network.CHANNEL.sendToServer(new SetEquipmentSlotPacket(player.getUUID(), this.getItem(), this.slot));
+        if (player.level().isClientSide && GameInstance.getClient().screen instanceof CreativeModeInventoryScreen) Network.CHANNEL.sendToServer(new SetEquipmentSlotPacket(player.getUUID(), this.getItem(), this.slot));
     }
 
     @Override

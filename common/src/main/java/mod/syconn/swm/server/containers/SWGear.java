@@ -1,9 +1,12 @@
 package mod.syconn.swm.server.containers;
 
+import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
 import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +19,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class SWGear implements Container {
 
+    private final Player player;
     private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+
+    public SWGear(Player player) {
+        this.player = player;
+    }
 
     public @NotNull ItemStack getItemFromSlot(IEquipmentItem.SWEquipmentSlot slot) {
         return getItem(slot.getSlot());
@@ -91,7 +99,7 @@ public class SWGear implements Container {
 
     @Override
     public void setChanged() {
-//        System.out.println(this.inventory);
+        if (player instanceof ServerPlayer serverPlayer) syncGear(serverPlayer);
     }
 
     public CompoundTag save(){
@@ -106,16 +114,20 @@ public class SWGear implements Container {
     }
 
     public static void getAndSyncGear(ServerPlayer serverPlayer) {
-        for (var i = 0; i < serverPlayer.swm$getSWGear().gear.size(); i++)
-            Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new SetEquipmentSlotPacket(serverPlayer.getUUID(), serverPlayer.swm$getSWGear().gear.get(i), IEquipmentItem.SWEquipmentSlot.getSlot(i)));
+        syncGear(serverPlayer);
         for (var player : serverPlayer.serverLevel().players())
             for (var i = 0; i < player.swm$getSWGear().gear.size(); i++)
                 Network.CHANNEL.sendToPlayer(serverPlayer, new SetEquipmentSlotPacket(player.getUUID(), player.swm$getSWGear().gear.get(i), IEquipmentItem.SWEquipmentSlot.getSlot(i)));
     }
 
+    private static void syncGear(ServerPlayer serverPlayer) {
+        for (var i = 0; i < serverPlayer.swm$getSWGear().gear.size(); i++)
+            Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new SetEquipmentSlotPacket(serverPlayer.getUUID(), serverPlayer.swm$getSWGear().gear.get(i), IEquipmentItem.SWEquipmentSlot.getSlot(i)));
+    }
+
     public interface SWGearAccess {
         default SWGear swm$getSWGear() {
-            return new SWGear();
+            return new SWGear(null);
         }
     }
 }

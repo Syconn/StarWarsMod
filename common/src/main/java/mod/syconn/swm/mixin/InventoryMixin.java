@@ -37,7 +37,7 @@ public class InventoryMixin implements SWGear.SWGearAccess {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void init(Player player, CallbackInfo ci) {
-        this.swm$SWGear = new SWGear();
+        this.swm$SWGear = new SWGear(player);
     }
 
     @Inject(method = "tick", at = @At("RETURN"))
