@@ -10,7 +10,7 @@ import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
-import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;

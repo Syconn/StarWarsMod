@@ -6,7 +6,7 @@ import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionHand;
