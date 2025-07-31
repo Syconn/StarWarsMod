@@ -1,8 +1,12 @@
 package mod.syconn.swm.server.containers;
 
+import mod.syconn.swm.network.Network;
+import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
+import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,20 +17,11 @@ import org.jetbrains.annotations.NotNull;
 public class SWGear implements Container {
 
     private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-    private final Inventory playerInventory;
 
-    public SWGear(Inventory playerInventory) {
-        this.playerInventory = playerInventory;
-    }
-
-    private int slotFromEquipment(IEquipmentItem.SWEquipmentSlot slot) {
-        if (slot == IEquipmentItem.SWEquipmentSlot.LIGHTSABER) return 0;
-        return -1;
-    }
+    public SWGear() { }
 
     public @NotNull ItemStack getItemFromSlot(IEquipmentItem.SWEquipmentSlot slot) {
-        if (slotFromEquipment(slot) != -1) return getItem(slotFromEquipment(slot));
-        return ItemStack.EMPTY;
+        return getItem(slot.getSlot());
     }
 
     @Override
@@ -58,7 +53,7 @@ public class SWGear implements Container {
     }
 
     public @NotNull ItemStack removeItemNoUpdate(IEquipmentItem.SWEquipmentSlot slot) {
-        var itemStack = ContainerHelper.removeItem(this.gear, slotFromEquipment(slot), getItemFromSlot(slot).getCount());
+        var itemStack = ContainerHelper.removeItem(this.gear, slot.getSlot(), getItemFromSlot(slot).getCount());
         if (!itemStack.isEmpty()) this.setChanged();
         return itemStack;
     }
@@ -71,7 +66,7 @@ public class SWGear implements Container {
     }
 
     public void setItem(IEquipmentItem.SWEquipmentSlot slot, ItemStack stack) {
-        setItem(slotFromEquipment(slot), stack);
+        setItem(slot.getSlot(), stack);
     }
 
     @Override
@@ -94,12 +89,11 @@ public class SWGear implements Container {
     public void clearContent() {
         this.gear.clear();
         this.setChanged();
+        System.out.println("CLEARING");
     }
 
     @Override
-    public void setChanged() {
-        if (this.playerInventory != null && !this.playerInventory.player.level().isClientSide) this.playerInventory.player.swm$setSyncedData(this);
-    }
+    public void setChanged() { }
 
     public CompoundTag save(){
         var tag = new CompoundTag();
@@ -112,15 +106,17 @@ public class SWGear implements Container {
         ContainerHelper.loadAllItems(tag, this.gear);
     }
 
+    public static void getAndSyncGear(ServerPlayer serverPlayer) {
+        for (var i = 0; i < serverPlayer.swm$getSWGear().gear.size(); i++)
+            Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new SetEquipmentSlotPacket(serverPlayer.getUUID(), serverPlayer.swm$getSWGear().gear.get(i), IEquipmentItem.SWEquipmentSlot.getSlot(i)));
+        for (var player : serverPlayer.serverLevel().players())
+            for (var i = 0; i < player.swm$getSWGear().gear.size(); i++)
+                Network.CHANNEL.sendToPlayer(serverPlayer, new SetEquipmentSlotPacket(player.getUUID(), player.swm$getSWGear().gear.get(i), IEquipmentItem.SWEquipmentSlot.getSlot(i)));
+    }
+
     public interface SWGearAccess {
         default SWGear swm$getSWGear() {
-            return new SWGear(null);
+            return new SWGear();
         }
-
-        default SWGear swm$getSyncedData() {
-            return new SWGear(null);
-        }
-
-        default void swm$setSyncedData(SWGear swGear) {}
     }
 }

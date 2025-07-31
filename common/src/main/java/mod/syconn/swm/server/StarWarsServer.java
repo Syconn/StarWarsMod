@@ -3,6 +3,7 @@ package mod.syconn.swm.server;
 import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.event.events.common.TickEvent;
 import mod.syconn.swm.features.addons.LightsaberContent;
+import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.server.savedata.HologramNetwork;
 import mod.syconn.swm.utils.server.SyncedResourceManager;
 import net.minecraft.server.MinecraftServer;
@@ -20,6 +21,7 @@ public class StarWarsServer {
 
     public static void playerJoinedServer(ServerPlayer player) {
         SyncedResourceManager.handleJoin(player);
+        SWGear.getAndSyncGear(player);
     }
 
     public static void playerLeaveServer(ServerPlayer player) {

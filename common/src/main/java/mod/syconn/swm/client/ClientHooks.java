@@ -46,11 +46,14 @@ public class ClientHooks {
     }
 
     public static void renderHUD(GuiGraphics graphics, float tickDelta) {
-        var gear = Minecraft.getInstance().player.swm$getSWGear();
-        if (!gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER).isEmpty()) {
-            var xOffset = Minecraft.getInstance().player.getMainArm() == HumanoidArm.RIGHT ? 91 : -127;
-            graphics.blit(WIDGETS_LOCATION, graphics.guiWidth() / 2 + xOffset, graphics.guiHeight() - 23, 53, 22, 29, 24);
-            renderSlot(graphics, graphics.guiWidth() / 2 + 11 + xOffset, graphics.guiHeight() - 19, tickDelta, Minecraft.getInstance().player, gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER));
+        var player = GameInstance.getClient().player;
+        if (player != null) {
+            var gear = player.swm$getSWGear();
+            if (!gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER).isEmpty()) {
+                var xOffset = player.getMainArm() == HumanoidArm.RIGHT ? 91 : -127;
+                graphics.blit(WIDGETS_LOCATION, graphics.guiWidth() / 2 + xOffset, graphics.guiHeight() - 23, 53, 22, 29, 24);
+                renderSlot(graphics, graphics.guiWidth() / 2 + 10 + xOffset, graphics.guiHeight() - 19, tickDelta, player, gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER));
+            }
         }
     }
 

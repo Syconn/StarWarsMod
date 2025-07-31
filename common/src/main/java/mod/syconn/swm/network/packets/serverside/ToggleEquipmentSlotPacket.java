@@ -46,7 +46,6 @@ public class ToggleEquipmentSlotPacket {
                     player.getInventory().selected = this.openSlot;
                     AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
                 }
-                player.swm$setSyncedData(gear);
             }
         });
     }

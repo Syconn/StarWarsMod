@@ -5,7 +5,7 @@ import dev.kosmx.playerAnim.api.layered.IAnimation;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.modifier.AbstractFadeModifier;
 import dev.kosmx.playerAnim.core.util.Ease;
-import dev.kosmx.playerAnim.impl.IAnimatedPlayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import mod.syconn.swm.utils.client.AnimationSubStack;
 import mod.syconn.swm.utils.generic.AnimationUtil;
 import mod.syconn.swm.utils.interfaces.IAnimatablePlayer;
@@ -31,10 +31,9 @@ public abstract class AbstractClientPlayerMixin extends Player implements IAnima
         super(level, pos, yRot, gameProfile);
     }
 
-    @SuppressWarnings("UnstableApiUsage")
     @Inject(method = "<init>", at = @At("TAIL"))
     private void postInit(ClientLevel clientLevel, GameProfile gameProfile, CallbackInfo ci) {
-        ((IAnimatedPlayer) this).getAnimationStack().addAnimLayer(100, swm$playerAnimation.base);
+        PlayerAnimationAccess.getPlayerAnimLayer((AbstractClientPlayer) (Object) this).addAnimLayer(100, swm$playerAnimation.base);
     }
 
     @Override
@@ -49,6 +48,5 @@ public abstract class AbstractClientPlayerMixin extends Player implements IAnima
     public void swm$stopAnimation(int fadeOut, Ease ease) {
         IAnimation currentAnimation = swm$playerAnimation.base.getAnimation();
         if (currentAnimation instanceof KeyframeAnimationPlayer) swm$playerAnimation.base.replaceAnimationWithFade(AbstractFadeModifier.standardFadeIn(fadeOut, Ease.INOUTSINE), null);
-
     }
 }

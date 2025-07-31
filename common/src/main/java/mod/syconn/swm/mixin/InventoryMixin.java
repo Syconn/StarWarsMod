@@ -1,6 +1,8 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.server.containers.SWGear;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +31,7 @@ public class InventoryMixin implements SWGear.SWGearAccess {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void init(Player player, CallbackInfo ci) {
-        this.swm$SWGear = new SWGear((Inventory) (Object) this);
+        this.swm$SWGear = new SWGear();
     }
 
     @Inject(method = "tick", at = @At("RETURN"))
@@ -53,8 +55,13 @@ public class InventoryMixin implements SWGear.SWGearAccess {
         for (int i = 0; i < this.swm$SWGear.getContainerSize(); i++) swm$SWGear.setItem(i, playerInventory.getItem(i));
     }
 
-    @Inject(method = "clearContent", at = @At("TAIL"))
-    private void clear(CallbackInfo ci) {
-        this.swm$SWGear.clearContent();
-    }
+//    @Inject(method = "setChanged", at = @At("HEAD"))
+//    private void changed(CallbackInfo ci) {
+//        System.out.println("DONE " + player.level());
+//    }
+
+//    @Inject(method = "clearContent", at = @At("TAIL"))
+//    private void clear(CallbackInfo ci) {
+//        this.swm$SWGear.clearContent();
+//    }
 }
