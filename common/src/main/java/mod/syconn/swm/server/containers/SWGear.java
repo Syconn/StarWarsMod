@@ -17,8 +17,11 @@ import org.jetbrains.annotations.NotNull;
 public class SWGear implements Container {
 
     private final NonNullList<ItemStack> gear = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-
-    public SWGear() { }
+//    private final Inventory inventory;
+//
+//    public SWGear(Inventory inventory) {
+//        this.inventory = inventory;
+//    }
 
     public @NotNull ItemStack getItemFromSlot(IEquipmentItem.SWEquipmentSlot slot) {
         return getItem(slot.getSlot());
@@ -89,11 +92,12 @@ public class SWGear implements Container {
     public void clearContent() {
         this.gear.clear();
         this.setChanged();
-        System.out.println("CLEARING");
     }
 
     @Override
-    public void setChanged() { }
+    public void setChanged() {
+//        System.out.println(this.inventory);
+    }
 
     public CompoundTag save(){
         var tag = new CompoundTag();

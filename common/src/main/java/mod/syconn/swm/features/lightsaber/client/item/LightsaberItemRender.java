@@ -25,7 +25,7 @@ import net.minecraft.world.item.ItemStack;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
-public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer { // TODO LEFT HANDED VERSION
+public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
     @Override
     public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {

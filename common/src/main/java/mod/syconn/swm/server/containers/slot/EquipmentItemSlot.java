@@ -6,7 +6,6 @@ import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -14,7 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class EquipmentItemSlot extends Slot { // TODO WORKS ON CHANGE BUT NOT ON LOAD
+public class EquipmentItemSlot extends Slot {
 
     private final Player player;
     private final IEquipmentItem.SWEquipmentSlot slot;

@@ -65,7 +65,7 @@ public class LightsaberWorkbenchBlock extends TwoPartBlock implements IEntityBlo
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) { // TODO LIGHTSABER ASSEMBLER DROPS ITEM WHEN BROKE IN CREATIVE
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!state.is(newState.getBlock()) && level.getBlockEntity(getBlockEntityPos(level, pos, state)) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
             Containers.dropContents(level, pos, blockEntity.getContainer());
             level.updateNeighbourForOutputSignal(pos, this);
