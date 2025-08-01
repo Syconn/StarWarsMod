@@ -51,14 +51,12 @@ public class MathUtil {
         return degrees * Mth.RAD_TO_DEG;
     }
 
-
-
     public static void translateRotation(PoseStack poseStack, Direction direction, float x, float y, float z) {
         switch (direction) {
-            case NORTH -> poseStack.translate(-x, y, z);
+            case NORTH -> poseStack.translate(-x, y, -z);
             case SOUTH -> poseStack.translate(x, y, z);
             case EAST -> poseStack.translate(z, y, -x);
-            case WEST -> poseStack.translate(z, y, x);
+            case WEST -> poseStack.translate(-z, y, x);
         }
     }
 
