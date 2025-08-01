@@ -35,9 +35,7 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
             if (emitterPos != null) MathUtil.translateRotation(poseStack, facing.getClockWise(),
                     (float) -emitterPos.y() + (float) LightsaberTag.getOrCreate(stack).hiltLength() / 2f, (float) emitterPos.x(), (float) emitterPos.z());
             poseStack.mulPose(facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ()));
-            if (LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber")) poseStack.scale(0.5f, 0.5f, 0.5f);
             itemRenderer.renderStatic(stack, ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
-
             poseStack.popPose();
         }
     }

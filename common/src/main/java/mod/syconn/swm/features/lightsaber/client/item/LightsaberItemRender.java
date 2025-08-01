@@ -32,14 +32,15 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         poseStack.pushPose();
 
         var model = this.getModel(stack, backupModel);
-        model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
+        var transforms = model.getTransforms();
 
+        transforms.getTransform(renderMode).apply(leftHanded, poseStack);
         if (renderMode.firstPerson() && entity != null && entity.isUsingItem() && entity.getUseItem().equals(stack)) {
             var delta = getBlockAnimationDelta(entity, StarWarsClient.getTickDelta());
             if (leftHanded) delta = -delta;
             poseStack.translate(-0.1, -0.1, 0);
             poseStack.mulPose(Axis.ZN.rotationDegrees(-50f * delta));
-        }
+        } else if (renderMode == ItemDisplayContext.NONE) poseStack.scale(transforms.thirdPersonRightHand.scale.x, transforms.thirdPersonRightHand.scale.y, transforms.thirdPersonRightHand.scale.z);
 
         renderLightsaberBlade(stack, renderMode, poseStack, bufferSource, light, overlay);
         renderLightsaberItem(stack, poseStack, bufferSource, light, overlay, model);

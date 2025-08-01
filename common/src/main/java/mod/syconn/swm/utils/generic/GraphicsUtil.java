@@ -87,9 +87,8 @@ public class GraphicsUtil {
         final var minecraft = GameInstance.getClient();
 
         if (minecraft != null) {
-            final var level = minecraft.level;
             final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : null;
-            final var scale = LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber") ? 50 : 100;
+            final var scale = 100f;
 
             guiGraphics.pose().pushPose();
             guiGraphics.pose().translate(x, y, 50.0);
@@ -99,11 +98,8 @@ public class GraphicsUtil {
             guiGraphics.pose().scale(scale, scale, scale);
             guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
-            if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
-
-                var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
-                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
-            }
+            if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.NONE, 15728880,
+                    OverlayTexture.NO_OVERLAY, guiGraphics.pose(), guiGraphics.bufferSource(), minecraft.level, 0);
 
             guiGraphics.flush();
             guiGraphics.pose().popPose();
@@ -118,9 +114,8 @@ public class GraphicsUtil {
         final var minecraft = GameInstance.getClient();
 
         if (minecraft != null) {
-            final var level = minecraft.level;
             final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : null;
-            final var scale = LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber") ? 50 : 100;
+            final var scale = 100;
             final var hiltLength = LightsaberTag.getOrCreate(stack).hiltLength();
 
             guiGraphics.pose().pushPose();
@@ -133,10 +128,8 @@ public class GraphicsUtil {
             guiGraphics.pose().scale(scale, scale, scale);
             guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
-            if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
-                var model = minecraft.getItemRenderer().getModel(stack, level, minecraft.player, 0);
-                Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.NONE, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, model);
-            }
+            if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.NONE, 15728880,
+                    OverlayTexture.NO_OVERLAY, guiGraphics.pose(), guiGraphics.bufferSource(), minecraft.level, 0);
 
             guiGraphics.flush();
             guiGraphics.pose().popPose();
