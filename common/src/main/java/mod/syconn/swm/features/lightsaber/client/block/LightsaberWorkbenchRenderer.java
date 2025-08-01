@@ -19,8 +19,6 @@ import org.joml.Vector3f;
 
 public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<LightsaberWorkbenchBlockEntity> {
 
-    public static int CIRCLE = 0;
-
     private final ItemRenderer itemRenderer;
 
     public LightsaberWorkbenchRenderer(BlockEntityRendererProvider.Context context) {
@@ -28,8 +26,6 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
     }
 
     public void render(LightsaberWorkbenchBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        CIRCLE = MathUtil.wrap(CIRCLE + 1, 360);
-
         var stack = blockEntity.getContainer().getItem(0);
 
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
