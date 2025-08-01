@@ -6075,7 +6075,7 @@
 			"translation": [0.25, 2.7, 1]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [0, -90, 0],
+			"rotation": [0, 90, 0],
 			"translation": [0.25, 2.7, 1]
 		},
 		"firstperson_righthand": {
@@ -6083,7 +6083,7 @@
 			"translation": [0, 4.75, 1.75]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, 84.25, 0],
+			"rotation": [0, -90, 0],
 			"translation": [0, 4.75, 1.75]
 		},
 		"ground": {
