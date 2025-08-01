@@ -31,7 +31,7 @@ public class SyncResourceDataPacket {
 
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
-            if (context.get().getPlayer() instanceof LocalPlayer player) {
+            if (context.get().getPlayer() != null) {
                 SyncedResourceManager.ISyncedData data = SyncedResourceManager.getLoginDataSupplier(this.id);
                 data.readData(this.data);
             }

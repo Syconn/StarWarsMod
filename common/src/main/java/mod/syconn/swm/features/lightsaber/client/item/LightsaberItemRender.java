@@ -25,21 +25,22 @@ import net.minecraft.world.item.ItemStack;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
-public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer { // TODO LEFT HANDED VERSION
+public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPoseRenderer {
 
     @Override
     public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {
         poseStack.pushPose();
 
         var model = this.getModel(stack, backupModel);
-        model.getTransforms().getTransform(renderMode).apply(leftHanded, poseStack);
+        var transforms = model.getTransforms();
 
+        transforms.getTransform(renderMode).apply(leftHanded, poseStack);
         if (renderMode.firstPerson() && entity != null && entity.isUsingItem() && entity.getUseItem().equals(stack)) {
             var delta = getBlockAnimationDelta(entity, StarWarsClient.getTickDelta());
             if (leftHanded) delta = -delta;
             poseStack.translate(-0.1, -0.1, 0);
             poseStack.mulPose(Axis.ZN.rotationDegrees(-50f * delta));
-        }
+        } else if (renderMode == ItemDisplayContext.NONE) poseStack.scale(transforms.thirdPersonRightHand.scale.x, transforms.thirdPersonRightHand.scale.y, transforms.thirdPersonRightHand.scale.z);
 
         renderLightsaberBlade(stack, renderMode, poseStack, bufferSource, light, overlay);
         renderLightsaberItem(stack, poseStack, bufferSource, light, overlay, model);

@@ -36,3 +36,9 @@ license = "All Rights Reserved"
     versionRange = "[9.2.14,)"
     ordering = "AFTER"
     side = "BOTH"
+[[dependencies.swm]]
+    modId="playeranimator"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="AFTER"
+    side="BOTH"

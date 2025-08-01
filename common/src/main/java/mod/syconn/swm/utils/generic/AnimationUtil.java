@@ -33,6 +33,6 @@ public class AnimationUtil {
     // Constants.withId("player_animations"), 100,
 
     public static void notifyPlayers(ServerPlayer serverPlayer, String animation, int length, Ease ease) {
-        serverPlayer.serverLevel().players().forEach(p -> Network.CHANNEL.sendToPlayer(p, new PlayAnimationPacket(serverPlayer.getUUID(), animation, length, ease)));
+        Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new PlayAnimationPacket(serverPlayer.getUUID(), animation, length, ease));
     }
 }

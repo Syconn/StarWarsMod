@@ -9,7 +9,8 @@ import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
 import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
-import mod.syconn.swm.network.packets.serverside.ToggleEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,9 +34,10 @@ public class Network {
         CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
         CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
         CHANNEL.register(PlayAnimationPacket.class, PlayAnimationPacket::encode, PlayAnimationPacket::new, PlayAnimationPacket::apply);
+        CHANNEL.register(SetEquipmentSlotPacket.class, SetEquipmentSlotPacket::encode, SetEquipmentSlotPacket::new, SetEquipmentSlotPacket::apply);
     }
 
-    public static <T> void sendToTrackingPlayers(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {
+    public static <T> void sendToNearby(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {
         var playerlist = GameInstance.getServer().getPlayerList().getPlayers();
         for (ServerPlayer serverPlayer : playerlist) {
             if (serverPlayer != player && serverPlayer.level().dimension() == dimension) {

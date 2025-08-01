@@ -1,6 +1,11 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.server.containers.SWGear;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.minecraft.world.Container;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +16,9 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.function.Predicate;
 
 @Mixin(Inventory.class)
 public class InventoryMixin implements SWGear.SWGearAccess {
@@ -29,7 +37,7 @@ public class InventoryMixin implements SWGear.SWGearAccess {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void init(Player player, CallbackInfo ci) {
-        this.swm$SWGear = new SWGear((Inventory) (Object) this);
+        this.swm$SWGear = new SWGear(player);
     }
 
     @Inject(method = "tick", at = @At("RETURN"))
@@ -53,8 +61,10 @@ public class InventoryMixin implements SWGear.SWGearAccess {
         for (int i = 0; i < this.swm$SWGear.getContainerSize(); i++) swm$SWGear.setItem(i, playerInventory.getItem(i));
     }
 
-    @Inject(method = "clearContent", at = @At("TAIL"))
-    private void clear(CallbackInfo ci) {
-        this.swm$SWGear.clearContent();
+    @Inject(method = "clearOrCountMatchingItems", at = @At("RETURN"), cancellable = true)
+    private void commandClear(Predicate<ItemStack> stackPredicate, int maxCount, Container inventory, CallbackInfoReturnable<Integer> cir) {
+        var i = cir.getReturnValueI();
+        boolean bl = maxCount == 0;
+        cir.setReturnValue(i += ContainerHelper.clearOrCountMatchingItems(this.swm$SWGear, stackPredicate, maxCount - i, bl));
     }
 }

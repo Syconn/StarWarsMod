@@ -9,7 +9,7 @@
     "client.HttpTextureMixin",
     "client.HumanoidModelMixin",
     "client.ItemInHandRendererMixin",
-    "client.ItemPickerMenuMixin",
+    "client.CreativeModeInventoryScreenMixin",
     "client.ItemRendererInvoker",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",

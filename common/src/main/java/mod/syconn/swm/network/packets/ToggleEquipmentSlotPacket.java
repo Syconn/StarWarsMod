@@ -1,4 +1,4 @@
-package mod.syconn.swm.network.packets.serverside;
+package mod.syconn.swm.network.packets;
 
 import dev.architectury.networking.NetworkManager;
 import dev.kosmx.playerAnim.core.util.Ease;
@@ -46,7 +46,6 @@ public class ToggleEquipmentSlotPacket {
                     player.getInventory().selected = this.openSlot;
                     AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
                 }
-                player.swm$setSyncedData(gear);
             }
         });
     }

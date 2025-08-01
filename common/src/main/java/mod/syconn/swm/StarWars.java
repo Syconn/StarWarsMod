@@ -14,12 +14,7 @@ import mod.syconn.swm.utils.Constants;
 import net.minecraft.server.packs.PackType;
 
 public final class StarWars {
-
-    public static void init() {
-        Constants.LOG.info("Starting SW Version Check");
-        if (Constants.TRACKER.shouldUpdate()) Constants.LOG.info("Out of Date Version");
-
-        ModBlocks.BLOCKS.register();
+    public static void init() {ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
         ModItems.TABS.register();
         ModSounds.SOUNDS.register();
