@@ -1,9 +1,11 @@
-package mod.syconn.swm.network.packets.serverside;
+package mod.syconn.swm.network.packets;
 
 import dev.architectury.networking.NetworkManager;
-import mod.syconn.swm.server.data.SWGear;
+import dev.kosmx.playerAnim.core.util.Ease;
+import mod.syconn.swm.utils.generic.AnimationUtil;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.util.function.Supplier;
 
@@ -34,15 +36,16 @@ public class ToggleEquipmentSlotPacket {
     public void apply(Supplier<NetworkManager.PacketContext> context) {
         context.get().queue(() -> {
             var player = context.get().getPlayer();
-            if (player != null) {
-                final var gear = ((SWGear.SWGearAccess) player).swm$getSWGear();
-                if (gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot))
+            if (player instanceof ServerPlayer serverPlayer) {
+                final var gear = player.getInventory().swm$getSWGear();
+                if (gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot)) {
                     gear.setItem(this.equipmentSlot, player.getInventory().removeItemNoUpdate(this.selectedSlot));
-                else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && this.openSlot != -1) {
+                    AnimationUtil.notifyPlayers(serverPlayer, "return.swap.lightsaber", 1, Ease.INCUBIC);
+                } else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && this.openSlot != -1) {
                     player.getInventory().setItem(this.openSlot, gear.removeItemNoUpdate(this.equipmentSlot));
                     player.getInventory().selected = this.openSlot;
+                    AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
                 }
-                player.inventoryMenu.broadcastChanges();
             }
         });
     }

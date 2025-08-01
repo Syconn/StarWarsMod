@@ -4,7 +4,7 @@ import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.core.ModBlockEntities;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.clientside.NotifyPlayerPacket;
+import mod.syconn.swm.network.packets.clientside.MessagePlayerPacket;
 import mod.syconn.swm.utils.block.WorldPos;
 import mod.syconn.swm.utils.generic.ListUtil;
 import mod.syconn.swm.utils.generic.MapUtil;
@@ -103,7 +103,7 @@ public class HologramNetwork extends SavedData {
             if (GameInstance.getServer() != null) {
                 var owner = GameInstance.getServer().getPlayerList().getPlayer(caller.uuid);
                 var serverPlayer = GameInstance.getServer().getPlayerList().getPlayer(c.uuid);
-                if (serverPlayer != null && owner != null) Network.CHANNEL.sendToPlayer(serverPlayer, new NotifyPlayerPacket(Component.literal(
+                if (serverPlayer != null && owner != null) Network.CHANNEL.sendToPlayer(serverPlayer, new MessagePlayerPacket(Component.literal(
                             "Incoming Transmission from " + owner.getName().getString()).withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD)));
             }
         });

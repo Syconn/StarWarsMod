@@ -4,7 +4,7 @@ import dev.architectury.hooks.item.ItemStackHooks;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.core.ModSounds;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

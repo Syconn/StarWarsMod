@@ -1,18 +1,14 @@
 package mod.syconn.swm.utils.generic;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
 import org.joml.Quaternionf;
-import org.joml.Vector3d;
 import org.joml.Vector3f;
-
-import java.util.Map;
-import java.util.Objects;
 
 public class MathUtil {
 
@@ -55,6 +51,8 @@ public class MathUtil {
         return degrees * Mth.RAD_TO_DEG;
     }
 
+
+
     public static void translateRotation(PoseStack poseStack, Direction direction, float x, float y, float z) {
         switch (direction) {
             case NORTH -> poseStack.translate(-x, y, z);
@@ -62,18 +60,13 @@ public class MathUtil {
             case EAST -> poseStack.translate(z, y, -x);
             case WEST -> poseStack.translate(z, y, x);
         }
-
     }
 
-    public static <T> Map<Direction, T> dataList(T north, T south, T west, T east) {
-        return Map.of(Direction.NORTH, north, Direction.SOUTH, south, Direction.WEST, west, Direction.EAST, east);
+    public static void translateRotation(PoseStack poseStack, Direction direction, Vec3 vec3) {
+        translateRotation(poseStack, direction, (float) vec3.x, (float) vec3.y, (float) vec3.z);
     }
 
-    public static <T> Map<Direction, T> dataList(T north, T south, T west, T east, T up, T down) {
-        return Map.of(Direction.NORTH, north, Direction.SOUTH, south, Direction.WEST, west, Direction.EAST, east, Direction.UP, up, Direction.DOWN, down);
-    }
-
-    public static Quaternionf getRotation(Direction direction) {
+    public static Quaternionf getEastRotation(Direction direction) {
         return switch (direction) {
             case DOWN -> new Quaternionf().rotationXYZ(0, 0, (float)(Math.PI / -2));
             case UP -> new Quaternionf().rotationXYZ(0, 0, (float)(Math.PI / 2));
@@ -84,14 +77,25 @@ public class MathUtil {
         };
     }
 
+    public static Quaternionf getNorthRotation(Direction direction) {
+        return switch (direction) {
+            case NORTH -> Axis.YP.rotationDegrees(0);
+            case EAST -> Axis.YP.rotationDegrees(270);
+            case SOUTH -> Axis.YP.rotationDegrees(180);
+            case WEST -> Axis.YP.rotationDegrees(90);
+            case UP -> Axis.XP.rotationDegrees(90);
+            case DOWN -> Axis.XP.rotationDegrees(270);
+        };
+    }
+
     public static Vec3i reflect(Vec3i incident, Vec3i normal) {
         var reflection = normal.multiply(2 * normal.distManhattan(incident)).subtract(incident);
         return reflection.multiply(-1);
     }
 
     public static int wrap(int value, int max) {
-        if (value < 0) return max + value + 1;
-        if (value > max) return value - max - 1;
+        var range = max + 1;
+        value = ((value % range) + range) % range;
         return value;
     }
 

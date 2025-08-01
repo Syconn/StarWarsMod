@@ -1,20 +1,27 @@
 package mod.syconn.swm.utils.interfaces;
 
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
 public interface IEquipmentItem {
 
     SWEquipmentSlot getSWEquipmentSlot();
 
-    default void equipmentTick(ItemStack stack, Entity entity) {
-        if (this instanceof Item item) item.inventoryTick(stack, entity.level(), entity, -1, false);
-    }
-
     enum SWEquipmentSlot {
-        LIGHTSABER,
-        BLASTER_BACK,
-        BLASTER_SIDE
+        LIGHTSABER(0),
+        BLASTER_BACK(1),
+        BLASTER_SIDE(2);
+
+        private final int slot;
+
+        SWEquipmentSlot(int slot) {
+            this.slot = slot;
+        }
+
+        public int getSlot() {
+            return slot;
+        }
+
+        public static SWEquipmentSlot getSlot(int slot) {
+            for (var equipment : values()) if (equipment.slot == slot) return equipment;
+            return LIGHTSABER;
+        }
     }
 }

@@ -1,5 +1,13 @@
 package mod.syconn.swm.utils.generic;
 
+import dev.kosmx.playerAnim.core.data.KeyframeAnimation;
+import dev.kosmx.playerAnim.core.util.Ease;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import mod.syconn.swm.network.Network;
+import mod.syconn.swm.network.packets.PlayAnimationPacket;
+import mod.syconn.swm.utils.Constants;
+import net.minecraft.server.level.ServerPlayer;
+
 public class AnimationUtil {
 
     public static float inCubic(float t) {
@@ -16,5 +24,15 @@ public class AnimationUtil {
         if (t < 1) return t * t * t / 2;
         t -= 2;
         return (t * t * t + 2) / 2;
+    }
+
+    public static KeyframeAnimation getAnimation(String name) {
+        return PlayerAnimationRegistry.getAnimation(Constants.withId(name));
+    }
+
+    // Constants.withId("player_animations"), 100,
+
+    public static void notifyPlayers(ServerPlayer serverPlayer, String animation, int length, Ease ease) {
+        Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new PlayAnimationPacket(serverPlayer.getUUID(), animation, length, ease));
     }
 }

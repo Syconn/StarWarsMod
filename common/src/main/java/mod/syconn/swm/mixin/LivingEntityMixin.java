@@ -2,9 +2,9 @@ package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.features.lightsaber.sound.LightsaberAudio;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;

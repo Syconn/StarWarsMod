@@ -9,7 +9,7 @@ license = "All Rights Reserved"
     displayName = "Star Wars Mod"
     authors = "Syconn"
     displayURL="https://modrinth.com/mod/syconns-star-wars-mod"
-    updateJSONURL="https://raw.githubusercontent.com/Syconn/Syconn-Mod-Updates/refs/heads/main/StarWarsMod.json"
+#    updateJSONURL="https://raw.githubusercontent.com/Syconn/Syconn-Mod-Updates/refs/heads/main/StarWarsMod.json"
     description = '''
     A long time ago in a Galaxy Far Far Away
     '''
@@ -36,3 +36,9 @@ license = "All Rights Reserved"
     versionRange = "[9.2.14,)"
     ordering = "AFTER"
     side = "BOTH"
+[[dependencies.swm]]
+    modId="playeranimator"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="AFTER"
+    side="BOTH"

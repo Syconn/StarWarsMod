@@ -1,4 +1,4 @@
-package mod.syconn.swm.features.lightsaber.sound;
+package mod.syconn.swm.features.lightsaber.client.sound;
 
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.utils.generic.MathUtil;

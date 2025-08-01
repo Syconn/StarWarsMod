@@ -1,6 +1,5 @@
 package mod.syconn.swm.utils.server;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -8,7 +7,6 @@ import mod.syconn.swm.utils.generic.NBTUtil;
 import mod.syconn.swm.utils.interfaces.ISerializable;
 import mod.syconn.swm.utils.interfaces.ISpecialRenderer;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;

@@ -11,7 +11,6 @@ sourceSets {
 loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
 
-
     forge {
         mixinConfig "swm.mixins.json"
     }
@@ -38,11 +37,12 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:$rootProject.forge_version"
+    forge "net.minecraftforge:forge:$project.forge_version"
 
-    modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version"
+    modImplementation "dev.architectury:architectury-forge:$project.architectury_api_version"
+    modImplementation "dev.kosmx.player-anim:player-animation-lib-forge:${project.player_anim}"
 
-    compileOnly "mezz.jei:jei-${rootProject.minecraft_version}-forge-api:${rootProject.jei_version}"
+    compileOnly "mezz.jei:jei-${project.minecraft_version}-forge-api:${project.jei_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')

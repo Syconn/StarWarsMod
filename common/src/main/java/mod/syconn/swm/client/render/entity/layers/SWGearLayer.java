@@ -2,8 +2,7 @@ package mod.syconn.swm.client.render.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
-import mod.syconn.swm.server.data.SWGear;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -29,9 +28,11 @@ public class SWGearLayer<P extends Player, M extends PlayerModel<P>> extends Ren
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Player player, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
         poseStack.pushPose();
 
-        var stack = ((SWGear.SWGearAccess) player).swm$getSWGear().getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER);
+        var gear = player.swm$getSWGear();
+        var stack = gear.getItemFromSlot(IEquipmentItem.SWEquipmentSlot.LIGHTSABER);
         if (player instanceof AbstractClientPlayer clientPlayer && !stack.isEmpty()) {
             poseStack.translate(clientPlayer.getMainArm() == HumanoidArm.RIGHT ? 0.3f : -0.3f, 1f, 0f);
+            if (LightsaberTag.getOrCreate(stack).model.getPath().equals("lightsaber/dark_saber")) poseStack.scale(0.5f, 0.5f, 0.5f);
             poseStack.mulPose(Axis.YP.rotationDegrees(90f));
             this.itemRenderer.renderStatic(LightsaberTag.getTemporary(stack, false), ItemDisplayContext.NONE, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, player.level(), player.getId());
         }

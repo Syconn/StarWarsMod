@@ -2,8 +2,8 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
 import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.utils.generic.ItemStackUtil;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
@@ -42,7 +42,7 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
         if (!level.isClientSide && isSelected) {
             LightsaberTag.update(stack, LightsaberTag::tick);
             if (entity instanceof LivingEntity le)
-                Network.sendToTrackingPlayers(null, entity.level().dimension(), entity.position(), 32, new PlayAmbientLightsaberSoundPacket(entity.getId(), ItemStackUtil.getEquipmentSlot(le, stack)));
+                Network.sendToNearby(null, entity.level().dimension(), entity.position(), 32, new PlayAmbientLightsaberSoundPacket(entity.getId(), ItemStackUtil.getEquipmentSlot(le, stack)));
         }
     }
 

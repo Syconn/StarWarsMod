@@ -12,7 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mod.syconn.swm.core.ModBlocks;
-import mod.syconn.swm.features.lightsaber.data.LightsaberTag;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.GraphicsUtil;
