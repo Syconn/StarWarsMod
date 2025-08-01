@@ -44,8 +44,6 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
             if (entity instanceof LivingEntity le)
                 Network.sendToNearby(null, entity.level().dimension(), entity.position(), 32, new PlayAmbientLightsaberSoundPacket(entity.getId(), ItemStackUtil.getEquipmentSlot(le, stack)));
         }
-
-        System.out.println("TICK " + level);
     }
 
     @Override

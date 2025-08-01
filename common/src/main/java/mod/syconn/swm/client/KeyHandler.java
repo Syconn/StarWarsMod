@@ -36,7 +36,7 @@ public class KeyHandler {
                 final var equipment = IEquipmentItem.SWEquipmentSlot.LIGHTSABER;
                 final var gear = player.swm$getSWGear();
                 Network.CHANNEL.sendToServer(new ToggleEquipmentSlotPacket(slot, player.getInventory().selected, equipment));
-                if (!gear.getItemFromSlot(equipment).isEmpty() && !gear.getItemFromSlot(equipment).isEmpty() && slot != -1) player.getInventory().selected = slot;
+                if (!gear.getItemFromSlot(equipment).isEmpty() && player.getInventory().getItem(player.getInventory().selected).isEmpty() && slot != -1) player.getInventory().selected = slot;
             }
         }
     }

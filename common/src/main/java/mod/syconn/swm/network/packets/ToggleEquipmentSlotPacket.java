@@ -41,6 +41,11 @@ public class ToggleEquipmentSlotPacket {
                 if (gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot)) {
                     gear.setItem(this.equipmentSlot, player.getInventory().removeItemNoUpdate(this.selectedSlot));
                     AnimationUtil.notifyPlayers(serverPlayer, "return.swap.lightsaber", 1, Ease.INCUBIC);
+                } else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot)) {
+                    var gearItem = gear.getItemFromSlot(this.equipmentSlot).copy();
+                    gear.setItem(this.equipmentSlot, player.getInventory().removeItemNoUpdate(this.selectedSlot));
+                    player.getInventory().setItem(this.selectedSlot, gearItem);
+                    AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
                 } else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && this.openSlot != -1) {
                     player.getInventory().setItem(this.openSlot, gear.removeItemNoUpdate(this.equipmentSlot));
                     player.getInventory().selected = this.openSlot;
