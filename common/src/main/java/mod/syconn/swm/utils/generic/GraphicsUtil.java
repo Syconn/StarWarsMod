@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import dev.architectury.utils.GameInstance;
+import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.utils.client.NodeVec3;
@@ -15,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.joml.Matrix4f;
 
 import java.util.function.Function;
@@ -111,22 +113,26 @@ public class GraphicsUtil {
         renderLightsaberFromBehind(guiGraphics, stack, x, y, yRot, -1);
     }
 
+    private static int testRot = 0;
+
     public static void renderLightsaberFromBehind(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot, int targetBlade) {
         final var minecraft = GameInstance.getClient();
+        testRot = MathUtil.wrap(testRot + 1, 360);
 
-        if (minecraft != null) {
-            final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : new NodeVec3();
-            final var hiltLength = LightsaberTag.getOrCreate(stack).hiltLength();
-            final var scale = 100;
+        if (minecraft != null && stack.getItem() instanceof LightsaberItem) {
+            final var lT = LightsaberTag.getOrCreate(stack);
+            final var primaryEmitterPos = targetBlade == -1 && lT.getPrimaryBlade() != null || lT.getPrimaryBlade() != null ? lT.getPrimaryBlade().emitterPos : new NodeVec3();
+            final var targetBladeEmitterPos = targetBlade != -1 && lT.blades.size() >= targetBlade ? lT.blades.get(targetBlade).emitterPos : new NodeVec3();
+            final var hiltLength = lT.hiltLength();
+            final var upScale = 100f;
+            final var scale = LightsaberItemRender.getScalar(stack).scale(upScale);
 
             guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(x, y, 50.0);
-            guiGraphics.pose().translate((emitterPos.y() - hiltLength) * scale - 1, 0, 0);
-            guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(-90f));
+            guiGraphics.pose().translate(x + primaryEmitterPos.x() * scale.x(), y + (primaryEmitterPos.y() - hiltLength) * scale.y(), 50);
+            guiGraphics.pose().rotateAround(Axis.ZN.rotationDegrees(90f), (float) (targetBladeEmitterPos.x() * scale.x()), (float) ((hiltLength - primaryEmitterPos.y()) * scale.y()), 0);
+            guiGraphics.pose().rotateAround(targetBladeEmitterPos.q(), (float) (targetBladeEmitterPos.x() * scale.x()), (float) ((hiltLength / 2 - primaryEmitterPos.y()) * scale.y()), 0);
             guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-yRot));
-            if (targetBlade != -1 && LightsaberTag.getOrCreate(stack).blades.get(targetBlade) != null) guiGraphics.pose()
-                    .rotateAround(LightsaberTag.getOrCreate(stack).blades.get(targetBlade).emitterPos.q(), 0, (float) (hiltLength - emitterPos.y() - hiltLength / 2) * scale, 0);
-            guiGraphics.pose().scale(scale, scale, scale);
+            guiGraphics.pose().scale(upScale, upScale, upScale);
             guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
             if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.NONE, 15728880,

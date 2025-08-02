@@ -37,7 +37,7 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
             poseStack.pushPose();
             poseStack.translate(0.5f - emitterPos.x(), 1f - emitterPos.y(), 0.5f - emitterPos.z());
             MathUtil.translateRotation(poseStack, facing, 0, 0, 0.235f + (float) (lT.hiltLength()));
-            poseStack.rotateAround(flatRotation, 0, (float) emitterPos.y(), 0);
+            poseStack.rotateAround(flatRotation, (float) emitterPos.x(), (float) emitterPos.y(), (float) emitterPos.z());
             poseStack.mulPose(MathUtil.getNorthRotation(facing));
             itemRenderer.renderStatic(stack, ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
             poseStack.popPose();

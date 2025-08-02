@@ -69,7 +69,7 @@ public class LightsaberTag {
             b.active = false;
             b.transition = 0;
         });
-        if (this.blades.get(blade) != null) {
+        if (this.blades.size() >= blade) {
             final var bladeData = this.blades.get(blade);
             bladeData.active = true;
             bladeData.transition = 0;

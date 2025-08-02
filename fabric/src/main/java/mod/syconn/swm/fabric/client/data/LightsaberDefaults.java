@@ -24,8 +24,8 @@ public class LightsaberDefaults {
         DARK_SABER("dark_saber", createJSON("dark_saber", 2, true, 1f, 1, WHITE, LightsaberContent.DARK_SABER, List.of(new NodeVec3(0f, 0.62500f, 0f, Axis.YN.rotationDegrees(180f))))),
         TEMPLE_GUARD("temple_guard", createJSON("temple_guard", 2, true, 1.0f, 0.95f, YELLOW, PLASMA, List.of(new NodeVec3(0.00312f, 0.01250f, -0.00156f)))),
         KAL("kal", createJSON("kal", 3, true, 1.6f, 0.95f, BLUE, PLASMA, List.of(new NodeVec3(0.00078f, 0.30469f, -0.00047f)))),
-        KYLO("kylo", createJSON("kylo", 2, false, 1.0f, 0.15f, 1, RED, PLASMA, List.of(new NodeVec3(0.00234f, 0.00781f, -0.00203f)),
-                List.of(new NodeVec3(-0.12734f, -0.08594f, -0.00203f, Axis.ZP.rotationDegrees(90f)), new NodeVec3(0.12734f, -0.08594f, -0.00203f, Axis.ZP.rotationDegrees(-90f))))),
+        KYLO("kylo", createJSON("kylo", 4, false, 1.0f, 0.15f, 1, RED, PLASMA, List.of(new NodeVec3(0.00234f, 0.00781f, -0.00203f)),
+                List.of(new NodeVec3(0.00469f, -0.08437f, -0.13125f, Axis.XN.rotationDegrees(90f)), new NodeVec3(0.00469f, -0.08437f, 0.13438f, Axis.XP.rotationDegrees(90f))))),
         MAUL("maul", createJSON("maul", 2, true, 0.65f, 0.65f, RED, PLASMA, List.of(new NodeVec3(-0.00078f, 0.10625f, -0.00359f),
                 new NodeVec3(-0.00078f, -0.49844f, -0.00359f, Axis.ZP.rotationDegrees(180f)))));
 

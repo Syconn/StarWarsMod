@@ -99,7 +99,7 @@ public class LightsaberWorkbenchScreen extends AbstractContainerScreen<Lightsabe
             final var lT = LightsaberTag.getOrCreate(stack);
             final var renderStack = lT.getTemporary(this.blade, 1.0f);
             this.rotation += (float) (-10f * this.deltaScroll);
-            GraphicsUtil.renderLightsaberFromBehind(guiGraphics, renderStack, this.leftPos + 247, this.topPos + 36.5, this.rotation, this.blade);
+            GraphicsUtil.renderLightsaberFromBehind(guiGraphics, renderStack, this.leftPos + 245, this.topPos + 36.5, this.rotation, this.blade);
             this.deltaScroll = 0f;
 
             if (!lT.uuid.equals(this.itemId)) {

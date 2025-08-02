@@ -12,6 +12,7 @@ import mod.syconn.swm.mixin.client.ItemRendererInvoker;
 import mod.syconn.swm.utils.generic.ModelUtil;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -22,6 +23,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
 import static mod.syconn.swm.features.addons.LightsaberContent.*;
 
@@ -31,7 +34,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {
         poseStack.pushPose();
 
-        var model = this.getModel(stack, backupModel);
+        var model = getModel(stack, backupModel);
         var transforms = model.getTransforms();
 
         transforms.getTransform(renderMode).apply(leftHanded, poseStack);
@@ -49,9 +52,19 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         return true;
     }
 
-    private BakedModel getModel(ItemStack stack, BakedModel backupModel) {
+    private static BakedModel getModel(ItemStack stack, BakedModel backupModel) {
         var model = GameInstance.getClient().getModelManager().getModel(new ModelResourceLocation(LightsaberTag.getOrCreate(stack).model, "inventory"));
         return model == GameInstance.getClient().getModelManager().getMissingModel() ? backupModel : model;
+    }
+
+    public static Vector3f getScalar(ItemStack stack, ItemDisplayContext displayContext, BakedModel backupModel) {
+        var model = getModel(stack, backupModel);
+        return model.getTransforms().getTransform(displayContext).translation;
+    }
+
+    public static Vec3 getScalar(ItemStack stack) {
+        var model = getModel(stack, GameInstance.getClient().getItemRenderer().getItemModelShaper().getItemModel(stack));
+        return new Vec3(model.getTransforms().getTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).scale);
     }
 
     private void renderLightsaberItem(ItemStack stack, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
