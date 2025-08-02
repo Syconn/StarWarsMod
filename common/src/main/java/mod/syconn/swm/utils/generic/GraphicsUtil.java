@@ -86,19 +86,20 @@ public class GraphicsUtil {
         }
     }
 
-    public static void renderLightsaberFromBlade(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float rotation) {
+    public static void renderLightsaberFromBlade(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot) {
         final var minecraft = GameInstance.getClient();
 
         if (minecraft != null) {
             final var emitterPos = LightsaberTag.getOrCreate(stack).getPrimaryBlade() != null ? LightsaberTag.getOrCreate(stack).getPrimaryBlade().emitterPos : new NodeVec3();
-            final var scale = 100f;
+            final var hiltLength = LightsaberTag.getOrCreate(stack).hiltLength();
+            final var upScale = 100f;
+            final var scale = LightsaberItemRender.getScalar(stack).scale(upScale);
 
             guiGraphics.pose().pushPose();
-            guiGraphics.pose().translate(x, y, 50.0);
-            guiGraphics.pose().translate((emitterPos.y() - LightsaberTag.getOrCreate(stack).hiltLength() / 2) * scale, 0, 0);
-            guiGraphics.pose().mulPose(Axis.ZP.rotationDegrees(-90f));
-            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-rotation));
-            guiGraphics.pose().scale(scale, scale, scale);
+            guiGraphics.pose().translate(x - emitterPos.x() * scale.x(), y + (emitterPos.y() - hiltLength / 2) * scale.y(), 50.0);
+            guiGraphics.pose().rotateAround(Axis.ZP.rotationDegrees(-90f), (float) (emitterPos.x() * scale.x()), (float) ((hiltLength / 2 - emitterPos.y()) * scale.y()), 0);
+            guiGraphics.pose().mulPose(Axis.YP.rotationDegrees(-yRot));
+            guiGraphics.pose().scale(upScale, upScale, upScale);
             guiGraphics.pose().mulPoseMatrix(new Matrix4f().scaling(1.0F, -1.0F, 1.0F));
 
             if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.NONE, 15728880,
@@ -113,11 +114,8 @@ public class GraphicsUtil {
         renderLightsaberFromBehind(guiGraphics, stack, x, y, yRot, -1);
     }
 
-    private static int testRot = 0;
-
     public static void renderLightsaberFromBehind(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot, int targetBlade) {
         final var minecraft = GameInstance.getClient();
-        testRot = MathUtil.wrap(testRot + 1, 360);
 
         if (minecraft != null && stack.getItem() instanceof LightsaberItem) {
             final var lT = LightsaberTag.getOrCreate(stack);
