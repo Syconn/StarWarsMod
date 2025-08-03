@@ -16,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import org.joml.Matrix4f;
 
 import java.util.function.Function;
@@ -86,7 +85,7 @@ public class GraphicsUtil {
         }
     }
 
-    public static void renderLightsaberFromBlade(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot) {
+    public static void renderLightsaberFromCenter(GuiGraphics guiGraphics, ItemStack stack, double x, double y, float yRot) {
         final var minecraft = GameInstance.getClient();
 
         if (minecraft != null) {

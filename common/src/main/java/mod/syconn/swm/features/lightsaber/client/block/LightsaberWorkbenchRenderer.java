@@ -3,6 +3,7 @@ package mod.syconn.swm.features.lightsaber.client.block;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
+import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.utils.client.NodeVec3;
@@ -29,16 +30,18 @@ public class LightsaberWorkbenchRenderer implements BlockEntityRenderer<Lightsab
         var stack = blockEntity.getContainer().getItem(0);
 
         if (!stack.isEmpty() && stack.getItem() instanceof LightsaberItem) {
+            final var facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
+            final var rotation = facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ());
             final var lT = LightsaberTag.getOrCreate(stack);
             final var emitterPos = lT.blades.isEmpty() ? new NodeVec3() : lT.blades.get(0).emitterPos;
-            final var facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-            final var flatRotation = facing.getAxis() == Direction.Axis.X ? Axis.ZN.rotationDegrees(90f * facing.getNormal().getX()) : Axis.XN.rotationDegrees(-90f * facing.getNormal().getZ());
+            final var hiltLength = lT.hiltLength();
+            final var scale = LightsaberItemRender.getScalar(stack);
 
             poseStack.pushPose();
-            poseStack.translate(0.5f - emitterPos.x(), 1f - emitterPos.y(), 0.5f - emitterPos.z());
-            MathUtil.translateRotation(poseStack, facing, 0, 0, 0.235f + (float) (lT.hiltLength()));
-            poseStack.rotateAround(flatRotation, (float) emitterPos.x(), (float) emitterPos.y(), (float) emitterPos.z());
-            poseStack.mulPose(MathUtil.getNorthRotation(facing));
+            poseStack.translate(0.5f - emitterPos.x() * scale.x(), 1f - (emitterPos.y() - hiltLength / 2) * scale.y(), 0.5f - emitterPos.z() * scale.z());
+            MathUtil.translateRotation(poseStack, facing, 0, 0, 0.5f);
+            poseStack.rotateAround(rotation, (float) (emitterPos.x() * scale.x()), (float) ((emitterPos.y() - hiltLength / 2) * scale.y()), (float) (emitterPos.z() * scale.z()));
+            poseStack.mulPose(MathUtil.getNorthRotation(facing.getCounterClockWise()));
             itemRenderer.renderStatic(stack, ItemDisplayContext.NONE, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
             poseStack.popPose();
         }

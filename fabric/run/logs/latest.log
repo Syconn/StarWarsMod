@@ -261,3 +261,118 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 [18:18:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
 [18:18:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
 [18:18:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 45.83 ms
+[18:18:34] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[19:35:54] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[19:36:47] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[19:36:47] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 55.65 ms
+[19:36:52] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[19:37:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[19:39:25] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[19:39:25] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 64.19 ms
+[19:39:30] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[19:49:39] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:01:15] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:01:15] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 68.77 ms
+[20:01:20] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:02:48] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:05:17] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:05:17] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 50.53 ms
+[20:05:22] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:07:49] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:07:49] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 2 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 67.57 ms
+[20:07:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:07:56] [Render thread/INFO] (Minecraft) Loaded 30 advancements
+[20:07:59] [Render thread/INFO] (Minecraft) Loaded 36 advancements
+[20:08:00] [Render thread/INFO] (Minecraft) Loaded 37 advancements
+[20:09:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:09:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 49.98 ms
+[20:09:05] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:09:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:09:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 50.08 ms
+[20:09:38] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:14:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:14:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 74.10 ms
+[20:14:46] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:15:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:15:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 83.96 ms
+[20:15:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:15:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:15:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 99.38 ms
+[20:16:02] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:16:32] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:16:32] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 76.39 ms
+[20:16:37] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:33:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:33:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 71.99 ms
+[20:33:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:38:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:38:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 76.07 ms
+[20:38:16] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:46:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:51:31] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:52:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:52:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 56.13 ms
+[20:52:14] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:53:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:53:01] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 63.66 ms
+[20:53:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:53:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:53:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 66.28 ms
+[20:53:59] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:56:18] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:56:18] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 71.30 ms
+[20:56:23] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:56:50] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:56:53] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:56:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 67.63 ms
+[20:56:59] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:59:06] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20:59:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[20:59:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 63.20 ms
+[20:59:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[21:03:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[21:03:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 78.89 ms
+[21:03:46] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[21:03:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[21:03:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 74.16 ms
+[21:04:02] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
+[21:14:28] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[21:14:29] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
+[21:14:29] [Render thread/INFO] (JeiStarter) Stopping JEI
+[21:14:29] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
+[21:14:29] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
+[21:14:29] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 742.8 μs
+[21:14:29] [Server thread/INFO] (Minecraft) Player678 lost connection: Disconnected
+[21:14:29] [Server thread/INFO] (Minecraft) Player678 left the game
+[21:14:29] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[21:14:29] [Server thread/INFO] (Minecraft) Stopping server
+[21:14:29] [Server thread/INFO] (Minecraft) Saving players
+[21:14:29] [Server thread/INFO] (Minecraft) Saving worlds
+[21:14:30] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
