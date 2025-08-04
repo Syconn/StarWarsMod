@@ -2,6 +2,7 @@ package mod.syconn.swm.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import dev.architectury.platform.Platform;
 import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.utils.generic.FontUtil;
@@ -33,7 +34,14 @@ public class UpdateTracker {
 
         try {
             var response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) return new Gson().fromJson(response.body(), JsonObject.class);
+            if (response.statusCode() == 200) {
+                try {
+                    return new Gson().fromJson(response.body(), JsonObject.class);
+                } catch (JsonSyntaxException e) {
+                    Constants.LOG.error(e.getLocalizedMessage());
+                    return null;
+                }
+            }
         } catch (IOException | InterruptedException e) {
             Constants.LOG.error(e.getLocalizedMessage());
         }

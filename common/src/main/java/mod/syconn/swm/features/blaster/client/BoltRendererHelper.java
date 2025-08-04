@@ -2,7 +2,7 @@ package mod.syconn.swm.features.blaster.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.architectury.utils.GameInstance;
-import mod.syconn.swm.client.render.entity.PlasmaRenderer;
+import mod.syconn.swm.utils.client.PlasmaRenderer;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
 import mod.syconn.swm.features.blaster.item.BlasterItem;

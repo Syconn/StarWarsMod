@@ -1,5 +1,5 @@
-[17:50:54] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.14
-[17:50:55] [main/INFO] (FabricLoader) Loading 63 mods:
+[21:30:22] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.1 with Fabric Loader 0.16.14
+[21:30:23] [main/INFO] (FabricLoader) Loading 63 mods:
 	- architectury 9.2.14
 	- fabric-api 0.92.5+1.20.1
 	- fabric-api-base 0.4.32+1802ada577
@@ -56,21 +56,22 @@
 	- fabric-transfer-api-v1 3.3.6+8dd72ea377
 	- fabric-transitive-access-wideners-v1 4.3.2+1802ada577
 	- fabricloader 0.16.14
-	- generated_accd52c 1.0.0
+	- generated_c35b217 1.0.0
 	- java 22
 	- jei 15.20.0.106
 	- minecraft 1.20.1
 	- mixinextras 0.4.1
 	- player-animator 1.0.2+1.19.4
 	- swm 2.1.7
-[17:50:55] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.5+mixin.0.8.7/22f9eb729e216a091673a574a5906dc1b9027fb3/sponge-mixin-0.15.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[17:50:55] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[17:50:55] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
-[17:50:56] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[17:51:00] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 101 milliseconds
-[17:51:01] [Render thread/INFO] (Minecraft) [STDERR]: [LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
-[17:51:01] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[17:51:01] [Render thread/ERROR] (Minecraft) Failed to verify authentication
+[21:30:23] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Aidan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.5+mixin.0.8.7/22f9eb729e216a091673a574a5906dc1b9027fb3/sponge-mixin-0.15.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[21:30:23] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[21:30:24] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_16
+[21:30:24] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_17
+[21:30:25] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[21:30:35] [Datafixer Bootstrap/INFO] (Minecraft) 188 Datafixer optimizations took 228 milliseconds
+[21:30:39] [Render thread/INFO] (Minecraft) [STDERR]: [LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
+[21:30:39] [Render thread/INFO] (Minecraft) Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[21:30:40] [Render thread/ERROR] (Minecraft) Failed to verify authentication
 com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
 	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156) ~[authlib-4.0.43.jar:?]
@@ -89,290 +90,147 @@ Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 4
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48) ~[authlib-4.0.43.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129) ~[authlib-4.0.43.jar:?]
 	... 10 more
-[17:51:01] [Render thread/INFO] (Minecraft) Setting user: Player678
-[17:51:02] [Render thread/ERROR] (Minecraft) No data fixer registered for throw_lightsaber
-[17:51:02] [Render thread/ERROR] (Minecraft) No data fixer registered for blaster_bolt
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6936fc2a442437b6a02d34860178c087
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6936fc2a442437b6a02d34860178c087
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/072b59fba2c33a75adadc02bdde8bb1e
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/072b59fba2c33a75adadc02bdde8bb1e
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/3b88a446da5c30c3ac941f88d82f19f8
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/3b88a446da5c30c3ac941f88d82f19f8
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/a362cad46a1d36899f49d92afe1756e0
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/a362cad46a1d36899f49d92afe1756e0
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6ace50e0bb92365987fc0932106578cf
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6ace50e0bb92365987fc0932106578cf
-[17:51:02] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
-[17:51:02] [Render thread/INFO] (PluginCaller) Sending ConfigManager...
-[17:51:02] [Render thread/INFO] (PluginCaller) Sending ConfigManager took 1.345 ms
-[17:51:02] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[17:51:02] [Render thread/INFO] (FabricLoader/Mixin) swm.mixins.json:client.ItemRendererInvoker from mod swm->@Invoker[METHOD_PROXY]::getFoil(Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/client/renderer/RenderType;ZZ)Lcom/mojang/blaze3d/vertex/VertexConsumer; should be static as its target is
-[17:51:02] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.2-snapshot
-[17:51:03] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-model-loading-api-v1, fabricloader, fabric-registry-sync-v0, fabric-commands-v0, fabric-screen-api-v1, fabric-biome-api-v1, fabric-rendering-v1, fabric-mining-level-api-v1, fabric-object-builder-api-v1, fabric-rendering-data-attachment-v1, fabric-networking-v0, fabric-screen-handler-api-v1, fabric-transitive-access-wideners-v1, fabric-block-view-api-v2, generated_accd52c, fabric-lifecycle-events-v1, fabric-item-group-api-v1, fabric-renderer-api-v1, fabric-renderer-registries-v1, fabric-client-tags-api-v1, fabric-api-base, fabric-events-lifecycle-v0, fabric-block-api-v1, fabric-networking-api-v1, fabric-resource-loader-v0, fabric-convention-tags-v1, fabric-transfer-api-v1, fabric-content-registries-v0, fabric-particles-v1, fabric-loot-api-v2, fabric-rendering-fluids-v1, fabric-blockrenderlayer-v1, fabric-message-api-v1, fabric-loot-tables-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-sound-api-v1, fabric-recipe-api-v1, fabric-game-rule-api-v1, fabric-containers-v0, jei, fabric-command-api-v1, fabric-renderer-indigo, fabric-command-api-v2, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-api-lookup-api-v1, fabric-events-interaction-v0, fabric-rendering-v0, fabric-crash-report-info-v1, fabric-api, fabric-keybindings-v0, fabric-dimensions-v1, fabric-key-binding-api-v1, fabric-resource-conditions-api-v1, fabric-entity-events-v1, fabric-models-v0)
-[17:51:03] [Worker-Main-5/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
-[17:51:04] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
-[17:51:04] [Worker-Main-6/WARN] (Minecraft) Texture swm:item/graphic_display with size 187x247 limits mip level from 4 to 0
-[17:51:04] [Worker-Main-6/WARN] (Minecraft) minecraft:textures/atlas/blocks.png: dropping miplevel from 4 to 0, because of minimum power of two: 1
-[17:51:04] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
-[17:51:05] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[17:51:05] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
-[17:51:05] [Render thread/INFO] (Minecraft) Sound engine started
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 2048x2048x0 minecraft:textures/atlas/blocks.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[17:51:05] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[17:51:05] [Render thread/INFO] (Minecraft) Created: 256x256x0 jei:textures/atlas/gui.png-atlas
-[17:51:11] [Render thread/INFO] (Minecraft) Loaded 8 recipes
-[17:51:11] [Render thread/INFO] (Minecraft) Loaded 1287 advancements
-[17:51:12] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
-[17:51:12] [Render thread/INFO] (JeiStarter) Stopping JEI
-[17:51:12] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
-[17:51:12] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
-[17:51:12] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 578.6 μs
-[17:51:12] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 1.246 ms
-[17:51:12] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.20.1
-[17:51:12] [Server thread/INFO] (Minecraft) Generating keypair
-[17:51:13] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[17:51:15] [Render thread/INFO] (Minecraft) Preparing spawn area: 68%
-[17:51:16] [Render thread/INFO] (Minecraft) Time elapsed: 2693 ms
-[17:51:16] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
-[17:51:16] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
-[17:51:16] [Server thread/INFO] (Minecraft) Player678[local:E:aaff768c] logged in with entity id 179 at (-119.72284311651221, 68.0, -327.4219991219375)
-[17:51:16] [Server thread/INFO] (Minecraft) Player678 joined the game
-[17:51:16] [Render thread/INFO] (LoggedTimer) Starting JEI...
-[17:51:16] [Render thread/INFO] (PluginCaller) Registering item subtypes...
-[17:51:16] [Render thread/INFO] (PluginCaller) Registering item subtypes took 4.904 ms
-[17:51:16] [Render thread/INFO] (PluginCaller) Registering fluid subtypes...
-[17:51:16] [Render thread/INFO] (PluginCaller) Registering fluid subtypes took 1.564 ms
-[17:51:16] [Render thread/INFO] (PluginCaller) Registering ingredients...
-[17:51:17] [Render thread/WARN] (ItemStackListFactory) Item Group has no display items and no search tab display items. Items from this group will be missing from the JEI ingredient list. Operator Utilities
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering ingredients: jei:minecraft took 125.3 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering ingredients: jei:debug took 11.21 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering ingredients took 137.5 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering extra ingredients...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering extra ingredients took 874.1 μs
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases took 558.6 μs
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering categories...
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering categories: jei:minecraft took 20.90 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering categories took 30.99 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions took 2.794 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipe catalysts...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipe catalysts took 2.312 ms
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building recipe registry...
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building recipe registry took 15.49 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering advanced plugins...
-[17:51:17] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug
-[17:51:17] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug_focus
-[17:51:17] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:obnoxiously_large_recipe
-[17:51:17] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:information
-[17:51:17] [Render thread/INFO] (AdvancedRegistration) Added typed recipe manager plugin: class mezz.jei.library.plugins.debug.DebugSimpleRecipeManagerPlugin
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering advanced plugins took 2.898 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipes...
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:minecraft took 150.7 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:internal took 24.99 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipes took 183.1 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers took 2.276 ms
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building runtime...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering gui handlers...
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering gui handlers took 6.758 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering Runtime...
-[17:51:17] [Render thread/INFO] (JeiGuiStarter) Starting JEI GUI
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building ingredient list...
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building ingredient list took 26.61 ms
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building ingredient filter...
-[17:51:17] [Render thread/INFO] (IngredientFilter) Adding 1586 ingredients
-[17:51:17] [Render thread/INFO] (IngredientFilter) Added 1586 ingredients
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building ingredient filter took 138.6 ms
-[17:51:17] [Render thread/INFO] (PluginCallerTimerRunnable) Registering Runtime: jei:fabric_gui took 226.7 milliseconds
-[17:51:17] [Render thread/INFO] (PluginCaller) Registering Runtime took 227.3 ms
-[17:51:17] [Render thread/INFO] (LoggedTimer) Building runtime took 253.6 ms
-[17:51:17] [Render thread/INFO] (PluginCaller) Sending Runtime...
-[17:51:17] [Render thread/INFO] (IngredientManager) Ingredients are being added at runtime: 10 mezz.jei.library.plugins.debug.ingredients.DebugIngredient
-[17:51:17] [Render thread/INFO] (PluginCaller) Sending Runtime took 3.016 ms
-[17:51:17] [Render thread/INFO] (LoggedTimer) Starting JEI took 686.7 ms
-[17:51:17] [Render thread/WARN] (Minecraft) Received passengers for unknown entity
-[17:51:17] [Render thread/WARN] (Minecraft) Received passengers for unknown entity
-[17:51:17] [Render thread/INFO] (Minecraft) Loaded 2 advancements
-[17:51:18] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[17:51:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[17:51:20] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[17:51:20] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[17:51:20] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2456ms or 49 ticks behind
-[17:52:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[17:52:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 38.47 ms
-[17:52:38] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[17:52:43] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[17:52:43] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 38.07 ms
-[17:52:49] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:12:42] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:12:42] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 43.85 ms
-[18:12:47] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:13:16] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:13:17] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 40.09 ms
-[18:13:22] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:08] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:08] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 47.67 ms
-[18:16:14] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:14] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 41.68 ms
-[18:16:19] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 43.68 ms
-[18:16:38] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:38] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 41.32 ms
-[18:16:43] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:53] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:16:53] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 40.84 ms
-[18:16:58] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:18:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:18:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 45.07 ms
-[18:18:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:18:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[18:18:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 45.83 ms
-[18:18:34] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[19:35:54] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:35:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:36:47] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[19:36:47] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 55.65 ms
-[19:36:52] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[19:37:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:37:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[19:39:25] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[19:39:25] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 64.19 ms
-[19:39:30] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[19:49:39] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[19:49:39] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:01:15] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:01:15] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 68.77 ms
-[20:01:20] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:02:48] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[20:02:48] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:05:17] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:05:17] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 50.53 ms
-[20:05:22] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:07:49] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:07:49] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 2 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 67.57 ms
-[20:07:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:07:56] [Render thread/INFO] (Minecraft) Loaded 30 advancements
-[20:07:59] [Render thread/INFO] (Minecraft) Loaded 36 advancements
-[20:08:00] [Render thread/INFO] (Minecraft) Loaded 37 advancements
-[20:09:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:09:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 49.98 ms
-[20:09:05] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:09:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:09:33] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 50.08 ms
-[20:09:38] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:14:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:14:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 74.10 ms
-[20:14:46] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:15:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:15:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 83.96 ms
-[20:15:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:15:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:15:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 99.38 ms
-[20:16:02] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:16:32] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:16:32] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 76.39 ms
-[20:16:37] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:33:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:33:04] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 71.99 ms
-[20:33:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:38:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:38:11] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 76.07 ms
-[20:38:16] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:46:59] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[20:46:59] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:51:31] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[20:51:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:52:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:52:09] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 56.13 ms
-[20:52:14] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:53:00] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:53:01] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 63.66 ms
-[20:53:06] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:53:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:53:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 66.28 ms
-[20:53:59] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:56:18] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:56:18] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 71.30 ms
-[20:56:23] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:56:50] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[20:56:50] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:56:53] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:56:54] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 67.63 ms
-[20:56:59] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:59:06] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[20:59:06] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[20:59:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[20:59:24] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 63.20 ms
-[20:59:29] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[21:03:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[21:03:41] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 78.89 ms
-[21:03:46] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[21:03:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[21:03:57] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Redefined 1 class(es) from C:\Users\Aidan\IdeaProjects\StarWarsMod\1.20.1\common\build\devlibs\swm-common-2.1.7-dev.jar in 74.16 ms
-[21:04:02] [Thread-0/INFO] (Minecraft) [STDOUT]: [Architectury Transformer] Detected File Modification at swm-common-2.1.7-dev.jar
-[21:14:28] [Server thread/INFO] (Minecraft) Saving and pausing game...
-[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[21:14:28] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[21:14:29] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
-[21:14:29] [Render thread/INFO] (JeiStarter) Stopping JEI
-[21:14:29] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
-[21:14:29] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
-[21:14:29] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 742.8 μs
-[21:14:29] [Server thread/INFO] (Minecraft) Player678 lost connection: Disconnected
-[21:14:29] [Server thread/INFO] (Minecraft) Player678 left the game
-[21:14:29] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[21:14:29] [Server thread/INFO] (Minecraft) Stopping server
-[21:14:29] [Server thread/INFO] (Minecraft) Saving players
-[21:14:29] [Server thread/INFO] (Minecraft) Saving worlds
-[21:14:30] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[21:30:40] [Render thread/INFO] (Minecraft) Setting user: Player327
+[21:30:40] [Render thread/ERROR] (Minecraft) No data fixer registered for throw_lightsaber
+[21:30:40] [Render thread/ERROR] (Minecraft) No data fixer registered for blaster_bolt
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/314a715070d43f878b731054ed8575ad
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/1fe3e863e4b1318295cb7f4c336625e4
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9085840957a43f61ba541c3a647bb1d0
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/f15198ab032f3479b779f3a6eb9fcabd
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/9d38da05408b3c3b975c9b09c907c251
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/5e6d3f9aa74937cb8f315f06a539680a
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/c122165bdc5036118d8d093a62cfe452
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6936fc2a442437b6a02d34860178c087
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6936fc2a442437b6a02d34860178c087
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/072b59fba2c33a75adadc02bdde8bb1e
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/072b59fba2c33a75adadc02bdde8bb1e
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/b3c86b2f0dfb373e90531d28f256be34
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/3b88a446da5c30c3ac941f88d82f19f8
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/3b88a446da5c30c3ac941f88d82f19f8
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/a362cad46a1d36899f49d92afe1756e0
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/a362cad46a1d36899f49d92afe1756e0
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id swm:network/6ace50e0bb92365987fc0932106578cf
+[21:30:41] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id swm:network/6ace50e0bb92365987fc0932106578cf
+[21:30:41] [Render thread/INFO] (PluginCaller) Sending ConfigManager...
+[21:30:41] [Render thread/INFO] (PluginCaller) Sending ConfigManager took 3.197 ms
+[21:30:41] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[21:30:41] [Render thread/INFO] (FabricLoader/Mixin) swm.mixins.json:client.ItemRendererInvoker from mod swm->@Invoker[METHOD_PROXY]::getFoil(Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/client/renderer/RenderType;ZZ)Lcom/mojang/blaze3d/vertex/VertexConsumer; should be static as its target is
+[21:30:42] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
+[21:30:42] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.2-snapshot
+[21:30:44] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric (fabric-data-generation-api-v1, fabric-resource-conditions-api-v1, fabric-containers-v0, fabric-content-registries-v0, fabric-events-interaction-v0, fabric-client-tags-api-v1, fabric-gametest-api-v1, fabric-events-lifecycle-v0, fabric-rendering-fluids-v1, fabric-entity-events-v1, fabric-transitive-access-wideners-v1, fabric-renderer-api-v1, fabric-particles-v1, fabric-rendering-v1, fabric-networking-api-v1, fabric-registry-sync-v0, fabric-loot-api-v2, fabric-rendering-v0, fabric-sound-api-v1, fabric-api-lookup-api-v1, fabric-convention-tags-v1, fabric-data-attachment-api-v1, fabric-resource-loader-v0, fabric-model-loading-api-v1, fabric-block-view-api-v2, fabric-lifecycle-events-v1, fabric-command-api-v1, fabric-dimensions-v1, fabric-key-binding-api-v1, fabric-item-group-api-v1, fabric-api-base, fabric-message-api-v1, fabricloader, fabric-biome-api-v1, fabric-networking-v0, fabric-block-api-v1, fabric-blockrenderlayer-v1, fabric-rendering-data-attachment-v1, fabric-loot-tables-v1, jei, fabric-mining-level-api-v1, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-recipe-api-v1, fabric-api, fabric-renderer-registries-v1, generated_c35b217, fabric-object-builder-api-v1, fabric-renderer-indigo, fabric-game-rule-api-v1, fabric-transfer-api-v1, fabric-models-v0, fabric-crash-report-info-v1, fabric-item-api-v1, fabric-keybindings-v0, fabric-commands-v0, fabric-command-api-v2)
+[21:30:44] [Worker-Main-11/INFO] (Minecraft) Found unifont_all_no_pua-15.0.06.hex, loading
+[21:30:44] [Realms Notification Availability checker #1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[21:30:45] [Worker-Main-3/WARN] (Minecraft) Texture swm:item/graphic_display with size 187x247 limits mip level from 4 to 0
+[21:30:45] [Worker-Main-3/WARN] (Minecraft) minecraft:textures/atlas/blocks.png: dropping miplevel from 4 to 0, because of minimum power of two: 1
+[21:30:47] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:item.goat_horn.play
+[21:30:47] [Render thread/WARN] (Minecraft) Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[21:30:47] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Headphones (High Definition Audio Device)
+[21:30:47] [Render thread/INFO] (Minecraft) Sound engine started
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 2048x2048x0 minecraft:textures/atlas/blocks.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[21:30:47] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[21:30:48] [Render thread/WARN] (Minecraft) Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[21:30:48] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[21:30:48] [Render thread/INFO] (Minecraft) Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[21:30:48] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[21:30:48] [Render thread/INFO] (Minecraft) Created: 256x256x0 jei:textures/atlas/gui.png-atlas
+[21:31:02] [Render thread/INFO] (Minecraft) Loaded 8 recipes
+[21:31:02] [Render thread/INFO] (Minecraft) Loaded 1287 advancements
+[21:31:02] [Render thread/INFO] (ClientLifecycleHandler) Stopping JEI
+[21:31:02] [Render thread/INFO] (JeiStarter) Stopping JEI
+[21:31:02] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable...
+[21:31:02] [Render thread/INFO] (FabricGuiPlugin) Stopping JEI GUI
+[21:31:02] [Render thread/INFO] (PluginCaller) Sending Runtime Unavailable took 1.019 ms
+[21:31:02] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 64 new biomes in 2.092 ms
+[21:31:02] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.20.1
+[21:31:02] [Server thread/INFO] (Minecraft) Generating keypair
+[21:31:04] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:07] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
+[21:31:08] [Render thread/INFO] (Minecraft) Preparing spawn area: 43%
+[21:31:08] [Render thread/INFO] (Minecraft) Time elapsed: 3924 ms
+[21:31:08] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
+[21:31:08] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[21:31:09] [Server thread/INFO] (Minecraft) Player327[local:E:6e8c6f53] logged in with entity id 161 at (-119.19796876153679, 68.875, -328.4813858631121)
+[21:31:09] [Server thread/INFO] (Minecraft) Player327 joined the game
+[21:31:09] [Render thread/INFO] (LoggedTimer) Starting JEI...
+[21:31:09] [Render thread/INFO] (PluginCaller) Registering item subtypes...
+[21:31:09] [Render thread/INFO] (PluginCaller) Registering item subtypes took 5.097 ms
+[21:31:09] [Render thread/INFO] (PluginCaller) Registering fluid subtypes...
+[21:31:09] [Render thread/INFO] (PluginCaller) Registering fluid subtypes took 2.035 ms
+[21:31:09] [Render thread/INFO] (PluginCaller) Registering ingredients...
+[21:31:10] [Render thread/WARN] (ItemStackListFactory) Item Group has no display items and no search tab display items. Items from this group will be missing from the JEI ingredient list. Operator Utilities
+[21:31:10] [Render thread/INFO] (PluginCallerTimerRunnable) Registering ingredients: jei:minecraft took 86.85 milliseconds
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering ingredients took 89.53 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering extra ingredients...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering extra ingredients took 956.5 μs
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering search ingredient aliases took 797.9 μs
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering categories...
+[21:31:10] [Render thread/INFO] (PluginCallerTimerRunnable) Registering categories: jei:minecraft took 13.70 milliseconds
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering categories took 26.80 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering vanilla category extensions took 3.347 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipe catalysts...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipe catalysts took 2.660 ms
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building recipe registry...
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building recipe registry took 20.74 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering advanced plugins...
+[21:31:10] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug
+[21:31:10] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:debug_focus
+[21:31:10] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:obnoxiously_large_recipe
+[21:31:10] [Render thread/INFO] (AdvancedRegistration) Added recipe category decorator: class mezz.jei.library.plugins.debug.DebugCategoryDecorator for recipe type: jei:information
+[21:31:10] [Render thread/INFO] (AdvancedRegistration) Added typed recipe manager plugin: class mezz.jei.library.plugins.debug.DebugSimpleRecipeManagerPlugin
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering advanced plugins took 3.259 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipes...
+[21:31:10] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:minecraft took 195.0 milliseconds
+[21:31:10] [Render thread/INFO] (PluginCallerTimerRunnable) Registering recipes: jei:internal took 36.68 milliseconds
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipes took 243.8 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering recipes transfer handlers took 2.970 ms
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building runtime...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering gui handlers...
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering gui handlers took 8.351 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering Runtime...
+[21:31:10] [Render thread/INFO] (JeiGuiStarter) Starting JEI GUI
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building ingredient list...
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building ingredient list took 38.51 ms
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building ingredient filter...
+[21:31:10] [Render thread/INFO] (IngredientFilter) Adding 1586 ingredients
+[21:31:10] [Render thread/INFO] (IngredientFilter) Added 1586 ingredients
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building ingredient filter took 197.8 ms
+[21:31:10] [Render thread/INFO] (PluginCallerTimerRunnable) Registering Runtime: jei:fabric_gui took 306.7 milliseconds
+[21:31:10] [Render thread/INFO] (PluginCaller) Registering Runtime took 307.5 ms
+[21:31:10] [Render thread/INFO] (LoggedTimer) Building runtime took 340.7 ms
+[21:31:10] [Render thread/INFO] (PluginCaller) Sending Runtime...
+[21:31:10] [Render thread/INFO] (IngredientManager) Ingredients are being added at runtime: 10 mezz.jei.library.plugins.debug.ingredients.DebugIngredient
+[21:31:10] [Render thread/INFO] (PluginCaller) Sending Runtime took 3.772 ms
+[21:31:10] [Render thread/INFO] (LoggedTimer) Starting JEI took 809.1 ms
+[21:31:11] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[21:31:12] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[21:31:12] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[21:31:13] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[21:31:13] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[21:32:11] [Server thread/INFO] (Minecraft) Saving and pausing game...
+[21:32:11] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[21:32:11] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[21:32:11] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end

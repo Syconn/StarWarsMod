@@ -2,6 +2,7 @@ package mod.syconn.swm.client.render.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.utils.client.NodeVec3;
@@ -35,8 +36,10 @@ public class SWGearLayer<P extends Player, M extends PlayerModel<P>> extends Ren
         if (player instanceof AbstractClientPlayer clientPlayer && stack.getItem() instanceof LightsaberItem) {
             final var emitterPos = LightsaberTag.getOrCreate(stack).blades.isEmpty() ? new NodeVec3() : LightsaberTag.getOrCreate(stack).blades.get(0).emitterPos;
             final var hiltLength = LightsaberTag.getOrCreate(stack).hiltLength();
+            final var scale = LightsaberItemRender.getScalar(stack);
 
-            poseStack.translate((clientPlayer.getMainArm() == HumanoidArm.RIGHT ? 0.28f : -0.28f) - emitterPos.x(), 0.8f + (float) (hiltLength - emitterPos.y() - hiltLength / 2), -emitterPos.z());
+            poseStack.translate((clientPlayer.getMainArm() == HumanoidArm.RIGHT ? 0.28f : -0.28f) - emitterPos.x() * scale.x,
+                    0.8f + (float) (hiltLength - emitterPos.y() - hiltLength / 2) * scale.y, -emitterPos.z() * scale.z);
             if (player.isCrouching()) poseStack.translate(0f, 0f, 0.25f);
             poseStack.mulPose(Axis.YP.rotationDegrees(180f));
             this.itemRenderer.renderStatic(LightsaberTag.getTemporary(stack, false), ItemDisplayContext.NONE, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, player.level(), player.getId());

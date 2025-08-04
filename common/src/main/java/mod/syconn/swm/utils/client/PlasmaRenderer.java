@@ -1,11 +1,10 @@
-package mod.syconn.swm.client.render.entity;
+package mod.syconn.swm.utils.client;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import mod.syconn.swm.utils.Constants;
-import mod.syconn.swm.utils.client.PlasmaBuffer;
 import mod.syconn.swm.utils.generic.ColorUtil;
 import mod.syconn.swm.utils.generic.MathUtil;
 import net.minecraft.client.renderer.MultiBufferSource;

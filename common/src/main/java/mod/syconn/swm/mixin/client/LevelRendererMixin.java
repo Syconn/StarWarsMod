@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import mod.syconn.swm.client.render.entity.PlasmaRenderer;
+import mod.syconn.swm.utils.client.PlasmaRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Camera;
