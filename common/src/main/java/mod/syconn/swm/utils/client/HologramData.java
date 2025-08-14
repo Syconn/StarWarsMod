@@ -89,7 +89,6 @@ public class HologramData {
     private int getPixelColor(int x, int y, int rgba) {
         if (FastColor.ARGB32.alpha(rgba) == 0) return rgba;
         return FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(rgba));
-//        return FastColor.ABGR32.color(scanBar(y) ? 255 : 160, scanBar(y) ? ColorUtil.packArgb(192, 192, 192, 100) : ColorUtil.hologramColor(rgba));
     }
 
     public float getAnimationScale(float partialTicks) {
