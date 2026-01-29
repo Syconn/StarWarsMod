@@ -23,7 +23,7 @@ public class LightsaberContent {
     public static final String BRICK = "brick";
 
     public static final JsonResourceReloader<LightsaberJson> LIGHTSABER_DATA =
-            new JsonResourceReloader<>(Constants.withId("lightsaber_defaults"), "lightsaber/defaults", LightsaberJson::fromJson, LightsaberJson::readTag, "models/item/lightsaber");
+            new JsonResourceReloader<>(Constants.withId("lightsaber"), "lightsaber/defaults", LightsaberJson::fromJson, LightsaberJson::readTag, "models/item/lightsaber");
 
     public static List<ItemStack> getLightsabers() {
         var list = new ArrayList<ItemStack>();

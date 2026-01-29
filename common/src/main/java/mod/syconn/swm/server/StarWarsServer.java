@@ -2,6 +2,7 @@ package mod.syconn.swm.server;
 
 import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.event.events.common.TickEvent;
+import mod.syconn.swm.features.addons.BlasterContent;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.server.savedata.HologramNetwork;
@@ -13,6 +14,7 @@ public class StarWarsServer {
 
     public static void init() {
         SyncedResourceManager.register(LightsaberContent.LIGHTSABER_DATA);
+        SyncedResourceManager.register(BlasterContent.BLASTER_DATA);
 
         PlayerEvent.PLAYER_JOIN.register(StarWarsServer::playerJoinedServer);
         PlayerEvent.PLAYER_QUIT.register(StarWarsServer::playerLeaveServer);

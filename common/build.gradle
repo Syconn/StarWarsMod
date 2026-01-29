@@ -18,6 +18,11 @@ dependencies {
     modImplementation "dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
+
+jar {
+   duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
 repositories {
     mavenCentral()
 }

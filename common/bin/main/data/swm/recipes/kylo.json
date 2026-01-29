@@ -1,0 +1,21 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 28,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 18,
+      "item": "minecraft:redstone"
+    },
+    {
+      "count": 42,
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"plasma\",color:55423,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:0.0023399998899549246d,y:0.007809999864548445d,z:-0.00203000009059906d},radius:1.0d,stable:0b,transition:0b},1:{active:0b,bladeLengthScalar:0.15f,bladeType:\"plasma\",color:55423,emitterPos:{qw:0.70710677f,qx:0.0f,qy:0.0f,qz:0.70710677f,x:-0.12734000384807587d,y:-0.08594000339508057d,z:-0.00203000009059906d},radius:1.0d,stable:0b,transition:0b},2:{active:0b,bladeLengthScalar:0.15f,bladeType:\"plasma\",color:55423,emitterPos:{qw:0.70710677f,qx:0.0f,qy:0.0f,qz:-0.70710677f,x:0.12734000384807587d,y:-0.08594000339508057d,z:-0.00203000009059906d},radius:1.0d,stable:0b,transition:0b},len:3},model:\"swm:lightsaber/kylo\",uuid:[I;-1339918991,-1145156145,-1392292137,1389575089],version:2}}"
+  }
+}

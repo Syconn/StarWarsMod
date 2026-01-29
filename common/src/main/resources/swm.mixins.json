@@ -5,11 +5,14 @@
   "minVersion": "0.8",
   "client": [
     "client.AbstractClientPlayerMixin",
+    "client.CameraMixin",
     "client.ClientPacketListenerMixin",
+    "client.ClientPlayNetworkHandlerMixin",
+    "client.CreativeModeInventoryScreenMixin",
     "client.HttpTextureMixin",
     "client.HumanoidModelMixin",
+    "client.InGameHudMixin",
     "client.ItemInHandRendererMixin",
-    "client.CreativeModeInventoryScreenMixin",
     "client.ItemRendererInvoker",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",
@@ -17,6 +20,7 @@
   ],
   "mixins": [
     "AbstractArrowMixin",
+    "EntityTrackerEntryMixin",
     "InventoryMenuMixin",
     "InventoryMixin",
     "ItemStackMixin",

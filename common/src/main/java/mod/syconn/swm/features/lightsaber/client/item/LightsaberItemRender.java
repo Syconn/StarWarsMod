@@ -33,7 +33,7 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
     public boolean render(LivingEntity entity, ItemStack stack, ItemDisplayContext renderMode, boolean leftHanded, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, BakedModel backupModel) {
         poseStack.pushPose();
 
-        var model = getModel(stack, backupModel);
+        var model = IModifiedItemRenderer.getModel(LightsaberTag.getOrCreate(stack).model, backupModel);
         var transforms = model.getTransforms();
 
         transforms.getTransform(renderMode).apply(leftHanded, poseStack);
@@ -45,36 +45,15 @@ public class LightsaberItemRender implements IModifiedItemRenderer, IModifiedPos
         } else if (renderMode == ItemDisplayContext.NONE) poseStack.scale(transforms.thirdPersonRightHand.scale.x, transforms.thirdPersonRightHand.scale.y, transforms.thirdPersonRightHand.scale.z);
 
         renderLightsaberBlade(stack, renderMode, poseStack, bufferSource, light, overlay);
-        renderLightsaberItem(stack, poseStack, bufferSource, light, overlay, model);
+        renderItemModel(stack, poseStack, bufferSource, light, overlay, model);
 
         poseStack.popPose();
         return true;
     }
 
-    private static BakedModel getModel(ItemStack stack, BakedModel backupModel) {
-        var model = GameInstance.getClient().getModelManager().getModel(new ModelResourceLocation(LightsaberTag.getOrCreate(stack).model, "inventory"));
-        return model == GameInstance.getClient().getModelManager().getMissingModel() ? backupModel : model;
-    }
-
-    public static Vector3f getScalar(ItemStack stack, ItemDisplayContext displayContext, BakedModel backupModel) {
-        var model = getModel(stack, backupModel);
-        return model.getTransforms().getTransform(displayContext).translation;
-    }
-
     public static Vec3 getScalar(ItemStack stack) {
-        var model = getModel(stack, GameInstance.getClient().getItemRenderer().getItemModelShaper().getItemModel(stack));
+        var model = IModifiedItemRenderer.getModel(LightsaberTag.getOrCreate(stack).model, GameInstance.getClient().getItemRenderer().getItemModelShaper().getItemModel(stack));
         return new Vec3(model.getTransforms().getTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).scale);
-    }
-
-    private void renderLightsaberItem(ItemStack stack, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay, BakedModel model) {
-        var invoker = ((ItemRendererInvoker) GameInstance.getClient().getItemRenderer());
-        var renderType = ItemBlockRenderTypes.getRenderType(stack, true);
-        var vertexConsumer = invoker.getFoil(buffer, renderType, true, stack.hasFoil());
-
-        poseStack.pushPose();
-        poseStack.translate(-0.5F, -0.5F, -0.5F);
-        invoker.renderModel(model, stack, light, overlay, poseStack, vertexConsumer);
-        poseStack.popPose();
     }
 
     private void renderLightsaberBlade(ItemStack stack, ItemDisplayContext renderMode, PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay) {

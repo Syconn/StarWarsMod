@@ -1,7 +1,8 @@
 package mod.syconn.swm.features.blaster.item;
 
-import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
-import net.minecraft.nbt.CompoundTag;
+import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.features.blaster.BlasterUtil;
+import mod.syconn.swm.features.blaster.server.data.BlasterTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class BlasterItem extends Item {
 
@@ -28,9 +30,23 @@ public class BlasterItem extends Item {
         var stack = player.getItemInHand(usedHand);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!level.isClientSide) {
-            BlasterBoltEntity bolt = new BlasterBoltEntity(player, new CompoundTag());
-            bolt.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
-            level.addFreshEntity(bolt);
+            var bT = BlasterTag.getOrCreate(stack);
+
+            var hS = (level.random.nextFloat() * 2 - 1) * bT.muzzle.accuracy;
+            var vS = (level.random.nextFloat() * 2 - 1) * bT.muzzle.accuracy;
+
+            BlasterUtil.fireBolt(level, player, bT.muzzle.maxRange, distance -> (double) bT.muzzle.damage, false, entity -> {
+                entity.shootFromRotation(player, player.getXRot() + hS, player.getYRot() + vS, 0.0F, 5.0F, 0.0F);
+                entity.setPos(player.position().add(new Vec3(0, player.getEyeHeight() - entity.getBbHeight() / 2f, 0)));
+                entity.setColor(bT.muzzle.color);
+
+                entity.setLength(1); // TODO ALLOW MODIFY
+                entity.setRadius(1);
+
+                entity.setSourceArm(usedHand == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite());
+
+//                if (bt.getFiringMode() == BlasterFiringMode.SLUGTHROWER) entity.setSmoldering(true);
+            });
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));

@@ -4,18 +4,23 @@ import dev.architectury.networking.NetworkChannel;
 import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.features.lightsaber.network.*;
 import mod.syconn.swm.network.packets.PlayAnimationPacket;
-import mod.syconn.swm.network.packets.clientside.MessagePlayerPacket;
-import mod.syconn.swm.network.packets.clientside.RequestedHologramPacket;
-import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
+import mod.syconn.swm.network.packets.clientside.*;
 import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
 import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
 import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
 import mod.syconn.swm.network.packets.ToggleEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ChunkHolder;
+import net.minecraft.server.level.ChunkMap;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.Collection;
+import java.util.Objects;
 
 public class Network {
 
@@ -35,10 +40,12 @@ public class Network {
         CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
         CHANNEL.register(PlayAnimationPacket.class, PlayAnimationPacket::encode, PlayAnimationPacket::new, PlayAnimationPacket::apply);
         CHANNEL.register(SetEquipmentSlotPacket.class, SetEquipmentSlotPacket::encode, SetEquipmentSlotPacket::new, SetEquipmentSlotPacket::apply);
+        CHANNEL.register(PreciseEntityVelocityUpdatePacket.class, PreciseEntityVelocityUpdatePacket::write, PreciseEntityVelocityUpdatePacket::new, PreciseEntityVelocityUpdatePacket::apply);
+        CHANNEL.register(ScorchBlockPacket.class, ScorchBlockPacket::encode, ScorchBlockPacket::new, ScorchBlockPacket::apply);
     }
 
     public static <T> void sendToNearby(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) {
-        var playerlist = GameInstance.getServer().getPlayerList().getPlayers();
+        var playerlist = Objects.requireNonNull(GameInstance.getServer()).getPlayerList().getPlayers();
         for (ServerPlayer serverPlayer : playerlist) {
             if (serverPlayer != player && serverPlayer.level().dimension() == dimension) {
                 double d = pos.x - serverPlayer.getX();
@@ -47,5 +54,12 @@ public class Network {
                 if (d * d + e * e + f * f < radius * radius) CHANNEL.sendToPlayer(serverPlayer, message);
             }
         }
+    }
+
+    public static Collection<ServerPlayer> tracking(ServerLevel world, ChunkPos pos) {
+        Objects.requireNonNull(world, "The world cannot be null");
+        Objects.requireNonNull(pos, "The chunk pos cannot be null");
+
+        return world.getChunkSource().chunkMap.getPlayers(pos, false);
     }
 }

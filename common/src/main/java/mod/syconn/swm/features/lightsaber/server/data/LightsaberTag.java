@@ -39,7 +39,7 @@ public class LightsaberTag {
     private void updateData(int value) {
         this.version = value;
         var saved = LightsaberContent.LIGHTSABER_DATA.get(this.model);
-        if (saved == null) Constants.LOG.warn("Invalid Lightsaber Data for {}", this.model);
+        if (saved == null) Constants.LOG.warn("Invalid Lightsaber Tag for {}", this.model);
         else if (this.version != saved.version()) {
             var active = this.isActive();
             var tag = saved.toTag().save();

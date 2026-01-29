@@ -12,9 +12,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends SimpleJsonResourceReloadListener implements SyncedResourceManager.ISyncedData {
@@ -41,7 +39,7 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
     }
 
     protected void apply(Map<ResourceLocation, JsonElement> pJsonMap, ResourceManager resourceManager, ProfilerFiller profiler) {
-        pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation.withPath("lightsaber/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
+        pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation.withPath(id.getPath() + "/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
     }
 
     public void reload(final Map<ResourceLocation, D> resources) {

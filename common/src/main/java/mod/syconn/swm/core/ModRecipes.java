@@ -19,16 +19,20 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> RECIPES = DeferredRegister.create(Constants.MOD, Registries.RECIPE_TYPE);
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZER = DeferredRegister.create(Constants.MOD, Registries.RECIPE_SERIALIZER);
 
-    public static final RegistrySupplier<RecipeType<LightsaberRecipe>> LIGHTSABER = registerRecipe("lightsaber");
+    public static final RegistrySupplier<RecipeType<LightsaberRecipe>> LIGHTSABER = registerRecipe("lightsabers");
 
     public static final RegistrySupplier<LightsaberRecipe.Serializer> LIGHTSABER_SERIALIZER = SERIALIZER.register("lightsaber", LightsaberRecipe.Serializer::new);
 
     public static <C extends Container, T extends Recipe<C>> Optional<T> getRecipeFromId(RecipeType<T> type, Level level, ResourceLocation id) {
         return level.getRecipeManager().getAllRecipesFor(type).stream().filter(r -> r.getId().equals(id)).findFirst();
     }
+    
     private static <T extends Recipe<?>> RegistrySupplier<RecipeType<T>> registerRecipe(String name) {
-        return RECIPES.register(name, () -> new RecipeType<>() {
-            public String toString() { return name; }
+        return RECIPES.register(name, () -> new RecipeType<T>() {
+            @Override
+            public String toString() {
+                return name;
+            }
         });
     }
 }

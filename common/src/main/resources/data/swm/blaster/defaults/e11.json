@@ -1,0 +1,17 @@
+{
+  "model": "swm:e11",
+  "muzzle": {
+    "accuracy": 0.92,
+    "color": 55423,
+    "damage": 3.5,
+    "fireRate": 15.0,
+    "heat": 0,
+    "heatDispatchTime": 20.0,
+    "heatTolerance": 65,
+    "holster": "SIDEARM",
+    "maxRange": 100.0,
+    "oneHanded": false,
+    "projectileType": "bolt"
+  },
+  "version": 1
+}

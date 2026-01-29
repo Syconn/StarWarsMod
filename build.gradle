@@ -39,6 +39,7 @@ subprojects {
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
+        runtimeOnly "org.jetbrains.kotlin:kotlin-stdlib:1.9.25"
 
         mappings loom.layered() {
             officialMojangMappings()

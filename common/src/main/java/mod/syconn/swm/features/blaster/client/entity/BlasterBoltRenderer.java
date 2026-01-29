@@ -3,6 +3,8 @@ package mod.syconn.swm.features.blaster.client.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.features.blaster.client.BoltRendererHelper;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
+import mod.syconn.swm.features.blaster.entity.BlasterBoltEntityOld;
+import mod.syconn.swm.features.blaster.entity.BlasterStunBoltEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -21,7 +23,7 @@ public class BlasterBoltRenderer extends EntityRenderer<BlasterBoltEntity> {
     }
 
     public void render(BlasterBoltEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-//        BoltRendererHelper.renderStun(entity, poseStack, buffer, packedLight, partialTick);
-        BoltRendererHelper.renderBolt(entity, poseStack, buffer, partialTick, packedLight);
+        if (entity instanceof BlasterStunBoltEntity) BoltRendererHelper.renderStun(entity, poseStack, buffer, packedLight, partialTick);
+        else BoltRendererHelper.renderBolt(entity, poseStack, buffer, partialTick, packedLight);
     }
 }

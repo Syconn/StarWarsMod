@@ -4,6 +4,7 @@ import dev.architectury.registry.CreativeTabOutput;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import mod.syconn.swm.features.addons.BlasterContent;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
@@ -25,7 +26,7 @@ public class ModItems {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(MOD, Registries.CREATIVE_MODE_TAB);
 
     public static final RegistrySupplier<Item> LIGHTSABER = registerItem("lightsaber", LightsaberItem::new);
-    public static final RegistrySupplier<Item> F11 = registerItem("f_11", BlasterItem::new);
+    public static final RegistrySupplier<Item> BLASTER = registerItem("blaster", BlasterItem::new);
     public static final RegistrySupplier<Item> DRILL = registerItem("drill", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> MONITOR = registerItem("monitor", new Item.Properties().stacksTo(1));
     public static final RegistrySupplier<Item> DRIVER = registerItem("driver", new Item.Properties().stacksTo(1));
@@ -36,7 +37,7 @@ public class ModItems {
 
     public static void addCreative(FeatureFlagSet flags, CreativeTabOutput output, boolean canUseGameMasterBlocks) {
         output.acceptAll(LightsaberContent.getLightsabers(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-        output.accept(F11.get());
+        output.acceptAll(BlasterContent.getBlasters(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
     }
 
     @SuppressWarnings("unchecked")

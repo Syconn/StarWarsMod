@@ -95,7 +95,7 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
         var f = 8.0F;
 
         var entity2 = this.getOwner();
-        var damageSource = ModDamageSources.lightsaber(level());
+        var damageSource = ModDamageSources.lightsaber(level(), this, entity2);
         if (entity2 != entity && entity.hurt(damageSource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) return;
 

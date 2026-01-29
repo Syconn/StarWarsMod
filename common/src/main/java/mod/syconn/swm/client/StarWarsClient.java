@@ -44,6 +44,8 @@ public class StarWarsClient {
 
         EntityRendererRegistry.register(ModEntities.THROWN_LIGHTSABER, ThrownLightsaberRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLASTER_ION_BOLT, BlasterBoltRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLASTER_STUN_BOLT, BlasterBoltRenderer::new);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
         ClientGuiEvent.RENDER_HUD.register(ClientHooks::renderHUD);

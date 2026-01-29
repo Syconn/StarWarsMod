@@ -1,0 +1,17 @@
+{
+  "model": "swm:f11",
+  "muzzle": {
+    "accuracy": 0.92,
+    "color": 55423,
+    "damage": 5.0,
+    "fireRate": 20.0,
+    "heat": 0,
+    "heatDispatchTime": 20.0,
+    "heatTolerance": 50,
+    "holster": "SIDEARM",
+    "maxRange": 120.0,
+    "oneHanded": false,
+    "projectileType": "bolt"
+  },
+  "version": 1
+}

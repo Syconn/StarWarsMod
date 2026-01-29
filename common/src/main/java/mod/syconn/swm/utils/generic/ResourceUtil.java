@@ -69,7 +69,8 @@ public class ResourceUtil {
         }
     }
 
-    public static void registerSkin(String id, NativeImage skin) { // TODO WHAT AM I DOING HERE
-        if (!SKINS.containsKey(id)) SKINS.put(new ResourceLocation("skins/" + id), skin);
+    public static void registerSkin(String id, NativeImage skin) {
+        var path = new ResourceLocation("skins/" + id);
+        if (!SKINS.containsKey(path)) SKINS.put(path, skin);
     }
 }

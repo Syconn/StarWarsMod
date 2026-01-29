@@ -1,0 +1,29 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 12,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 12,
+      "item": "minecraft:coal"
+    },
+    {
+      "count": 24,
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:redstone_lamp"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"plasma\",color:10082431,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:0.003909999970346689d,y:0.1890600025653839d,z:-4.7E-4d},radius:1.0d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/obi\",uuid:[I;1732070179,1720076045,-1755931903,-174826853],version:2}}"
+  }
+}

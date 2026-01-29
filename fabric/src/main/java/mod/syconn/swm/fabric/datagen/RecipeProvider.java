@@ -22,16 +22,16 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void buildRecipes(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.F11.get())
-                .pattern("d b")
-                .pattern("iii")
-                .pattern(" ri")
-                .define('d', Items.RED_DYE)
-                .define('b', Items.LIGHT_BLUE_DYE)
-                .define('i', Items.IRON_INGOT)
-                .define('r', Items.REDSTONE)
-                .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.MAP, Items.PAPER).build()))
-                .save(writer);
+//        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BLASTER.get())
+//                .pattern("d b")
+//                .pattern("iii")
+//                .pattern(" ri")
+//                .define('d', Items.RED_DYE)
+//                .define('b', Items.LIGHT_BLUE_DYE)
+//                .define('i', Items.IRON_INGOT)
+//                .define('r', Items.REDSTONE)
+//                .unlockedBy("has_mats", inventoryTrigger(ItemPredicate.Builder.item().of(Items.MAP, Items.PAPER).build()))
+//                .save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.HOLO_PROJECTOR.get())
                 .pattern("rgr")
                 .pattern("rnr")

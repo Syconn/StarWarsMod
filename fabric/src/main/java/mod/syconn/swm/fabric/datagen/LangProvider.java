@@ -25,7 +25,7 @@ public class LangProvider extends FabricLanguageProvider {
         translationBuilder.add("key.swm.throw_lightsaber", "Throw Lightsaber");
 
         translationBuilder.add(ModItems.LIGHTSABER.get(), "Lightsaber");
-        translationBuilder.add(ModItems.F11.get(), "F11D Blaster");
+        translationBuilder.add(ModItems.BLASTER.get(), "F11D Blaster");
         translationBuilder.add(ModItems.MONITOR.get(), "Monitor");
         translationBuilder.add(ModItems.DRIVER.get(), "Screw Driver");
         translationBuilder.add(ModItems.DRILL.get(), "Drill");
