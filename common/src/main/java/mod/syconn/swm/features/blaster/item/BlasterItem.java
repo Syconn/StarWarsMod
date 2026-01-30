@@ -50,10 +50,8 @@ public class BlasterItem extends Item implements IItemExtensions {
                 entity.shootFromRotation(player, player.getXRot() + hS, player.getYRot() + vS, 0.0F, 5.0F, 0.0F);
                 entity.setPos(player.position().add(new Vec3(0, player.getEyeHeight() - entity.getBbHeight() / 2f, 0)));
                 entity.setColor(bT.muzzle.color);
-
-                entity.setLength(1); // TODO ALLOW MODIFY
-                entity.setRadius(1);
-
+                entity.setLength(bT.muzzle.boltLength);
+                entity.setRadius(bT.muzzle.boltRadius);
                 entity.setSourceArm(usedHand == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite());
 
 //                if (bt.getFiringMode() == BlasterFiringMode.SLUGTHROWER) entity.setSmoldering(true);

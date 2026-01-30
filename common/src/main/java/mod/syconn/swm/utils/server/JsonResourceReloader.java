@@ -39,6 +39,8 @@ public class JsonResourceReloader<D extends ISerializable<CompoundTag>> extends 
     }
 
     protected void apply(Map<ResourceLocation, JsonElement> pJsonMap, ResourceManager resourceManager, ProfilerFiller profiler) {
+        System.out.println("WHAT THE FUCK " + pJsonMap);
+
         pJsonMap.forEach(((resourceLocation, jsonElement) -> resources.put(resourceLocation.withPath(id.getPath() + "/" + resourceLocation.getPath()), jsonReader.apply(jsonElement.getAsJsonObject()))));
     }
 

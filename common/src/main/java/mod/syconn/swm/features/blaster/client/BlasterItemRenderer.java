@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.math.Axis;
 import mod.syconn.swm.client.StarWarsClient;
 import mod.syconn.swm.features.addons.BlasterContent;
 import mod.syconn.swm.features.blaster.item.BlasterItem;
@@ -57,14 +58,14 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
         transforms.getTransform(renderMode).apply(leftHanded, poseStack);
         renderItemModel(stack, poseStack, buffer, light, overlay, model);
 
-        if (renderMode != ItemDisplayContext.GUI && renderMode != ItemDisplayContext.FIXED && renderMode != ItemDisplayContext.GROUND) { //
+        if (renderMode != ItemDisplayContext.GUI &&  renderMode != ItemDisplayContext.GROUND) { // renderMode != ItemDisplayContext.FIXED &&
             var bt = BlasterTag.getOrCreate(stack);
             var d = StarWarsClient.getTickDelta();
             var shotTime = bt.timeSinceLastShot + d;
 
             poseStack.pushPose();
 
-//            poseStack.mulPoseMatrix(new NodeVec3(0.015625, -0.01875, -0.9625f).matrix4f());
+            poseStack.mulPoseMatrix(bt.muzzle.firePoint.matrix4f());
             renderMuzzleFlash(renderMode, poseStack, buffer, bt, shotTime, light, overlay);
 
             poseStack.popPose();
@@ -172,7 +173,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             ModelUtil.lerpLeftArmToDegrees(model, 1, -1.436f + limbBounce, 0.808f, -0.269f);
             ModelUtil.lerpRightArmToDegrees(model, 1, -1.077f - limbBounce, 0, -0.539f);
         } else {
-            var ads = false;
+            var ads = bt.ads;
 
             if (ads) {
                 model.rightArm.yRot = -0.1F + model.head.yRot - 0.4F;
@@ -196,7 +197,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             ModelUtil.lerpLeftArmToDegrees(model, 1, -1.077f - limbBounce, 0, 0.539f);
             ModelUtil.lerpRightArmToDegrees(model, 1, -1.436f + limbBounce, -0.808f, 0.269f);
         } else {
-            var ads = false;
+            var ads = bt.ads;
 
             if (ads) {
                 model.leftArm.yRot = 0.1F + model.head.yRot + 0.4F;
@@ -222,7 +223,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             ModelUtil.lerpRightArmToDegrees(model, 1, -0.539f - limbBounce + breatheBounceLeft, 0.269f, -0.09f);
             ModelUtil.lerpLeftArmToDegrees(model, 1, -0.808f + limbBounce + breatheBounceRight, 1.077f, 0);
         } else {
-            var ads = false;
+            var ads = bt.ads;
             var xRotChange = ads ? 0.4f : 0;
 
             model.leftArm.yRot = 0.1F + model.head.yRot;
@@ -244,7 +245,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             ModelUtil.lerpLeftArmToDegrees(model, 1, -0.539f - limbBounce + breatheBounceLeft, -0.269f, 0.09f);
             ModelUtil.lerpRightArmToDegrees(model, 1, -0.808f + limbBounce + breatheBounceRight, -1.077f, 0);
         } else {
-            var ads = false;
+            var ads = bt.ads;
             var xRotChange = ads ? 0.4f : 0;
 
             model.rightArm.yRot = -0.1F + model.head.yRot;
