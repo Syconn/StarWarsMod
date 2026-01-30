@@ -17,9 +17,10 @@ public class BlasterContent {
 
     public static final String BOLT = "bolt";
     public static final String STUN = "stun";
+    public static final String ION = "stun";
 
     public static final JsonResourceReloader<BlasterJson> BLASTER_DATA =
-            new JsonResourceReloader<>(Constants.withId("blasters"), "blaster/defaults", BlasterJson::fromJson, BlasterJson::readTag, "models/item/blaster");
+            new JsonResourceReloader<>(Constants.withId("blaster"), "blaster/defaults", BlasterJson::fromJson, BlasterJson::readTag, "models/item/blaster");
 
     public static List<ItemStack> getBlasters() {
         var list = new ArrayList<ItemStack>();

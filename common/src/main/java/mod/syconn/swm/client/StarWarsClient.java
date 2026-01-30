@@ -3,6 +3,7 @@ package mod.syconn.swm.client;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.event.events.client.ClientPlayerEvent;
+import dev.architectury.event.events.client.ClientTickEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
@@ -21,15 +22,19 @@ import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.item.HoloProjectorItem;
 import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.client.TintedTextureProvider;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
 
 @Environment(EnvType.CLIENT)
 public class StarWarsClient {
+
+    public static TintedTextureProvider tintedTextureProvider = new TintedTextureProvider();
 
     public static void init() {
         IModifiedItemRenderer.register(LightsaberItem.class, new LightsaberItemRender());
@@ -65,5 +70,10 @@ public class StarWarsClient {
 
     public static float getTickDelta() {
         return Minecraft.getInstance().getDeltaFrameTime();
+    }
+
+    public static ResourceLocation tintTexture(ResourceLocation texture, int color) {
+        var textureId = texture.getNamespace() + "/" + texture.getPath() + "/" + Integer.toHexString(color);
+        return StarWarsClient.tintedTextureProvider.tint(textureId, texture, color);
     }
 }

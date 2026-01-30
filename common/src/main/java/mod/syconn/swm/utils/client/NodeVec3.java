@@ -6,12 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
-public class NodeVec3 {
-
-    private final double x;
-    private final double y;
-    private final double z;
-    private final Quaternionf q;
+public record NodeVec3(double x, double y, double z, Quaternionf q) {
 
     public NodeVec3() {
         this(0, 0, 0, new Quaternionf(0, 0, 0, 1.0f));
@@ -19,29 +14,6 @@ public class NodeVec3 {
 
     public NodeVec3(double x, double y, double z) {
         this(x, y, z, new Quaternionf(0, 0, 0, 1.0f));
-    }
-
-    public NodeVec3(double x, double y, double z, Quaternionf q) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.q = q;
-    }
-
-    public double x() {
-        return x;
-    }
-
-    public double y() {
-        return y;
-    }
-
-    public double z() {
-        return z;
-    }
-
-    public Quaternionf q() {
-        return q;
     }
 
     @Override

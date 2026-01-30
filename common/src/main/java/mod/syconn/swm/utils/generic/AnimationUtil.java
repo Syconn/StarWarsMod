@@ -30,8 +30,6 @@ public class AnimationUtil {
         return PlayerAnimationRegistry.getAnimation(Constants.withId(name));
     }
 
-    // Constants.withId("player_animations"), 100,
-
     public static void notifyPlayers(ServerPlayer serverPlayer, String animation, int length, Ease ease) {
         Network.CHANNEL.sendToPlayers(serverPlayer.serverLevel().players(), new PlayAnimationPacket(serverPlayer.getUUID(), animation, length, ease));
     }

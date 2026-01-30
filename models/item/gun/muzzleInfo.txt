@@ -1,0 +1,4 @@
+Unaltered Location = (8, 8, 8)
+(Origin - new Position) / 16 = position
+
+Piece 0.5x0.1x0.5
