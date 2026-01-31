@@ -54,7 +54,7 @@ textBackgroundOpacity:0.5
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:true
-pauseOnLostFocus:true
+pauseOnLostFocus:false
 overrideWidth:0
 overrideHeight:0
 chatHeightFocused:1.0
@@ -153,7 +153,7 @@ key_key.jei.previousCategory:key.keyboard.page.up
 key_key.jei.nextCategory:key.keyboard.page.down
 key_key.jei.closeRecipeGui:key.keyboard.escape
 key_key.jei.copy.recipe.id:key.keyboard.unknown
-soundCategory_master:0.5695364238410596
+soundCategory_master:0.0
 soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0

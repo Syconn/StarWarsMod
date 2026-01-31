@@ -1,14 +1,21 @@
 package mod.syconn.swm.features.blaster.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import dev.kosmx.playerAnim.core.util.Vec3d;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
+import mod.syconn.swm.features.blaster.item.BlasterItem;
+import mod.syconn.swm.features.blaster.server.data.BlasterTag;
 import mod.syconn.swm.utils.client.PlasmaRenderer;
 import mod.syconn.swm.utils.generic.AnimationUtil;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
 
 public class BoltRendererHelper {
@@ -50,14 +57,12 @@ public class BoltRendererHelper {
         poseStack.pushPose();
         poseStack.translate(0, 0.5f * entity.getBbHeight(), 0);
 
-//        if (entity.sourceOffset == null && entity.getOwner() instanceof Player player) { TODO Barrel Extension
-//            var socket = PlayerSocket.getSocket(player, BlasterItem.SOCKET_ID_BARREL_END);
-//            if (socket != null) {
-//                var source = socket.position();
-//                var sourceOffset = new Vec3d(source.x, source.y, source.z).subtract(entity.getOwner().getEyePos());
-//                if (sourceOffset.lengthSquared() < 1)
-//                    entity.sourceOffset = sourceOffset;
-//            }
+//        if (entity.getOwner() instanceof Player p && entity.getSourceArm().isPresent()) { // TODO Barrel Extension
+////            var socket = PlayerSocket.getSocket(player, BlasterItem.SOCKET_ID_BARREL_END);
+////            var source = BlasterTag.getOrCreate(p.getItemInHand(p.getMainArm() == entity.getSourceArm().get() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND)).muzzle.firePoint.vec3();
+//            var source = new Vec3(1, 0, 0);
+//            var sourceOffset = source.subtract(entity.getOwner().getEyePosition());
+//            if (sourceOffset.lengthSqr() < 1) entity.sourceOffset = sourceOffset;
 //        }
 
         var mc = Minecraft.getInstance();
@@ -67,13 +72,13 @@ public class BoltRendererHelper {
         var shouldScale = isOwnedByClient && isFirstPerson && isCameraPlayer;
         var shouldOffset = shouldScale;
 
-//        if (shouldScale) { TODO ADS offset
-//            var mainStack = mc.player.getMainHandItem();
-//            if (mainStack.getItem() instanceof BlasterItem) {
-//                var bt = new BlasterTag(mainStack.getOrCreateNbt());
-//                shouldOffset = !bt.isAimingDownSights;
-//            }
-//        }
+        if (shouldScale) {
+            var mainStack = mc.player.getMainHandItem();
+            if (mainStack.getItem() instanceof BlasterItem) {
+                var bt = BlasterTag.getOrCreate(mainStack);
+                shouldOffset = !bt.ads;
+            }
+        }
 
         shouldOffset = shouldOffset && sourceArm.isPresent();
 

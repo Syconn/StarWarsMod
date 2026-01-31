@@ -1,7 +1,8 @@
-package mod.syconn.swm.utils;
+package mod.syconn.swm.utils.config;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import dev.architectury.platform.Platform;
+import mod.syconn.swm.utils.Constants;
 
 import java.io.IOException;
 import java.nio.file.Files;

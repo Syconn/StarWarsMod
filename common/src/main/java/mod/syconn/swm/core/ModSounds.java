@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import org.intellij.lang.annotations.Identifier;
 
-public class ModSounds {
+public class ModSounds { // TODO FIX DEFLECTION, DUAL WEILD NOT DUAL WIELDABLE GUNS
 
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Constants.MOD, Registries.SOUND_EVENT);
 

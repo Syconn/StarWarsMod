@@ -3,6 +3,7 @@ package mod.syconn.swm.utils.client;
 import com.google.gson.JsonObject;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
@@ -19,6 +20,10 @@ public record NodeVec3(double x, double y, double z, Quaternionf q) {
     @Override
     public String toString() {
         return "Pos(" + x + ", " + y + ", " + z + ") Rotation(" + q.x + ", " + q.y + ", " + q.z + ", " + q.w + ")";
+    }
+
+    public Vec3 vec3() {
+        return new Vec3(x, y, z);
     }
 
     public Matrix4f matrix4f() {

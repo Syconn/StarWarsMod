@@ -3,6 +3,7 @@ package mod.syconn.swm.mixin;
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.ItemStackUtil;
@@ -61,7 +62,7 @@ public abstract class PlayerMixin extends LivingEntity implements SWGear.SWGearA
 
     @ModifyArg(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"), index = 4)
     public SoundEvent modifySweepAttack(SoundEvent sound) {
-        if (this.getMainHandItem().is(ModItems.LIGHTSABER.get())) return ModSounds.LIGHTSABER_SWING.get();
+        if (this.getMainHandItem().is(ModItems.LIGHTSABER.get()) && LightsaberTag.getOrCreate(this.getMainHandItem()).isActive()) return ModSounds.LIGHTSABER_SWING.get();
         return sound;
     }
 

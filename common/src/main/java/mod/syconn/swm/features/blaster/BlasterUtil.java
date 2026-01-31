@@ -33,6 +33,14 @@ public class BlasterUtil {
         level.addFreshEntity(bolt);
     }
 
+    public static void reflect(Level level, LivingEntity player, Function<Double, Double> damage, boolean ignoreWater, Consumer<BlasterBoltEntity> entityInitializer) {
+        final var bolt = new BlasterBoltEntity(ModEntities.BLASTER_BOLT.get(), player, level, ignoreWater);
+        entityInitializer.accept(bolt);
+        bolt.setDamageFunction(damage);
+
+        level.addFreshEntity(bolt);
+    }
+
     public static void fireIon(Level level, Player player, float range, boolean ignoreWater, Consumer<BlasterBoltEntity> entityInitializer) {
         final var bolt = new BlasterIonBoltEntity(ModEntities.BLASTER_ION_BOLT.get(), player, level, ignoreWater);
         entityInitializer.accept(bolt);

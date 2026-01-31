@@ -6,6 +6,7 @@ import dev.kosmx.playerAnim.core.util.Vec3d;
 import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModParticles;
 import mod.syconn.swm.core.ModTags;
+import mod.syconn.swm.features.blaster.BlasterUtil;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.ScorchBlockPacket;
@@ -24,6 +25,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.HumanoidArm;
@@ -310,20 +312,21 @@ public class BlasterBoltEntity extends ThrowableProjectile implements IPrecision
     }
 
     protected boolean deflect(LivingEntity entity) {
+        var hS = (level().random.nextFloat() * 2 - 1) * 0.75f; // Change with block Accuracy
+        var vS = (level().random.nextFloat() * 2 - 1) * 0.75f;
         var speed = this.getDeltaMovement().length();
 
-        var yaw = entity.getXRot();
-        var pitch = entity.getYRot();
+        SoundHelper.playDeflectAudio(level(), this.blockPosition());
+        BlasterUtil.reflect(level(), entity, damageFunction, false, bolt -> {
+            bolt.shootFromRotation(entity, entity.getXRot() + hS, entity.getYRot() + vS, 0.0F, (float) speed, 2F);
+            bolt.setColor(getColor());
+            bolt.setLength(getLength());
+            bolt.setRadius(getRadius());
+            bolt.setSourceArm(getSourceArm().orElse(HumanoidArm.RIGHT));
+//                if (bt.getFiringMode() == BlasterFiringMode.SLUGTHROWER) entity.setSmoldering(true);
+        });
 
-        float x = -Mth.sin(yaw * Mth.RAD_TO_DEG) * Mth.cos(pitch * Mth.RAD_TO_DEG);
-        float y = -Mth.sin(pitch * Mth.RAD_TO_DEG);
-        float z = Mth.cos(yaw * Mth.RAD_TO_DEG) * Mth.cos(pitch * Mth.RAD_TO_DEG);
-
-        this.setXRot(yaw);
-        this.setYRot(pitch);
-        this.setDeltaMovement(x * speed, y * speed, z * speed);
-        this.hurtMarked = true;
-
+        this.discard();
         return true;
     }
 

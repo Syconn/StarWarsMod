@@ -33,6 +33,8 @@ public class BlasterItem extends Item implements IItemExtensions {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         var stack = player.getItemInHand(usedHand);
 
+        if (getHold(player) == Hold.NOT_HOLDING) return InteractionResultHolder.fail(stack);
+
         if (!level.isClientSide) {
             var bT = BlasterTag.getOrCreate(stack);
             var hS = (level.random.nextFloat() * 2 - 1) * bT.muzzle.accuracy;
