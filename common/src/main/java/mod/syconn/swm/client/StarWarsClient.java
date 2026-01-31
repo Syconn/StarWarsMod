@@ -1,5 +1,6 @@
 package mod.syconn.swm.client;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.event.events.client.ClientPlayerEvent;
@@ -21,6 +22,7 @@ import mod.syconn.swm.features.lightsaber.client.entity.ThrownLightsaberRenderer
 import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.item.HoloProjectorItem;
+import mod.syconn.swm.mixin.client.MinecraftAccessor;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.TintedTextureProvider;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
@@ -69,7 +71,9 @@ public class StarWarsClient {
     }
 
     public static float getTickDelta() {
-        return Minecraft.getInstance().getDeltaFrameTime();
+        var mc = Minecraft.getInstance();
+        if (mc.isPaused()) return ((MinecraftAccessor)mc).getPausedTickDelta();
+        return mc.getFrameTime();
     }
 
     public static ResourceLocation tintTexture(ResourceLocation texture, int color) {

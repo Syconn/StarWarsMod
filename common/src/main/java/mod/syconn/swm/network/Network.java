@@ -36,7 +36,6 @@ public class Network {
         CHANNEL.register(RequestedHologramPacket.class, RequestedHologramPacket::encode, RequestedHologramPacket::new, RequestedHologramPacket::apply);
         CHANNEL.register(RequestHologramPacket.class, RequestHologramPacket::encode, RequestHologramPacket::new, RequestHologramPacket::apply);
         CHANNEL.register(MessagePlayerPacket.class, MessagePlayerPacket::encode, MessagePlayerPacket::new, MessagePlayerPacket::apply);
-        CHANNEL.register(PlayAmbientLightsaberSoundPacket.class, PlayAmbientLightsaberSoundPacket::encode, PlayAmbientLightsaberSoundPacket::new, PlayAmbientLightsaberSoundPacket::apply);
         CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
         CHANNEL.register(PlayAnimationPacket.class, PlayAnimationPacket::encode, PlayAnimationPacket::new, PlayAnimationPacket::apply);
         CHANNEL.register(SetEquipmentSlotPacket.class, SetEquipmentSlotPacket::encode, SetEquipmentSlotPacket::new, SetEquipmentSlotPacket::apply);

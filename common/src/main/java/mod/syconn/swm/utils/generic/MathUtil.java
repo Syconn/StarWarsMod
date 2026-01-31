@@ -8,6 +8,7 @@ import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
@@ -40,6 +41,9 @@ public class MathUtil {
 
     private static final Vec3 UP = new Vec3(0, 1, 0);
     private static final Vec3 FORWARD = new Vec3(0, 0, 1);
+
+    public static final int TICKS_PER_SECOND = 20;
+    public static final float SPEED_OF_SOUND = 275f / TICKS_PER_SECOND;
 
     public static Vec3i floorInt(Vec3 v) {
         return new Vec3i(Mth.floor(v.x), Mth.floor(v.y), Mth.floor(v.z));
@@ -166,6 +170,18 @@ public class MathUtil {
         var q = new Quaternionf(w, (float)cross.x, (float)cross.y, (float)cross.z);
         q.normalize();
         return q;
+    }
+
+    public static float calculateDopplerShift(Entity a, Entity b) { // TODO: move doppler handling to OpenAL through SoundSystem's updateListenerPosition call?
+        var velA = a.position().subtract(a.xOld, a.yOld, a.zOld);
+        var velB = b.position().subtract(b.xOld, b.yOld, b.zOld);
+
+        var posA = a.getEyePosition();
+        var posB = b.getEyePosition();
+
+        var relativeSpeed = posA.distanceTo(posB) - posA.add(velA).distanceTo(posB.add(velB));
+
+        return Mth.clamp((float)(relativeSpeed / SPEED_OF_SOUND), -1, 1);
     }
 
     /**

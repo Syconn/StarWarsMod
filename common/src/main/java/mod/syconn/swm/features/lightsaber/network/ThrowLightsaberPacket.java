@@ -1,8 +1,11 @@
 package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
+import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
+import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 
@@ -33,6 +36,8 @@ public class ThrowLightsaberPacket {
                 thrownLightsaber.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                 if (!player.isCreative()) player.getItemInHand(hand).shrink(1);
                 player.level().addFreshEntity(thrownLightsaber);
+
+                if (!player.getAbilities().instabuild) player.getItemInHand(this.hand).shrink(1);
             }
         });
     }

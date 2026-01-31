@@ -9,6 +9,7 @@ import mod.syconn.swm.core.ModTags;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.ScorchBlockPacket;
+import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.generic.MathUtil;
 import mod.syconn.swm.utils.interfaces.IPrecisionVelocityEntity;
 import net.fabricmc.api.EnvType;
@@ -17,6 +18,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -113,6 +115,7 @@ public class BlasterBoltEntity extends ThrowableProjectile implements IPrecision
     @Override
     public void loadAdditionalSpawnData(FriendlyByteBuf buf) {
         this.readSpawnData(Objects.requireNonNull(buf.readNbt()));
+        SoundHelper.playBlasterBoltHissSound(this);
     }
 
     public CompoundTag writeSpawnData(CompoundTag tag) {

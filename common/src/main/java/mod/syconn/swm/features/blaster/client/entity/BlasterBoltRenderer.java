@@ -3,7 +3,6 @@ package mod.syconn.swm.features.blaster.client.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mod.syconn.swm.features.blaster.client.BoltRendererHelper;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
-import mod.syconn.swm.features.blaster.entity.BlasterBoltEntityOld;
 import mod.syconn.swm.features.blaster.entity.BlasterStunBoltEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;

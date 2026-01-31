@@ -107,6 +107,16 @@ public class LightsaberTag {
         if (this.getPrimaryBlade() != null) blades.forEach(b -> b.toggle(active));
     }
 
+    public float getSize() {
+        if (this.getPrimaryBlade().active) return this.getPrimaryBlade().getSize();
+        else {
+            for (var blade : this.getSecondaryBlades()) {
+                if (blade.active) return blade.getSize();
+            }
+        }
+        return 0;
+    }
+
     public BladeData getPrimaryBlade() {
         return this.blades.isEmpty() ? null : this.blades.get(0);
     }
@@ -146,6 +156,13 @@ public class LightsaberTag {
 
     public void setColor(int blade, int color) {
         if (this.blades.get(blade) != null) this.blades.get(blade).color = color;
+    }
+
+    public void quickTurnoff() {
+        this.blades.forEach(b -> {
+            b.active = false;
+            b.transition = 0;
+        });
     }
 
     public static ItemStack getTemporary(ItemStack stack, boolean active) {

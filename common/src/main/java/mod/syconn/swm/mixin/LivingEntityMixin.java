@@ -2,9 +2,9 @@ package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.core.ModItems;
 import mod.syconn.swm.core.ModSounds;
-import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
+import mod.syconn.swm.utils.client.SoundHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -52,7 +52,7 @@ public class LivingEntityMixin {
         if (starWarsMod$LivingEntity.getMainHandItem().is(ModItems.LIGHTSABER.get())) {
             if (source.getDirectEntity() instanceof LivingEntity le && le.getMainHandItem().is(ModItems.LIGHTSABER.get()))
                 starWarsMod$LivingEntity.level().playSound(null, source.getEntity().getOnPos().above(), ModSounds.LIGHTSABER_CLASH.get(), SoundSource.PLAYERS, 0.25f, 1.0f);
-            else LightsaberAudio.playDeflectAudio(starWarsMod$LivingEntity.level(), starWarsMod$LivingEntity.getOnPos().above());
+            else SoundHelper.playDeflectAudio(starWarsMod$LivingEntity.level(), starWarsMod$LivingEntity.getOnPos().above());
 
             var bl = ((LivingEntity) (Object) this).isDamageSourceBlocked(source) && amount > 0.0f;
             var g = 0.0f;

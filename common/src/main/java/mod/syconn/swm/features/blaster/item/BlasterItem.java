@@ -1,14 +1,9 @@
 package mod.syconn.swm.features.blaster.item;
 
+import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.blaster.BlasterUtil;
 import mod.syconn.swm.features.blaster.server.data.BlasterTag;
-import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
-import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
-import mod.syconn.swm.network.Network;
-import mod.syconn.swm.utils.generic.ItemStackUtil;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -37,15 +32,16 @@ public class BlasterItem extends Item implements IItemExtensions {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         var stack = player.getItemInHand(usedHand);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)); // TODO change sound
+
         if (!level.isClientSide) {
             var bT = BlasterTag.getOrCreate(stack);
-
             var hS = (level.random.nextFloat() * 2 - 1) * bT.muzzle.accuracy;
             var vS = (level.random.nextFloat() * 2 - 1) * bT.muzzle.accuracy;
+            var heatPitchIncrease = 0.15f * (bT.muzzle.heat / (float)bT.muzzle.heatTolerance);
 
             BlasterTag.update(stack, t -> t.timeSinceLastShot = 0);
 
+            level.playSound(null, player.blockPosition(), ModSounds.getOrDefault("item." + bT.model.getPath().replace("/", "."), ModSounds.SHOOT_FALLBACK.get()), SoundSource.PLAYERS, 1, 1 + (float)level.random.nextGaussian() / 30 + heatPitchIncrease);
             BlasterUtil.fireBolt(level, player, bT.muzzle.maxRange, d -> (double) bT.muzzle.damage, false, entity -> {
                 entity.shootFromRotation(player, player.getXRot() + hS, player.getYRot() + vS, 0.0F, 5.0F, 0.0F);
                 entity.setPos(player.position().add(new Vec3(0, player.getEyeHeight() - entity.getBbHeight() / 2f, 0)));

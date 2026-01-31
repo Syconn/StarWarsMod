@@ -2,10 +2,8 @@ package mod.syconn.swm.features.lightsaber.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import mod.syconn.swm.features.lightsaber.network.PlayAmbientLightsaberSoundPacket;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
-import mod.syconn.swm.network.Network;
-import mod.syconn.swm.utils.generic.ItemStackUtil;
+import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
 import net.minecraft.core.BlockPos;
@@ -13,7 +11,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -39,11 +36,7 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if (!level.isClientSide && isSelected) {
-            LightsaberTag.update(stack, LightsaberTag::tick);
-            if (entity instanceof LivingEntity le)
-                Network.sendToNearby(null, entity.level().dimension(), entity.position(), 32, new PlayAmbientLightsaberSoundPacket(entity.getId(), ItemStackUtil.getEquipmentSlot(le, stack)));
-        }
+        if (!level.isClientSide && isSelected) LightsaberTag.update(stack, LightsaberTag::tick);
     }
 
     @Override
@@ -80,5 +73,16 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
     @Override
     public SWEquipmentSlot getSWEquipmentSlot() {
         return SWEquipmentSlot.LIGHTSABER;
+    }
+
+    @Override
+    public boolean onItemDeselected(Player player, ItemStack stack) {
+        LightsaberTag.update(stack, tag -> {
+            if (!player.level().isClientSide && tag.isActive()) {
+                tag.quickTurnoff();
+                SoundHelper.playToggleAudio(player.level(), player.blockPosition(), false);
+            }
+        });
+        return true;
     }
 }

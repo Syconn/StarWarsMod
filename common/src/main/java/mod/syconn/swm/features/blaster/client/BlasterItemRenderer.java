@@ -58,7 +58,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
         transforms.getTransform(renderMode).apply(leftHanded, poseStack);
         renderItemModel(stack, poseStack, buffer, light, overlay, model);
 
-        if (renderMode != ItemDisplayContext.GUI &&  renderMode != ItemDisplayContext.GROUND) { // renderMode != ItemDisplayContext.FIXED &&
+        if (renderMode != ItemDisplayContext.GUI && renderMode != ItemDisplayContext.FIXED && renderMode != ItemDisplayContext.GROUND) {
             var bt = BlasterTag.getOrCreate(stack);
             var d = StarWarsClient.getTickDelta();
             var shotTime = bt.timeSinceLastShot + d;
@@ -169,7 +169,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
 
     private void poseSingleLeft(LivingEntity entity, BlasterTag bt, boolean patrol, HumanoidModel<? extends LivingEntity> model, float limbAngle, float limbDistance) { // Patrol is walking with blaster mode
         var limbBounce = limbDistance * Mth.sin(limbAngle / 2f) * 0.05f;
-        if (patrol) { // TODO IDK WHAT THIS DOES
+        if (patrol) {
             ModelUtil.lerpLeftArmToDegrees(model, 1, -1.436f + limbBounce, 0.808f, -0.269f);
             ModelUtil.lerpRightArmToDegrees(model, 1, -1.077f - limbBounce, 0, -0.539f);
         } else {
@@ -191,7 +191,7 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
         }
     }
 
-    private void poseSingleRight(LivingEntity entity, BlasterTag bt, boolean patrol, HumanoidModel<? extends LivingEntity> model, float limbAngle, float limbDistance) {
+    private void poseSingleRight(LivingEntity entity, BlasterTag bt, boolean patrol, HumanoidModel<? extends LivingEntity> model, float limbAngle, float limbDistance) { // TODO UPDATE THIS
         var limbBounce = limbDistance * Mth.sin(limbAngle / 2f) * 0.05f;
         if (patrol) {
             ModelUtil.lerpLeftArmToDegrees(model, 1, -1.077f - limbBounce, 0, 0.539f);
@@ -226,11 +226,11 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             var ads = bt.ads;
             var xRotChange = ads ? 0.4f : 0;
 
-            model.leftArm.yRot = 0.1F + model.head.yRot;
-            model.leftArm.xRot = -1.1F + model.head.xRot - xRotChange;
+            model.leftArm.yRot = 0.15F + model.head.yRot;
+            model.leftArm.xRot = -1.57F + model.head.xRot - xRotChange;
 
-            model.rightArm.yRot = -0.1F + model.head.yRot - 0.4F;
-            model.rightArm.xRot = -1.2F + model.head.xRot - xRotChange;
+            model.rightArm.yRot = model.head.yRot - 0.785398F;
+            model.rightArm.xRot = -1.47F + model.head.xRot - xRotChange;
 
             if (ads) model.head.zRot = 0.2f;
         }
@@ -248,11 +248,11 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
             var ads = bt.ads;
             var xRotChange = ads ? 0.4f : 0;
 
-            model.rightArm.yRot = -0.1F + model.head.yRot;
-            model.rightArm.xRot = -1.1F + model.head.xRot - xRotChange;
+            model.rightArm.yRot = -0.15F + model.head.yRot;
+            model.rightArm.xRot = -1.57F + model.head.xRot - xRotChange;
 
-            model.leftArm.yRot = 0.1F + model.head.yRot + 0.4F;
-            model.leftArm.xRot = -1.2F + model.head.xRot - xRotChange;
+            model.leftArm.yRot = model.head.yRot + 0.785398F;
+            model.leftArm.xRot = -1.47F + model.head.xRot - xRotChange;
 
             if (ads) model.head.zRot = -0.2f;
         }

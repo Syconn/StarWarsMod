@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 
 public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaberEntity> {
@@ -21,7 +22,7 @@ public class ThrownLightsaberRenderer extends EntityRenderer<ThrownLightsaberEnt
         this.itemRenderer = context.getItemRenderer();
     }
 
-    public ResourceLocation getTextureLocation(ThrownLightsaberEntity entity) {
+    public @NotNull ResourceLocation getTextureLocation(ThrownLightsaberEntity entity) {
         return new ResourceLocation("missing");
     }
 

@@ -9,6 +9,17 @@ architectury {
 
 loom {
     accessWidenerPath = project(':common').file("src/main/resources/swm.accessWidener")
+
+    runs {
+            client {
+                runDir "run"
+                vmArg "-Dmixin.debug.export=true"
+            }
+    }
+}
+
+tasks.withType(ProcessResources).configureEach {
+    outputs.upToDateWhen { false }
 }
 
 fabricApi {
@@ -43,6 +54,8 @@ dependencies {
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+
+    implementation "com.electronwill.night-config:toml:3.8.2"
 }
 
 processResources {

@@ -1,9 +1,9 @@
 package mod.syconn.swm.features.lightsaber.network;
 
 import dev.architectury.networking.NetworkManager;
-import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
+import mod.syconn.swm.utils.client.SoundHelper;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +37,7 @@ public class ToggleLightsaberPacket {
             if (player != null) {
                 ItemStack stack = player.getItemInHand(hand);
                 if (stack.getItem() instanceof LightsaberItem) LightsaberTag.update(stack, this.all ? LightsaberTag::toggleAll : LightsaberTag::togglePrimary);
-                LightsaberAudio.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).isActive());
+                SoundHelper.playToggleAudio(player.level(), player.getOnPos().above(), LightsaberTag.getOrCreate(stack).isActive());
             }
         });
     }

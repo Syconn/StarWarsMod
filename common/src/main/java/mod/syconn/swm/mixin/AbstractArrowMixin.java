@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.core.ModItems;
-import mod.syconn.swm.features.lightsaber.client.sound.LightsaberAudio;
+import mod.syconn.swm.utils.client.SoundHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.phys.EntityHitResult;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractArrow.class)
-public class AbstractArrowMixin {
+public class AbstractArrowMixin { // TODO MAKE THIS ALL PROJECTILE TYPES
 
     @Inject(method = "onHitEntity", at = @At("HEAD"), cancellable = true)
     public void arrowHitEntity(EntityHitResult result, CallbackInfo ci) {
@@ -26,7 +26,7 @@ public class AbstractArrowMixin {
 
         if (result.getEntity() instanceof LivingEntity livingEntity && livingEntity.isDamageSourceBlocked(damageSource) && livingEntity.getUseItem().is(ModItems.LIGHTSABER.get())) {
             arrow.discard();
-            LightsaberAudio.playDeflectAudio(livingEntity.level(), livingEntity.getOnPos().above());
+            SoundHelper.playDeflectAudio(livingEntity.level(), livingEntity.getOnPos().above());
             ci.cancel();
         }
     }

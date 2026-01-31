@@ -13,6 +13,10 @@ allprojects {
     version = rootProject.mod_version
 }
 
+tasks.withType(ProcessResources).configureEach {
+    outputs.upToDateWhen { false }
+}
+
 subprojects {
     apply plugin: 'dev.architectury.loom'
     apply plugin: 'architectury-plugin'

@@ -22,8 +22,6 @@ public record BlasterJson(ResourceLocation model, int version, MuzzleData muzzle
     }
 
     public static BlasterJson fromJson(JsonObject json) {
-        System.out.println(json);
-
         return new BlasterJson(new ResourceLocation(json.get("model").getAsString()), json.get("version").getAsInt(), new MuzzleData(json.get("muzzle").getAsJsonObject()));
     }
 

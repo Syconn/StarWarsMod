@@ -2,14 +2,11 @@ package mod.syconn.swm.core;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
-import mod.syconn.swm.features.blaster.entity.BlasterBoltEntityOld;
 import mod.syconn.swm.features.blaster.entity.BlasterIonBoltEntity;
 import mod.syconn.swm.features.blaster.entity.BlasterStunBoltEntity;
 import mod.syconn.swm.features.lightsaber.entity.ThrownLightsaberEntity;
 import mod.syconn.swm.utils.Constants;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;

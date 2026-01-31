@@ -5,9 +5,11 @@ import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
+import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -87,6 +89,12 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
 
     public boolean isNoGravity() {
         return true;
+    }
+
+    @Override
+    public void recreateFromPacket(ClientboundAddEntityPacket packet) {
+        super.recreateFromPacket(packet);
+        SoundHelper.playThrownLightsaberSound(this);
     }
 
     @Override

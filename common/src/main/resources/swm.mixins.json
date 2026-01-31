@@ -6,9 +6,10 @@
   "client": [
     "client.AbstractClientPlayerMixin",
     "client.CameraMixin",
-    "client.ClientPacketListenerMixin",
+    "client.ClientPlayerMixin",
     "client.ClientPlayNetworkHandlerMixin",
     "client.CreativeModeInventoryScreenMixin",
+    "client.GuiGraphicsMixin",
     "client.HttpTextureMixin",
     "client.HumanoidModelMixin",
     "client.InGameHudMixin",
@@ -16,6 +17,7 @@
     "client.ItemRendererInvoker",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",
+    "client.MinecraftAccessor",
     "client.TitleScreenMixin"
   ],
   "mixins": [
