@@ -11,7 +11,9 @@ import mod.syconn.swm.features.addons.BlasterContent;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.server.StarWarsServer;
+import mod.syconn.swm.utils.Config;
 import mod.syconn.swm.utils.Constants;
+import mod.syconn.swm.utils.config.ConfigManager;
 import net.minecraft.server.packs.PackType;
 
 public final class StarWars {
@@ -33,6 +35,8 @@ public final class StarWars {
 
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA, Constants.withId("lightsaber_data"));
         ReloadListenerRegistry.register(PackType.SERVER_DATA, BlasterContent.BLASTER_DATA, Constants.withId("blaster_data"));
+
+        ConfigManager.registerAndLoad(Config.class);
 
         EnvExecutor.runInEnv(Env.CLIENT, () -> StarWarsClient::init);
         LifecycleEvent.SETUP.register(StarWarsServer::init);
