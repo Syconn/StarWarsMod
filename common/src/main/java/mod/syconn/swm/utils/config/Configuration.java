@@ -12,4 +12,5 @@ public @interface Configuration {
     String id();
     String name();
     ConfigType type() default ConfigType.COMMON;
+    Class<?> keyMappings() default Void.class;
 }

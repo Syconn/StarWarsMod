@@ -3,6 +3,7 @@ package mod.syconn.swm.utils.config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import dev.architectury.platform.Platform;
 import mod.syconn.swm.utils.generic.FileUtil;
+import net.minecraft.client.KeyMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class ConfigManager {
 
     private static final List<Class<?>> CONFIGS = new ArrayList<>();
+    private static final List<KeyMapping> MAPPINGS = new ArrayList<>();
 
     public static void load() {
         CONFIGS.forEach(ConfigManager::loadConfig);
@@ -21,6 +23,7 @@ public class ConfigManager {
 
             var annotation = field.getAnnotation(Configuration.class);
             if (!annotation.type().shouldLoad(Platform.getEnv())) continue;
+            if (annotation.keyMappings() != Void.class) registerKeyMappings(annotation.keyMappings());
 
             try {
                 var path = FileUtil.config(annotation.id(), annotation.name());
@@ -64,6 +67,14 @@ public class ConfigManager {
         if (targetType == byte.class || targetType == Byte.class) return number.byteValue();
 
         return value;
+    }
+
+    private static void registerKeyMappings(Class<?> keyClass) {
+        for (var keyField : keyClass.getDeclaredFields()) {
+            if (!keyField.isAnnotationPresent(ConfigKey.class)) continue;
+
+            var key = keyField.get(keyClass);
+        }
     }
 
     public static void register(Class<?> configClass) {
