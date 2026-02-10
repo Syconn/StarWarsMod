@@ -23,6 +23,8 @@ public class ModKeys {
 
     @ConfigKey
     public static final KeyMapping THROW_LIGHTSABER = registerKeybind(keyId("throw_lightsaber"), GLFW.GLFW_KEY_X, modCategory());
+    public static final KeyMapping BYPASS_HEAT = registerKeybind(keyId("bypass_heat"), GLFW.GLFW_KEY_R, modCategory());
+    public static final KeyMapping SETTINGS = registerKeybind(keyId("settings"), GLFW.GLFW_KEY_Y, modCategory());
 
     public static String modCategory() {
         return "key.categories." + Constants.MOD;

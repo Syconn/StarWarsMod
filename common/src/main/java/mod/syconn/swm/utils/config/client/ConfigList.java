@@ -1,5 +1,8 @@
 package mod.syconn.swm.utils.config.client;
 
+import com.google.common.collect.ImmutableList;
+import com.llamalad7.mixinextras.lib.apache.commons.ArrayUtils;
+import mod.syconn.swm.utils.config.ConfigManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -18,6 +21,7 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -26,16 +30,16 @@ import java.util.List;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
-public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsList.Entry> {
+public class ConfigList extends ContainerObjectSelectionList<ConfigList.Entry> {
 
     private static final Minecraft minecraft = Minecraft.getInstance();
     private final ConfigScreen configScreen;
     private int maxNameWidth;
 
-    public HeroKeybindsList(ConfigScreen configScreen, Minecraft minecraft) {
+    public ConfigList(ConfigScreen configScreen, Minecraft minecraft) {
         super(minecraft, configScreen.width + 45, configScreen.height, 20, configScreen.height - 32, 20);
         this.configScreen = configScreen;
-        KeyMapping[] keyMappings = ArrayUtils.clone(this.configScreen.manager.unregisteredKeys());
+        KeyMapping[] keyMappings = ArrayUtils.clone(ConfigManager.MAPPINGS.toArray(new KeyMapping[0]));
         Arrays.sort(keyMappings);
         String string = null;
 
@@ -98,13 +102,13 @@ public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsL
             return null;
         }
 
-        public List<? extends GuiEventListener> children() {
+        public @NotNull List<? extends GuiEventListener> children() {
             return Collections.emptyList();
         }
 
-        public List<? extends NarratableEntry> narratables() {
+        public @NotNull List<? extends NarratableEntry> narratables() {
             return ImmutableList.of(new NarratableEntry() {
-                public NarratableEntry.NarrationPriority narrationPriority() {
+                public NarratableEntry.@NotNull NarrationPriority narrationPriority() {
                     return NarrationPriority.HOVERED;
                 }
 
@@ -125,7 +129,7 @@ public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsL
         private final Button resetButton;
         private boolean hasCollision = false;
 
-        KeyEntry(HeroKeybindsList keybindsList, KeyMapping key, Component name) {
+        KeyEntry(ConfigList keybindsList, KeyMapping key, Component name) {
             this.key = key;
             this.name = name;
             this.changeButton = Button.builder(name, (button) -> {
@@ -140,7 +144,7 @@ public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsL
         }
 
         public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean hovering, float partialTick) {
-            int var10003 = left + 90 - HeroKeybindsList.this.maxNameWidth;
+            int var10003 = left + 90 - ConfigList.this.maxNameWidth;
             int var10004 = top + height / 2;
             guiGraphics.drawString(minecraft.font, this.name, var10003, var10004 - 9 / 2, 16777215, false);
             this.resetButton.setX(left + 190);
@@ -170,7 +174,7 @@ public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsL
             this.hasCollision = false;
             MutableComponent mutableComponent = Component.empty();
             if (!this.key.isUnbound()) {
-                for(KeyMapping keyMapping : HeroKeybindsList.this.configScreen.manager.unregisteredKeys()) {
+                for(KeyMapping keyMapping : ConfigList.this.configScreen.manager.unregisteredKeys()) {
                     if (keyMapping != this.key && this.key.same(keyMapping)) {
                         if (this.hasCollision) mutableComponent.append(", ");
                         this.hasCollision = true;
@@ -184,7 +188,7 @@ public class HeroKeybindsList extends ContainerObjectSelectionList<HeroKeybindsL
                 this.changeButton.setTooltip(Tooltip.create(Component.translatable("controls.keybinds.duplicateKeybinds", mutableComponent)));
             } else this.changeButton.setTooltip(null);
 
-            if (HeroKeybindsList.this.configScreen.selectedKey == this.key) this.changeButton.setMessage(Component.literal("> ").append(this.changeButton.getMessage().copy().withStyle(ChatFormatting.WHITE, ChatFormatting.UNDERLINE)).append(" <").withStyle(ChatFormatting.YELLOW));
+            if (ConfigList.this.configScreen.selectedKey == this.key) this.changeButton.setMessage(Component.literal("> ").append(this.changeButton.getMessage().copy().withStyle(ChatFormatting.WHITE, ChatFormatting.UNDERLINE)).append(" <").withStyle(ChatFormatting.YELLOW));
         }
     }
 }

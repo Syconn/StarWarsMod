@@ -11,7 +11,7 @@ import java.util.List;
 public class ConfigManager {
 
     private static final List<Class<?>> CONFIGS = new ArrayList<>();
-    private static final List<KeyMapping> MAPPINGS = new ArrayList<>();
+    public static final List<KeyMapping> MAPPINGS = new ArrayList<>();
 
     public static void load() {
         CONFIGS.forEach(ConfigManager::loadConfig);
@@ -26,7 +26,7 @@ public class ConfigManager {
             if (annotation.keyMappings() != Void.class) registerKeyMappings(annotation.keyMappings());
 
             try {
-                var path = FileUtil.config(annotation.id(), annotation.name());
+                var path = FileUtil.config(annotation.id(), annotation.name() + "-" + annotation.type().toString().toLowerCase());
                 var config = CommentedFileConfig.builder(path).autoreload().autosave().sync().build();
                 config.load();
                 loadConfigFields(config, field.get(null));
@@ -73,7 +73,11 @@ public class ConfigManager {
         for (var keyField : keyClass.getDeclaredFields()) {
             if (!keyField.isAnnotationPresent(ConfigKey.class)) continue;
 
-            var key = keyField.get(keyClass);
+            try {
+                if (keyField.get(null) instanceof KeyMapping mapping) MAPPINGS.add(mapping);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

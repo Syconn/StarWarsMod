@@ -3,6 +3,7 @@ package mod.syconn.swm.features.lightsaber.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
+import mod.syconn.swm.utils.Config;
 import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import mod.syconn.swm.utils.interfaces.IItemExtensions;
@@ -63,7 +64,7 @@ public class LightsaberItem extends Item implements IItemExtensions, IEquipmentI
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifications(ItemStack stack, EquipmentSlot slot) {
-        var damage = LightsaberTag.getOrCreate(stack).isActive() ? 7.0f : 0.0f;
+        var damage = LightsaberTag.getOrCreate(stack).isActive() ? 7.0f + Config.SERVER.baseLightsaberDamage : 0.5f;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", damage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", -2.4, AttributeModifier.Operation.ADDITION));

@@ -10,6 +10,7 @@ import mod.syconn.swm.features.blaster.BlasterUtil;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.ScorchBlockPacket;
+import mod.syconn.swm.utils.Config;
 import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.generic.MathUtil;
 import mod.syconn.swm.utils.interfaces.IPrecisionVelocityEntity;
@@ -323,7 +324,7 @@ public class BlasterBoltEntity extends ThrowableProjectile implements IPrecision
             bolt.setLength(getLength());
             bolt.setRadius(getRadius());
             bolt.setSourceArm(getSourceArm().orElse(HumanoidArm.RIGHT));
-//                if (bt.getFiringMode() == BlasterFiringMode.SLUGTHROWER) entity.setSmoldering(true);
+//                if (bt.getFiringMode() == BlasterFiringMode.SLUGTHROWER) entity.setSmoldering(true); TODO SLUG
         });
 
         this.discard();
@@ -346,12 +347,11 @@ public class BlasterBoltEntity extends ThrowableProjectile implements IPrecision
 
     protected void damage(Entity target) {
         if (damageFunction == null || !getTargetedEntityClass().isAssignableFrom(target.getClass())) return;
-        target.hurt(ModDamageSources.blaster(level(), this, this.getOwner()), (float)(double)damageFunction.apply((double)getOdometer()));
+        target.hurt(ModDamageSources.blaster(level(), this, this.getOwner()), (float)(double)damageFunction.apply((double)getOdometer()) + Config.SERVER.baseBlasterDamage);
     }
 
     private static Class<? extends Entity> getTargetedEntityClass() {
-//        var config = Resources.CONFIG.get(); TODO CONFIG HERE
-//        if (config.server.allowBlasterNonlivingDamage) return Entity.class;
+        if (Config.SERVER.allowBlasterNonlivingDamage) return Entity.class;
         return LivingEntity.class;
     }
 
