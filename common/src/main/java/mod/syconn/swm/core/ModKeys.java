@@ -21,9 +21,13 @@ public class ModKeys {
     @ConfigKey(tooltip = "Grabs lightsaber from side")
     public static final KeyMapping QUICK_SWAP_LIGHTSABER = registerKeybind(keyId("quick_swap_lightsaber"), GLFW.GLFW_KEY_K, modCategory());
 
-    @ConfigKey
+    @ConfigKey(tooltip = "Throw Lightsaber")
     public static final KeyMapping THROW_LIGHTSABER = registerKeybind(keyId("throw_lightsaber"), GLFW.GLFW_KEY_X, modCategory());
+
+    @ConfigKey
     public static final KeyMapping BYPASS_HEAT = registerKeybind(keyId("bypass_heat"), GLFW.GLFW_KEY_R, modCategory());
+
+    @ConfigKey
     public static final KeyMapping SETTINGS = registerKeybind(keyId("settings"), GLFW.GLFW_KEY_Y, modCategory());
 
     public static String modCategory() {

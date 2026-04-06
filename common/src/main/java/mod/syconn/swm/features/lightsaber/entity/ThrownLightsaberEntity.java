@@ -5,7 +5,9 @@ import mod.syconn.swm.core.ModDamageSources;
 import mod.syconn.swm.core.ModEntities;
 import mod.syconn.swm.core.ModSounds;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
+import mod.syconn.swm.utils.Config;
 import mod.syconn.swm.utils.client.SoundHelper;
+import mod.syconn.swm.utils.config.ConfigManager;
 import mod.syconn.swm.utils.generic.NBTUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -100,11 +102,9 @@ public class ThrownLightsaberEntity extends ThrowableProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         var entity = result.getEntity();
-        var f = 8.0F;
-
         var entity2 = this.getOwner();
         var damageSource = ModDamageSources.lightsaber(level(), this, entity2);
-        if (entity2 != entity && entity.hurt(damageSource, f)) {
+        if (entity2 != entity && entity.hurt(damageSource, Config.SERVER.thrownLightsaberDamage)) {
             if (entity.getType() == EntityType.ENDERMAN) return;
 
             if (entity instanceof LivingEntity livingEntity2) {

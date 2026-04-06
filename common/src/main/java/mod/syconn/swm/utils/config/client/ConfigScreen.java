@@ -1,33 +1,40 @@
-package mod.syconn.swm.utils.config.client;
-
-//public class ConfigScreen extends Screen { TODO CREATE ME
+//package mod.syconn.swm.utils.config.client;
 //
-//    public final HeroManager manager;
+//import com.mojang.blaze3d.platform.InputConstants;
+//import net.minecraft.Util;
+//import net.minecraft.client.KeyMapping;
+//import net.minecraft.client.gui.GuiGraphics;
+//import net.minecraft.client.gui.components.Button;
+//import net.minecraft.client.gui.screens.Screen;
+//import net.minecraft.network.chat.CommonComponents;
+//import net.minecraft.network.chat.Component;
+//
+//public class ConfigScreen extends Screen { // TODO CREATE ME
+//
 //    public KeyMapping selectedKey;
 //    public long lastKeySelection;
-//    private HeroKeybindsList keyBindsList;
+//    private ConfigList configList;
 //    private Button resetButton;
 //
 //    public ConfigScreen() {
 //        super(Component.literal("Config Screen"));
-//        this.manager = Minecraft.getInstance().player.herocore$getManager();
 //    }
 //
 //    protected void init() {
-//        this.keyBindsList = new HeroKeybindsList(this, this.minecraft);
-//        this.addWidget(this.keyBindsList);
+//        this.configList = new HeroKeybindsList(this, this.minecraft);
+//        this.addWidget(this.configList);
 //        this.resetButton = this.addRenderableWidget(Button.builder(Component.translatable("controls.resetAll"), (button) -> {
-//            for(KeyMapping keyMapping : this.manager.unregisteredKeys()) keyMapping.setKey(keyMapping.getDefaultKey());
-//            this.keyBindsList.resetMappingAndUpdateButtons();
+//            for(KeyMapping keyMapping : this.configManager.unregisteredKeys()) keyMapping.setKey(keyMapping.getDefaultKey());
+//            this.configList.resetMappingAndUpdateButtons();
 //        }).bounds(this.width / 2 - 155, this.height - 29, 150, 20).build());
 //        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> this.onClose()).bounds(this.width / 2 - 155 + 160, this.height - 29, 150, 20).build());
 //    }
 //
 //    public boolean mouseClicked(double mouseX, double mouseY, int button) {
 //        if (this.selectedKey != null) {
-//            this.manager.setKey(this.selectedKey, InputConstants.Type.MOUSE.getOrCreate(button));
+//            this.configManager.setKey(this.selectedKey, InputConstants.Type.MOUSE.getOrCreate(button));
 //            this.selectedKey = null;
-//            this.keyBindsList.resetMappingAndUpdateButtons();
+//            this.configList.resetMappingAndUpdateButtons();
 //            return true;
 //        } else {
 //            return super.mouseClicked(mouseX, mouseY, button);
@@ -36,12 +43,12 @@ package mod.syconn.swm.utils.config.client;
 //
 //    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
 //        if (this.selectedKey != null) {
-//            if (keyCode == 256) this.manager.setKey(this.selectedKey, InputConstants.UNKNOWN);
-//            else this.manager.setKey(this.selectedKey, InputConstants.getKey(keyCode, scanCode));
+//            if (keyCode == 256) this.configManager.setKey(this.selectedKey, InputConstants.UNKNOWN);
+//            else this.configManager.setKey(this.selectedKey, InputConstants.getKey(keyCode, scanCode));
 //
 //            this.selectedKey = null;
 //            this.lastKeySelection = Util.getMillis();
-//            this.keyBindsList.resetMappingAndUpdateButtons();
+//            this.configList.resetMappingAndUpdateButtons();
 //            return true;
 //        } else {
 //            return super.keyPressed(keyCode, scanCode, modifiers);
@@ -51,11 +58,11 @@ package mod.syconn.swm.utils.config.client;
 //    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
 //        guiGraphics.fillGradient(0, 0, this.width, this.height, -1072689136, -804253680);
 //
-//        this.keyBindsList.render(guiGraphics, mouseX, mouseY, partialTick);
+//        this.configList.render(guiGraphics, mouseX, mouseY, partialTick);
 //        guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 8, 16777215);
 //        boolean bl = false;
 //
-//        for(KeyMapping keyMapping : this.manager.unregisteredKeys()) {
+//        for(KeyMapping keyMapping : this.configManager.unregisteredKeys()) {
 //            if (!keyMapping.isDefault()) {
 //                bl = true;
 //                break;

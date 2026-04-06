@@ -34,11 +34,11 @@ gamma:1.0
 renderDistance:12
 simulationDistance:12
 entityDistanceScaling:1.0
-guiScale:3
+guiScale:5
 particles:0
 maxFps:260
-graphicsMode:1
-ao:true
+graphicsMode:0
+ao:false
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
@@ -122,6 +122,8 @@ key_key.swm.toggle_primary_blade:key.keyboard.n
 key_key.swm.toggle_blade:key.keyboard.v
 key_key.swm.quick_swap_lightsaber:key.keyboard.k
 key_key.swm.throw_lightsaber:key.keyboard.x
+key_key.swm.bypass_heat:key.keyboard.r
+key_key.swm.settings:key.keyboard.y
 key_key.jei.toggleOverlay:key.keyboard.o
 key_key.jei.focusSearch:key.keyboard.f
 key_key.jei.previousPage:key.keyboard.unknown

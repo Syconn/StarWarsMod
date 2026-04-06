@@ -36,8 +36,6 @@ public final class StarWars {
         ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA, Constants.withId("lightsaber_data"));
         ReloadListenerRegistry.register(PackType.SERVER_DATA, BlasterContent.BLASTER_DATA, Constants.withId("blaster_data"));
 
-        ConfigManager.registerAndLoad(Config.class);
-
         EnvExecutor.runInEnv(Env.CLIENT, () -> StarWarsClient::init);
         LifecycleEvent.SETUP.register(StarWarsServer::init);
     }

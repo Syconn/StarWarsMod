@@ -1,5 +1,6 @@
 package mod.syconn.swm.fabric;
 
+import dev.architectury.utils.Env;
 import mod.syconn.swm.StarWars;
 import net.fabricmc.api.ModInitializer;
 

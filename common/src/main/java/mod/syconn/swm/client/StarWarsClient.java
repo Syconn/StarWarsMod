@@ -23,8 +23,10 @@ import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.item.HoloProjectorItem;
 import mod.syconn.swm.mixin.client.MinecraftAccessor;
+import mod.syconn.swm.utils.Config;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.client.TintedTextureProvider;
+import mod.syconn.swm.utils.config.ConfigManager;
 import mod.syconn.swm.utils.interfaces.IModifiedItemRenderer;
 import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.fabricmc.api.EnvType;
@@ -53,6 +55,8 @@ public class StarWarsClient {
         EntityRendererRegistry.register(ModEntities.BLASTER_BOLT, BlasterBoltRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLASTER_ION_BOLT, BlasterBoltRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLASTER_STUN_BOLT, BlasterBoltRenderer::new);
+
+        ConfigManager.registerAndLoad(Config.class);
 
         ClientLifecycleEvent.CLIENT_SETUP.register(StarWarsClient::setupEvent);
         ClientGuiEvent.RENDER_HUD.register(ClientHooks::renderHUD);

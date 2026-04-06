@@ -27,6 +27,9 @@ public class Config {
         @ConfigValue
         public float baseBlasterDamage = 0.0f;
 
+        @ConfigValue(comment = "Increases Thrown Lightsaber Damage")
+        public float thrownLightsaberDamage = 10.0f;
+
         @ConfigValue
         public boolean allowBlasterNonlivingDamage = false;
     }
