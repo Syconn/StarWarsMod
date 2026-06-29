@@ -1,3 +1,5 @@
+import net.neoforged.moddevgradle.tasks.JarJar
+
 plugins {
     // id("dev.isxander.modstitch.base") version "0.5.12"
     id("dev.isxander.modstitch.base") version "0.8.4"
@@ -143,11 +145,17 @@ stonecutter {
 
 java {
     withSourcesJar()
-    val javaCompat = if (stonecutter.eval(stonecutter.current.version, "<=1.21.1")) {
-        JavaVersion.VERSION_21
-    } else {
-        JavaVersion.VERSION_25
+
+    val javaCompat = when {
+        stonecutter.eval(stonecutter.current.version, "<=1.20.4") -> JavaVersion.VERSION_17
+        stonecutter.eval(stonecutter.current.version, "<=1.21.4") -> JavaVersion.VERSION_21
+        else -> JavaVersion.VERSION_25
     }
+//    val javaCompat = if (stonecutter.eval(stonecutter.current.version, "<=1.21.1")) {
+//        JavaVersion.VERSION_21
+//    } else {
+//        JavaVersion.VERSION_25
+//    }
     sourceCompatibility = javaCompat
     targetCompatibility = javaCompat
 }
