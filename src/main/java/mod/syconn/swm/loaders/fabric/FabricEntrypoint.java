@@ -6,6 +6,7 @@ import mod.syconn.swm.api.registry.Registrar;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 
 public class FabricEntrypoint implements ModInitializer {
 
@@ -15,12 +16,20 @@ public class FabricEntrypoint implements ModInitializer {
 
         Registrar.getEntries().forEach(entry -> {
             entry.register((registryKey, path, valueSupplier) -> {
-                @SuppressWarnings("unchecked")
-                Registry<Object> registry = (Registry<Object>) BuiltInRegistries.REGISTRY.get(registryKey.location());
+                Registry<Object> registry = getRegistry(registryKey);
                 if (registry == null) throw new IllegalStateException("Unknown registry: " + registryKey.location());
                 Registry.register(registry, path, valueSupplier.get());
             });
         });
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Registry<Object> getRegistry(ResourceKey<? extends Registry<?>> key) {
+        //? if <=1.21.1
+        return (Registry<Object>) BuiltInRegistries.REGISTRY.get(key.location());
+
+        //? if >=26.1.2
+        //return (Registry<Object>) BuiltInRegistries.REGISTRY.getValue(key.location());
     }
 }
 //?}

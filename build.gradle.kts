@@ -122,11 +122,6 @@ modstitch {
 // See https://stonecutter.kikugie.dev/stonecutter/guide/comments#condition-constants
 var constraint: String = name.split("-")[1]
 stonecutter {
-//    consts(
-//        "fabric" to constraint.equals("fabric"),
-//        "neoforge" to constraint.equals("neoforge"),
-//        "vanilla" to constraint.equals("vanilla")
-//    )
     constants {
         put("fabric", modstitch.isLoom)
         put("neoforge", modstitch.isModDevGradleRegular)
@@ -140,6 +135,10 @@ stonecutter {
         string {
             direction = eval(current.version, ">=1.21.11")
             replace("import net.minecraft.Util;", "import net.minecraft.util.Util;")
+        }
+        string {
+            direction = eval(current.version, ">=1.21.11")
+            replace("location", "identifier")
         }
     }
 }

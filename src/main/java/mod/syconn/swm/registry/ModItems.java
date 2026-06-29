@@ -13,7 +13,7 @@ import static mod.syconn.swm.utils.Constants.MOD;
 @AutoRegister
 public class ModItems {
 
-    public static final RegistryEntry<Item> MAGIC_STICK = RegistryEntry.itemTabbed("magic_stick", () -> new Item(new Item.Properties()));
+    public static final RegistryEntry<Item> MAGIC_STICK = RegistryEntry.item("magic_stick", prop -> new Item(prop)).setTabbed(true);
 
     public static final RegistryEntry<CreativeModeTab> TAB = RegistryEntry.creativeModeTab("star_wars", b -> b.title(Component.translatable("itemGroup." + MOD + ".starwars")).icon(() -> new ItemStack(MAGIC_STICK.get())).displayItems(Registrar::addCreative));
 }

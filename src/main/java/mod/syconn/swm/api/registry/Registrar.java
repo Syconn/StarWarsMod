@@ -4,9 +4,13 @@ package mod.syconn.swm.api.registry;
 import org.reflections.Reflections;
 //? }
 
-//? if !neoforge && !fabric {
+//? if !fabric && !neoforge {
 /*import net.minecraftforge.fml.ModList;
- *///? }
+*///? }
+
+//? if neoforge {
+/*import net.neoforged.fml.ModList;
+*///? }
 
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
@@ -71,13 +75,11 @@ public class Registrar {
         //? }
 
         //? if !fabric {
-        /*var container = ModList.get().getModContainerById("swm").orElseThrow(() -> new IllegalStateException("Couldn't find mod container"));
-        var data = container.getModInfo().getOwningFile().getFile().getScanResult();
-        var cl = container.getClass().getClassLoader();
-        return data.getAnnotations().stream().filter(ann -> ann.annotationType().getClassName().equals(AutoRegister.class.getName()) && ann.clazz().getClassName().startsWith("mod.syconn.swm."))
+        /*var annotation = ModList.get().getModContainerById("swm").orElseThrow(() -> new IllegalStateException("Couldn't find mod container")).getModInfo().getOwningFile().getFile().getScanResult();
+        return annotation.getAnnotations().stream().filter(ann -> ann.annotationType().getClassName().equals(AutoRegister.class.getName()) && ann.clazz().getClassName().startsWith("mod.syconn.swm."))
                 .map(ann -> {
                     try {
-                        return Class.forName(ann.clazz().getClassName(), true, cl);
+                        return Class.forName(ann.clazz().getClassName());
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException("Failed loading class: " + ann.clazz().getClassName(), e);
                     }

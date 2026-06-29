@@ -4,12 +4,14 @@ import mod.syconn.swm.api.services.RegistrationService;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class RegistryEntry<T> {
@@ -17,7 +19,6 @@ public class RegistryEntry<T> {
     protected final ResourceKey<Registry<T>> registry;
     protected final ResourceLocation id;
     protected final Supplier<T> supplier;
-    protected final boolean tabbed;
 
     public RegistryEntry(Registry<?> registry, ResourceLocation id, Supplier<T> supplier) {
         this.registry = ResourceKey.createRegistryKey(registry.key().location());
@@ -26,13 +27,7 @@ public class RegistryEntry<T> {
         this.tabbed = false;
     }
 
-    public RegistryEntry(Registry<?> registry, ResourceLocation id, Supplier<T> supplier, boolean tabbed) {
-        this.registry = ResourceKey.createRegistryKey(registry.key().location());
-        this.id = id;
-        this.supplier = supplier;
-        this.tabbed = tabbed;
-    }
-
+    protected boolean tabbed;
     private T instance;
 
     public T get() {
@@ -58,18 +53,33 @@ public class RegistryEntry<T> {
         this.instance = null;
     }
 
+    public RegistryEntry<T> setTabbed(boolean tabbed) {
+        this.tabbed = tabbed;
+        return this;
+    }
+
     public void register(RegisterConsumer<T> consumer) {
         this.invalidate();
         T value = this.create();
         consumer.accept(this.registry, this.id, () -> value);
     }
 
-    public static <T extends Item> RegistryEntry<T> item(String id, Supplier<T> supplier) {
-        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), supplier);
+    public static <T extends Item> RegistryEntry<T> item(String id, Function<Item.Properties, T> itemFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), () -> {
+            var itemProperties = new Item.Properties();
+            //? >1.21.11
+            //itemProperties.setId(ResourceKey.create(Registries.ITEM, Constants.withId(id)));
+            return itemFactory.apply(itemProperties);
+        });
     }
 
-    public static <T extends Item> RegistryEntry<T> itemTabbed(String id, Supplier<T> supplier) {
-        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), supplier, true);
+    public static <T extends Item> RegistryEntry<T> item(String id, Function<Item.Properties, T> itemFactory, Supplier<Item.Properties> itemPropertiesFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), () -> {
+            var itemProperties = itemPropertiesFactory.get();
+            //? >1.21.11
+            //itemProperties.setId(ResourceKey.create(Registries.ITEM, Constants.withId(id)));
+            return itemFactory.apply(itemProperties);
+        });
     }
 
     public static RegistryEntry<CreativeModeTab> creativeModeTab(String id, Consumer<CreativeModeTab.Builder> builderConsumer) {
