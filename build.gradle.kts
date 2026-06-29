@@ -1,5 +1,3 @@
-import net.neoforged.moddevgradle.tasks.JarJar
-
 plugins {
     // id("dev.isxander.modstitch.base") version "0.5.12"
     id("dev.isxander.modstitch.base") version "0.8.4"
@@ -20,6 +18,9 @@ dependencies {
     modstitch.loom {
         modstitchModImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
     }
+
+    modstitchImplementation("org.reflections:reflections:0.10.2")
+    modstitchImplementation("org.javassist:javassist:3.29.2-GA")
 
     // Anything else in the dependencies block will be used for all platforms.
 }
