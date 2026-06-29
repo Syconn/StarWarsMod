@@ -1,22 +1,25 @@
 package mod.syconn.swm.api.registry;
 
-import net.minecraft.Util;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import java.lang.reflect.Modifier;
-import java.util.*;
-import java.util.stream.Collectors;
-
 //? if fabric {
 import org.reflections.Reflections;
 //? }
 
 //? if !neoforge && !fabric {
 /*import net.minecraftforge.fml.ModList;
-import net.minecraftforge.forgespi.language.ModFileScanData;
-*///? }
+ *///? }
+
+import net.minecraft.Util;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import java.lang.reflect.Modifier;
+import java.util.*;
+import java.util.stream.Collectors;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 public class Registrar {
 
@@ -59,26 +62,6 @@ public class Registrar {
                 throw new RuntimeException("Failed scanning " + clazz, e);
             }
         }
-
-            //? if !neoforge && !fabric {
-//        for (ModFileScanData data : ModList.get().get()) {
-//            for (ModFileScanData.AnnotationData ann : data.getAnnotations()) {
-//                if (!ann.annotationType().getClassName().equals(AutoRegister.class.getName())) continue;
-//                ClassLoader cl = ModList.get().getModContainerById("swm").map(mc -> mc.getClass().getClassLoader()).orElse(Thread.currentThread().getContextClassLoader());
-//                Class<?> clazz = Class.forName(ann.clazz().getClassName(), true, cl);
-//                try {
-//                    for (var field : clazz.getDeclaredFields()) {
-//                        if (!Modifier.isStatic(field.getModifiers())) continue;
-//                        if (!RegistryEntry.class.isAssignableFrom(field.getType())) continue;
-//                        var entry = (RegistryEntry<?>) field.get(null);
-//                        ENTRIES.computeIfAbsent(entry.getRegistry().location(), k -> new ArrayList<>()).add(entry);
-//                    }
-//                } catch (Exception e) {
-//                    throw new RuntimeException("Failed scanning " + ann, e);
-//                }
-//            }
-//        }
-            //? }
     }
 
     private static Set<Class<?>> getClasses() {
@@ -87,7 +70,7 @@ public class Registrar {
         return reflections.getTypesAnnotatedWith(AutoRegister.class);
         //? }
 
-        //? if !fabric && !neoforge {
+        //? if !fabric {
         /*var container = ModList.get().getModContainerById("swm").orElseThrow(() -> new IllegalStateException("Couldn't find mod container"));
         var data = container.getModInfo().getOwningFile().getFile().getScanResult();
         var cl = container.getClass().getClassLoader();
@@ -107,5 +90,13 @@ public class Registrar {
             int index = REGISTRATION_PRIORITY.indexOf(entry.getRegistry().location());
             return index != -1 ? index : 1000;
         })).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static void addCreative(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output pOutput) {
+        pOutput.acceptAll(Registrar.getItems());
+    }
+
+    public static Set<ItemStack> getItems() {
+        return get(ResourceKey.createRegistryKey(BuiltInRegistries.ITEM.key().location())).stream().filter(entry -> entry.tabbed).map(entry -> new ItemStack((ItemLike) entry.get())).collect(Collectors.toSet());
     }
 }

@@ -1,12 +1,15 @@
 package mod.syconn.swm.api.registry;
 
+import mod.syconn.swm.api.services.RegistrationService;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class RegistryEntry<T> {
@@ -14,11 +17,20 @@ public class RegistryEntry<T> {
     protected final ResourceKey<Registry<T>> registry;
     protected final ResourceLocation id;
     protected final Supplier<T> supplier;
+    protected final boolean tabbed;
 
     public RegistryEntry(Registry<?> registry, ResourceLocation id, Supplier<T> supplier) {
         this.registry = ResourceKey.createRegistryKey(registry.key().location());
         this.id = id;
         this.supplier = supplier;
+        this.tabbed = false;
+    }
+
+    public RegistryEntry(Registry<?> registry, ResourceLocation id, Supplier<T> supplier, boolean tabbed) {
+        this.registry = ResourceKey.createRegistryKey(registry.key().location());
+        this.id = id;
+        this.supplier = supplier;
+        this.tabbed = tabbed;
     }
 
     private T instance;
@@ -54,5 +66,17 @@ public class RegistryEntry<T> {
 
     public static <T extends Item> RegistryEntry<T> item(String id, Supplier<T> supplier) {
         return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), supplier);
+    }
+
+    public static <T extends Item> RegistryEntry<T> itemTabbed(String id, Supplier<T> supplier) {
+        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), supplier, true);
+    }
+
+    public static RegistryEntry<CreativeModeTab> creativeModeTab(String id, Consumer<CreativeModeTab.Builder> builderConsumer) {
+        return new RegistryEntry<>(BuiltInRegistries.CREATIVE_MODE_TAB, Constants.withId(id), () -> {
+            var builder = RegistrationService.createCreativeModeTabBuilder();
+            builderConsumer.accept(builder);
+            return builder.build();
+        });
     }
 }
