@@ -10,6 +10,9 @@ public class Constants {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static ResourceLocation withId(String path) {
+        //? if 1.21.1
+        //return ResourceLocation.fromNamespaceAndPath(MOD, path);
+        //? if 1.20.1
         return new ResourceLocation(MOD, path);
     }
 }

@@ -17,10 +17,10 @@ val minecraft = property("deps.minecraft") as String;
 dependencies {
     modstitch.loom {
         modstitchModImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
-    }
 
-    modstitchImplementation("org.reflections:reflections:0.10.2")
-    modstitchImplementation("org.javassist:javassist:3.29.2-GA")
+        modstitchImplementation("org.reflections:reflections:0.10.2")
+        modstitchImplementation("org.javassist:javassist:3.29.2-GA")
+    }
 
     // Anything else in the dependencies block will be used for all platforms.
 }

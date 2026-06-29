@@ -5,11 +5,13 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import org.reflections.Reflections;
-
 import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.stream.Collectors;
+
+//? if fabric {
+import org.reflections.Reflections;
+//? }
 
 //? if !neoforge && !fabric {
 /*import net.minecraftforge.fml.ModList;
