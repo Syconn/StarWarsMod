@@ -1,0 +1,57 @@
+package mod.syconn.swm.network.packets;
+
+import dev.architectury.networking.NetworkManager;
+import dev.kosmx.playerAnim.core.util.Ease;
+import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.interfaces.IEquipmentItem;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+
+import java.util.function.Supplier;
+
+public class ToggleEquipmentSlotPacket {
+
+    private final int openSlot;
+    private final int selectedSlot;
+    private final IEquipmentItem.SWEquipmentSlot equipmentSlot;
+
+    public ToggleEquipmentSlotPacket(int openSlot, int selectedSlot, IEquipmentItem.SWEquipmentSlot equipmentSlot) {
+        this.openSlot = openSlot;
+        this.selectedSlot = selectedSlot;
+        this.equipmentSlot = equipmentSlot;
+    }
+
+    public ToggleEquipmentSlotPacket(FriendlyByteBuf buf) {
+        this.openSlot = buf.readInt();
+        this.selectedSlot = buf.readInt();
+        this.equipmentSlot = buf.readEnum(IEquipmentItem.SWEquipmentSlot.class);
+    }
+
+    public void encode(FriendlyByteBuf buf) {
+        buf.writeInt(this.openSlot);
+        buf.writeInt(this.selectedSlot);
+        buf.writeEnum(this.equipmentSlot);
+    }
+
+    public void apply(Supplier<NetworkManager.PacketContext> context) {
+        context.get().queue(() -> {
+            var player = context.get().getPlayer();
+            if (player instanceof ServerPlayer serverPlayer) {
+                final var gear = player.getInventory().swm$getSWGear();
+                if (gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot)) {
+                    gear.setItem(this.equipmentSlot, player.getInventory().removeItemNoUpdate(this.selectedSlot));
+                    AnimationUtil.notifyPlayers(serverPlayer, "return.swap.lightsaber", 1, Ease.INCUBIC);
+                } else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && player.getInventory().getItem(this.selectedSlot).getItem() instanceof IEquipmentItem item && item.getSWEquipmentSlot().equals(this.equipmentSlot)) {
+                    var gearItem = gear.getItemFromSlot(this.equipmentSlot).copy();
+                    gear.setItem(this.equipmentSlot, player.getInventory().removeItemNoUpdate(this.selectedSlot));
+                    player.getInventory().setItem(this.selectedSlot, gearItem);
+                    AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
+                } else if (!gear.getItemFromSlot(this.equipmentSlot).isEmpty() && this.openSlot != -1) {
+                    player.getInventory().setItem(this.openSlot, gear.removeItemNoUpdate(this.equipmentSlot));
+                    player.getInventory().selected = this.openSlot;
+                    AnimationUtil.notifyPlayers(serverPlayer, "grab.swap.lightsaber", 1, Ease.INCUBIC);
+                }
+            }
+        });
+    }
+}

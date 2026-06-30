@@ -1,10 +1,9 @@
 package mod.syconn.swm.api.registry;
 
-import mod.syconn.swm.api.services.RegistrationService;
+import mod.syconn.swm.api.services.Registration;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -24,7 +23,7 @@ public class RegistryEntry<T> {
         this.registry = ResourceKey.createRegistryKey(registry.key().location());
         this.id = id;
         this.supplier = supplier;
-        this.tabbed = false;
+        this.tabbed = true;
     }
 
     protected boolean tabbed;
@@ -82,9 +81,17 @@ public class RegistryEntry<T> {
         });
     }
 
+    public static RegistryEntry<Item> item(String id, Item.Properties properties) {
+        return new RegistryEntry<>(BuiltInRegistries.ITEM, Constants.withId(id), () -> {
+            //? >1.21.11
+            //properties.setId(ResourceKey.create(Registries.ITEM, Constants.withId(id)));
+            return new Item(properties);
+        });
+    }
+
     public static RegistryEntry<CreativeModeTab> creativeModeTab(String id, Consumer<CreativeModeTab.Builder> builderConsumer) {
         return new RegistryEntry<>(BuiltInRegistries.CREATIVE_MODE_TAB, Constants.withId(id), () -> {
-            var builder = RegistrationService.createCreativeModeTabBuilder();
+            var builder = Registration.createCreativeModeTabBuilder();
             builderConsumer.accept(builder);
             return builder.build();
         });

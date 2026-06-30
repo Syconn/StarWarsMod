@@ -1,0 +1,5 @@
+Basically rightclicking toggles ads - settings can be hold or toggle
+left clicking toggles mode - stun bolt or ion (when vehicles)
+ - when ads then right click shoots
+
+attachments

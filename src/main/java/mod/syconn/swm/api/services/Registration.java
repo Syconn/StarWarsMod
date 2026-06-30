@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 
 import net.minecraft.world.item.CreativeModeTab;
 
-public class RegistrationService {
+public class Registration {
 
     public static CreativeModeTab.Builder createCreativeModeTabBuilder() {
         //? if !fabric
