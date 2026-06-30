@@ -14,5 +14,11 @@ allprojects {
         mavenLocal()
         maven("https://maven.neoforged.net/releases")
         maven("https://maven.fabricmc.net/")
+        maven("https://maven.kosmx.dev/")
+        maven("https://maven.blamejared.com/")
     }
+}
+
+repositories {
+
 }

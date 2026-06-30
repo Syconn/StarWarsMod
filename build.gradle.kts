@@ -1,5 +1,4 @@
 plugins {
-    // id("dev.isxander.modstitch.base") version "0.5.12"
     id("dev.isxander.modstitch.base") version "0.8.4"
 }
 
@@ -18,11 +17,20 @@ dependencies {
     modstitch.loom {
         modstitchModImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric-api")}")
 
+        if (sc.current.parsed eq "1.20.1") {
+            modstitchModImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${property("deps.animation")}")
+        }
+
+        modstitchCompileOnlyApi("mezz.jei:jei-${property("deps.minecraft")}-fabric-api:${property("deps.jei")}")
+        modstitchRuntimeOnly("mezz.jei:jei-${property("deps.minecraft")}-fabric:${property("deps.jei")}")
+
         modstitchImplementation("org.reflections:reflections:0.10.2")
         modstitchImplementation("org.javassist:javassist:3.29.2-GA")
     }
 
-    // Anything else in the dependencies block will be used for all platforms.
+    modstitch.moddevgradle {
+
+    }
 }
 
 modstitch {
@@ -60,10 +68,7 @@ modstitch {
         }
     }
 
-    // Fabric Loom (Fabric)
     loom {
-        // It's not recommended to store the Fabric Loader version in properties.
-        // Make sure its up to date.
         fabricLoaderVersion = "0.19.2"
 
         // Configure loom like normal in this block.
@@ -71,39 +76,32 @@ modstitch {
             runConfigs.named("client") {
                 ideConfigGenerated(true)
             }
+
+//            runs {
+//                create("datagen") {
+//                    client()
+//
+//                    name("Fabric Data Generation")
+//                    vmArg("-Dfabric-api.datagen")
+//                    vmArg("-Dfabric-api.datagen.modid=swm")
+//                    vmArg("-Dfabric-api.datagen.output-dir=${project.file("src/generated/resources").absolutePath}")
+//                    vmArg("-Dfabric-api.datagen.strict-validation")
+//                }
+//            }
         }
     }
 
     // ModDevGradle (NeoForge, Forge, Forgelike)
     moddevgradle {
-
         if (sc.current.project.endsWith("neoforge")) {
-
             if (sc.current.parsed eq "1.21.1") { neoFormVersion = "1.21.1-20240808.144430" }
             else if (sc.current.parsed eq "26.1.2") { neoFormVersion = "26.1.2-1" }
-
             neoForgeVersion = "${property("deps.neoforge")}"
-        } else
-        {
+        } else {
             forgeVersion = "${property("deps.forge")}"
         }
 
-//        enable {
-//            prop("deps.neoform") { neoFormVersion = it }
-//            prop("deps.neoforge") { neoForgeVersion = it }
-//            prop("deps.mcp") { mcpVersion = it }
-//        }
-
-        // Configures client and server runs for MDG, it is not done by default
         defaultRuns()
-
-        // This block configures the `neoforge` extension that MDG exposes by default,
-        // you can configure MDG like normal from here
-//        configureNeoforge {
-//            runs.all {
-//                disableIdeRun()
-//            }
-//        }
     }
 
     mixin {
@@ -146,16 +144,12 @@ stonecutter {
 java {
     withSourcesJar()
 
-    val javaCompat = when {
+    val javaCompact = when {
         stonecutter.eval(stonecutter.current.version, "<=1.20.4") -> JavaVersion.VERSION_17
         stonecutter.eval(stonecutter.current.version, "<=1.21.4") -> JavaVersion.VERSION_21
         else -> JavaVersion.VERSION_25
     }
-//    val javaCompat = if (stonecutter.eval(stonecutter.current.version, "<=1.21.1")) {
-//        JavaVersion.VERSION_21
-//    } else {
-//        JavaVersion.VERSION_25
-//    }
-    sourceCompatibility = javaCompat
-    targetCompatibility = javaCompat
+
+    sourceCompatibility = javaCompact
+    targetCompatibility = javaCompact
 }
