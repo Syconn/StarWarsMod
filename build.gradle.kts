@@ -7,7 +7,7 @@ fun prop(name: String, consumer: (prop: String) -> Unit) {
         ?.let(consumer)
 }
 
-val minecraft = property("deps.minecraft") as String;
+val minecraft = property("deps.minecraft") as String
 
 // All dependencies should be specified through modstitch's proxy configuration.
 // Wondering where the "repositories" block is? Go to "stonecutter.gradle.kts"
@@ -38,6 +38,12 @@ dependencies {
 modstitch {
     minecraftVersion = minecraft
 
+    val widener = when {
+        stonecutter.eval(stonecutter.current.version, "<=1.20.4") -> "1.20.accesswidener"
+        stonecutter.eval(stonecutter.current.version, "<=1.21.4") -> "1.21.accesswidener"
+        else -> "26.1.accesswidener"
+    }
+
     // If parchment doesnt exist for a version yet you can safely
     // omit the "deps.parchment" property from your versioned gradle.properties
     parchment {
@@ -60,7 +66,8 @@ modstitch {
         replacementProperties.populate {
             // You can put any other replacement properties/metadata here that
             // modstitch doesn't initially support. Some examples below.
-            put("mod_issue_tracker", "https://github.com/modunion/modstitch/issues")
+            put("mod_issue_tracker", "https://github.com/Syconn/StarWarsMod/issues/new")
+            put("aw_file", widener)
             put("pack_format", when (property("deps.minecraft")) {
                 "1.20.1" -> 14
                 "1.21.1" -> 14
@@ -75,6 +82,8 @@ modstitch {
 
         // Configure loom like normal in this block.
         configureLoom {
+            accessWidenerPath = rootProject.file("src/main/resources/accesswideners/$widener")
+
             runConfigs.named("client") {
                 ideConfigGenerated(true)
             }
@@ -110,7 +119,7 @@ modstitch {
         addMixinsToModManifest = true
         configs.register("swm")
 
-        if (isLoom) configs.register("swm-fabic")
+        if (isLoom) configs.register("swm-fabric")
 
         // Most of the time you wont ever need loader specific mixins.
         // If you do, simply make the mixin file and add it like so for the respective loader:
@@ -144,6 +153,14 @@ stonecutter {
         }
     }
 }
+
+//tasks.processResources {
+//    filesMatching("fabric.mod.json") {
+//        expand(mapOf(
+//            "aw_file" to accesswidener,
+//        ))
+//    }
+//}
 
 java {
     withSourcesJar()

@@ -1,9 +1,9 @@
 package mod.syconn.swm.client.screen.components.buttons;
 
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.Constants;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -22,7 +22,7 @@ public class RefreshButton extends ExpandedButton {
     public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         guiGraphics.blit(COMPONENTS, this.getX(), this.getY(), 20, 176, this.width, this.height);
 
-        if (isHovered) guiGraphics.renderTooltip(GameInstance.getClient().font, createNarrationMessage(), mouseX, mouseY);
+        if (isHovered) guiGraphics.renderTooltip(Minecraft.getInstance().font, createNarrationMessage(), mouseX, mouseY);
     }
 
     @Override

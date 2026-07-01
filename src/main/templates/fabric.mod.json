@@ -4,6 +4,7 @@
   "name": "${mod_name}",
   "version": "${mod_version}",
   "description": "${mod_description}",
+  "accessWidener": "accesswideners/${aw_file}",
   "environment": "*",
   "entrypoints": {
     "main": [

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import mod.syconn.swm.api.services.Platform;
-import mod.syconn.swm.client.components.buttons.ExpandedButton;
+import mod.syconn.swm.client.screen.components.buttons.ExpandedButton;
 import mod.syconn.swm.utils.generic.FontUtil;
 import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;

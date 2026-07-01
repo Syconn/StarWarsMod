@@ -2,7 +2,6 @@ package mod.syconn.swm.utils.client;
 
 import com.mojang.authlib.minecraft.InsecurePublicKeyException;
 import com.mojang.blaze3d.systems.RenderSystem;
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -49,15 +48,13 @@ public abstract class TextureProvider<TData> {
     }
 
     public boolean isReady(ResourceLocation cacheId) {
-        return TEXTURE_CACHE.contains(cacheId) && GameInstance.getClient().getTextureManager().getTexture(cacheId, null) != null;
+        if (!TEXTURE_CACHE.contains(cacheId)) return false;
+        Minecraft.getInstance().getTextureManager().getTexture(cacheId, null);
+        return true;
     }
 
     protected void markTextureDirty(ResourceLocation cacheId) {
         TEXTURE_CACHE.removeIf(cacheId::equals);
-    }
-
-    protected void markTextureFailure(ResourceLocation cacheId) {
-        FAILURE_CACHE.add(cacheId);
     }
 
     protected void registerDependencyCallbacks(ResourceLocation cacheId, ResourceLocation dependencyCacheId) {
@@ -68,8 +65,6 @@ public abstract class TextureProvider<TData> {
                 provider.addLoadCallback(providerCacheId, (success) -> {
                     if (success) markTextureDirty(cacheId);
                 });
-
-                // There should only be one provider for each cache ID
                 break;
             }
         }
@@ -77,26 +72,14 @@ public abstract class TextureProvider<TData> {
 
     public ResourceLocation getId(String requestName, Supplier<ResourceLocation> fallback, Supplier<TData> requestFulfiller) {
         var cacheId = createCacheId(requestName);
-
         if (FAILURE_CACHE.contains(cacheId)) return fallback == null ? cacheId : fallback.get();
-
-        var texture = GameInstance.getClient().getTextureManager().getTexture(cacheId, null);
-
-        // The texture is fully loaded and isn't marked as dirty (i.e. the cache contains it)
-        if (texture != null && TEXTURE_CACHE.contains(cacheId)) return cacheId;
-
+        var texture = Minecraft.getInstance().getTextureManager().getTexture(cacheId, null);
         if (!TEXTURE_CACHE.contains(cacheId)) {
-            // The texture hasn't been stacked yet
             bakeTextureAsync(cacheId, requestFulfiller.get());
             TEXTURE_CACHE.add(cacheId);
         }
 
-        // The texture has been stacked but hasn't been loaded yet
-
-        // Don't use a fallback if none is supplied
         if (fallback == null) return cacheId;
-
-        // Return the requested fallback
         var fallbackId = fallback.get();
         return new FallbackResourceLocation(fallbackId.getNamespace(), fallbackId.getPath(), cacheId);
     }
@@ -109,13 +92,13 @@ public abstract class TextureProvider<TData> {
                 var minecraft = Minecraft.getInstance();
                 minecraft.execute(() -> RenderSystem.recordRenderCall(() -> registerTexture(cacheId, request)));
             } catch (InsecurePublicKeyException insecureTextureException) {
-                Constants.LOG.warn("Attempt to load insecure texture blocked: %s ", cacheId, insecureTextureException);
+                Constants.LOG.warn("Attempt to load insecure texture blocked: {}", cacheId, insecureTextureException);
             }
         });
     }
 
     protected void registerTexture(ResourceLocation cacheId, TData request) {
-        Constants.LOG.debug("Registering texture %s", cacheId);
+        Constants.LOG.debug("Registering texture {}", cacheId);
         Minecraft.getInstance().getTextureManager().register(cacheId, createTexture(cacheId, request, success -> pollCallbacks(cacheId, success)));
     }
 

@@ -1,10 +1,10 @@
 package mod.syconn.swm.client.screen.components.buttons;
 
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.registry.ModSounds;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.MathUtil;
 import mod.syconn.swm.utils.interfaces.IWidgetComponent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.sounds.SoundManager;
@@ -38,7 +38,7 @@ public class CallButton extends ExpandedButton implements IWidgetComponent {
 
         guiGraphics.pose().popPose();
 
-        if (isHovered) guiGraphics.renderTooltip(GameInstance.getClient().font, this.getMessage(), mouseX, mouseY);
+        if (isHovered) guiGraphics.renderTooltip(Minecraft.getInstance().font, this.getMessage(), mouseX, mouseY);
     }
 
     @Override

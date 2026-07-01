@@ -1,11 +1,11 @@
 package mod.syconn.swm.server.containers.slot;
 
 import com.mojang.datafixers.util.Pair;
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -28,7 +28,7 @@ public class EquipmentItemSlot extends Slot {
 
     public void setChanged() {
         super.setChanged();
-        if (player.level().isClientSide && GameInstance.getClient().screen instanceof CreativeModeInventoryScreen) Network.CHANNEL.sendToServer(new SetEquipmentSlotPacket(player.getUUID(), this.getItem(), this.slot));
+        if (player.level().isClientSide && Minecraft.getInstance().screen instanceof CreativeModeInventoryScreen) Network.CHANNEL.sendToServer(new SetEquipmentSlotPacket(player.getUUID(), this.getItem(), this.slot));
     }
 
     @Override

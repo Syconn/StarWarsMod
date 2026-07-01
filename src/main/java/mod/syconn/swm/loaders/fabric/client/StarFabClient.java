@@ -4,6 +4,7 @@ package mod.syconn.swm.loaders.fabric.client;
 import mod.syconn.swm.api.registry.client.ParticleProviderRegister;
 import mod.syconn.swm.api.registry.client.ScreenRegister;
 import mod.syconn.swm.client.StarWarsClient;
+import mod.syconn.swm.client.render.entity.layers.SWGearLayer;
 import mod.syconn.swm.loaders.fabric.events.ClientPlayerEvent;
 import mod.syconn.swm.loaders.fabric.events.PlayerEvents;
 import mod.syconn.swm.utils.Constants;
@@ -14,11 +15,13 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.chat.Component;
@@ -52,6 +55,9 @@ public class StarFabClient implements ClientModInitializer {
 
         PlayerEvents.PLAYER_TICK.register(StarWarsClient::onClientTick);
         ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(Constants.TRACKER::clientPlayerJoined);
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register(((entityType, livingEntityRenderer, registrationHelper, context) -> {
+            if(livingEntityRenderer instanceof PlayerRenderer renderer) registrationHelper.register(new SWGearLayer<>(renderer, context.getItemRenderer()));
+        }));
     }
 }
 //? }

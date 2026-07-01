@@ -126,8 +126,8 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
 
     private static RenderType getMuzzleFlashLayer(ResourceLocation texture) {
         return RenderType.create("swm:muzzle_flash2", DefaultVertexFormat.POSITION_COLOR_TEX, VertexFormat.Mode.QUADS, 256, false, true,
-                RenderType.CompositeState.builder().setShaderState(RenderStateShard.POSITION_COLOR_TEX_SHADER).setTextureState(new RenderStateShard.TextureStateShard(texture, false, false))
-                        .setCullState(new RenderStateShard.CullStateShard(false)).setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY).setLayeringState(RenderStateShard.VIEW_OFFSET_Z_LAYERING).createCompositeState(true));
+                RenderType.CompositeState.builder().setShaderState(RenderStateShard.POSITION_COLOR_TEX_SHADER).setTextureState(RenderStateShard.BLOCK_SHEET)
+                        .setCullState(RenderStateShard.NO_CULL).setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY).setLayeringState(RenderStateShard.VIEW_OFFSET_Z_LAYERING).createCompositeState(true));
     }
 
     public void modifyPose(LivingEntity entity, InteractionHand hand, ItemStack stack, HumanoidModel<? extends LivingEntity> model, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float tickDelta) {
@@ -259,7 +259,6 @@ public class BlasterItemRenderer implements IModifiedItemRenderer, IModifiedPose
     private void poseDual(LivingEntity entity, BlasterTag bt, boolean patrol, HumanoidModel<? extends LivingEntity> model, float limbAngle, float limbDistance, float animationProgress) {
         var breatheBounceLeft = Mth.sin(animationProgress / 15f + entity.getId()) * 0.01f;
         var breatheBounceRight = Mth.cos(animationProgress / 15f - entity.getId()) * 0.01f;
-
         var lerp = Mth.clamp(AnimationUtil.outCubic((float)Math.pow(limbDistance / 0.8, 2)), 0, 1);
         var limbBounce = limbDistance * Mth.sin(limbAngle / 2f) * 0.1f;
 

@@ -1,8 +1,6 @@
 package mod.syconn.swm.client;
 
-import com.mojang.datafixers.types.templates.Const;
 import mod.syconn.swm.api.registry.client.*;
-import mod.syconn.swm.client.render.item.HoloProjectorItemRenderer;
 import mod.syconn.swm.client.screen.hud.SWGearHud;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
 import mod.syconn.swm.features.blaster.client.entity.BlasterBoltRenderer;
@@ -16,7 +14,6 @@ import mod.syconn.swm.features.lightsaber.client.item.LightsaberItemRender;
 import mod.syconn.swm.features.lightsaber.client.screen.LightsaberAssemblerScreen;
 import mod.syconn.swm.features.lightsaber.client.screen.LightsaberWorkbenchScreen;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
-import mod.syconn.swm.item.HoloProjectorItem;
 import mod.syconn.swm.mixin.client.MinecraftAccessor;
 import mod.syconn.swm.registry.ModBlockEntities;
 import mod.syconn.swm.registry.ModEntities;
@@ -37,11 +34,9 @@ public class StarWarsClient {
 
     public static void init() {
         IModifiedItemRenderer.register(LightsaberItem.class, new LightsaberItemRender());
-        IModifiedItemRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
         IModifiedItemRenderer.register(BlasterItem.class, new BlasterItemRenderer());
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
-        IModifiedPoseRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
         IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
     }
 

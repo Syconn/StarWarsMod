@@ -16,10 +16,10 @@ import net.minecraft.util.Mth;
 public class PlasmaRenderer {
 
     public static final RenderType PLASMA = RenderType.create(Constants.MOD + ":plasma", DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.QUADS, 256, false, true,
-            RenderType.CompositeState.builder().setLayeringState(RenderStateShard.LayeringStateShard.VIEW_OFFSET_Z_LAYERING).setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+            RenderType.CompositeState.builder().setLayeringState(RenderStateShard.VIEW_OFFSET_Z_LAYERING).setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
             .setShaderState(RenderStateShard.RENDERTYPE_LIGHTNING_SHADER).createCompositeState(true));
     private static final RenderType PLASMA_ADDITIVE = RenderType.create(Constants.MOD + "energy_add", DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.QUADS, 256, false, true,
-            RenderType.CompositeState.builder().setLayeringState(RenderStateShard.LayeringStateShard.VIEW_OFFSET_Z_LAYERING).setTransparencyState(RenderStateShard.LIGHTNING_TRANSPARENCY)
+            RenderType.CompositeState.builder().setLayeringState(RenderStateShard.VIEW_OFFSET_Z_LAYERING).setTransparencyState(RenderStateShard.LIGHTNING_TRANSPARENCY)
             .setShaderState(RenderStateShard.RENDERTYPE_LIGHTNING_SHADER).createCompositeState(true));
 
     public static void renderPlasma(PoseStack poseStack, MultiBufferSource bufferSource, int light, int overlay, boolean unstable, float length, float lengthScalar, float radius, boolean cap, int glowHsv, boolean bolt) {
