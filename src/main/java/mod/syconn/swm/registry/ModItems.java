@@ -25,9 +25,10 @@ public class ModItems {
     public static final RegistryEntry<Item> SCREEN = RegistryEntry.item("screen", new Item.Properties().stacksTo(1));
 
     public static final RegistryEntry<CreativeModeTab> TAB = RegistryEntry.creativeModeTab("star_wars", b -> b.title(Component.translatable("itemGroup." + MOD + ".starwars")).icon(() -> new ItemStack(LIGHTSABER.get()))
-            .displayItems(Registrar::addCreative));
+            .displayItems((params, output) -> addExtras(output)));
 
     public static void addExtras(CreativeModeTab.Output pOutput) {
+        pOutput.acceptAll(Registrar.getItems());
         pOutput.acceptAll(LightsaberContent.getLightsabers(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
         pOutput.acceptAll(BlasterContent.getBlasters(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
     }

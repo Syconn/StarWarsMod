@@ -10,6 +10,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -134,6 +135,10 @@ public class RegistryEntry<T> {
 
     public static <T extends BlockEntity> RegistryEntry<BlockEntityType<T>> blockEntities(String id, BiFunction<BlockPos, BlockState, T> blockEntityFactory, Supplier<Block[]> validBlock) {
         return new RegistryEntry<>(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.withId(id), () -> Registration.createBlockEntityType(blockEntityFactory, validBlock));
+    }
+
+    public static <T extends EntityType<?>> RegistryEntry<T> entityType(String id, Supplier<T> supplier) {
+        return new RegistryEntry<>(BuiltInRegistries.ENTITY_TYPE, Constants.withId(id), supplier);
     }
 
     public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuType(ResourceLocation id, BiFunction<Integer, Inventory, T> function) {

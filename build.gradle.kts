@@ -31,6 +31,8 @@ dependencies {
     modstitch.moddevgradle {
 
     }
+
+    modstitchModImplementation("me.fzzyhmstrs:fzzy_config:${property("deps.fuzzy")}")
 }
 
 modstitch {

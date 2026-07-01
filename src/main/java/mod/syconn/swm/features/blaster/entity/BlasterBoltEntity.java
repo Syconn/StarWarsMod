@@ -7,7 +7,7 @@ import mod.syconn.swm.features.blaster.BlasterUtil;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.clientside.ScorchBlockPacket;
-import mod.syconn.swm.utils.Config;
+import mod.syconn.swm.utils.StarWarsConfig;
 import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.generic.MathUtil;
 import mod.syconn.swm.utils.interfaces.IPrecisionVelocityEntity;
@@ -341,11 +341,11 @@ public class BlasterBoltEntity extends ThrowableProjectile implements IPrecision
 
     protected void damage(Entity target) {
         if (damageFunction == null || !getTargetedEntityClass().isAssignableFrom(target.getClass())) return;
-        target.hurt(ModDamageSources.blaster(level(), this, this.getOwner()), (float)(double)damageFunction.apply((double)getOdometer()) + Config.SERVER.baseBlasterDamage);
+        target.hurt(ModDamageSources.blaster(level(), this, this.getOwner()), (float)(double)damageFunction.apply((double)getOdometer()) + StarWarsConfig.SERVER.baseBlasterDamage);
     }
 
     private static Class<? extends Entity> getTargetedEntityClass() {
-        if (Config.SERVER.allowBlasterNonlivingDamage) return Entity.class;
+        if (StarWarsConfig.SERVER.allowBlasterNonlivingDamage) return Entity.class;
         return LivingEntity.class;
     }
 

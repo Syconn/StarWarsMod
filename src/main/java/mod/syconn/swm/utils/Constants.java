@@ -1,5 +1,7 @@
 package mod.syconn.swm.utils;
 
+import me.fzzyhmstrs.fzzy_config.api.ConfigApi;
+import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -14,6 +16,7 @@ public class Constants {
     public static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();
     public static final SimplexNoise SIMPLEX = new SimplexNoise(RANDOM);
     public static final UpdateTracker TRACKER = new UpdateTracker();
+    public static final StarWarsConfig CONFIG = ConfigApi.registerAndLoadConfig(StarWarsConfig::new, RegisterType.BOTH);
 
     public static ResourceLocation withId(String path) {
         //? if >=1.21.1

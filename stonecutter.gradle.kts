@@ -16,9 +16,8 @@ allprojects {
         maven("https://maven.fabricmc.net/")
         maven("https://maven.kosmx.dev/")
         maven("https://maven.blamejared.com/")
+        maven("https://maven.fzzyhmstrs.me/")
+        maven("https://maven.terraformersmc.com/")
+        maven("https://thedarkcolour.github.io/KotlinForForge/")
     }
-}
-
-repositories {
-
 }

@@ -1,6 +1,7 @@
 package mod.syconn.swm.api.registry;
 
 //? if fabric {
+import mod.syconn.swm.registry.ModItems;
 import org.reflections.Reflections;
 //? }
 
@@ -92,10 +93,6 @@ public class Registrar {
             int index = REGISTRATION_PRIORITY.indexOf(entry.getRegistry().location());
             return index != -1 ? index : 1000;
         })).collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    public static void addCreative(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output pOutput) {
-        pOutput.acceptAll(Registrar.getItems());
     }
 
     public static Set<ItemStack> getItems() {

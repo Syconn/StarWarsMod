@@ -6,7 +6,7 @@ import mod.syconn.swm.features.addons.BlasterContent;
 import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.server.savedata.HologramNetwork;
-import mod.syconn.swm.utils.Config;
+import mod.syconn.swm.utils.StarWarsConfig;
 import mod.syconn.swm.utils.config.ConfigManager;
 import mod.syconn.swm.utils.server.SyncedResourceManager;
 import net.minecraft.server.MinecraftServer;
@@ -15,7 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 public class StarWarsServer {
 
     public static void init() {
-        ConfigManager.registerAndLoad(Config.class);
+        ConfigManager.registerAndLoad(StarWarsConfig.class);
 
         SyncedResourceManager.register(LightsaberContent.LIGHTSABER_DATA);
         SyncedResourceManager.register(BlasterContent.BLASTER_DATA);
