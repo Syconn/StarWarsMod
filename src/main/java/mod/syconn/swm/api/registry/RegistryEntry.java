@@ -167,4 +167,8 @@ public class RegistryEntry<T> {
     public static <T extends SoundEvent> RegistryEntry<T> soundEvent(String id, Function<ResourceLocation, Supplier<T>> soundEventFactory) {
         return new RegistryEntry<>(BuiltInRegistries.SOUND_EVENT, Constants.withId(id), soundEventFactory.apply(Constants.withId(id)));
     }
+
+    public static <T extends SoundEvent> RegistryEntry<SoundEvent> soundEvent(String id) {
+        return new RegistryEntry<>(BuiltInRegistries.SOUND_EVENT, Constants.withId(id), () -> SoundEvent.createVariableRangeEvent(Constants.withId(id)));
+    }
 }

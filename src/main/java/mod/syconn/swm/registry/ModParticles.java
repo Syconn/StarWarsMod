@@ -1,8 +1,10 @@
 package mod.syconn.swm.registry;
 
+import mod.syconn.swm.api.registry.AutoRegister;
 import mod.syconn.swm.api.registry.RegistryEntry;
 import mod.syconn.swm.utils.client.ExpandedParticleType;
 
+@AutoRegister
 public class ModParticles {
 
     public static final RegistryEntry<ExpandedParticleType> SLUG_TRAIL = RegistryEntry.particleType("slug_trail", () -> new ExpandedParticleType(true));

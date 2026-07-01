@@ -1,5 +1,6 @@
 package mod.syconn.swm.registry;
 
+import mod.syconn.swm.api.registry.AutoRegister;
 import mod.syconn.swm.api.registry.RegistryEntry;
 import mod.syconn.swm.features.blaster.entity.BlasterBoltEntity;
 import mod.syconn.swm.features.blaster.entity.BlasterIonBoltEntity;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.projectile.Projectile;
 
+@AutoRegister
 public class ModEntities {
 
     public static final RegistryEntry<EntityType<ThrownLightsaberEntity>> THROWN_LIGHTSABER = registerProjectile("throw_lightsaber", ThrownLightsaberEntity::new);
