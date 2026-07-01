@@ -10,7 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 
-public class FabricEntrypoint implements ModInitializer {
+public class StarFab implements ModInitializer {
 
     @Override
     public void onInitialize() {

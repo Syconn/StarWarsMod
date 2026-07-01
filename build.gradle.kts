@@ -21,7 +21,7 @@ dependencies {
             modstitchModImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${property("deps.animation")}")
         }
 
-        modstitchCompileOnlyApi("mezz.jei:jei-${property("deps.minecraft")}-fabric-api:${property("deps.jei")}")
+        modstitchModCompileOnlyApi("mezz.jei:jei-${property("deps.minecraft")}-fabric-api:${property("deps.jei")}")
         modstitchRuntimeOnly("mezz.jei:jei-${property("deps.minecraft")}-fabric:${property("deps.jei")}")
 
         modstitchImplementation("org.reflections:reflections:0.10.2")
@@ -109,6 +109,8 @@ modstitch {
     mixin {
         addMixinsToModManifest = true
         configs.register("swm")
+
+        if (isLoom) configs.register("swm-fabic")
 
         // Most of the time you wont ever need loader specific mixins.
         // If you do, simply make the mixin file and add it like so for the respective loader:

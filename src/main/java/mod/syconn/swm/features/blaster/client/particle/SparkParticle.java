@@ -66,10 +66,10 @@ public class SparkParticle extends CrossPointingParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public static class Factory implements ParticleProvider<ExpandedParticleType> {
+	public static class Provider implements ParticleProvider<ExpandedParticleType> {
 		private final SpriteSet spriteProvider;
 
-		public Factory(SpriteSet spriteProvider)
+		public Provider(SpriteSet spriteProvider)
 		{
 			this.spriteProvider = spriteProvider;
 		}

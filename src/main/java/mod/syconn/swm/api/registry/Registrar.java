@@ -1,7 +1,6 @@
 package mod.syconn.swm.api.registry;
 
 //? if fabric {
-import mod.syconn.swm.registry.ModItems;
 import org.reflections.Reflections;
 //? }
 
@@ -22,7 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.stream.Collectors;
-import net.minecraft.world.item.CreativeModeTab;
+
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 

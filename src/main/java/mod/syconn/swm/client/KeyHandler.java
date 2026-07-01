@@ -1,12 +1,12 @@
 package mod.syconn.swm.client;
 
-import dev.architectury.utils.GameInstance;
 import mod.syconn.swm.registry.ModKeys;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.network.Network;
 import mod.syconn.swm.network.packets.ToggleEquipmentSlotPacket;
+import mod.syconn.swm.server.containers.SWGear;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionHand;
@@ -31,12 +31,12 @@ public class KeyHandler {
         }
 
         while (ModKeys.QUICK_SWAP_LIGHTSABER.consumeClick()) {
-            if (GameInstance.getClient().screen == null) {
-                final var slot = findOpenHotbarSlot(player);
-                final var equipment = IEquipmentItem.SWEquipmentSlot.LIGHTSABER;
-                final var gear = player.swm$getSWGear();
+            final var slot = findOpenHotbarSlot(player);
+            final var equipment = IEquipmentItem.SWEquipmentSlot.LIGHTSABER;
+            if (player instanceof SWGear.SWGearAccess gear) {
                 Network.CHANNEL.sendToServer(new ToggleEquipmentSlotPacket(slot, player.getInventory().selected, equipment));
-                if (!gear.getItemFromSlot(equipment).isEmpty() && player.getInventory().getItem(player.getInventory().selected).isEmpty() && slot != -1) player.getInventory().selected = slot;
+                if (!gear.swm$getSWGear().getItemFromSlot(equipment).isEmpty() && player.getInventory().getItem(player.getInventory().selected).isEmpty() && slot != -1)
+                    player.getInventory().selected = slot;
             }
         }
     }

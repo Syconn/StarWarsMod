@@ -1,6 +1,7 @@
-package mod.syconn.swm.utils.client;
+package mod.syconn.swm.api.util;
 
 import me.fzzyhmstrs.fzzy_config.screen.context.FzzyKeybind;
+import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedKeybind;
 import net.minecraft.client.Minecraft;
 
 public class ConfigKeybind {
@@ -18,6 +19,10 @@ public class ConfigKeybind {
 
     public ConfigKeybind(FzzyKeybind parent) {
         this(parent, 10);
+    }
+
+    public ConfigKeybind(ValidatedKeybind parent) {
+        this(parent.get(), 10);
     }
 
     public void tick() {

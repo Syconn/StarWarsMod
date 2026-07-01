@@ -1,6 +1,5 @@
 package mod.syconn.swm.compat.jei.category;
 
-import dev.architectury.utils.GameInstance;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -17,6 +16,7 @@ import mod.syconn.swm.server.recipes.LightsaberRecipe;
 import mod.syconn.swm.utils.Constants;
 import mod.syconn.swm.utils.generic.GraphicsUtil;
 import mod.syconn.swm.utils.generic.StringUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -85,10 +85,10 @@ public class LightsaberAssemblerCategory implements IRecipeCategory<LightsaberRe
         this.window.draw(guiGraphics, 0, 0);
         this.inventory.draw(guiGraphics, 0, this.window.getHeight() + 2 + 11 + 2);
 
-        guiGraphics.drawString(GameInstance.getClient().font, I18n.get(MATERIALS_KEY), 0, 78, 0x7E7E7E);
+        guiGraphics.drawString(Minecraft.getInstance().font, I18n.get(MATERIALS_KEY), 0, 78, 0x7E7E7E);
         var lT = LightsaberTag.getOrCreate(recipe.item());
         var titleX = this.window.getWidth() / 2;
-        guiGraphics.drawCenteredString(GameInstance.getClient().font, StringUtil.makeLightsaberName(recipe.id().getPath()) + "'s Lightsaber", titleX, 5, 0xFFFFFFFF);
+        guiGraphics.drawCenteredString(Minecraft.getInstance().font, StringUtil.makeLightsaberName(recipe.id().getPath()) + "'s Lightsaber", titleX, 5, 0xFFFFFFFF);
         GraphicsUtil.renderLightsaberFromCenter(guiGraphics, lT.getTemporary(false, true), titleX - 18, 35, -45f);
     }
 }

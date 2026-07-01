@@ -23,7 +23,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import org.apache.commons.lang3.function.TriFunction;
@@ -141,12 +140,12 @@ public class RegistryEntry<T> {
         return new RegistryEntry<>(BuiltInRegistries.ENTITY_TYPE, Constants.withId(id), supplier);
     }
 
-    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuType(ResourceLocation id, BiFunction<Integer, Inventory, T> function) {
-        return new RegistryEntry<>(BuiltInRegistries.MENU, id, () -> Registration.createMenuType(function));
+    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuType(String id, BiFunction<Integer, Inventory, T> function) {
+        return new RegistryEntry<>(BuiltInRegistries.MENU, Constants.withId(id), () -> Registration.createMenuType(function));
     }
 
-    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuTypeWithData(ResourceLocation id, TriFunction<Integer, Inventory, FriendlyByteBuf, T> function) {
-        return new RegistryEntry<>(BuiltInRegistries.MENU, id, () -> Registration.createMenuTypeWithData(function));
+    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuTypeWithData(String id, TriFunction<Integer, Inventory, FriendlyByteBuf, T> function) {
+        return new RegistryEntry<>(BuiltInRegistries.MENU, Constants.withId(id), () -> Registration.createMenuTypeWithData(function));
     }
 
     public static <T extends ParticleType<?>> RegistryEntry<T> particleType(String id, Supplier<T> particleTypeFactory) {
