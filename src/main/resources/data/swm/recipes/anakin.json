@@ -1,0 +1,21 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 24,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 22,
+      "item": "minecraft:coal"
+    },
+    {
+      "count": 12,
+      "item": "minecraft:redstone"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"plasma\",color:10082431,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:0.003909999970346689d,y:0.07030999660491943d,z:-4.6999999904073775E-4d},radius:1.0d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/anakin\",uuid:[I;1499133763,-1097972821,-2020406925,-1154796700],version:2}}"
+  }
+}

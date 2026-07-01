@@ -1,0 +1,21 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 52,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 38,
+      "item": "minecraft:coal"
+    },
+    {
+      "count": 12,
+      "item": "minecraft:redstone_block"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:0.65f,bladeType:\"plasma\",color:55423,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:-7.800000021234155E-4d,y:0.10625000298023224d,z:-0.003590000094845891d},radius:0.6499999761581421d,stable:1b,transition:0b},1:{active:0b,bladeLengthScalar:0.65f,bladeType:\"plasma\",color:55423,emitterPos:{qw:0.0f,qx:0.0f,qy:0.0f,qz:1.0f,x:-7.800000021234155E-4d,y:-0.4984399974346161d,z:-0.003590000094845891d},radius:0.6499999761581421d,stable:1b,transition:0b},len:2},model:\"swm:lightsaber/maul\",uuid:[I;1854181690,-1104917774,-1587475033,-4308684],version:2}}"
+  }
+}

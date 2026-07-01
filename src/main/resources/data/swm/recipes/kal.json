@@ -1,0 +1,21 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 28,
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "count": 18,
+      "item": "minecraft:redstone"
+    },
+    {
+      "count": 42,
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.6f,bladeType:\"plasma\",color:10082431,emitterPos:{qw:1.0f,qx:0.0f,qy:0.0f,qz:0.0f,x:7.800000021234155E-4d,y:0.30469000339508057d,z:-4.6999999904073775E-4d},radius:0.949999988079071d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/kal\",uuid:[I;1306020663,-1242021648,-1152755202,223609621],version:3}}"
+  }
+}

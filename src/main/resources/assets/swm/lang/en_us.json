@@ -1,4 +1,15 @@
 {
-  "item.swm.magic_stick": "Magic Stick",
-  "itemGroup.swm.starwars": "Syconn's Star Wars"
+  "block.swm.holo_projector": "Holographic Communicator",
+  "block.swm.lightsaber_workbench": "Lightsaber Workbench",
+  "item.swm.drill": "Drill",
+  "item.swm.driver": "Screw Driver",
+  "item.swm.lightsaber": "Lightsaber",
+  "item.swm.monitor": "Monitor",
+  "item.swm.screen": "Screen",
+  "itemGroup.swm.star_wars": "Syconn's Star Wars",
+  "key.categories.swm": "Star Wars Controls",
+  "key.swm.throw_lightsaber": "Throw Lightsaber",
+  "key.swm.quick_swap_lightsaber": "Quick Swap Lightsaber",
+  "key.swm.toggle_primary_blade": "Toggle Primary Lightsaber Blade",
+  "key.swm.toggle_blade": "Toggle Lightsaber"
 }

@@ -1,0 +1,25 @@
+{
+  "type": "swm:lightsaber",
+  "materials": [
+    {
+      "count": 14,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "count": 42,
+      "item": "minecraft:coal"
+    },
+    {
+      "count": 18,
+      "item": "minecraft:redstone"
+    },
+    {
+      "count": 2,
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "result": {
+    "item": "swm:lightsaber",
+    "nbt": "{lightsaber:{blades:{0:{active:0b,bladeLengthScalar:1.0f,bladeType:\"dark_saber\",color:216,emitterPos:{qw:0.0f,qx:0.0f,qy:-1.0f,qz:0.0f,x:0.0d,y:0.625d,z:0.0d},radius:1.0d,stable:1b,transition:0b},len:1},model:\"swm:lightsaber/dark_saber\",uuid:[I;549206264,-1126547011,-1761693155,1431687252],version:2}}"
+  }
+}

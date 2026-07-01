@@ -21,8 +21,7 @@
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",
     "client.MinecraftAccessor",
-    "client.TitleScreenMixin",
-    "mixin.TitleScreenMixin"
+    "client.TitleScreenMixin"
   ],
   "mixins": [
     "AbstractArrowMixin",

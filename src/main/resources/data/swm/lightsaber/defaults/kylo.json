@@ -1,0 +1,60 @@
+{
+  "blades": {
+    "0": {
+      "active": false,
+      "bladeLengthScalar": 1.0,
+      "bladeType": "plasma",
+      "color": 55423,
+      "emitterPos": {
+        "qw": 1.0,
+        "qx": 0.0,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 0.0023399998899549246,
+        "y": 0.007809999864548445,
+        "z": -0.00203000009059906
+      },
+      "radius": 1.0,
+      "stable": false,
+      "transition": 0
+    },
+    "1": {
+      "active": false,
+      "bladeLengthScalar": 0.15,
+      "bladeType": "plasma",
+      "color": 55423,
+      "emitterPos": {
+        "qw": 0.70710677,
+        "qx": -0.70710677,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 0.004689999856054783,
+        "y": -0.08437000215053558,
+        "z": -0.13124999403953552
+      },
+      "radius": 1.0,
+      "stable": false,
+      "transition": 0
+    },
+    "2": {
+      "active": false,
+      "bladeLengthScalar": 0.15,
+      "bladeType": "plasma",
+      "color": 55423,
+      "emitterPos": {
+        "qw": 0.70710677,
+        "qx": 0.70710677,
+        "qy": 0.0,
+        "qz": 0.0,
+        "x": 0.004689999856054783,
+        "y": -0.08437000215053558,
+        "z": 0.13437999784946442
+      },
+      "radius": 1.0,
+      "stable": false,
+      "transition": 0
+    }
+  },
+  "model": "swm:kylo",
+  "version": 4
+}
