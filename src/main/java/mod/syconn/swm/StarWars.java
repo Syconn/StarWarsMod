@@ -1,7 +1,11 @@
 package mod.syconn.swm;
 
 import mod.syconn.swm.api.registry.Registrar;
+import mod.syconn.swm.api.registry.server.ReloadRegistry;
+import mod.syconn.swm.features.addons.BlasterContent;
+import mod.syconn.swm.features.addons.LightsaberContent;
 import mod.syconn.swm.network.Network;
+import net.minecraft.server.packs.PackType;
 
 public class StarWars {
 
@@ -9,9 +13,11 @@ public class StarWars {
         Registrar.loadRegistries();
         Network.init();
 
-//        ReloadListenerRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA, Constants.withId("lightsaber_data")); TODO RELOADREGISTRY
-//        ReloadListenerRegistry.register(PackType.SERVER_DATA, BlasterContent.BLASTER_DATA, Constants.withId("blaster_data"));
+        ReloadRegistry.register(PackType.SERVER_DATA, LightsaberContent.LIGHTSABER_DATA, "lightsaber_data");
+        ReloadRegistry.register(PackType.SERVER_DATA, BlasterContent.BLASTER_DATA, "blaster_data");
+    }
 
-//        LifecycleEvent.SETUP.register(StarWarsServer::init);
+    public static void registerReloads(ReloadRegistry registry) {
+
     }
 }

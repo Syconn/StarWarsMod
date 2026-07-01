@@ -4,6 +4,9 @@ package mod.syconn.swm.loaders.fabric.client;
 import mod.syconn.swm.api.registry.client.ParticleProviderRegister;
 import mod.syconn.swm.api.registry.client.ScreenRegister;
 import mod.syconn.swm.client.StarWarsClient;
+import mod.syconn.swm.loaders.fabric.events.ClientPlayerEvent;
+import mod.syconn.swm.loaders.fabric.events.PlayerEvents;
+import mod.syconn.swm.utils.Constants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -20,6 +23,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import org.apache.commons.lang3.function.TriFunction;
@@ -45,6 +49,9 @@ public class StarFabClient implements ClientModInitializer {
                 ParticleFactoryRegistry.getInstance().register(type, provider::apply);
             }
         });
+
+        PlayerEvents.PLAYER_TICK.register(StarWarsClient::onClientTick);
+        ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(Constants.TRACKER::clientPlayerJoined);
     }
 }
 //? }

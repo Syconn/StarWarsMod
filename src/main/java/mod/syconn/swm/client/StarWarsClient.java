@@ -29,6 +29,7 @@ import mod.syconn.swm.utils.interfaces.IModifiedPoseRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 
 public class StarWarsClient {
 
@@ -42,10 +43,6 @@ public class StarWarsClient {
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
         IModifiedPoseRenderer.register(HoloProjectorItem.class, new HoloProjectorItemRenderer());
         IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
-
-//        ClientGuiEvent.RENDER_HUD.register(ClientHooks::renderHUD);
-//        ClientPlayerEvent.CLIENT_PLAYER_JOIN.register(Constants.TRACKER::clientPlayerJoined);
-//        SOME_TICK_EVENT
     }
 
     public static void registerScreens(ScreenRegister register) {
@@ -84,8 +81,8 @@ public class StarWarsClient {
         register.apply(Constants.withId("sw_gear"), new SWGearHud());
     }
 
-    public static void onClientTick(LocalPlayer player) {
-        KeyHandler.handleKeyMappings(player);
+    public static void onClientTick(Player player) {
+        if (player instanceof LocalPlayer lp) KeyHandler.handleKeyMappings(lp);
     }
 
     public static float getTickDelta() {

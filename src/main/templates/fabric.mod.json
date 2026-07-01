@@ -11,6 +11,9 @@
     ],
     "client": [
       "mod.syconn.swm.loaders.fabric.client.StarFabClient"
+    ],
+    "server": [
+      "mod.syconn.swm.loaders.fabric.server.StarFabServer"
     ]
   }
 }

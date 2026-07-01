@@ -13,10 +13,6 @@ public class StarWarsServer {
     public static void init() {
         SyncedResourceManager.register(LightsaberContent.LIGHTSABER_DATA);
         SyncedResourceManager.register(BlasterContent.BLASTER_DATA);
-
-        PlayerEvent.PLAYER_JOIN.register(StarWarsServer::playerJoinedServer);
-        PlayerEvent.PLAYER_QUIT.register(StarWarsServer::playerLeaveServer);
-        TickEvent.SERVER_PRE.register(StarWarsServer::serverTick);
     }
 
     public static void playerJoinedServer(ServerPlayer player) {

@@ -5,16 +5,11 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "EntityMixin",
     "FabricPlayerMixin",
-    "LivingEntityMixin",
-    "PlayerListMixin",
-    "ServerLevelMixin"
+    "PlayerListMixin"
   ],
   "client": [
-    "client.AbstractContainerScreenMixin",
-    "client.LevelRenderMixin",
-    "client.ClientLevelMixin"
+    "client.MixinClientPacketListener"
   ],
   "server": [],
   "injectors": {
