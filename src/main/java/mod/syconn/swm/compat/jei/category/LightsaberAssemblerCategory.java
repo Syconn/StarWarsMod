@@ -1,4 +1,4 @@
-package mod.syconn.swm.jei.category;
+package mod.syconn.swm.compat.jei.category;
 
 import dev.architectury.utils.GameInstance;
 import mezz.jei.api.constants.VanillaTypes;

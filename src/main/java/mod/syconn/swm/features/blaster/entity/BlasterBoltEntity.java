@@ -1,7 +1,5 @@
 package mod.syconn.swm.features.blaster.entity;
 
-import dev.architectury.extensions.network.EntitySpawnExtension;
-import dev.architectury.networking.NetworkManager;
 import mod.syconn.swm.registry.ModDamageSources;
 import mod.syconn.swm.registry.ModParticles;
 import mod.syconn.swm.registry.ModTags;

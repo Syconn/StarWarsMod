@@ -1,6 +1,6 @@
 package mod.syconn.swm.mixin;
 
-import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.registry.ModItems;
 import mod.syconn.swm.registry.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
@@ -42,7 +42,8 @@ public abstract class PlayerMixin extends LivingEntity implements SWGear.SWGearA
 
     @Override
     public SWGear swm$getSWGear() {
-        return this.inventory.swm$getSWGear();
+        if (inventory instanceof SWGear.SWGearAccess access) return access.swm$getSWGear();
+        return null;
     }
 
     @Inject(at = @At("TAIL"), method = "addAdditionalSaveData")

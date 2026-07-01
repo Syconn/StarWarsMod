@@ -1,4 +1,4 @@
-package mod.syconn.swm.blockentity;
+package mod.syconn.swm.api.blockentity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

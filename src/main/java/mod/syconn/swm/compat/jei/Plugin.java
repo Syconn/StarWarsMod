@@ -1,4 +1,4 @@
-package mod.syconn.swm.jei;
+package mod.syconn.swm.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -7,11 +7,11 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
+import mod.syconn.swm.compat.jei.category.LightsaberAssemblerCategory;
 import mod.syconn.swm.registry.ModBlocks;
-import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.registry.ModItems;
 import mod.syconn.swm.registry.ModRecipes;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
-import mod.syconn.swm.integration.jei.category.LightsaberAssemblerCategory;
 import mod.syconn.swm.utils.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;

@@ -1,4 +1,4 @@
-package mod.syconn.swm.api.services;
+package mod.syconn.swm.api.util;
 
 public enum Env {
     CLIENT,

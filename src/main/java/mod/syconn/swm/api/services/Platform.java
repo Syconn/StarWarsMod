@@ -1,6 +1,8 @@
 package mod.syconn.swm.api.services;
 
 //? fabric {
+import mod.syconn.swm.api.util.Env;
+import mod.syconn.swm.api.util.Mod;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;

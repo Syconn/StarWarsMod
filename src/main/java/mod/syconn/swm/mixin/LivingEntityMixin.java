@@ -1,6 +1,6 @@
 package mod.syconn.swm.mixin;
 
-import mod.syconn.swm.core.ModItems;
+import mod.syconn.swm.registry.ModItems;
 import mod.syconn.swm.registry.ModSounds;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;

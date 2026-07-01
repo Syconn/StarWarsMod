@@ -2,13 +2,32 @@ package mod.syconn.swm.api.registry;
 
 import mod.syconn.swm.api.services.Registration;
 import mod.syconn.swm.utils.Constants;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import org.apache.commons.lang3.function.TriFunction;
 
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -95,5 +114,53 @@ public class RegistryEntry<T> {
             builderConsumer.accept(builder);
             return builder.build();
         });
+    }
+
+    public static <T extends Block> RegistryEntry<T> block(String id, Supplier<T> supplier) {
+        return new BlockRegistryEntry<>(BuiltInRegistries.BLOCK, Constants.withId(id), supplier, t -> null);
+    }
+
+    public static <T extends Block, E extends BlockItem> RegistryEntry<T> blockWithItem(String id, Supplier<T> supplier) {
+        return new BlockRegistryEntry<>(BuiltInRegistries.BLOCK, Constants.withId(id), supplier, t -> new BlockItem(t, new Item.Properties()));
+    }
+
+    public static <T extends Fluid> RegistryEntry<T> fluid(String id, Supplier<T> fluidFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.FLUID, Constants.withId(id), fluidFactory);
+    }
+
+    public static <T extends BlockEntity> RegistryEntry<BlockEntityType<T>> blockEntity(String id, BiFunction<BlockPos, BlockState, T> blockEntityFactory, Supplier<Block> validBlock) {
+        return new RegistryEntry<>(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.withId(id), () -> Registration.createBlockEntityType(blockEntityFactory, () -> new Block[]{ validBlock.get() }));
+    }
+
+    public static <T extends BlockEntity> RegistryEntry<BlockEntityType<T>> blockEntities(String id, BiFunction<BlockPos, BlockState, T> blockEntityFactory, Supplier<Block[]> validBlock) {
+        return new RegistryEntry<>(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.withId(id), () -> Registration.createBlockEntityType(blockEntityFactory, validBlock));
+    }
+
+    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuType(ResourceLocation id, BiFunction<Integer, Inventory, T> function) {
+        return new RegistryEntry<>(BuiltInRegistries.MENU, id, () -> Registration.createMenuType(function));
+    }
+
+    public static <T extends AbstractContainerMenu> RegistryEntry<MenuType<T>> menuTypeWithData(ResourceLocation id, TriFunction<Integer, Inventory, FriendlyByteBuf, T> function) {
+        return new RegistryEntry<>(BuiltInRegistries.MENU, id, () -> Registration.createMenuTypeWithData(function));
+    }
+
+    public static <T extends ParticleType<?>> RegistryEntry<T> particleType(String id, Supplier<T> particleTypeFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.PARTICLE_TYPE, Constants.withId(id), particleTypeFactory);
+    }
+
+    public static <T extends Recipe<?>> RegistryEntry<RecipeType<T>> recipeType(String id) {
+        return new RegistryEntry<>(BuiltInRegistries.RECIPE_TYPE, Constants.withId(id), () -> new RecipeType<T>(id) {
+            public String toString() {
+                return id;
+            }
+        });
+    }
+
+    public static <T extends RecipeSerializer<?>> RegistryEntry<T> recipeSerializer(String id, Supplier<T> recipeSerializerFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.RECIPE_SERIALIZER, Constants.withId(id), recipeSerializerFactory);
+    }
+
+    public static <T extends SoundEvent> RegistryEntry<T> soundEvent(String id, Function<ResourceLocation, Supplier<T>> soundEventFactory) {
+        return new RegistryEntry<>(BuiltInRegistries.SOUND_EVENT, Constants.withId(id), soundEventFactory.apply(Constants.withId(id)));
     }
 }

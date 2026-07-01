@@ -1,6 +1,4 @@
-package mod.syconn.swm.api.services;
-
-import java.nio.file.Path;
+package mod.syconn.swm.api.util;
 
 public interface Mod {
 

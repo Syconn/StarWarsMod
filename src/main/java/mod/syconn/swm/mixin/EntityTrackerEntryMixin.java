@@ -26,7 +26,7 @@ public abstract class EntityTrackerEntryMixin {
         if (!(entity instanceof IPrecisionVelocityEntity)) return;
 
         if (this.entity.hurtMarked) {
-//            if (this.entity instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(sp, new PreciseEntityVelocityUpdatePacket(this.entity)); TODO Networking
+            if (this.entity instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(sp, new PreciseEntityVelocityUpdatePacket(this.entity));
             this.entity.hurtMarked = false;
         }
         ci.cancel();

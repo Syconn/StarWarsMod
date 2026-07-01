@@ -1,6 +1,6 @@
 package mod.syconn.swm.features.lightsaber.blockentity;
 
-import mod.syconn.swm.blockentity.SyncedBlockEntity;
+import mod.syconn.swm.api.blockentity.SyncedBlockEntity;
 import mod.syconn.swm.registry.ModBlockEntities;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
