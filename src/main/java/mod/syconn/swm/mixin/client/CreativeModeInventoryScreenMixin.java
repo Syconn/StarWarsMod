@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin.client;
 
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.SetEquipmentSlotPacket;
 import mod.syconn.swm.server.containers.slot.EquipmentItemSlot;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;

@@ -1,17 +1,15 @@
 package mod.syconn.swm.features.lightsaber.network;
 
-import dev.architectury.networking.NetworkManager;
-import mod.syconn.swm.registry.ModRecipes;
+import mod.syconn.swm.api.network.message.Packet;
+import mod.syconn.swm.api.network.message.PacketContext;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
+import mod.syconn.swm.registry.ModRecipes;
 import mod.syconn.swm.utils.server.StackedIngredient;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 
-import java.util.function.Supplier;
-
-public class CraftHiltPacket {
+public class CraftHiltPacket extends Packet<CraftHiltPacket> {
 
     private final BlockPos pos;
     private final ResourceLocation id;
@@ -21,39 +19,49 @@ public class CraftHiltPacket {
         this.id = id;
     }
 
-    public CraftHiltPacket(FriendlyByteBuf buf) {
-        this(buf.readBlockPos(), buf.readResourceLocation());
-    }
-
     public void encode(FriendlyByteBuf buf) {
         buf.writeBlockPos(this.pos);
         buf.writeResourceLocation(this.id);
     }
 
-    public void apply(Supplier<NetworkManager.PacketContext> context) {
-        context.get().queue(() -> {
-            if (context.get().getPlayer().level().getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity && context.get().getPlayer() instanceof ServerPlayer sp && !blockEntity.hasItem()) {
-                var recipe = ModRecipes.getRecipeFromId(ModRecipes.LIGHTSABER.get(), sp.level(), this.id);
+    @Override
+    public void encode(CraftHiltPacket message, FriendlyByteBuf buffer) {
+        buffer.writeBlockPos(message.pos);
+        buffer.writeResourceLocation(message.id);
+    }
+
+    @Override
+    public CraftHiltPacket decode(FriendlyByteBuf buffer) {
+        return new CraftHiltPacket(buffer.readBlockPos(), buffer.readResourceLocation());
+    }
+
+    @Override
+    public void handle(CraftHiltPacket message, PacketContext context) {
+        context.execute(() -> {
+            var player = context.getPlayer();
+            if (player.level().getBlockEntity(message.pos) instanceof LightsaberWorkbenchBlockEntity be && !be.hasItem()) {
+                var recipe = ModRecipes.getRecipeFromId(ModRecipes.LIGHTSABER.get(), player.level(), message.id);
 
                 if (recipe.isPresent()) {
                     for (StackedIngredient ingredient : recipe.get().ingredients()) {
                         int count = ingredient.count();
-                        for (int j = 0; j < sp.getInventory().getContainerSize(); j++) {
-                            if (ingredient.ingredient().test(sp.getInventory().getItem(j))){
-                                int num = sp.getInventory().getItem(j).getCount();
-                                if (num >= count){
-                                    sp.getInventory().removeItem(j, count);
+                        for (int j = 0; j < player.getInventory().getContainerSize(); j++) {
+                            if (ingredient.ingredient().test(player.getInventory().getItem(j))) {
+                                int num = player.getInventory().getItem(j).getCount();
+                                if (num >= count) {
+                                    player.getInventory().removeItem(j, count);
                                     count -= num;
                                 } else {
                                     count -= num;
-                                    sp.getInventory().removeItem(j, num);
+                                    player.getInventory().removeItem(j, num);
                                 }
                             }
                         }
                     }
-                    blockEntity.getContainer().setItem(0, recipe.get().item().copy());
+                    be.getContainer().setItem(0, recipe.get().item().copy());
                 }
             }
         });
+        context.setHandled(true);
     }
 }

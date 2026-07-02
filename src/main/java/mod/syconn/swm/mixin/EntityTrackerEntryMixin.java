@@ -1,7 +1,7 @@
 package mod.syconn.swm.mixin;
 
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.clientside.PreciseEntityVelocityUpdatePacket;
+import mod.syconn.swm.network.packets.PreciseEntityVelocityUpdatePacket;
 import mod.syconn.swm.utils.interfaces.IPrecisionVelocityEntity;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerEntity;
@@ -26,12 +26,9 @@ public abstract class EntityTrackerEntryMixin {
         if (!(entity instanceof IPrecisionVelocityEntity)) return;
 
         if (this.entity.hurtMarked) {
-            if (this.entity instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(sp, new PreciseEntityVelocityUpdatePacket(this.entity));
+            if (this.entity instanceof ServerPlayer sp) Network.CHANNEL.sendToPlayer(() -> sp, new PreciseEntityVelocityUpdatePacket(this.entity));
             this.entity.hurtMarked = false;
         }
         ci.cancel();
     }
-
-    @Shadow
-    protected abstract void broadcastAndSend(Packet<?> packet);
 }

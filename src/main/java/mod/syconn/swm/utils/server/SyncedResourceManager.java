@@ -1,7 +1,7 @@
 package mod.syconn.swm.utils.server;
 
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.clientside.SyncResourceDataPacket;
+import mod.syconn.swm.network.packets.SyncResourceDataPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,7 +18,7 @@ public class SyncedResourceManager {
     }
 
     public static void handleJoin(ServerPlayer player) {
-        SYNCED_DATA.forEach((id, data) -> Network.CHANNEL.sendToPlayer(player, new SyncResourceDataPacket(id, data.writeData())));
+        SYNCED_DATA.forEach((id, data) -> Network.CHANNEL.sendToPlayer(() -> player, new SyncResourceDataPacket(id, data.writeData())));
     }
 
     public static ISyncedData getLoginDataSupplier(ResourceLocation id) {
@@ -26,7 +26,6 @@ public class SyncedResourceManager {
     }
 
     public interface ISyncedData {
-
         ResourceLocation getId();
         CompoundTag writeData();
         void readData(CompoundTag tag);

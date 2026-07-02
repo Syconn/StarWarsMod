@@ -1,8 +1,8 @@
 package mod.syconn.swm.utils.interfaces;
 
-import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
+import mod.syconn.swm.network.packets.PreciseEntityVelocityUpdatePacket;
 
 public interface IPrecisionVelocityEntity {
 
-    default void onPrecisionVelocityPacket(ClientboundSetEntityMotionPacket packet) { }
+    default void onPrecisionVelocityPacket(PreciseEntityVelocityUpdatePacket packet) { }
 }

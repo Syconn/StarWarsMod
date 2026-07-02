@@ -1,16 +1,16 @@
 package mod.syconn.swm.network.packets;
 
-import dev.architectury.networking.NetworkManager;
 import dev.kosmx.playerAnim.core.util.Ease;
+import mod.syconn.swm.api.network.message.Packet;
+import mod.syconn.swm.api.network.message.PacketContext;
 import mod.syconn.swm.utils.generic.AnimationUtil;
+import mod.syconn.swm.utils.interfaces.IAnimatablePlayer;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
 
 import java.util.UUID;
-import java.util.function.Supplier;
 
-public class PlayAnimationPacket {
+public class PlayAnimationPacket extends Packet<PlayAnimationPacket> {
 
     private final UUID uuid;
     private final String animation;
@@ -24,24 +24,25 @@ public class PlayAnimationPacket {
         this.ease = ease;
     }
 
-    public PlayAnimationPacket(FriendlyByteBuf buf) {
-        this.uuid = buf.readUUID();
-        this.animation = buf.readUtf();
-        this.length = buf.readInt();
-        this.ease = buf.readEnum(Ease.class);
+    @Override
+    public void encode(PlayAnimationPacket message, FriendlyByteBuf buffer) {
+        buffer.writeUUID(message.uuid);
+        buffer.writeUtf(message.animation);
+        buffer.writeInt(message.length);
+        buffer.writeEnum(message.ease);
     }
 
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeUUID(this.uuid);
-        buf.writeUtf(this.animation);
-        buf.writeInt(this.length);
-        buf.writeEnum(this.ease);
+    @Override
+    public PlayAnimationPacket decode(FriendlyByteBuf buffer) {
+        return new PlayAnimationPacket(buffer.readUUID(), buffer.readUtf(), buffer.readInt(), buffer.readEnum(Ease.class));
     }
 
-    public void apply(Supplier<NetworkManager.PacketContext> context) {
-        context.get().queue(() -> {
-            if (context.get().getPlayer() instanceof ServerPlayer player) AnimationUtil.notifyPlayers(player, this.animation, this.length, this.ease);
-            else if (context.get().getPlayer().level().getPlayerByUUID(this.uuid) instanceof AbstractClientPlayer player) player.swm$playAnimation(this.animation, this.length, this.ease);
+    @Override
+    public void handle(PlayAnimationPacket message, PacketContext context) {
+        context.execute(() -> {
+            if (context.getPlayer() != null) AnimationUtil.notifyPlayers(context.getPlayer(), message.animation, message.length, message.ease);
+            else if (context.getPlayer().level().getPlayerByUUID(message.uuid) instanceof AbstractClientPlayer player && player instanceof IAnimatablePlayer anim) anim.swm$playAnimation(message.animation, message.length, message.ease);
         });
+        context.setHandled(true);
     }
 }

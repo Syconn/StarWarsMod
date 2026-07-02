@@ -1,14 +1,13 @@
 package mod.syconn.swm.features.lightsaber.network;
 
-import dev.architectury.networking.NetworkManager;
+import mod.syconn.swm.api.network.message.Packet;
+import mod.syconn.swm.api.network.message.PacketContext;
 import mod.syconn.swm.features.lightsaber.blockentity.LightsaberWorkbenchBlockEntity;
 import mod.syconn.swm.features.lightsaber.server.data.LightsaberTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 
-import java.util.function.Supplier;
-
-public class ChangeLightsaberHSVPacket {
+public class ChangeLightsaberHSVPacket extends Packet<ChangeLightsaberHSVPacket> {
 
     private final BlockPos pos;
     private final int hsv;
@@ -20,25 +19,35 @@ public class ChangeLightsaberHSVPacket {
         this.blade = blade;
     }
 
-    public ChangeLightsaberHSVPacket(FriendlyByteBuf buf) {
-        this(buf.readBlockPos(), buf.readInt(), buf.readInt());
-    }
-
     public void encode(FriendlyByteBuf buf) {
         buf.writeBlockPos(this.pos);
         buf.writeInt(this.hsv);
         buf.writeInt(this.blade);
     }
 
-    public void apply(Supplier<NetworkManager.PacketContext> context) {
-        context.get().queue(() -> {
-            if (context.get().getPlayer().level().getBlockEntity(this.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
+    @Override
+    public void encode(ChangeLightsaberHSVPacket message, FriendlyByteBuf buffer) {
+        buffer.writeBlockPos(message.pos);
+        buffer.writeInt(message.hsv);
+        buffer.writeInt(message.blade);
+    }
+
+    @Override
+    public ChangeLightsaberHSVPacket decode(FriendlyByteBuf buffer) {
+        return new ChangeLightsaberHSVPacket(buffer.readBlockPos(), buffer.readInt(), buffer.readInt());
+    }
+
+    @Override
+    public void handle(ChangeLightsaberHSVPacket message, PacketContext context) {
+        context.execute(() -> {
+            if (context.getPlayer().level().getBlockEntity(message.pos) instanceof LightsaberWorkbenchBlockEntity blockEntity) {
                 LightsaberTag.update(blockEntity.getContainer().getItem(0), t -> {
-                    if (this.blade != -1) t.setColor(this.blade, this.hsv);
-                    else t.setColor(this.hsv);
+                    if (message.blade != -1) t.setColor(message.blade, message.hsv);
+                    else t.setColor(message.hsv);
                 });
                 blockEntity.setChanged();
             }
         });
+        context.setHandled(true);
     }
 }

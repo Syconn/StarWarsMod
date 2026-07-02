@@ -6,7 +6,7 @@ import mod.syconn.swm.registry.ModTags;
 import mod.syconn.swm.features.blaster.BlasterUtil;
 import mod.syconn.swm.features.lightsaber.item.LightsaberItem;
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.clientside.ScorchBlockPacket;
+import mod.syconn.swm.network.packets.ScorchBlockPacket;
 import mod.syconn.swm.utils.StarWarsConfig;
 import mod.syconn.swm.utils.client.SoundHelper;
 import mod.syconn.swm.utils.generic.MathUtil;

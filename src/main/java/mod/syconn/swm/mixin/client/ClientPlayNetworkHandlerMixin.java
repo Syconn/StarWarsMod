@@ -1,6 +1,6 @@
 package mod.syconn.swm.mixin.client;
 
-import mod.syconn.swm.network.packets.clientside.PreciseEntityVelocityUpdatePacket;
+import mod.syconn.swm.network.packets.PreciseEntityVelocityUpdatePacket;
 import mod.syconn.swm.utils.interfaces.IPrecisionVelocityEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -24,13 +24,13 @@ public class ClientPlayNetworkHandlerMixin {
 
     @Inject(method = "handleSetEntityMotion", at = @At("TAIL"))
     private void onEntityVelocityUpdate(ClientboundSetEntityMotionPacket packet, CallbackInfo ci) {
-        Entity entity = this.level.getEntity(packet.getId());
-        if (!(entity instanceof IPrecisionVelocityEntity ipe)) return;
-
-        if (packet instanceof PreciseEntityVelocityUpdatePacket packet2) {
-            entity.setPos(new Vec3(packet2.getPosition()));
-            entity.setDeltaMovement(new Vec3(packet2.getVelocity()));
-            ipe.onPrecisionVelocityPacket(packet2);
-        }
+//        Entity entity = this.level.getEntity(packet.getId()); TODO PROBABLY WONT WORK ANYMORE
+//        if (!(entity instanceof IPrecisionVelocityEntity ipe)) return;
+//
+//        if (packet instanceof PreciseEntityVelocityUpdatePacket packet2) {
+//            entity.setPos(new Vec3(packet2.getPosition()));
+//            entity.setDeltaMovement(new Vec3(packet2.getVelocity()));
+//            ipe.onPrecisionVelocityPacket(packet2);
+//        }
     }
 }

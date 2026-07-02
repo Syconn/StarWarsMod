@@ -1,7 +1,7 @@
 package mod.syconn.swm.server.containers;
 
 import mod.syconn.swm.network.Network;
-import mod.syconn.swm.network.packets.serverside.SetEquipmentSlotPacket;
+import mod.syconn.swm.network.packets.SetEquipmentSlotPacket;
 import mod.syconn.swm.utils.interfaces.IEquipmentItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;

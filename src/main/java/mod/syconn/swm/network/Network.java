@@ -8,10 +8,6 @@ import mod.syconn.swm.features.lightsaber.network.CraftHiltPacket;
 import mod.syconn.swm.features.lightsaber.network.ThrowLightsaberPacket;
 import mod.syconn.swm.features.lightsaber.network.ToggleLightsaberPacket;
 import mod.syconn.swm.network.packets.*;
-import mod.syconn.swm.network.packets.MessagePlayerPacket;
-import mod.syconn.swm.network.packets.serverside.HoloCallPacket;
-import mod.syconn.swm.network.packets.serverside.RequestHologramPacket;
-import mod.syconn.swm.network.packets.SetEquipmentSlotPacket;
 
 public class Network {
 
@@ -19,22 +15,18 @@ public class Network {
 
     public static void init() {
         CHANNEL = NetworkManager.createNetwork("network")
-                .registerPlayMessage(MessagePlayerPacket.class, PacketDirection.PLAY_CLIENT_BOUND)
+                .registerPlayMessage(PreciseEntityVelocityUpdatePacket.class, PacketDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(PlayAnimationPacket.class)
-                .registerPlayMessage()
+                .registerPlayMessage(ToggleLightsaberPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(ThrowLightsaberPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(SyncResourceDataPacket.class, PacketDirection.PLAY_CLIENT_BOUND)
+                .registerPlayMessage(ChangeLightsaberHSVPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(CraftHiltPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(ToggleLightsaberPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(ToggleEquipmentSlotPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(SetEquipmentSlotPacket.class, PacketDirection.PLAY_SERVER_BOUND)
+                .registerPlayMessage(ScorchBlockPacket.class, PacketDirection.PLAY_CLIENT_BOUND)
                 .build();
-
-
-
-        CHANNEL.register(ToggleLightsaberPacket.class, ToggleLightsaberPacket::encode, ToggleLightsaberPacket::new, ToggleLightsaberPacket::apply);
-        CHANNEL.register(ThrowLightsaberPacket.class, ThrowLightsaberPacket::encode, ThrowLightsaberPacket::new, ThrowLightsaberPacket::apply);
-        CHANNEL.register(SyncResourceDataPacket.class, SyncResourceDataPacket::encode, SyncResourceDataPacket::new, SyncResourceDataPacket::apply);
-        CHANNEL.register(ChangeLightsaberHSVPacket.class, ChangeLightsaberHSVPacket::encode, ChangeLightsaberHSVPacket::new, ChangeLightsaberHSVPacket::apply);
-        CHANNEL.register(CraftHiltPacket.class, CraftHiltPacket::encode, CraftHiltPacket::new, CraftHiltPacket::apply);
-        CHANNEL.register(ToggleEquipmentSlotPacket.class, ToggleEquipmentSlotPacket::encode, ToggleEquipmentSlotPacket::new, ToggleEquipmentSlotPacket::apply);
-        CHANNEL.register(SetEquipmentSlotPacket.class, SetEquipmentSlotPacket::encode, SetEquipmentSlotPacket::new, SetEquipmentSlotPacket::apply);
-        CHANNEL.register(PreciseEntityVelocityUpdatePacket.class, PreciseEntityVelocityUpdatePacket::write, PreciseEntityVelocityUpdatePacket::new, PreciseEntityVelocityUpdatePacket::apply);
-        CHANNEL.register(ScorchBlockPacket.class, ScorchBlockPacket::encode, ScorchBlockPacket::new, ScorchBlockPacket::apply);
     }
 
 //    public static <T> void sendToNearby(ServerPlayer player, ResourceKey<Level> dimension, Vec3 pos, int radius, T message) { TODO REMOVE OR RE ADD
