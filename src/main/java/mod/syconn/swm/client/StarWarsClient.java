@@ -1,6 +1,8 @@
 package mod.syconn.swm.client;
 
 import mod.syconn.swm.api.registry.client.*;
+import mod.syconn.swm.api.util.Env;
+import mod.syconn.swm.api.util.Environment;
 import mod.syconn.swm.client.screen.hud.SWGearHud;
 import mod.syconn.swm.features.blaster.client.BlasterItemRenderer;
 import mod.syconn.swm.features.blaster.client.entity.BlasterBoltRenderer;
@@ -38,6 +40,8 @@ public class StarWarsClient {
 
         IModifiedPoseRenderer.register(LightsaberItem.class, new LightsaberItemRender());
         IModifiedPoseRenderer.register(BlasterItem.class, new BlasterItemRenderer());
+
+        Environment.setExecutor(Env.CLIENT, Minecraft.getInstance());
     }
 
     public static void registerScreens(ScreenRegister register) {

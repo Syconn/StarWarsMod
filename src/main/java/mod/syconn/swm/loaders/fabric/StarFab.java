@@ -4,6 +4,8 @@ package mod.syconn.swm.loaders.fabric;
 import mod.syconn.swm.StarWars;
 import mod.syconn.swm.api.registry.BlockRegistryEntry;
 import mod.syconn.swm.api.registry.Registrar;
+import mod.syconn.swm.api.util.Env;
+import mod.syconn.swm.api.util.Environment;
 import mod.syconn.swm.loaders.fabric.events.PlayerEvents;
 import mod.syconn.swm.server.StarWarsServer;
 import net.fabricmc.api.ModInitializer;
@@ -37,6 +39,9 @@ public class StarFab implements ModInitializer {
         PlayerEvents.PLAYER_JOIN.register(StarWarsServer::playerJoinedServer);
         PlayerEvents.PLAYER_DISCONNECT.register(StarWarsServer::playerLeaveServer);
         ServerTickEvents.END_SERVER_TICK.register(StarWarsServer::serverTick);
+
+        ServerLifecycleEvents.SERVER_STARTING.register(server -> Environment.setExecutor(Env.SERVER, server));
+        ServerLifecycleEvents.SERVER_STOPPED.register(server -> Environment.setExecutor(Env.SERVER, null));
     }
 
     @SuppressWarnings("unchecked")
